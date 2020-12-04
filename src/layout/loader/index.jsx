@@ -8,7 +8,11 @@ const Loader = (props) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setShow(false)
+<<<<<<< Updated upstream
             }, 3000);
+=======
+            }, 4000);
+>>>>>>> Stashed changes
 
         return () => {
             clearTimeout(timeout);
