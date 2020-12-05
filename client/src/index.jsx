@@ -9,7 +9,7 @@ import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
 import { CSSTransition,TransitionGroup } from 'react-transition-group'
 import {routes} from './route';
 import ConfigDB from './data/customizer/config'
-
+import {Enquiry} from './components/Enquiry'
 
 const Root = (props) =>  {
 
@@ -36,6 +36,7 @@ const Root = (props) =>  {
             <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
                 return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
             }} />
+            <Route exact path="/enquiry" component={Enquiry}></Route>
           <TransitionGroup>
             {routes.map(({ path, Component }) => (
                 <Route key={path} exact   path={`${process.env.PUBLIC_URL}${path}`}>
