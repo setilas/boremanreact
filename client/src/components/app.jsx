@@ -6,6 +6,7 @@ import Footer from '../layout/footer'
 import ThemeCustomize from "../layout/theme-customizer";
 import {ToastContainer} from 'react-toastify'
 
+
 const App = ({children}) => {
   console.warn = () => {}
   return (
