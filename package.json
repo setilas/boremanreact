@@ -10,8 +10,7 @@
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "",
-  "license": "ISC",
+
   "dependencies": {
     "config": "^3.3.3",
     "dotenv": "^8.2.0",
