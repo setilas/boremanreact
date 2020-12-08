@@ -21,7 +21,7 @@ const Sample = (props) => {
                 <Link>
                   <button className="btn btn-outline-primary">Home</button>
                 </Link>
-                <Link to="/enquiry">
+                <Link to="/enquiryPage">
                   <button className="btn btn-outline-success ml-5">
                     Enquiry
                   </button>
