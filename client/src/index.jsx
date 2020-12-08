@@ -12,6 +12,8 @@ import ConfigDB from './data/customizer/config'
 import {Enquiry} from './components/Enquiry'
 import {Vendors} from './components/Vendors'
 
+
+
 const Root = (props) =>  {
 
   const [anim, setAnim] = useState("");
