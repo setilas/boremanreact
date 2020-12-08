@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Enquiry = require("../../models/Enquiry");
+const Enquiry = require("../../../models/User/Enquiry");
 
 router.post("/addEnquiry", async (req, res) => {
   const { name, sitelocation, sitelps, phone } = req.body;

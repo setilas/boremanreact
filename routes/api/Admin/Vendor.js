@@ -1,7 +1,7 @@
 const express = require("express");
-const Vendor = require("../../models/Vendor");
+const Vendor = require("../../../models/Admin/Vendor");
 const router = express.Router();
-const Enquiry = require("../../models/Vendor");
+const Enquiry = require("../../../models/Admin/Vendor");
 
 router.post("/addVendor", async (req, res) => {
   const { name, address, phone } = req.body;
