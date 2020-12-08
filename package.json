@@ -1,7 +1,7 @@
 {
   "name": "boremanreact",
   "version": "1.0.0",
-  "private":true,
+  "private": true,
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-
   "dependencies": {
     "config": "^3.3.3",
     "dotenv": "^8.2.0",
