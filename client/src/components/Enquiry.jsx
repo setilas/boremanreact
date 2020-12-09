@@ -1,6 +1,25 @@
 import React, { Fragment } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
-export const Enquiry = () => {
+ const Enquiry = (props) => {
+// const [formData, SetFormData]=useState({
+//   inputName:"",
+//   inputLocation:"",
+//    inputLatitude:"",
+//     inputLongitude:"", 
+//     inputStatus:""
+// });
+// const onChangeInput=(e)=>{
+//   SetFormData({
+//     ...FormData,[e.target.id]:e.target.value
+//   });
+//   console.log(formData);
+// }
+// const handleSubmit=(e)=>{
+//   alert("submitted");
+//   alert(this.FormData.inputName);
+//   e.preventDefault();
+// }
+
   return (
     <Fragment>
       <Container fluid={true}>
@@ -13,58 +32,80 @@ export const Enquiry = () => {
                 </h4>
               </CardHeader>
               <CardBody>
-                <form>
+                <form 
+                >
                   <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label">
+                    <label for="inputName" class="col-sm-5 col-form-label">
                       Name
                     </label>
+                    
+
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
                         id="inputName"
                         placeholder="Enter your Name"
+                        // value={this.FormData.inputName}
+                        // onChange={this.onChangeInput}
                       />
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label">
-                      Site location
+                    <label for="inputName" class="col-sm-5 col-form-label">
+                     location
                     </label>
                     <div class="col-sm-10">
                       <input
                         type="text"
                         class="form-control"
-                        id="inputSitelocation"
+                        id="inputlocation"
                         placeholder="Enter your location"
+                       
                       />
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputSitelps" class="col-sm-2 col-form-label">
-                      Site lps
+                    <label for="inputName" class="col-sm-3 col-form-label">
+                     GPS:
                     </label>
-                    <div class="col-sm-10">
+                    </div>
+                    <div class="form-group row">
+                    <div class="col-sm-5">
+                      <label >Latitude</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="inputSitelps"
-                        placeholder="Site lps"
+                        id="inputlatitude"
+                        placeholder="Enter your location"
+                        // value={this.FormData.inputLatitude}
+                        // onChange={this.onChangeInput}
                       />
                     </div>
+                    
+                    <div class="col-sm-5">
+                      <label >Longitude</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputlongitude"
+                        placeholder="Enter your location"
+                        // value={this.FormData.inputLongitude}
+                        // onChange={this.onChangeInput}
+                      />
                   </div>
-                  <div class="form-group row">
-                    <label for="inputPhone" class="col-sm-2 col-form-label">
-                      Phone
+                  </div>
+                  <div class="form-group row" >
+                  <label for="inputName" class="col-sm-5 col-form-label">
+                     Status
                     </label>
                     <div class="col-sm-10">
-                      <input
-                        type="tel"
-                        class="form-control"
-                        id="inputPhone"
-                        placeholder=" Enter your Phone Number"
-                      />
-                    </div>
+                    <select >
+                          <option value="Open">Open</option>
+                          <option value="Started">Started</option>
+                          <option value="Closed">Closed</option>
+                          </select>
+                      </div>
                   </div>
                   <div className="form-group d-flex justify-content-center ">
                     <button className="btn btn-success" type="submit">
@@ -80,3 +121,4 @@ export const Enquiry = () => {
     </Fragment>
   );
 };
+export default Enquiry;

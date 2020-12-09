@@ -1,14 +1,17 @@
 import React, { Fragment } from "react";
-import Breadcrumb from "../../../layout/breadcrumb";
+import Breadcrumb from "../layout/breadcrumb";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const Sample = (props) => {
+const Enquirypage = (props) => {
+  
+
+
   return (
     <Fragment>
       <Breadcrumb parent="Dashboard" title="Vendor Dashboard" />
       <Container fluid={true}>
-        <Row>
+        <Row> 
           <Col sm="12">
             <Card>
               <CardHeader>
@@ -16,24 +19,22 @@ const Sample = (props) => {
               
               </CardHeader>
               <CardBody>
-              <h4>
-                  <strong>Add Enquiry</strong>
-                </h4>
-              <ul class="list-group">
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item list-group-item-primary">
-                          <Link to="/enquiry">Add Enquiry</Link>
-                      </li>
-                      <li class="list-group-item list-group-item-secondary">
-                          <link>View Enquiry</link>
-                      </li>
-                      <li class="list-group-item list-group-item-success">
-                          <link >Status</link>
-                      </li>
-                      <li class="list-group-item list-group-item-danger">
-                          <link >Logout</link>
-                      </li>
-                      </ul>
+              <Link to ="/enquiry">
+                  <button className="btn btn-outline-primary">Add Enquiry</button>
+                </Link>
+                <Link to="/viewenquiry">
+                  <button className="btn btn-outline-success ml-3">
+                    View Enquiry
+                  </button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-secondary ml-3">Status</button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-danger ml-3">
+                    Logout
+                  </button>
+                </Link>
                
               </CardBody>
             </Card>
@@ -44,4 +45,4 @@ const Sample = (props) => {
   )
 }
 
-export default Sample;
+export default Enquirypage;
