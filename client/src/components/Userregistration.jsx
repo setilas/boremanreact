@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import { register } from "../action/auth";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-export const Registeruser = ({ register }) => {
+function Registeruser(props) {
   const [formData, SetFormData] = useState({
     firstname: " ",
     lastname: "",
@@ -14,16 +14,20 @@ export const Registeruser = ({ register }) => {
   });
   const onChange = (e) =>
     SetFormData({ ...formData, [e.target.name]: e.target.value });
-
   const { firstname, lastname, email, password, password2 } = formData;
+
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       console.log("password not matching", "danger");
     } else {
+      props.register({ firstname, lastname, email, password });
       console.log("success");
     }
   };
+  if (props.isAuthenticated) {
+    return <Redirect to="/user/dashboard" />;
+  }
 
   return (
     <div className="container-fluid p-0">
@@ -159,7 +163,7 @@ export const Registeruser = ({ register }) => {
       </div>
     </div>
   );
-};
+}
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });

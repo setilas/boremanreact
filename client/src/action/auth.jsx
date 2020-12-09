@@ -37,7 +37,6 @@ export const register = ({ firstname, lastname, email, password }) => async (
       "Content-Type": "application/json",
     },
   };
-  console.log("in action");
   const body = JSON.stringify({ firstname, lastname, email, password });
   console.log(body);
   try {

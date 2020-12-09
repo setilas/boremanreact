@@ -1,6 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
-export const Loginuser = () => {
+import { Link, Redirect } from "react-router-dom";
+import { login } from "../action/auth";
+import { connect } from "react-redux";
+const Loginuser = ({ login, isAuthenticated }) => {
+  const [formData, SetFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+  const onChange = (e) =>
+    SetFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    login({ email, password });
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/user/dashboard" />;
+  }
   return (
     <div class="container-fluid">
       <div class="row">
@@ -29,7 +49,7 @@ export const Loginuser = () => {
                 </a>
               </div>
               <div class="login-main">
-                <form class="theme-form">
+                <form class="theme-form" onSubmit={(e) => onSubmit(e)}>
                   <h4>Sign in to account</h4>
                   <p>Enter your email & password to login</p>
                   <div class="form-group">
@@ -39,6 +59,11 @@ export const Loginuser = () => {
                       type="email"
                       required=""
                       placeholder="Test@gmail.com"
+                      name="email"
+                      value={email}
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
                     />
                   </div>
                   <div class="form-group">
@@ -46,9 +71,13 @@ export const Loginuser = () => {
                     <input
                       class="form-control"
                       type="password"
-                      name="login[password]"
+                      name="password"
+                      value={password}
                       required=""
                       placeholder="*********"
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
                     />
                     <div class="show-hide">
                       <span class="show"> </span>
@@ -108,3 +137,8 @@ export const Loginuser = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Loginuser);

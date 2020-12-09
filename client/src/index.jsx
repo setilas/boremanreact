@@ -11,8 +11,8 @@ import ConfigDB from "./data/customizer/config";
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
 import Dashboard from "./components/dashboard/default/index";
-import { Registeruser } from "./components/Userregistration";
-import { Loginuser } from "./components/Userlogin";
+import Registeruser from "./components/Userregistration";
+import Loginuser from "./components/Userlogin";
 const Root = (props) => {
   const [anim, setAnim] = useState("");
   const animation =
