@@ -12,6 +12,7 @@ import ConfigDB from './data/customizer/config'
 import Enquirypage from './components/Enquirypage'
 import Enquiry from './components/Enquiry'
 import Viewenquiry from './components/Viewenquiry'
+import Adduser from './components/Adduser'
 
 
 const Root = (props) =>  {
@@ -42,6 +43,7 @@ const Root = (props) =>  {
             <Route exact path="/enquirypage" component={Enquirypage}></Route>
             <Route exact path="/enquiry" component={Enquiry}></Route>
             <Route exact path="/viewenquiry" component={Viewenquiry}></Route>
+            <Route exact path="/adduser" component={Adduser}></Route>
 
           <TransitionGroup>
             {routes.map(({ path, Component }) => (

@@ -16,17 +16,32 @@ const Sample = (props) => {
                
               </CardHeader>
               <CardBody>
-                <Link>
-                  <button className="btn btn-outline-primary">HOME</button>
+                <Link to="/adduser">
+                  <button className="btn btn-outline-primary">Add User</button>
                 </Link>
-                <Link >
-                  <button className="btn btn-outline-success ml-5">
-                    VENDOR
+                <Link  >
+                  <button className="btn btn-outline-success ml-2">
+                    View User
                   </button>
                 </Link>
                 <Link>
-                  <button className="btn btn-outline-danger ml-5">
-                    LOGOUT
+                  <button className="btn btn-outline-primary ml-2">
+                    View Enquiry
+                  </button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-danger ml-2">
+                    Status
+                  </button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-success ml-2 ">
+                    Controls
+                  </button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-secondary ml-2  ">
+                    Logout
                   </button>
                 </Link>
               </CardBody>
