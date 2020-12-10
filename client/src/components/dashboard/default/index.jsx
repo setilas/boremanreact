@@ -3,7 +3,7 @@ import Breadcrumb from "../../../layout/breadcrumb";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const Sample = (props) => {
+const Dashboard = (props) => {
   return (
     <Fragment>
       <Breadcrumb parent="Dashboard" title="Vendor Dashboard" />
@@ -40,4 +40,4 @@ const Sample = (props) => {
   );
 };
 
-export default Sample;
+export default Dashboard;
