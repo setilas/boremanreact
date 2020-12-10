@@ -8,4 +8,7 @@ app.listen(PORT, () => console.log(`server connected at port no ${PORT}`));
 
 app.use(express.json({ extended: false }));
 
-app.use("/api/user/", require("./routes/api/Enquiry"));
+app.use("/api/user", require("./routes/api/User/user"));
+app.use("/api/auth", require("./routes/api/User/auth"));
+app.use("/api/user/addenquiry", require("./routes/api/User/Enquiry"));
+app.use("/api/admin/", require("./routes/api/Admin/Vendor"));
