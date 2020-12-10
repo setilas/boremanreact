@@ -119,6 +119,7 @@ import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
         </Row>
       </Container>
     </Fragment>
+   
   );
 };
 export default Enquiry;

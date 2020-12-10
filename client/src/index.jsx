@@ -18,18 +18,21 @@ import Adduser from './components/Adduser'
 const Root = (props) =>  {
 
   const [anim, setAnim] = useState("");
-  const animation = localStorage.getItem("animation") || ConfigDB.data.router_animation || 'fade'
+  const animation =
+    localStorage.getItem("animation") ||
+    ConfigDB.data.router_animation ||
+    "fade";
   const abortController = new AbortController();
 
   useEffect(() => {
-      setAnim(animation)
-      console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
-      console.disableYellowBox = true;
-      return function cleanup() {
-          abortController.abort();
-        }
-      // eslint-disable-next-line
-    }, []);
+    setAnim(animation);
+    console.ignoredYellowBox = ["Warning: Each", "Warning: Failed"];
+    console.disableYellowBox = true;
+    return function cleanup() {
+      abortController.abort();
+    };
+    // eslint-disable-next-line
+  }, []);
 
     return(
       <Fragment>
@@ -49,27 +52,25 @@ const Root = (props) =>  {
             {routes.map(({ path, Component }) => (
                 <Route key={path} exact   path={`${process.env.PUBLIC_URL}${path}`}>
                     {({ match }) => (
-                        <CSSTransition 
+                      <CSSTransition
                         in={match != null}
                         timeout={100}
-                        classNames={anim} 
+                        classNames={anim}
                         unmountOnExit
-                        >
-                        <div><Component/></div>
-                        </CSSTransition> 
+                      >
+                        <div>
+                          <Component />
+                        </div>
+                      </CSSTransition>
                     )}
-                </Route>
+                  </Route>
                 ))}
-          </TransitionGroup>
-          </App>
-        </Switch>
+              </TransitionGroup>
+            </App>
+          </Switch>
         </BrowserRouter>
-        </Provider>
-      </Fragment>
-      )
-}
-ReactDOM.render(<Root/>,
-  document.getElementById('root')
-);
-
-serviceWorker.unregister();
+      </Provider>
+    </Fragment>
+  );
+};
+ReactDOM.render(<Root />, document.getElementById("root"));
