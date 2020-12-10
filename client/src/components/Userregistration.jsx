@@ -2,7 +2,9 @@ import React, { Fragment, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import { register } from "../action/auth";
+import { setAlert } from "../action/alert";
 import { Link, Redirect } from "react-router-dom";
+const logo = require("../assets/images/logo/logo.png");
 
 function Registeruser(props) {
   const [formData, SetFormData] = useState({
@@ -19,10 +21,10 @@ function Registeruser(props) {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("password not matching", "danger");
+      props.setAlert("password not matching", "danger");
     } else {
       props.register({ firstname, lastname, email, password });
-      console.log("success");
+      props.setAlert("success", "success");
     }
   };
   if (props.isAuthenticated) {
@@ -39,7 +41,7 @@ function Registeruser(props) {
                 <a className="logo" href="index.html">
                   <img
                     className="img-fluid for-light"
-                    src="../assets/images/logo/login.png"
+                    src={logo}
                     alt="looginpage"
                   />
                   <img
@@ -117,18 +119,21 @@ function Registeruser(props) {
                         onChange(e);
                       }}
                     />
-                    <input
-                      className="form-control"
-                      type="password"
-                      name="login[password]"
-                      required=""
-                      placeholder="Confirm Your password"
-                      name="password2"
-                      value={password2}
-                      onChange={(e) => {
-                        onChange(e);
-                      }}
-                    />
+                    <div className="form-group">
+                      <label className="col-form-label">Password</label>
+                      <input
+                        className="form-control"
+                        type="password"
+                        name="login[password]"
+                        required=""
+                        placeholder="Confirm Your password"
+                        name="password2"
+                        value={password2}
+                        onChange={(e) => {
+                          onChange(e);
+                        }}
+                      />
+                    </div>
                     <div className="show-hide">
                       <span className="show"></span>
                     </div>
@@ -167,4 +172,4 @@ function Registeruser(props) {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
-export default connect(mapStateToProps, { register })(Registeruser);
+export default connect(mapStateToProps, { register, setAlert })(Registeruser);

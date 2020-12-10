@@ -78,5 +78,6 @@ export const Enquiry = () => {
         </Row>
       </Container>
     </Fragment>
+   
   );
 };
