@@ -11,13 +11,14 @@ router.post(
   "/",
   [
     //validators
-    check("name", "name is required").not().isEmpty(),
+    check("firstname", "name is required").not().isEmpty(),
+    check("lastname", "name is required").not().isEmpty(),
     check("email", "enter the valid email").isEmail(),
     check("password", "enter proper password").isLength({ min: 6 }),
   ],
 
   async (req, res) => {
-    const { name, email, password } = req.body;
+    const { firstname, lastname, email, password } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -38,7 +39,8 @@ router.post(
         d: "mm",
       });
       user = new User({
-        name,
+        firstname,
+        lastname,
         email,
         avatar,
       });
