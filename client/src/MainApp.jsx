@@ -9,7 +9,7 @@ import Alert from "./components/Alert";
 import "./App.css";
 import { Landing } from "./components/Landing";
 import { test } from "./components/test";
-import {ViewEnquiry} from "./components/ViewEnquiry"
+// import {ViewEnquiry} from "./components/ViewEnquiry"
 import {AddEnquiry} from "./components/AddEnquiry"
 import {Enquiryview} from "./components/Enquiryview"
 const MainApp = () => {
@@ -23,7 +23,7 @@ const MainApp = () => {
             <Route exact path="/test" component={test}></Route>
             <Route exact path="/user" component={Registeruser}></Route>
             <Route exact path="/loginuser" component={Loginuser}></Route>
-              <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+              {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route> */}
               <Route exact path="/addenquiry" component={AddEnquiry}></Route> 
               <Route exact path="/enquiryview" component={Enquiryview}></Route> 
             <Route exact path="/"></Route>
