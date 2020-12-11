@@ -40,8 +40,8 @@ const Main2 = (props) => {
               <Route exact path="/chart" component={knobChart}></Route>
               <Route exact path="/user/dashboard" component={Dashboard}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
-              <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-              <Route exact path="/addenquiry" component={AddEnquiry}></Route>
+              {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+              <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
               <Route exact path="/vendors" component={Vendors}></Route>
             </App>
           </Switch>
