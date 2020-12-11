@@ -13,21 +13,19 @@ const Dashboard = (props) => {
             <Card>
               <CardHeader>
                 <h5>HII user</h5>
-                <span>
-                  lorem ipsum dolor sit amet, consectetur adipisicing elit
-                </span>
+              
               </CardHeader>
-              <CardBody>
+              <CardBody >
                 <Link>
-                  <button className="btn btn-outline-primary">Home</button>
+                  <button className="btn btn-primary">Home</button>
                 </Link>
                 <Link to="/enquiryPage">
-                  <button className="btn btn-outline-success ml-5">
+                  <button className="btn btn-success ml-5">
                     Enquiry
                   </button>
                 </Link>
                 <Link>
-                  <button className="btn btn-outline-danger ml-5">
+                  <button className="btn btn-danger ml-5">
                     Logout
                   </button>
                 </Link>

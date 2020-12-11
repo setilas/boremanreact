@@ -7,7 +7,7 @@ import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
       <Container fluid={true}>
         <Row>
           <Col sm="10">
-            <Card className="mt-5">
+            <Card className="mt-5 justify-content-center">
               <CardHeader>
                 <h4 style={{color:"red",backgroundColor:"grey"}}>
                   <strong>Enquiries</strong>

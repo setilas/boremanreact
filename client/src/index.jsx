@@ -2,7 +2,6 @@ import React, { Fragment,useState,useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './components/app';
-import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store'
 import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'

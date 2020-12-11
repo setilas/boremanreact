@@ -26,7 +26,7 @@ import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
         <Row>
           <Col sm="8">
             <Card className="mt-5">
-              <CardHeader>
+              <CardHeader style={{backgroundColor:"#7366ff"}}>
                 <h4>
                   <strong>Add Enquiry</strong>
                 </h4>
