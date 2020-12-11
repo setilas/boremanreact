@@ -1,46 +1,63 @@
 import React, { Fragment } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 
- const Viewenquiry = (props) => {
+export const ViewEnquiry = (props) => {
   return (
     <Fragment>
       <Container fluid={true}>
         <Row>
           <Col sm="10">
-            <Card className="mt-5 justify-content-center">
+            <Card className="mt-5">
               <CardHeader>
-                <h4 style={{color:"red",backgroundColor:"grey"}}>
+                <h4>
                   <strong>Enquiries</strong>
                 </h4>
               </CardHeader>
               <CardBody>
-                
-                <div class="table-responsive">
-                      <table className="border-solid" id="example-style-3">
-                        
-                  
-                      <thead style={{backgroundColor:"#7366ff"}}>
-                          <tr>
-                              <th className=" col-sm-5 "> Date</th>
-                              <th className="col-sm-5 ">Name</th>
-                              <th className="col-sm-5 ">Location</th>
-                              <th className="col-sm-5 ">GPS</th>
-                              <th className="col-sm-5">Status</th>
-                              
-                          </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th className=" col-sm-5 ">8/12/2020</th>
-                          <th className=" col-sm-5 ">manu</th>
-                          <th className=" col-sm-5 "><b>kochi</b></th>
-                          <th className=" col-sm-5 ">9.877,9.766</th>
-                          <th className=" col-sm-5 ">closed</th>
-                        </tr>
-                      </tbody>
+                <div class="anyClass">
+                  <table className="border-solid table" id="example-style-3">
+                    <thead
+                      style={{ backgroundColor: "#7366ff" }}
+                      className="thead-dark"
+                    >
+                      <tr>
+                        <th className=" col-sm-5 "> Date</th>
+                        <th className="col-sm-5 ">Name</th>
+                        <th className="col-sm-5 ">Location</th>
+                        <th className="col-sm-5 ">GPS</th>
+                        <th className="col-sm-5">Status</th>
+                      </tr>
+                    </thead>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
                   </table>
-                  </div>
-                
+                </div>
               </CardBody>
             </Card>
           </Col>
@@ -49,4 +66,3 @@ import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
     </Fragment>
   );
 };
-export default Viewenquiry;
