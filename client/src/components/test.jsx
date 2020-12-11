@@ -332,7 +332,7 @@ export const test = () => {
                     <i data-feather="maximize"></i>
                   </a>
                 </li> */}
-                <li class="profile-nav onhover-dropdown p-0 mr-0">
+                <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
                   <div class="media profile-media">
                     <img
                       class="b-r-10"
@@ -442,6 +442,28 @@ export const test = () => {
             <div class="container-fluid">
               <div class="page-title">
                 <div class="row">
+                  <div class="col-6">
+                    <h3>Alert</h3>
+                  </div>
+                  <div class="col-6">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="index.html">
+                          {" "}
+                          <i data-feather="home"></i>
+                        </a>
+                      </li>
+                      <li class="breadcrumb-item">Ui Kits</li>
+                      <li class="breadcrumb-item active">Alert</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12 col-xl-6">
                   <KnobChart />
                 </div>
               </div>
