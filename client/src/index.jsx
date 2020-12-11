@@ -1,19 +1,22 @@
-import React, { Fragment, useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import "./index.scss";
-import App from "./components/app";
-import { Provider } from "react-redux";
-import store from "./store";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { routes } from "./route";
-import ConfigDB from "./data/customizer/config";
-import { Enquiry } from "./components/Enquiry";
-import { Vendors } from "./components/Vendors";
-import Dashboard from "./components/dashboard/default/index";
-import Registeruser from "./components/Userregistration";
-import Loginuser from "./components/Userlogin";
-const Root = (props) => {
+import React, { Fragment,useState,useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import './index.scss';
+import App from './components/app';
+import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import store from './store'
+import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
+import { CSSTransition,TransitionGroup } from 'react-transition-group'
+import {routes} from './route';
+import ConfigDB from './data/customizer/config'
+import Enquirypage from './components/Enquirypage'
+import Enquiry from './components/Enquiry'
+import Viewenquiry from './components/Viewenquiry'
+import Adduser from './components/Adduser'
+
+
+const Root = (props) =>  {
+
   const [anim, setAnim] = useState("");
   const animation =
     localStorage.getItem("animation") ||
@@ -31,24 +34,23 @@ const Root = (props) => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    <Fragment>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <App>
-              <Route exact path="/user" component={Registeruser}></Route>
-              <Route exact path="/loginuser" component={Loginuser}></Route>
-              <Route exact path="/user/dashboard" component={Dashboard}></Route>
-              <Route exact path="/enquiry" component={Enquiry}></Route>
-              <Route exact path="/vendors" component={Vendors}></Route>
-              <TransitionGroup>
-                {routes.map(({ path, Component }) => (
-                  <Route
-                    key={path}
-                    exact
-                    path={`${process.env.PUBLIC_URL}${path}`}
-                  >
+    return(
+      <Fragment>
+        <Provider store={store}>
+        <BrowserRouter basename={`/`}>
+        <Switch>
+          <App>
+            <Route exact path={`${process.env.PUBLIC_URL}/`} render={() => {
+                return (<Redirect to={`${process.env.PUBLIC_URL}/dashboard/default`} />)
+            }} />
+            <Route exact path="/enquirypage" component={Enquirypage}></Route>
+            <Route exact path="/enquiry" component={Enquiry}></Route>
+            <Route exact path="/viewenquiry" component={Viewenquiry}></Route>
+            <Route exact path="/adduser" component={Adduser}></Route>
+
+          <TransitionGroup>
+            {routes.map(({ path, Component }) => (
+                <Route key={path} exact   path={`${process.env.PUBLIC_URL}${path}`}>
                     {({ match }) => (
                       <CSSTransition
                         in={match != null}

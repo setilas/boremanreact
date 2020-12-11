@@ -1,43 +1,48 @@
 import React, { Fragment } from "react";
-import Breadcrumb from "../../../layout/breadcrumb";
+import Breadcrumb from "../layout/breadcrumb";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const Dashboard = (props) => {
+const Enquirypage = (props) => {
+  
+
+
   return (
     <Fragment>
       <Breadcrumb parent="Dashboard" title="Vendor Dashboard" />
       <Container fluid={true}>
-        <Row>
+        <Row> 
           <Col sm="12">
             <Card>
               <CardHeader>
                 <h5>HII user</h5>
-                <span>
-                  lorem ipsum dolor sit amet, consectetur adipisicing elit
-                </span>
+              
               </CardHeader>
               <CardBody>
-                <Link>
-                  <button className="btn btn-outline-primary">Home</button>
+              <Link to ="/enquiry">
+                  <button className="btn btn-outline-primary">Add Enquiry</button>
                 </Link>
-                <Link to="/enquiryPage">
-                  <button className="btn btn-outline-success ml-5">
-                    Enquiry
+                <Link to="/viewenquiry">
+                  <button className="btn btn-outline-success ml-3">
+                    View Enquiry
                   </button>
                 </Link>
                 <Link>
-                  <button className="btn btn-outline-danger ml-5">
+                  <button className="btn btn-outline-secondary ml-3">Status</button>
+                </Link>
+                <Link>
+                  <button className="btn btn-outline-danger ml-3">
                     Logout
                   </button>
                 </Link>
+               
               </CardBody>
             </Card>
           </Col>
         </Row>
       </Container>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Enquirypage;
