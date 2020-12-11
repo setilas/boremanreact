@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import logo from "../assets/images/logo/logo.png";
 import {
   CardBody,
   Card,
@@ -10,6 +11,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import KnobChart from "../components/chart";
+import { Border } from "../constant";
 
 export const test = () => {
   return (
@@ -17,8 +19,9 @@ export const test = () => {
       <div class="tap-top">
         <i data-feather="chevrons-up"></i>
       </div>
-
+      {/* page wrapper which will wrap entirepage */}
       <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
         <div class="page-header">
           <div class="header-wrapper row m-0">
             <form class="form-inline search-full" action="#" method="get">
@@ -45,11 +48,7 @@ export const test = () => {
             <div class="header-logo-wrapper">
               <div class="logo-wrapper">
                 <a href="index.html">
-                  <img
-                    class="img-fluid"
-                    src="../assets/images/logo/logo.png"
-                    alt=""
-                  />
+                  <img class="img-fluid" alt="" />
                 </a>
               </div>
               <div class="toggle-sidebar">
@@ -62,19 +61,19 @@ export const test = () => {
                 </i>
               </div>
             </div>
-            <div class="left-header col horizontal-wrapper pl-0">
-              <ul class="horizontal-menu">
-                <li class="mega-menu">
-                  <a class="nav-link" href="#">
-                    <i data-feather="layers"></i>
-                    <span>Bonus Ui</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {/* <div class="left-header col horizontal-wrapper pl-0">
+                <ul class="horizontal-menu">
+                  <li class="mega-menu">
+                    <a class="nav-link" href="#">
+                      <i data-feather="layers"></i>
+                      <span>Bonus Ui</span>
+                    </a>
+                  </li>
+                </ul>
+              </div> */}
             <div class="nav-right col-8 pull-right right-header p-0">
               <ul class="nav-menus">
-                <li class="language-nav">
+                {/* <li class="language-nav">
                   <div class="translate_wrapper">
                     <div class="current_lang">
                       <div class="lang">
@@ -119,14 +118,14 @@ export const test = () => {
                       </div>
                     </div>
                   </div>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   {" "}
                   <span class="header-search">
                     <i data-feather="search"></i>
                   </span>
-                </li>
-                <li class="onhover-dropdown">
+                </li> */}
+                {/* <li class="onhover-dropdown">
                   <div class="notification-box">
                     <i data-feather="bell"></i>
                     <span class="badge badge-pill badge-secondary">4</span>
@@ -195,6 +194,7 @@ export const test = () => {
                         <div class="media-body">
                           <span>Boy's T-shirt</span>
                           <p>It is a long established fact that a reader</p>
+
                           <h6 class="f-12 light-font">1 x $ 299.00</h6>
                         </div>
                         <div class="close-circle">
@@ -331,8 +331,8 @@ export const test = () => {
                   >
                     <i data-feather="maximize"></i>
                   </a>
-                </li>
-                <li class="profile-nav onhover-dropdown p-0 mr-0">
+                </li> */}
+                <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
                   <div class="media profile-media">
                     <img
                       class="b-r-10"
@@ -340,9 +340,9 @@ export const test = () => {
                       alt=""
                     />
                     <div class="media-body">
-                      <span>Emay Walter</span>
+                      <span>Prasanna</span>
                       <p class="mb-0 font-roboto">
-                        Admin <i class="middle fa fa-angle-down"></i>
+                        User <i class="middle fa fa-angle-down"></i>
                       </p>
                     </div>
                   </div>
@@ -371,81 +371,106 @@ export const test = () => {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon">
+          <div class="sidebar-wrapper">
+            <div class="logo-wrapper pl-3">
+              <a href="/">
+                <img class="img-fluid pl-5 " src={logo} alt="" />
+              </a>
+            </div>
+            <nav>
+              <div class="sidebar-main">
+                <div id="sidebar-menu">
+                  <Card>
+                    <CardHeader>
+                      <div class="left-header col horizontal-wrapper pl-0">
+                        <ul class="horizontal-menu">
+                          <li class="mega-menu">
+                            <a class="nav-link" href="#">
+                              <i data-feather="layers"></i>
+                              <span>Dashboard</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </CardHeader>
+                    <CardBody>
+                      <Row>
+                        <Link to="/addenquiry">
+                          <button className="btn btn-primary buttonsize">
+                            AddEnquiry
+                          </button>
+                        </Link>
+                      </Row>
+                      <Row>
+                        <Link to="/viewenquiry">
+                          <button className="btn btn-success buttonsize">
+                            ViewEnquiry
+                          </button>
+                        </Link>
+                      </Row>
+                      <Row>
+                        <Link to="/status">
+                          <button
+                            className="btn btn-secondary buttonsize"
+                            style={{ paddingRight: "90px" }}
+                          >
+                            status
+                          </button>
+                        </Link>
+                      </Row>
+                      <Row>
+                        <Link>
+                          <button
+                            className="btn btn-danger buttonsize    "
+                            style={{ paddingRight: "85px" }}
+                          >
+                            Logout
+                          </button>
+                        </Link>
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="page-body">
+            <div class="container-fluid">
+              <div class="page-title">
+                <div class="row">
+                  <div class="col-6">
+                    <h3>Alert</h3>
+                  </div>
+                  <div class="col-6">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="index.html">
+                          {" "}
+                          <i data-feather="home"></i>
+                        </a>
+                      </li>
+                      <li class="breadcrumb-item">Ui Kits</li>
+                      <li class="breadcrumb-item active">Alert</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <div class="mega-menu-container nav-submenu">
-              <div class="container-fluid">
-                <KnobChart />
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12 col-xl-6">
+                  <KnobChart />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="sidebar-wrapper">
-        <div class="logo-wrapper">
-          <a href="index.html">
-            <img
-              class="img-fluid"
-              src="../assets/images/logo/logo.png"
-              alt=""
-            />
-          </a>
-        </div>
-        <div class="logo-icon-wrapper">
-          <a href="index.html">
-            <img
-              class="img-fluid"
-              src="../assets/images/logo/logo-icon.png"
-              alt=""
-            />
-          </a>
-        </div>
-        <nav>
-          <div class="sidebar-main">
-            <div id="sidebar-menu">
-              <Card>
-                <CardHeader>
-                  <span>Dashboard</span>
-                </CardHeader>
-                <CardBody>
-                  <Row>
-                    <Link to="/addenquiry">
-                      <button className="btn btn-primary buttonsize">
-                        AddEnquiry
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/viewenquiry">
-                      <button className="btn btn-success buttonsize">
-                        ViewEnquiry
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/status">
-                      <button
-                        className="btn btn-secondary buttonsize"
-                        style={{ paddingRight: "90px" }}
-                      >
-                        status
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link>
-                      <button
-                        className="btn btn-danger buttonsize    "
-                        style={{ paddingRight: "85px" }}
-                      >
-                        Logout
-                      </button>
-                    </Link>
-                  </Row>
-                </CardBody>
-              </Card>
-            </div>
-          </div>
-        </nav>
+        {/* page body ends */}
       </div>
     </div>
   );
