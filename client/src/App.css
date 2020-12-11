@@ -1,0 +1,22 @@
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+.buttonsize {
+  padding-right: 50px;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.anyClass {
+  overflow-x: scroll;
+  height: 500px;
+  overflow-y: scroll;
+}
