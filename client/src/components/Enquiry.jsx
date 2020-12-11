@@ -1,125 +1,87 @@
 import React, { Fragment } from "react";
-import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
- const Enquiry = (props) => {
-// const [formData, SetFormData]=useState({
-//   inputName:"",
-//   inputLocation:"",
-//    inputLatitude:"",
-//     inputLongitude:"", 
-//     inputStatus:""
-// });
-// const onChangeInput=(e)=>{
-//   SetFormData({
-//     ...FormData,[e.target.id]:e.target.value
-//   });
-//   console.log(formData);
-// }
-// const handleSubmit=(e)=>{
-//   alert("submitted");
-//   alert(this.FormData.inputName);
-//   e.preventDefault();
-// }
+import knobChart from "./chart";
+import {
+  AngleOffset,
+  AngleOffsetArc,
+  CursorMode,
+  DisableDisplayInput,
+  DisplayPreviousValue,
+} from "../constant";
+import { Link } from "react-router-dom";
+import configDB from "../data/customizer/config";
 
+import {
+  CardBody,
+  Card,
+  CardHeader,
+  Container,
+  Row,
+  Col,
+  Breadcrumb,
+} from "reactstrap";
+import KnobChart from "./chart";
+
+const primary =
+  localStorage.getItem("default_color") || configDB.data.color.primary_color;
+
+export const Enquiry = () => {
   return (
     <Fragment>
+      <Breadcrumb parent="Dashboard" title="Vendor Dashboard" />
       <Container fluid={true}>
         <Row>
-          <Col sm="8">
-            <Card className="mt-5">
-              <CardHeader style={{backgroundColor:"#7366ff"}}>
-                <h4>
-                  <strong>Add Enquiry</strong>
-                </h4>
+          <Col md="4">
+            <h5>HII user</h5>
+            <Card style={{ marginTop: "70px" }}>
+              <CardHeader>
+                <span>
+                  lorem ipsum dolor sit amet, consectetur adipisicing elit
+                </span>
               </CardHeader>
               <CardBody>
-                <form 
-                >
-                  <div class="form-group row">
-                    <label for="inputName" class="col-sm-5 col-form-label">
-                      Name
-                    </label>
-                    
-
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputName"
-                        placeholder="Enter your Name"
-                        // value={this.FormData.inputName}
-                        // onChange={this.onChangeInput}
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputName" class="col-sm-5 col-form-label">
-                     location
-                    </label>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputlocation"
-                        placeholder="Enter your location"
-                       
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputName" class="col-sm-3 col-form-label">
-                     GPS:
-                    </label>
-                    </div>
-                    <div class="form-group row">
-                    <div class="col-sm-5">
-                      <label >Latitude</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputlatitude"
-                        placeholder="Enter your location"
-                        // value={this.FormData.inputLatitude}
-                        // onChange={this.onChangeInput}
-                      />
-                    </div>
-                    
-                    <div class="col-sm-5">
-                      <label >Longitude</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputlongitude"
-                        placeholder="Enter your location"
-                        // value={this.FormData.inputLongitude}
-                        // onChange={this.onChangeInput}
-                      />
-                  </div>
-                  </div>
-                  <div class="form-group row" >
-                  <label for="inputName" class="col-sm-5 col-form-label">
-                     Status
-                    </label>
-                    <div class="col-sm-10">
-                    <select >
-                          <option value="Open">Open</option>
-                          <option value="Started">Started</option>
-                          <option value="Closed">Closed</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div className="form-group d-flex justify-content-center ">
-                    <button className="btn btn-success" type="submit">
-                      Submit
+                <Row>
+                  <Link to="/addenquiry">
+                    <button className="btn btn-primary buttonsize">
+                      AddEnquiry
                     </button>
-                  </div>
-                </form>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link to="/viewenquiry">
+                    <button className="btn btn-success buttonsize">
+                      ViewEnquiry
+                    </button>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link to="/status">
+                    <button
+                      className="btn btn-secondary buttonsize"
+                      style={{ paddingRight: "90px" }}
+                    >
+                      status
+                    </button>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link>
+                    <button
+                      className="btn btn-danger buttonsize    "
+                      style={{ paddingRight: "85px" }}
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                </Row>
               </CardBody>
             </Card>
+          </Col>
+          <Col sm="8">
+            <KnobChart />
           </Col>
         </Row>
       </Container>
     </Fragment>
-   
   );
 };
 export default Enquiry;
