@@ -84,3 +84,4 @@ export const Enquiry = () => {
     </Fragment>
   );
 };
+export default Enquiry;
