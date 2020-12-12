@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+
 const decore1 = require("../assets/images/landing/decore/1.png");
 const decore2 = require("../assets/images/landing/decore/2.png");
 const decore3 = require("../assets/images/landing/decore/3.png");
@@ -17,6 +18,12 @@ const screen2 = require("../assets/images/landing/screen2.jpg");
 const light = require("../assets/images/landing/layout/light.jpg");
 const dark = require("../assets/images/landing/layout/dark.jpg");
 const semidark = require("../assets/images/landing/layout/semidark.jpg");
+
+import { Link } from "react-router-dom";
+const loginpng = require("../assets/images/myicons/login.png");
+const landing1 = require("../assets/images/landing/2.png");
+const logopng = require("../assets/images/logo/logo.png");
+
 
 export const Landing = () => {
   return (
@@ -76,12 +83,18 @@ export const Landing = () => {
                 className="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding"
                 id="sidebar-menu"
               >
+
                 <a className="navbar-brand p-0" href="#">
                   <img
                     className="img-fluid"
                     src={landing_logo}
                     alt=""
                   />
+
+                <a className="navbar-brand p-0 " href="#">
+                  <img className="img-fluid " src={logopng} alt="" />
+                  <h3 class="d-inline align-middle">Boreman</h3>
+
                 </a>
                 <button
                   className="navbar-toggler navabr_btn-set custom_nav"
@@ -101,11 +114,11 @@ export const Landing = () => {
                   id="navbarDefault"
                 >
                   <ul className="navbar-nav navbar_nav_modify" id="scroll-spy">
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a className="nav-link" href="#layout">
                         Layout
                       </a>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                       <a className="nav-link" href="#dashboards">
                         Dashboards
@@ -113,20 +126,20 @@ export const Landing = () => {
                     </li>
                     <li className="nav-item">
                       <a className="nav-link" href="#components">
-                        Components
+                        Login
                       </a>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link" href="#applications">
-                        Applications
+                        Register
                       </a>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a className="nav-link" href="#frameworks">
                         Frameworks
                       </a>
-                    </li>
-                    <li className="nav-item buy-btn">
+                    </li> */}
+                    {/* <li className="nav-item buy-btn">
                       <a
                         className="nav-link js-scroll"
                         href="https://1.envato.market/3GVzd"
@@ -134,33 +147,34 @@ export const Landing = () => {
                       >
                         Purchase
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </nav>
             </header>
           </div>
+          
           <div className="row">
             <div className="col-xl-5 col-lg-6">
               <div className="content">
                 <div>
-                  <h1 className="wow fadeIn">One stop </h1>
-                  <h1 className="wow fadeIn">For all admin template</h1>
-                  <h2 className="txt-secondary wow fadeIn">
+                  <h1 className="wow fadeIn">Boreman</h1>
+                  <h1 className="wow fadeIn"></h1>
+                  {/* <h2 className="txt-secondary wow fadeIn">
                     Faster, Lighter & Dev. Friendly
-                  </h2>
+                  </h2> */}
                   <p className="mt-3 wow fadeIn">
-                    Cuba Admin Design makes your project modern, clean and
-                    reduce your project integration time. cuba comes with 10+
-                    Apps , Dark Mode and RTL Ready
+                    Boreman Limited are presently the only Irish Company using
+                    their own designs and tooling to manufacturer "E"
+                    Homologated Auto-Electric Lighting for the truck ...
                   </p>
                   <div className="btn-grp mt-4">
-                    <a
+                    <Link
+                      to="/login"
                       className="btn btn-pill btn-primary btn-air-primary btn-lg mr-3 wow pulse"
-                      href="index.html"
-                      target="_blank"
                     >
                       {" "}
+
                       <img
                         src={html}
                         alt=""
@@ -168,10 +182,16 @@ export const Landing = () => {
                       HTML
                     </a>
                     <a
+
+                      <img src={loginpng} alt="" />
+                      Login
+                    </Link>
+                    <Link
+                      to="/register"
+
                       className="btn btn-pill btn-secondary btn-air-secondary btn-lg mr-3 wow pulse"
-                      href="index.html"
-                      target="_blank"
                     >
+
                       <img
                         src={react}
                         alt=""
@@ -179,6 +199,12 @@ export const Landing = () => {
                       React
                     </a>
                     <a
+
+                      <i src="../assets/images/landing/" alt="" />
+                      Register
+                    </Link>
+                    {/* <a
+
                       className="btn btn-pill btn-success btn-air-success btn-lg wow pulse mr-3"
                       href="http://laravel.pixelstrap.com/cuba/pages/landing"
                       target="_blank"
@@ -189,8 +215,8 @@ export const Landing = () => {
                         alt=""
                       />
                       Laravel
-                    </a>
-                    <a
+                    </a> */}
+                    {/* <a
                       className="btn btn-pill btn-info btn-air-info btn-lg wow pulse"
                       href="http://angular.pixelstrap.com/cuba/"
                       target="_blank"
@@ -201,7 +227,7 @@ export const Landing = () => {
                         alt=""
                       />
                       Angular
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>
@@ -225,7 +251,7 @@ export const Landing = () => {
           </div>
         </div>
       </div>
-      <section className="section-space cuba-demo-section layout" id="layout">
+      {/* <section className="section-space cuba-demo-section layout" id="layout">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 wow pulse">
@@ -634,8 +660,8 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section
+      </section> */}
+      {/* <section
         className="section-space cuba-demo-section frameworks-section"
         id="frameworks"
       >
@@ -1337,8 +1363,8 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section className="section-space cuba-demo-section bg-Widget pb-0 bg-primary">
+      </section> */}
+      {/* <section className="section-space cuba-demo-section bg-Widget pb-0 bg-primary">
         <div className="container">
           <div className="row">
             <div className="col-sm-12 wow pulse">
@@ -1879,16 +1905,12 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <footer className="footer-bg">
         <div className="container">
           <div className="landing-center ptb50">
             <div className="title">
-              <img
-                className="img-fluid"
-                src="../assets/images/landing/landing_logo.png"
-                alt=""
-              />
+              <img className="img-fluid" src={logopng} alt="" />
             </div>
             <div className="footer-content">
               <h1>
