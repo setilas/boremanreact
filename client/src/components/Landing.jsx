@@ -13,7 +13,10 @@ const react = require("../assets/images/landing/icon/react/react.png");
 const react2 = require("../assets/images/landing/icon/laravel/laravel2.png");
 const angular = require("../assets/images/landing/icon/angular/angular.svg");
 const screen1 = require("../assets/images/landing/screen1.jpg");
-
+const screen2 = require("../assets/images/landing/screen2.jpg");
+const light = require("../assets/images/landing/layout/light.jpg");
+const dark = require("../assets/images/landing/layout/dark.jpg");
+const semidark = require("../assets/images/landing/layout/semidark.jpg");
 
 export const Landing = () => {
   return (
@@ -214,7 +217,7 @@ export const Landing = () => {
               <div className="wow fadeIn">
                 <img
                   className="screen2"
-                  src="../assets/images/landing/screen2.jpg"
+                  src={screen2}
                   alt=""
                 />
               </div>
@@ -280,7 +283,7 @@ export const Landing = () => {
                 <a href="../theme/index.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/light.jpg"
+                    src={light}
                     alt=""
                   />
                 </a>
@@ -329,7 +332,7 @@ export const Landing = () => {
                 <a href="layout-dark.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/dark.jpg"
+                    src={dark}
                     alt=""
                   />
                 </a>
@@ -378,7 +381,7 @@ export const Landing = () => {
                 <a href="lndex.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/semidark.jpg"
+                    src={semidark}
                     alt=""
                   />
                 </a>
