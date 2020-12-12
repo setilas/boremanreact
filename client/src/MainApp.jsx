@@ -9,8 +9,8 @@ import Alert from "./components/Alert";
 import "./App.css";
 import { Landing } from "./components/Landing";
 import { UserDashboard } from "./components/dashboard/User/UserDashboard";
-import { AddEnquiry } from "./components/AddEnquiry";
-import { ViewEnquiry } from "./components/ViewEnquiry";
+import { Addenquiry } from "./components/AddEnquiry";
+import ViewEnquiry from "./components/Viewenquiry";
 const MainApp = () => {
   return (
     <Fragment>
@@ -28,7 +28,7 @@ const MainApp = () => {
               component={UserDashboard}
             ></Route>
             <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-            <Route exact path="/addenquiry" component={AddEnquiry}></Route>
+            <Route exact path="/addenquiry" component={Addenquiry}></Route>
 
             <Main2 />
           </Switch>

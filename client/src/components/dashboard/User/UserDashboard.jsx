@@ -431,7 +431,7 @@ export const UserDashboard = () => {
           </div>
           <div class="page-body">
             <div class="container-fluid">
-              <div class="page-title">
+              {/* <div class="page-title">
                 <div class="row">
                   <div class="col-6">
                     <h3>Alert</h3>
@@ -449,7 +449,7 @@ export const UserDashboard = () => {
                     </ol>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div class="container-fluid">
