@@ -1,67 +1,48 @@
-import React, { Fragment } from "react";
-import logo from "../assets/images/logo/logo.png";
-import {
-  CardBody,
-  Card,
-  CardHeader,
-  Container,
-  Row,
-  Col,
-  Breadcrumb,
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import KnobChart from "../components/chart";
-import { Border } from "../constant";
+import React from "react";
 
-export const test = () => {
+export const Header = () => {
   return (
     <div>
-      <div class="tap-top">
-        <i data-feather="chevrons-up"></i>
-      </div>
-      {/* page wrapper which will wrap entirepage */}
-      <div class="page-wrapper compact-wrapper" id="pageWrapper">
-        {/*  page header */}
-        <div class="page-header">
-          <div class="header-wrapper row m-0">
-            <form class="form-inline search-full" action="#" method="get">
-              <div class="form-group w-100">
-                <div class="Typeahead Typeahead--twitterUsers">
-                  <div class="u-posRelative">
-                    <input
-                      class="demo-input Typeahead-input form-control-plaintext w-100"
-                      type="text"
-                      placeholder="Search Cuba .."
-                      name="q"
-                      title=""
-                      autofocus
-                    />
-                    <div class="spinner-border Typeahead-spinner" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                    <i class="close-search" data-feather="x"></i>
+      <div class="page-header">
+        <div class="header-wrapper row m-0">
+          <form class="form-inline search-full" action="#" method="get">
+            <div class="form-group w-100">
+              <div class="Typeahead Typeahead--twitterUsers">
+                <div class="u-posRelative">
+                  <input
+                    class="demo-input Typeahead-input form-control-plaintext w-100"
+                    type="text"
+                    placeholder="Search Cuba .."
+                    name="q"
+                    title=""
+                    autofocus
+                  />
+                  <div class="spinner-border Typeahead-spinner" role="status">
+                    <span class="sr-only">Loading...</span>
                   </div>
-                  <div class="Typeahead-menu"></div>
+                  <i class="close-search" data-feather="x"></i>
                 </div>
-              </div>
-            </form>
-            <div class="header-logo-wrapper">
-              <div class="logo-wrapper">
-                <a href="index.html">
-                  <img class="img-fluid" alt="" />
-                </a>
-              </div>
-              <div class="toggle-sidebar">
-                <i
-                  class="status_toggle middle"
-                  data-feather="grid"
-                  id="sidebar-toggle"
-                >
-                  {" "}
-                </i>
+                <div class="Typeahead-menu"></div>
               </div>
             </div>
-            {/* <div class="left-header col horizontal-wrapper pl-0">
+          </form>
+          <div class="header-logo-wrapper">
+            <div class="logo-wrapper">
+              <a href="index.html">
+                <img class="img-fluid" alt="" />
+              </a>
+            </div>
+            <div class="toggle-sidebar">
+              <i
+                class="status_toggle middle"
+                data-feather="grid"
+                id="sidebar-toggle"
+              >
+                {" "}
+              </i>
+            </div>
+          </div>
+          {/* <div class="left-header col horizontal-wrapper pl-0">
                 <ul class="horizontal-menu">
                   <li class="mega-menu">
                     <a class="nav-link" href="#">
@@ -71,9 +52,9 @@ export const test = () => {
                   </li>
                 </ul>
               </div> */}
-            <div class="nav-right col-8 pull-right right-header p-0">
-              <ul class="nav-menus">
-                {/* <li class="language-nav">
+          <div class="nav-right col-8 pull-right right-header p-0 ">
+            <ul class="nav-menus">
+              {/* <li class="language-nav">
                   <div class="translate_wrapper">
                     <div class="current_lang">
                       <div class="lang">
@@ -119,13 +100,13 @@ export const test = () => {
                     </div>
                   </div>
                 </li> */}
-                {/* <li>
+              {/* <li>
                   {" "}
                   <span class="header-search">
                     <i data-feather="search"></i>
                   </span>
                 </li> */}
-                {/* <li class="onhover-dropdown">
+              {/* <li class="onhover-dropdown">
                   <div class="notification-box">
                     <i data-feather="bell"></i>
                     <span class="badge badge-pill badge-secondary">4</span>
@@ -332,145 +313,46 @@ export const test = () => {
                     <i data-feather="maximize"></i>
                   </a>
                 </li> */}
-                <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
-                  <div class="media profile-media">
-                    <img
-                      class="b-r-10"
-                      src="../assets/images/dashboard/profile.jpg"
-                      alt=""
-                    />
-                    <div class="media-body">
-                      <span>Prasanna</span>
-                      <p class="mb-0 font-roboto">
-                        User <i class="middle fa fa-angle-down"></i>
-                      </p>
-                    </div>
+              <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
+                <div class="media profile-media">
+                  <img
+                    class="b-r-10"
+                    src="../assets/images/dashboard/profile.jpg"
+                    alt=""
+                  />
+                  <div class="media-body">
+                    <span>Prasanna</span>
+                    <p class="mb-0 font-roboto">
+                      User <i class="middle fa fa-angle-down"></i>
+                    </p>
                   </div>
-                  <ul class="profile-dropdown onhover-show-div">
-                    <li>
-                      <i data-feather="user"></i>
-                      <span>Account </span>
-                    </li>
-                    <li>
-                      <i data-feather="mail"></i>
-                      <span>Inbox</span>
-                    </li>
-                    <li>
-                      <i data-feather="file-text"></i>
-                      <span>Taskboard</span>
-                    </li>
-                    <li>
-                      <i data-feather="settings"></i>
-                      <span>Settings</span>
-                    </li>
-                    <li>
-                      <i data-feather="log-in"> </i>
-                      <span>Log in</span>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+                </div>
+                <ul class="profile-dropdown onhover-show-div">
+                  <li>
+                    <i data-feather="user"></i>
+                    <span>Account </span>
+                  </li>
+                  <li>
+                    <i data-feather="mail"></i>
+                    <span>Inbox</span>
+                  </li>
+                  <li>
+                    <i data-feather="file-text"></i>
+                    <span>Taskboard</span>
+                  </li>
+                  <li>
+                    <i data-feather="settings"></i>
+                    <span>Settings</span>
+                  </li>
+                  <li>
+                    <i data-feather="log-in"> </i>
+                    <span>Log in</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
-        {/* page body contains sidebar and content  */}
-        <div class="page-body-wrapper sidebar-icon">
-          <div class="sidebar-wrapper">
-            <div class="logo-wrapper pl-3">
-              <a href="/">
-                <img class="img-fluid pl-5 " src={logo} alt="" />
-              </a>
-            </div>
-            <nav>
-              <div class="sidebar-main">
-                <div id="sidebar-menu">
-                  <Card>
-                    <CardHeader>
-                      <div class="left-header col horizontal-wrapper pl-0">
-                        <ul class="horizontal-menu">
-                          <li class="mega-menu">
-                            <a class="nav-link" href="#">
-                              <i data-feather="layers"></i>
-                              <span>Dashboard</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </CardHeader>
-                    <CardBody>
-                      <Row>
-                        <Link to="/addenquiry">
-                          <button className="btn btn-primary buttonsize">
-                            AddEnquiry
-                          </button>
-                        </Link>
-                      </Row>
-                      <Row>
-                        <Link to="/viewenquiry">
-                          <button className="btn btn-success buttonsize">
-                            ViewEnquiry
-                          </button>
-                        </Link>
-                      </Row>
-                      <Row>
-                        <Link to="/status">
-                          <button
-                            className="btn btn-secondary buttonsize"
-                            style={{ paddingRight: "90px" }}
-                          >
-                            status
-                          </button>
-                        </Link>
-                      </Row>
-                      <Row>
-                        <Link>
-                          <button
-                            className="btn btn-danger buttonsize    "
-                            style={{ paddingRight: "85px" }}
-                          >
-                            Logout
-                          </button>
-                        </Link>
-                      </Row>
-                    </CardBody>
-                  </Card>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div class="page-body">
-            <div class="container-fluid">
-              <div class="page-title">
-                <div class="row">
-                  <div class="col-6">
-                    <h3>Alert</h3>
-                  </div>
-                  <div class="col-6">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="index.html">
-                          {" "}
-                          <i data-feather="home"></i>
-                        </a>
-                      </li>
-                      <li class="breadcrumb-item">Ui Kits</li>
-                      <li class="breadcrumb-item active">Alert</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-sm-12 col-xl-6">
-                  <KnobChart />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* page body ends */}
       </div>
     </div>
   );
