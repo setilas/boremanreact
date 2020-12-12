@@ -1,10 +1,20 @@
 import React, { Fragment } from "react";
 const decore1 = require("../assets/images/landing/decore/1.png");
 const decore2 = require("../assets/images/landing/decore/2.png");
-const decore3 = require("../assets/images/landing/decore/4.png");
+const decore3 = require("../assets/images/landing/decore/3.png");
+const decore4 = require("../assets/images/landing/decore/4.png");
 const landing1 = require("../assets/images/landing/2.png");
 const landing2 = require("../assets/images/landing/decore/1.png");
 const landing3 = require("../assets/images/landing/decore/1.png");
+const landing4 = require("../assets/images/landing/decore/cloud.png");
+const landing_logo = require("../assets/images/landing/landing_logo.png");
+const html = require("../assets/images/landing/icon/html/html.png");
+const react = require("../assets/images/landing/icon/react/react.png");
+const react2 = require("../assets/images/landing/icon/laravel/laravel2.png");
+const angular = require("../assets/images/landing/icon/angular/angular.svg");
+const screen1 = require("../assets/images/landing/screen1.jpg");
+
+
 export const Landing = () => {
   return (
     <div className="page-wrapper landing-page">
@@ -13,42 +23,42 @@ export const Landing = () => {
           <li className="one">
             <img
               className="img-fluid"
-              src="../assets/images/landing/decore/1.png"
+              src={decore1}
               alt=""
             />
           </li>
           <li className="two">
             <img
               className="img-fluid"
-              src="../assets/images/landing/decore/2.png"
+              src={decore2}
               alt=""
             />
           </li>
           <li className="three">
             <img
               className="img-fluid"
-              src="../assets/images/landing/decore/4.png"
+              src={decore3}
               alt=""
             />
           </li>
           <li className="four">
             <img
               className="img-fluid"
-              src="../assets/images/landing/decore/3.png"
+              src={decore4}
               alt=""
             />
           </li>
           <li className="five">
             <img
               className="img-fluid"
-              src="../assets/images/landing/2.png"
+              src={decore2}
               alt=""
             />
           </li>
           <li className="six">
             <img
               className="img-fluid"
-              src="../assets/images/landing/decore/cloud.png"
+              src={landing4}
               alt=""
             />
           </li>
@@ -66,7 +76,7 @@ export const Landing = () => {
                 <a className="navbar-brand p-0" href="#">
                   <img
                     className="img-fluid"
-                    src="../assets/images/landing/landing_logo.png"
+                    src={landing_logo}
                     alt=""
                   />
                 </a>
@@ -149,7 +159,7 @@ export const Landing = () => {
                     >
                       {" "}
                       <img
-                        src="../assets/images/landing/icon/html/html.png"
+                        src={html}
                         alt=""
                       />
                       HTML
@@ -160,7 +170,7 @@ export const Landing = () => {
                       target="_blank"
                     >
                       <img
-                        src="../assets/images/landing/icon/react/react.png"
+                        src={react}
                         alt=""
                       />
                       React
@@ -172,7 +182,7 @@ export const Landing = () => {
                     >
                       {" "}
                       <img
-                        src="../assets/images/landing/icon/laravel/laravel2.png"
+                        src={react2}
                         alt=""
                       />
                       Laravel
@@ -184,7 +194,7 @@ export const Landing = () => {
                     >
                       {" "}
                       <img
-                        src="../assets/images/landing/icon/angular/angular.svg"
+                        src={angular}
                         alt=""
                       />
                       Angular
@@ -197,7 +207,7 @@ export const Landing = () => {
               <div className="wow fadeIn">
                 <img
                   className="screen1"
-                  src="../assets/images/landing/screen1.jpg"
+                  src={screen1}
                   alt=""
                 />
               </div>
