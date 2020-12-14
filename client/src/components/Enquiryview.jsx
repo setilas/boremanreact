@@ -24,7 +24,7 @@ export const Enquiryview = () => {
         {/*  page header */}
         <div class="page-header">
           <div class="header-wrapper row m-0">
-            <form class="form-inline search-full" action="#" method="get">
+            {/* <form class="form-inline search-full" action="#" method="get">
               <div class="form-group w-100">
                 <div class="Typeahead Typeahead--twitterUsers">
                   <div class="u-posRelative">
@@ -60,7 +60,7 @@ export const Enquiryview = () => {
                   {" "}
                 </i>
               </div>
-            </div>
+            </div> */}
             {/* <div class="left-header col horizontal-wrapper pl-0">
                 <ul class="horizontal-menu">
                   <li class="mega-menu">
@@ -478,11 +478,11 @@ export const Enquiryview = () => {
                       className="thead-dark"
                     >
                       <tr>
-                        <th className=" col-sm-5 "> Date</th>
-                        <th className="col-sm-5 ">Name</th>
-                        <th className="col-sm-5 ">Location</th>
-                        <th className="col-sm-5 ">GPS</th>
-                        <th className="col-sm-5">Status</th>
+                        <th className=" col-md-5 "> Date</th>
+                        <th className="col-md-5 ">Name</th>
+                        <th className="col-md-5 ">Location</th>
+                        <th className="col-md-5 ">GPS</th>
+                        <th className="col-md-5">Status</th>
                       </tr>
                     </thead>
                     {/* <thead>
