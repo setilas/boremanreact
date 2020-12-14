@@ -1,19 +1,10 @@
-import React, { Fragment } from "react";
-import logo from "../assets/images/logo/logo.png";
-import {
-  CardBody,
-  Card,
-  CardHeader,
-  Container,
-  Row,
-  Col,
-  Breadcrumb,
-} from "reactstrap";
+import React from "react";
+import { CardBody, Card, CardHeader, Row } from "reactstrap";
 import { Link } from "react-router-dom";
-import KnobChart from "../components/chart";
-import { Border } from "../constant";
+import KnobChart from "../../chart";
+const logo = require("../../../assets/images/logo/logo.png");
 
-export const test = () => {
+export const UserDashboard = () => {
   return (
     <div>
       <div class="tap-top">
@@ -440,7 +431,7 @@ export const test = () => {
           </div>
           <div class="page-body">
             <div class="container-fluid">
-              <div class="page-title">
+              {/* <div class="page-title">
                 <div class="row">
                   <div class="col-6">
                     <h3>Alert</h3>
@@ -458,7 +449,7 @@ export const test = () => {
                     </ol>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div class="container-fluid">

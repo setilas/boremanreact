@@ -2,16 +2,15 @@ import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Registeruser from "./components/Userregistration";
-import Loginuser from "./components/Userlogin";
+import Register from "./components/Register";
+import Login from "./components/Login";
 import Main2 from "./Main2";
 import Alert from "./components/Alert";
 import "./App.css";
 import { Landing } from "./components/Landing";
-import { test } from "./components/test";
-// import {ViewEnquiry} from "./components/ViewEnquiry"
-import {AddEnquiry} from "./components/AddEnquiry"
-import {Enquiryview} from "./components/Enquiryview"
+import { UserDashboard } from "./components/dashboard/User/UserDashboard";
+import { Addenquiry } from "./components/AddEnquiry";
+import ViewEnquiry from "./components/Viewenquiry";
 const MainApp = () => {
   return (
     <Fragment>
@@ -20,13 +19,17 @@ const MainApp = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing}></Route>
-            <Route exact path="/test" component={test}></Route>
-            <Route exact path="/user" component={Registeruser}></Route>
-            <Route exact path="/loginuser" component={Loginuser}></Route>
-              {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route> */}
-              <Route exact path="/addenquiry" component={AddEnquiry}></Route> 
-              <Route exact path="/enquiryview" component={Enquiryview}></Route> 
-            <Route exact path="/"></Route>
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/login" component={Login}></Route>
+
+            <Route
+              exact
+              path="/userdashboard"
+              component={UserDashboard}
+            ></Route>
+            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+            <Route exact path="/addenquiry" component={Addenquiry}></Route>
+
             <Main2 />
           </Switch>
         </BrowserRouter>

@@ -6,7 +6,7 @@ import { setAlert } from "../action/alert";
 import { Link, Redirect } from "react-router-dom";
 const logo = require("../assets/images/logo/logo.png");
 
-function Registeruser(props) {
+function Register(props) {
   const [formData, SetFormData] = useState({
     firstname: " ",
     lastname: "",
@@ -28,7 +28,7 @@ function Registeruser(props) {
     }
   };
   if (props.isAuthenticated) {
-    return <Redirect to="/user/dashboard" />;
+    return <Redirect to="/userdashboard" />;
   }
 
   return (
@@ -156,7 +156,7 @@ function Registeruser(props) {
 
                   <p className="mt-4 mb-0">
                     Already have an account?
-                    <Link to="/loginuser">
+                    <Link to="/login">
                       <a className="ml-2">Sign in</a>
                     </Link>
                   </p>
@@ -172,4 +172,4 @@ function Registeruser(props) {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
-export default connect(mapStateToProps, { register, setAlert })(Registeruser);
+export default connect(mapStateToProps, { register, setAlert })(Register);

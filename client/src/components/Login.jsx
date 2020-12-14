@@ -5,7 +5,7 @@ import { login } from "../action/auth";
 import { connect } from "react-redux";
 import { MarginTop } from "../constant";
 const loginbg = require("../assets/images/login/1.jpg");
-const Loginuser = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, SetFormData] = useState({
     email: "",
     password: "",
@@ -21,7 +21,7 @@ const Loginuser = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/user/dashboard" />;
+    return <Redirect to="/userdashboard" />;
   }
   return (
     <div class="container-fluid">
@@ -80,7 +80,7 @@ const Loginuser = ({ login, isAuthenticated }) => {
                   </div>
                   <p class="mt-4 mb-0">
                     Don't have account?
-                    <Link to="/user">
+                    <Link to="/register">
                       <a class="ml-2">Create Account</a>
                     </Link>
                   </p>
@@ -97,4 +97,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Loginuser);
+export default connect(mapStateToProps, { login })(Login);

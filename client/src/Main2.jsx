@@ -6,11 +6,8 @@ import store from "./store";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ConfigDB from "./data/customizer/config";
-// import { AddEnquiry } from "./components/AddEnquiry";
-// import { ViewEnquiry } from "./components/ViewEnquiry";
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
-import Dashboard from "./components/dashboard/default/index";
 import knobChart from "./components/chart";
 
 const Main2 = (props) => {
@@ -38,10 +35,7 @@ const Main2 = (props) => {
           <Switch>
             <App>
               <Route exact path="/chart" component={knobChart}></Route>
-              <Route exact path="/user/dashboard" component={Dashboard}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
-              {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-              <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
               <Route exact path="/vendors" component={Vendors}></Route>
             </App>
           </Switch>
