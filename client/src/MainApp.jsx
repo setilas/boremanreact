@@ -2,15 +2,15 @@ import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 import Main2 from "./Main2";
-import Alert from "./components/Alert";
-import "./App.css";
+import Alert from "./components/Auth/Alert";
 import { Landing } from "./components/Landing";
-import { UserDashboard } from "./components/dashboard/User/UserDashboard";
-import { Addenquiry } from "./components/AddEnquiry";
-import ViewEnquiry from "./components/Viewenquiry";
+import UserDashboard from "./components/dashboard/User/UserDashboard";
+import Addenquiry from "./components/dashboard/User/AddEnquiry";
+import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
+
 const MainApp = () => {
   return (
     <Fragment>

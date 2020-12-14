@@ -52,7 +52,7 @@ export const Header = () => {
                   </li>
                 </ul>
               </div> */}
-          <div class="nav-right col-8 pull-right right-header p-0 ">
+          <div class="nav-right col-12 pull-right right-header p-0 ">
             <ul class="nav-menus">
               {/* <li class="language-nav">
                   <div class="translate_wrapper">
