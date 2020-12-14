@@ -6,7 +6,6 @@ import store from "./store";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ConfigDB from "./data/customizer/config";
-
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
 import knobChart from "./components/chart";
@@ -37,7 +36,6 @@ const Main2 = (props) => {
             <App>
               <Route exact path="/chart" component={knobChart}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
-
               <Route exact path="/vendors" component={Vendors}></Route>
             </App>
           </Switch>
