@@ -10,7 +10,7 @@ import "./App.css";
 import { Landing } from "./components/Landing";
 import { UserDashboard } from "./components/dashboard/User/UserDashboard";
 import { Addenquiry } from "./components/AddEnquiry";
-import ViewEnquiry from "./components/Viewenquiry";
+import ViewEnquiry from "./components/ViewEnquiry";
 const MainApp = () => {
   return (
     <Fragment>

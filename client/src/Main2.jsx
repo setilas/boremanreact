@@ -10,7 +10,7 @@ import { AddEnquiry } from "./components/AddEnquiry";
 import { ViewEnquiry } from "./components/ViewEnquiry";
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
-import Dashboard from "./components/dashboard/default/index";
+import UserDashboard from "./components/dashboard/User/UserDashboard";
 import knobChart from "./components/chart";
 import Admindashboard from "./components/Admindashboard";
 
@@ -39,7 +39,7 @@ const Main2 = (props) => {
           <Switch>
             <App>
               <Route exact path="/chart" component={knobChart}></Route>
-              <Route exact path="/user/dashboard" component={Dashboard}></Route>
+              <Route exact path="/user/dashboard" component={UserDashboard}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
               {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
               <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
