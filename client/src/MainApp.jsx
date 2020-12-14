@@ -2,10 +2,15 @@ import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Registeruser from "./components/Userregistration";
-import Loginuser from "./components/Userlogin";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 import Main2 from "./Main2";
-import Alert from "./components/Alert";
+import Alert from "./components/Auth/Alert";
+import { Landing } from "./components/Landing";
+import UserDashboard from "./components/dashboard/User/UserDashboard";
+import Addenquiry from "./components/dashboard/User/AddEnquiry";
+import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
+
 const MainApp = () => {
   return (
     <Fragment>
@@ -13,9 +18,18 @@ const MainApp = () => {
         <Alert />
         <BrowserRouter>
           <Switch>
-            <Route exact path="/user" component={Registeruser}></Route>
-            <Route exact path="/loginuser" component={Loginuser}></Route>
-            <Route exact path="/"></Route>
+            <Route exact path="/" component={Landing}></Route>
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/login" component={Login}></Route>
+
+            <Route
+              exact
+              path="/userdashboard"
+              component={UserDashboard}
+            ></Route>
+            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+            <Route exact path="/addenquiry" component={Addenquiry}></Route>
+
             <Main2 />
           </Switch>
         </BrowserRouter>

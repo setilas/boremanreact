@@ -1,83 +1,86 @@
 import React, { Fragment } from "react";
-import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
+import knobChart from "./chart";
+import {
+  AngleOffset,
+  AngleOffsetArc,
+  CursorMode,
+  DisableDisplayInput,
+  DisplayPreviousValue,
+} from "../constant";
+import { Link } from "react-router-dom";
+import configDB from "../data/customizer/config";
+
+import {
+  CardBody,
+  Card,
+  CardHeader,
+  Container,
+  Row,
+  Col,
+  Breadcrumb,
+} from "reactstrap";
+import KnobChart from "./chart";
+
+const primary =
+  localStorage.getItem("default_color") || configDB.data.color.primary_color;
+
 export const Enquiry = () => {
   return (
     <Fragment>
+      <Breadcrumb parent="Dashboard" title="Vendor Dashboard" />
       <Container fluid={true}>
         <Row>
-          <Col sm="8">
-            <Card className="mt-5">
+          <Col md="4">
+            <h5>HII user</h5>
+            <Card style={{ marginTop: "70px" }}>
               <CardHeader>
-                <h4>
-                  <strong>Add Enquiry</strong>
-                </h4>
+                <span>
+                  lorem ipsum dolor sit amet, consectetur adipisicing elit
+                </span>
               </CardHeader>
               <CardBody>
-                <form>
-                  <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label">
-                      Name
-                    </label>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputName"
-                        placeholder="Enter your Name"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label">
-                      Site location
-                    </label>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputSitelocation"
-                        placeholder="Enter your location"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputSitelps" class="col-sm-2 col-form-label">
-                      Site lps
-                    </label>
-                    <div class="col-sm-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="inputSitelps"
-                        placeholder="Site lps"
-                      />
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPhone" class="col-sm-2 col-form-label">
-                      Phone
-                    </label>
-                    <div class="col-sm-10">
-                      <input
-                        type="tel"
-                        class="form-control"
-                        id="inputPhone"
-                        placeholder=" Enter your Phone Number"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group d-flex justify-content-center ">
-                    <button className="btn btn-success" type="submit">
-                      Submit
+                <Row>
+                  <Link to="/addenquiry">
+                    <button className="btn btn-primary buttonsize">
+                      AddEnquiry
                     </button>
-                  </div>
-                </form>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link to="/viewenquiry">
+                    <button className="btn btn-success buttonsize">
+                      ViewEnquiry
+                    </button>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link to="/status">
+                    <button
+                      className="btn btn-secondary buttonsize"
+                      style={{ paddingRight: "90px" }}
+                    >
+                      status
+                    </button>
+                  </Link>
+                </Row>
+                <Row>
+                  <Link>
+                    <button
+                      className="btn btn-danger buttonsize    "
+                      style={{ paddingRight: "85px" }}
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                </Row>
               </CardBody>
             </Card>
+          </Col>
+          <Col sm="8">
+            <KnobChart />
           </Col>
         </Row>
       </Container>
     </Fragment>
-   
   );
 };

@@ -5,17 +5,30 @@ const Enquiryschema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  sitelocation: {
+  location: {
     type: String,
     required: true,
   },
-  sitelps: {
+  lat: {
     type: String,
     required: true,
   },
-  phone: {
+  long: {
     type: String,
     required: true,
+  },
+  estimate: {
+    type: String,
+    required: true,
+  },
+  addstatus: {
+    type: String,
+    required: true,
+  },
+
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
