@@ -22,3 +22,6 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const DELETE_ACCOUNT = "DELETE_ACCOUNT";
 export const CLEAR_POST = "CLEAR_POST";
+export const ADD_ENQUIRY = "ADD_ENQUIRY";
+export const GET_ENQUIRY = "GET_ENQUIRY";
+export const GET_ALLENQUIRY = "GET_ALLENQUIRY";

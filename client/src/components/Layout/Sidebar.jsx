@@ -1,9 +1,16 @@
 import React from "react";
 import { CardBody, Card, CardHeader, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../action/auth";
+
 const logo = require("../../assets/images/logo/logo.png");
 
-export const Sidebar = () => {
+const Sidebar = ({ logout }) => {
+  const logouthandler = () => {
+    logout();
+  };
+
   return (
     <div class="page-body-wrapper sidebar-icon">
       <div class="sidebar-wrapper">
@@ -54,14 +61,24 @@ export const Sidebar = () => {
                     </Link>
                   </Row>
                   <Row>
-                    <Link>
+                    {/* <button
+                      href="/"
+                      onClick={() => {
+                        logouthandler();
+                      }}
+                      className="btn btn-danger buttonsize    "
+                      style={{ paddingRight: "85px" }}
+                    >
+                      Logout
+                    </button> */}
+                    <a onClick={logout} href="/">
                       <button
                         className="btn btn-danger buttonsize    "
                         style={{ paddingRight: "85px" }}
                       >
                         Logout
                       </button>
-                    </Link>
+                    </a>
                   </Row>
                 </CardBody>
               </Card>
@@ -72,3 +89,5 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+export default connect(null, { logout })(Sidebar);

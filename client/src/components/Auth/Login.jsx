@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
-import { login } from "../action/auth";
+import { login } from "../../action/auth";
 import { connect } from "react-redux";
-import { MarginTop } from "../constant";
-const loginbg = require("../assets/images/login/1.jpg");
+import loader from "../../layout/loader";
+const loginbg = require("../../assets/images/login/1.jpg");
 const Login = ({ login, isAuthenticated }) => {
   const [formData, SetFormData] = useState({
     email: "",

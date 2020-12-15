@@ -6,6 +6,7 @@ import store from "./store";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ConfigDB from "./data/customizer/config";
+
 import { AddEnquiry } from "./components/AddEnquiry";
 import { ViewEnquiry } from "./components/ViewEnquiry";
 import { Enquiry } from "./components/Enquiry";
@@ -43,8 +44,10 @@ const Main2 = (props) => {
               <Route exact path="/chart" component={knobChart}></Route>
               <Route exact path="/user/dashboard" component={UserDashboard}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
+
               {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
               <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
+
               <Route exact path="/vendors" component={Vendors}></Route>
               <Route exact path="/admin" component={Admindashboard}></Route>
               <Route exact path="/adduser" component={Addview}></Route>

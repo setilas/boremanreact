@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux";
-import { register } from "../action/auth";
-import { setAlert } from "../action/alert";
+import { register } from "../../action/auth";
+import { setAlert } from "../../action/alert";
 import { Link, Redirect } from "react-router-dom";
-const logo = require("../assets/images/logo/logo.png");
+const logo = require("../../assets/images/logo/logo.png");
 
 function Register(props) {
   const [formData, SetFormData] = useState({
