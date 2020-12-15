@@ -11,18 +11,23 @@ export const Admindashboard = () => {
             <div class="sidebar-main">
               <div id="sidebar-menu">
                 <Card>
-                 
+                    <CardHeader style={{backgroundColor:"#7366ff"}}>
+                  <h4>
+                      <strong>Admin dashboard</strong>
+                    </h4>
+                  
+                  </CardHeader>
                   <CardBody>
                     <Row>
                       <Link to="/adduser">
-                        <button className="btn btn-primary buttonsize">
+                        <button className="btn btn-primary buttonsize btn-lg" >
                           Add User
                         </button>
                       </Link>
                     </Row>
                     <Row>
                       <Link to="/viewuser">
-                        <button className="btn btn-success buttonsize">
+                        <button className="btn btn-success buttonsize btn-lg">
                           View User
                         </button>
                       </Link>
@@ -55,7 +60,7 @@ export const Admindashboard = () => {
                       <Link>
                         <button
                           className="btn btn-danger buttonsize    "
-                          style={{ paddingRight: "90px" }}
+                          
                         >
                           Logout
                         </button>

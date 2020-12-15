@@ -13,6 +13,8 @@ import { Vendors } from "./components/Vendors";
 import UserDashboard from "./components/dashboard/User/UserDashboard";
 import knobChart from "./components/chart";
 import Admindashboard from "./components/Admindashboard";
+import Addview from "./components/Adduser";
+import Viewuser from "./components/Viewuser";
 
 const Main2 = (props) => {
   const [anim, setAnim] = useState("");
@@ -45,6 +47,8 @@ const Main2 = (props) => {
               <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
               <Route exact path="/vendors" component={Vendors}></Route>
               <Route exact path="/admin" component={Admindashboard}></Route>
+              <Route exact path="/adduser" component={Addview}></Route>
+              <Route exact path="/viewuser" component={Viewuser}></Route>
             </App>
           </Switch>
         </BrowserRouter>
