@@ -7,8 +7,8 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ConfigDB from "./data/customizer/config";
 
-import { AddEnquiry } from "./components/AddEnquiry";
-import { ViewEnquiry } from "./components/ViewEnquiry";
+import { AddEnquiry } from "./components/dashboard/User/AddEnquiry";
+import { ViewEnquiry } from "./components/dashboard/User/Viewenquiry";
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
 import UserDashboard from "./components/dashboard/User/UserDashboard";

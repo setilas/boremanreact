@@ -8,14 +8,16 @@ import Main2 from "./Main2";
 import Alert from "./components/Auth/Alert";
 import { Landing } from "./components/Landing";
 
-import { UserDashboard } from "./components/dashboard/User/UserDashboard";
-import { Addenquiry } from "./components/AddEnquiry";
-import ViewEnquiry from "./components/ViewEnquiry";
+//import { UserDashboard } from "./components/dashboard/User/UserDashboard";
+//import { Addenquiry } from "./components/AddEnquiry";
+//import ViewEnquiry from "./components/ViewEnquiry";
 
 import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 
+import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
+import Adduser from "./components/dashboard/Admin/Adduser";
 
 const MainApp = () => {
   return (
@@ -35,6 +37,13 @@ const MainApp = () => {
             ></Route>
             <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
+
+            <Route
+              exact
+              path="/admindashboard"
+              component={AdminDashboard}
+            ></Route>
+            <Route exact path="/adduser" component={Adduser}></Route>
 
             <Main2 />
           </Switch>
