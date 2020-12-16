@@ -12,97 +12,90 @@ const Sidebar2 = ({ logout }) => {
   };
 
   return (
-    <div class="page-body-wrapper sidebar-icon">
-      <div class="sidebar-wrapper">
-        <div class="logo-wrapper pl-3">
-          <a href="/">
-            <img class="img-fluid pl-5 " src={logo} alt="" />
-          </a>
+    <div class="sidebar-wrapper">
+      <div class="logo-wrapper">
+        <a href="index.html">
+          <img
+            class="img-fluid for-light"
+            src="../assets/images/logo/logo.png"
+            alt=""
+          />
+          <img
+            class="img-fluid for-dark"
+            src="../assets/images/logo/logo_dark.png"
+            alt=""
+          />
+        </a>
+        <div class="back-btn">
+          <i class="fa fa-angle-left"></i>
         </div>
-        <nav>
-          <div class="sidebar-main">
-            <div id="sidebar-menu">
-              <Card>
-                <CardHeader>
-                  <div class="left-header col horizontal-wrapper pl-0">
-                    <ul class="horizontal-menu">
-                      <li class="mega-menu">
-                        <a class="nav-link" href="#">
-                          <i data-feather="layers"></i>
-                          <span>Admin Dashboard</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </CardHeader>
-                <CardBody>
-                  <Row>
-                    <Link to="/adduser">
-                      <button className="btn btn-primary buttonsize">
-                      Add User
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/viewuser">
-                      <button className="btn btn-success buttonsize">
-                        View User
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/viewenquiry">
-                      <button className="btn btn-success buttonsize">
-                        View Enquiry
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/status">
-                      <button
-                        className="btn btn-secondary buttonsize"
-                        style={{ paddingRight: "90px" }}
-                      >
-                        status
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    <Link to="/controles">
-                      <button
-                        className="btn btn-secondary buttonsize"
-                        style={{ paddingRight: "90px" }}
-                      >
-                        Controles
-                      </button>
-                    </Link>
-                  </Row>
-                  <Row>
-                    {/* <button
-                      href="/"
-                      onClick={() => {
-                        logouthandler();
-                      }}
-                      className="btn btn-danger buttonsize    "
-                      style={{ paddingRight: "85px" }}
-                    >
-                      Logout
-                    </button> */}
-                    <a onClick={logout} href="/">
-                      <button
-                        className="btn btn-danger buttonsize    "
-                        style={{ paddingRight: "85px" }}
-                      >
-                        Logout
-                      </button>
-                    </a>
-                  </Row>
-                </CardBody>
-              </Card>
-            </div>
-          </div>
-        </nav>
+        <div class="toggle-sidebar">
+          <i class="status_toggle middle sidebar-toggle" data-feather="grid">
+            {" "}
+          </i>
+        </div>
       </div>
+      <div class="logo-icon-wrapper">
+        <a href="index.html">
+          <img
+            class="img-fluid"
+            src="../assets/images/logo/logo-icon.png"
+            alt=""
+          />
+        </a>
+      </div>
+      <nav class="sidebar-main">
+        <div class="left-arrow" id="left-arrow">
+          <i data-feather="arrow-left"></i>
+        </div>
+        <div id="sidebar-menu">
+          <ul class="sidebar-links custom-scrollbar">
+            <li class="back-btn">
+              <a href="index.html">
+                <img
+                  class="img-fluid"
+                  src="../assets/images/logo/logo-icon.png"
+                  alt=""
+                />
+              </a>
+              <div class="mobile-back text-right">
+                <span>Back</span>
+                <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
+              </div>
+            </li>
+
+            <li class="sidebar-list ">
+              <label class="badge badge-success">4</label>
+              <a class="sidebar-link sidebar-title" href="#">
+                <i data-feather="home"></i>
+                <span class="lan-3">Dashboard </span>
+              </a>
+              <ul class="sidebar-submenu">
+                <li className="sidebar-list">
+                  <Link to="/Adduser">AddUser</Link>
+                </li>
+                <li>
+                  <Link to="/viewuser">ViewUser</Link>
+                </li>
+                <li>
+                  <Link to="/viewenquiry">ViewEnquiry</Link>
+                </li>
+                <li>
+                  <Link to="/status">status</Link>
+                </li>
+                <li>
+                  <Link to="/controles">Controles</Link>
+                </li>
+                <li>
+                  <Link to="/" onClick={logout}>
+                    logout
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 };

@@ -19,7 +19,7 @@ const AdminDashboard = () => {
         {/*  page header */}
         <Header></Header>
         {/* page body contains sidebar and content  */}
-        <div class="page-body-wrapper sidebar-icon">
+        <div class="page-body-wrapper sidebar-icon document-content">
           <Sidebar2></Sidebar2>
           <div class="page-body">
             <div class="container-fluid">
@@ -57,6 +57,8 @@ const AdminDashboard = () => {
     </div>
   );
 };
+
+
 
 
 
