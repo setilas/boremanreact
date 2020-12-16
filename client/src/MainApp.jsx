@@ -29,7 +29,7 @@ const MainApp = () => {
             ></Route>
             <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
-
+            
             <Main2 />
           </Switch>
         </BrowserRouter>
