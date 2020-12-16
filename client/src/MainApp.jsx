@@ -10,6 +10,7 @@ import { Landing } from "./components/Landing";
 import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 const MainApp = () => {
   return (
@@ -28,7 +29,11 @@ const MainApp = () => {
               component={UserDashboard}
             ></Route>
             <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-            <Route exact path="/addenquiry" component={Addenquiry}></Route>
+            <PrivateRoute
+              exact
+              path="/addenquiry"
+              component={Addenquiry}
+            ></PrivateRoute>
 
             <Main2 />
           </Switch>
