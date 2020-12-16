@@ -1,4 +1,5 @@
 import React from "react";
+import "../scss/alert.scss";
 import { connect } from "react-redux";
 
 const Alert = ({ alerts }) => {

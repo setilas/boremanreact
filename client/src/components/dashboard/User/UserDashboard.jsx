@@ -19,7 +19,7 @@ const UserDashboard = () => {
         {/*  page header */}
         <Header></Header>
         {/* page body contains sidebar and content  */}
-        <div class="page-body-wrapper sidebar-icon">
+        <div class="page-body-wrapper sidebar-icon document-content">
           <Sidebar></Sidebar>
           <div class="page-body">
             <div class="container-fluid">
