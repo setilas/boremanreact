@@ -11,6 +11,7 @@ import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import Adminview from "./components/dashboard/Admin/Adminview";
 
 const MainApp = () => {
   return (
@@ -34,7 +35,7 @@ const MainApp = () => {
               path="/addenquiry"
               component={Addenquiry}
             ></PrivateRoute>
-
+ <Route exact path="/adminview" component={Adminview}></Route>
             <Main2 />
           </Switch>
         </BrowserRouter>
