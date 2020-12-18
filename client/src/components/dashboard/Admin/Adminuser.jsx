@@ -47,7 +47,7 @@ const Adminuser = () => {
                       value={code}
                       onChange={(e)=>{onChange(e)}}
                       />
-                    <label >Vendor Name</label>
+                    <label >Vendor name</label>
                     <input class="form-control"
                      type="text"
                       required="" 
