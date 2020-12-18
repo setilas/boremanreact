@@ -32,6 +32,22 @@ const Adminview =()=>{
                           
                         </tr>
                       </thead>
+                      <tbody>
+                        <tr>
+                          <td>A1</td>
+                          <td>Mark spencer</td>
+                          <td>15</td>
+                          <td>30</td>
+                          <td>4</td>
+                        </tr>
+                        <tr>
+                          <td>A1</td>
+                          <td>Mark spencer</td>
+                          <td>15</td>
+                          <td>30</td>
+                          <td>4</td>
+                        </tr>
+                      </tbody>
                       {/* {profiles.length >= 0 ? (
                         profiles.map((profile) => (
                           <tbody>
