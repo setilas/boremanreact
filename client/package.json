@@ -8,7 +8,9 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.0",
     "bootstrap-scss": "^4.5.0",
+    "knob": "^1.1.0",
     "node-sass": "^4.14.1",
+    "owl.carousel": "^2.3.4",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
@@ -22,7 +24,6 @@
     "reactstrap": "^8.5.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-saga": "^1.1.3",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -46,5 +47,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:5000"
+  "proxy": "http://127.0.0.1:5000"
 }
