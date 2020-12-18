@@ -1,4 +1,4 @@
-import { ADD_ENQUIRY, GET_ENQUIRY, GET_ALLENQUIRY } from "../action/type";
+ import { ADD_ENQUIRY, GET_ENQUIRY, GET_ALLENQUIRY } from "../action/type";
 
 const initialState = {
   profile: null,

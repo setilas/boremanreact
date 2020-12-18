@@ -1,7 +1,7 @@
 const express = require("express");
 const Adminuser = require("../../../models/Admin/Adminuser");
 const router = express.Router();
-const Enquiry = require("../../../models/Admin/Adminuser");
+
 
 router.post("/", async (req, res) => {
   const { code, name, address, email, te, ae, twc } = req.body;
