@@ -27,7 +27,7 @@ const UserDashboard = () => {
                 <div class="row">
                   <div class="col-6">
                     <h3>Alert</h3>
-                  </div>
+\                  </div>
                   <div class="col-6">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
