@@ -2,21 +2,25 @@ import React, { Fragment } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { Link} from "react-router-dom";
 
+const logo = require("../../../assets/images/decor/landing_bg.jpg");
+
 
 const Addview = (props) => {
 
-  
   return (
-    <div className="container-fluid p-0">
+   
+   
+
+    <div  className="container-fluid p-0 " >
       <div className="row">
         <div className="col-12">
-          <div className="login-card">
+          <div className="admin-card">
             <div>
               <div>
                 
               
               </div>
-              <div className="login-main">
+              <div className="login-main " >
                 <form
                   className="theme-form"
                 
@@ -108,6 +112,7 @@ const Addview = (props) => {
         </div>
       </div>
     </div>
+  
   );
 }
 

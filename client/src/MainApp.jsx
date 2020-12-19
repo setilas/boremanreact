@@ -19,6 +19,7 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Adduser from "./components/dashboard/Admin/Adduser";
+import Viewuser from "./components/dashboard/Admin/Viewuser";
 
 const MainApp = () => {
   return (
@@ -49,6 +50,7 @@ const MainApp = () => {
               component={AdminDashboard}
             ></Route>
             <Route exact path="/adduser" component={Adduser}></Route>
+            <Route exact path="/viewuser" component={Viewuser}></Route>
 
             <Main2 />
           </Switch>
