@@ -16,6 +16,8 @@ import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import Adminview from "./components/dashboard/Admin/Adminview";
+import Adminuser from "./components/dashboard/Admin/Adminuser";
 
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Adduser from "./components/dashboard/Admin/Adduser";
@@ -38,11 +40,12 @@ const MainApp = () => {
               component={UserDashboard}
             ></Route>
             <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-            <PrivateRoute
+            <Route
               exact
               path="/addenquiry"
               component={Addenquiry}
-            ></PrivateRoute>
+
+            ></Route>
 
             <Route
               exact
@@ -51,6 +54,11 @@ const MainApp = () => {
             ></Route>
             <Route exact path="/adduser" component={Adduser}></Route>
             <Route exact path="/viewuser" component={Viewuser}></Route>
+
+
+            
+ <Route exact path="/adminview" component={Adminview}></Route>
+ <Route exact path="/adminuser" component={Adminuser}></Route>
 
             <Main2 />
           </Switch>
