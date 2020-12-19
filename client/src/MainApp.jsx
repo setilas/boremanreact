@@ -7,21 +7,12 @@ import Login from "./components/Auth/Login";
 import Main2 from "./Main2";
 import Alert from "./components/Auth/Alert";
 import { Landing } from "./components/Landing";
-
-//import { UserDashboard } from "./components/dashboard/User/UserDashboard";
-//import { Addenquiry } from "./components/AddEnquiry";
-//import ViewEnquiry from "./components/ViewEnquiry";
-
 import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Adminview from "./components/dashboard/Admin/Adminview";
 import Adminuser from "./components/dashboard/Admin/Adminuser";
-
-import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
-import Adduser from "./components/dashboard/Admin/Adduser";
-import Viewuser from "./components/dashboard/Admin/Viewuser";
 
 const MainApp = () => {
   return (
@@ -44,22 +35,9 @@ const MainApp = () => {
               exact
               path="/addenquiry"
               component={Addenquiry}
-
             ></Route>
-
-            <Route
-              exact
-              path="/admindashboard"
-              component={AdminDashboard}
-            ></Route>
-            <Route exact path="/adduser" component={Adduser}></Route>
-            <Route exact path="/viewuser" component={Viewuser}></Route>
-
-
-            
  <Route exact path="/adminview" component={Adminview}></Route>
  <Route exact path="/adminuser" component={Adminuser}></Route>
-
             <Main2 />
           </Switch>
         </BrowserRouter>
