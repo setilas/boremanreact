@@ -32,9 +32,9 @@ export const addEnquiry = ({
   }
 };
 
-export const getallenquiry = () => async (dispatch) => {
+export const getallenquiry = (id) => async (dispatch) => {
   try {
-    const res = await axios.get("/api/user/addenquiry/");
+    const res = await axios.get(`/api/user/addenquiry/${id}`);
     dispatch({
       type: GET_ALLENQUIRY,
       payload: res.data,

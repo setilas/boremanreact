@@ -6,16 +6,9 @@ import store from "./store";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ConfigDB from "./data/customizer/config";
-
-import { AddEnquiry } from "./components/dashboard/User/AddEnquiry";
-import { ViewEnquiry } from "./components/dashboard/User/Viewenquiry";
 import { Enquiry } from "./components/Enquiry";
 import { Vendors } from "./components/Vendors";
-import UserDashboard from "./components/dashboard/User/UserDashboard";
 import knobChart from "./components/chart";
-import Admindashboard from "./components/Admindashboard";
-import Addview from "./components/Adduser";
-import Viewuser from "./components/Viewuser";
 
 const Main2 = (props) => {
   const [anim, setAnim] = useState("");
@@ -42,16 +35,8 @@ const Main2 = (props) => {
           <Switch>
             <App>
               <Route exact path="/chart" component={knobChart}></Route>
-              <Route exact path="/user/dashboard" component={UserDashboard}></Route>
               <Route exact path="/enquiry" component={Enquiry}></Route>
-
-              {/* <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-              <Route exact path="/addenquiry" component={AddEnquiry}></Route> */}
-
               <Route exact path="/vendors" component={Vendors}></Route>
-              <Route exact path="/admin" component={Admindashboard}></Route>
-              <Route exact path="/adduser" component={Addview}></Route>
-              <Route exact path="/viewuser" component={Viewuser}></Route>
             </App>
           </Switch>
         </BrowserRouter>
