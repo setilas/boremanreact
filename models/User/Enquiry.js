@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const Enquiryschema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
+
   name: {
     type: String,
     required: true,
@@ -29,6 +34,12 @@ const Enquiryschema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  counter: {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
 });
 
