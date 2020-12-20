@@ -5,13 +5,19 @@ const User = require("../../../models/User/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const Vendor = require("../../../models/Admin/Vendor");
 const { check, validationResult } = require("express-validator");
 
 router.get("/", auth, async (req, res) => {
   try {
     //res.send("hi");
     const user = await User.findById(req.user.id).select(-"password");
-    return res.json(user);
+    if (user) {
+      return res.json(user);
+    } else {
+      const vendor = await Vendor.findById(req.user.id);
+      return res.json(vendor);
+    }
   } catch (err) {
     return res.status(500).send("server errpor");
   }
@@ -36,18 +42,26 @@ router.post(
     try {
       //check user already exits or not
       let user = await User.findOne({ email });
-      if (!user) {
+      let vendor = await Vendor.findOne({ vendorEmail: email });
+      if (!user && !vendor) {
         return res
           .status(400)
           .json({ errors: [{ msg: "invalid user not found" }] });
       }
 
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
+      if (!user) {
+        payload = {
+          user: {
+            id: vendor.id,
+          },
+        };
+      } else {
+        payload = {
+          user: {
+            id: user.id,
+          },
+        };
+      }
       //jwt method
 
       jwt.sign(

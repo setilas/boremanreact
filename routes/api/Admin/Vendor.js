@@ -37,6 +37,11 @@ router.post(
     const vendor = new Vendor(vendorField);
 
     try {
+      let user = await Vendor.findOne({ vendorEmail });
+      if (user) {
+        return res.status(400).send("Vendor already present");
+      }
+
       await vendor.save();
       return res.json(vendor);
     } catch (err) {
@@ -50,6 +55,18 @@ router.get("/:id", async (req, res) => {
     const vendor = await Vendor.findOne({
       _id: req.params.id,
     });
+    if (!vendor) {
+      res.status(400).send("not found");
+    }
+    res.status(201).json(vendor);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const vendor = await Vendor.find();
     if (!vendor) {
       res.status(400).send("not found");
     }

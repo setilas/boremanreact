@@ -22,7 +22,7 @@ export const addEnquiry = ({
     addstatus,
   });
   try {
-    const res = await axios.post("/api/user/addenquiry/", body, config);
+    const res = await axios.post("/api/user/enquiry/", body, config);
     dispatch({
       type: ADD_ENQUIRY,
       payload: res.data,
@@ -34,7 +34,7 @@ export const addEnquiry = ({
 
 export const getallenquiry = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/user/addenquiry/${id}`);
+    const res = await axios.get(`/api/user/enquiry/${id}`);
     dispatch({
       type: GET_ALLENQUIRY,
       payload: res.data,

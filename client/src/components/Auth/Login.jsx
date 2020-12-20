@@ -21,7 +21,9 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/userdashboard" />;
+    if (email == "prasannanaik141@gmail.com")
+      return <Redirect to="/admindashboard" />;
+    else return <Redirect to="/userdashboard" />;
   }
   return (
     <div class="container-fluid">
