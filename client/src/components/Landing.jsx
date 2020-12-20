@@ -22,6 +22,7 @@ const semidark = require("../assets/images/landing/layout/semidark.jpg");
 
 
 const loginpng = require("../assets/images/myicons/login.png");
+const registerpng = require("../assets/images/myicons/register_icon.png");
 const landing = require("../assets/images/landing/2.png");
 const logopng = require("../assets/images/landing/landing_logo.png");
 
@@ -92,11 +93,6 @@ export const Landing = () => {
                     alt=""
                   />
 
-                <a className="navbar-brand p-0 " href="#">
-                  <img className="img-fluid " src={logopng} alt="" />
-                  <h3 class="d-inline align-middle">Boreman</h3>
-
-                </a>
                 <button
                   className="navbar-toggler navabr_btn-set custom_nav"
                   type="button"
@@ -119,7 +115,7 @@ export const Landing = () => {
                       <a className="nav-link" href="#layout">
                         Layout
                       </a>
-                    </li> */}
+                    </li> 
                     <li className="nav-item">
                       <a className="nav-link" href="#dashboards">
                         Dashboards
@@ -177,14 +173,6 @@ export const Landing = () => {
                     >
                   
 
-                      <img
-                        src={html}
-                        alt=""
-                      />
-                      HTML
-                    
-                    
-
                       <img src={loginpng} alt="" />
                       Login
                     </Link>
@@ -194,15 +182,9 @@ export const Landing = () => {
                       className="btn btn-pill btn-secondary btn-air-secondary btn-lg mr-3 wow pulse"
                     >
 
-                      <img
-                        src={react}
-                        alt=""
-                      />
-                      React
-                    
-                    
-
-                      <i src="../assets/images/landing/" alt="" />
+                          <img src={registerpng} alt="" />
+                     
+                  
                       Register
                     </Link>
                     {/* <a

@@ -5,25 +5,34 @@ import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 const Viewuser = (props) => {
   
     return (
-        <div className="container-fluid p-0">
+          <div  className="container-fluid p-0 " >
           <div className="row">
             <div className="col-12">
-              <div className="login-card">
+              <div className="admin-card">
                 <div>
                   <div>
                     
                   
                   </div>
-                  <div className="login-main">
+                  <div className="login-main " >
                     <form
                       className="theme-form"
                     
                     >
                       <h4>View User</h4>
 
-                      <p className="mt-4">Vendor code :</p>
+                      <div className="form-group mt-4">
+                        <label className="col-form-label">Vendor Code</label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          readonly
+                          value="AA123"
+                          name="code"
+                        />
+                      </div>
                      
-                      <div className="form-group">
+                      <div className="form-group ">
                         <label className="col-form-label pt-0">Vendor Name</label>
                         <div className="form-row">
                           <div className="col-6">
@@ -31,7 +40,7 @@ const Viewuser = (props) => {
                               className="form-control"
                               type="text"
                               required=""
-                              placeholder="First name"
+                              value="Name"
                               name="firstname"
                             />
                           </div>
@@ -39,13 +48,15 @@ const Viewuser = (props) => {
                             <input
                               className="form-control"
                               type="text"
+                              contenteditable="true"
                               required=""
-                              placeholder="Last name"
-                              name="lastname"
+                              value="name"
+                              name="lastname" 
                             />
                           </div>
                         </div>
                       </div>
+                      
                       <div className="form-group">
                         <label className="col-form-label">Vendor Address</label>
                         <input
@@ -74,7 +85,7 @@ const Viewuser = (props) => {
                           required=""
                           placeholder="Test@gmail.com"
                           name="email"
-                         
+                        
                         />
                       </div>
                       <div className="form-group">
@@ -94,7 +105,7 @@ const Viewuser = (props) => {
                         <button type="button" class="btn-primary-outline btn-sm">Generate Password</button>
                         </div>
                       </div>
-    
+
                       <div className="form-group mb-0">
                         <button className="btn btn-primary btn-block" type="submit">
                           Submit
