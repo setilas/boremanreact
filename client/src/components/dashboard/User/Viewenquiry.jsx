@@ -9,7 +9,8 @@ const ViewEnquiry = ({ getallenquiry, enquiry, profiles, user }) => {
   useEffect(() => {
     getallenquiry(user._id);
   }, [getallenquiry]);
-  console.log(profiles.length);
+  const activeEnquiry = profiles.length;
+  console.log(activeEnquiry);
   return (
     <Fragment>
       <div style={{ height: "600px" }} className="tablebody">

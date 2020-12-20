@@ -35,12 +35,7 @@ const Enquiryschema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  counter: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-    },
-  },
+  counter: { type: Number },
 });
 
 module.exports = Enquiry = mongoose.model("enquiry", Enquiryschema);
