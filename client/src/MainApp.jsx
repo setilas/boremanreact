@@ -13,6 +13,9 @@ import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Adminview from "./components/dashboard/Admin/Adminview";
 import Adminuser from "./components/dashboard/Admin/Adminuser";
+import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
+import Addview from "./components/dashboard/Admin/Adduser";
+import Viewuser from "./components/dashboard/Admin/Viewuser";
 
 const MainApp = () => {
   return (
@@ -30,14 +33,38 @@ const MainApp = () => {
               path="/userdashboard"
               component={UserDashboard}
             ></Route>
-            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
-            <Route
+            <Route exact path="/addenquiry" component={Addenquiry}></Route>
+            <PrivateRoute
               exact
-              path="/addenquiry"
-              component={Addenquiry}
-            ></Route>
- <Route exact path="/adminview" component={Adminview}></Route>
- <Route exact path="/adminuser" component={Adminuser}></Route>
+              path="/viewenquiry"
+              component={ViewEnquiry}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/admindashboard"
+              component={AdminDashboard}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/viewuser"
+              component={Viewuser}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/adminview"
+              component={Adminview}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/adminuser"
+              component={Adminuser}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/adduser"
+              component={Addview}
+            ></PrivateRoute>
+
             <Main2 />
           </Switch>
         </BrowserRouter>

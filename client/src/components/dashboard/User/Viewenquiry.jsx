@@ -2,11 +2,15 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { getallenquiry } from "../../../action/Enquiry";
 import "../../scss/table.scss";
+
 import Moment from "react-moment";
-const ViewEnquiry = ({ getallenquiry, enquiry, profiles }) => {
+
+const ViewEnquiry = ({ getallenquiry, enquiry, profiles, user }) => {
   useEffect(() => {
-    getallenquiry();
+    getallenquiry(user._id);
   }, [getallenquiry]);
+  const activeEnquiry = profiles.length;
+  console.log(activeEnquiry);
   return (
     <Fragment>
       <div style={{ height: "600px" }} className="tablebody">
@@ -32,7 +36,7 @@ const ViewEnquiry = ({ getallenquiry, enquiry, profiles }) => {
                           <th scope="col">GPS(lat)</th>
                           <th scope="col">GPS(long)</th>
                           <th scope="col">Status</th>
-                        </tr>
+                        </tr>{" "}
                       </thead>
                       {profiles.length >= 0 ? (
                         profiles.map((profile) => (
@@ -77,6 +81,7 @@ const ViewEnquiry = ({ getallenquiry, enquiry, profiles }) => {
 
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { getallenquiry })(ViewEnquiry);
