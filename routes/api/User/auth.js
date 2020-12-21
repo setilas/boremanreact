@@ -10,7 +10,6 @@ const { check, validationResult } = require("express-validator");
 
 router.get("/", auth, async (req, res) => {
   if (req.user.id == 999) {
-    console.log(req.user.id);
     return res.json("admin");
   }
   try {
