@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { Link} from "react-router-dom";
 
-const logo = require("../../../assets/images/decor/landing_bg.jpg");
+//const logo = require("../../../assets/images/decor/landing_bg.jpg");
 
 
 const Addview = (props) => {

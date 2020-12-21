@@ -121,11 +121,11 @@ const Viewuser = (props) => {
           </div>
         </div>
       );
-    }
+   
     
 
   return <DataTables></DataTables>;
-};
 
+};
 
 export default Viewuser;
