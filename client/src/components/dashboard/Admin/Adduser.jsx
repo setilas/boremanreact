@@ -1,19 +1,31 @@
 import React, { Fragment } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
 
-// const logo = require("../../../assets/images/decore/landing_bg.jpg");
+import { Link} from "react-router-dom";
+
+//const logo = require("../../../assets/images/decor/landing_bg.jpg");
+
 
 const Addview = (props) => {
+
   return (
-    <div className="container-fluid p-0 ">
+   
+    <div  className="container-fluid p-0 " >
+
       <div className="row">
         <div className="col-12">
           <div className="admin-card">
             <div>
-              <div></div>
-              <div className="login-main ">
-                <form className="theme-form">
+
+              <div>
+                
+              
+              </div>
+              <div className="login-main " >
+                <form
+                  className="theme-form"
+                
+                >
                   <h4>Add User</h4>
                   <p>Enter vendor details </p>
                   <div className="form-group">
@@ -67,6 +79,7 @@ const Addview = (props) => {
                       required=""
                       placeholder="Test@gmail.com"
                       name="email"
+
                     />
                   </div>
                   <div className="form-group">
@@ -78,12 +91,13 @@ const Addview = (props) => {
                       required=""
                       placeholder="*********"
                       name="password"
+     
+                      
                     />
-
+                    
                     <div className="show-hide">
-                      <button type="button" class="btn-primary-outline btn-sm">
-                        Generate Password
-                      </button>
+                    <button type="button" class="btn-primary-outline btn-sm">Generate Password</button>
+
                     </div>
                   </div>
 
@@ -92,6 +106,7 @@ const Addview = (props) => {
                       Submit
                     </button>
                   </div>
+
                 </form>
               </div>
             </div>
@@ -99,7 +114,11 @@ const Addview = (props) => {
         </div>
       </div>
     </div>
+
+  
   );
-};
+}
+
+ 
 
 export default Addview;
