@@ -7,15 +7,14 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const Vendor = require("../../../models/Admin/Vendor");
 const { check, validationResult } = require("express-validator");
-const { getMaxListeners } = require("../../../models/User/User");
 
 router.get("/", auth, async (req, res) => {
+  if (req.user.id == 999) {
+    console.log(req.user.id);
+    return res.json("admin");
+  }
   try {
     //res.send("hi");
-    if ((req.user.id = "admin")) {
-      return res.json("admin");
-    }
-
     const user = await User.findById(req.user.id).select(-"password");
     if (user) {
       return res.json(user);
@@ -39,13 +38,12 @@ router.post(
   ],
 
   async (req, res) => {
-    const { email, password } = req.body;
-
     //admin access
+    const { email, password } = req.body;
     if (email == "admin@gmail.com" && password == "admin1111") {
       const payload = {
         user: {
-          id: "admin",
+          id: 999,
         },
       };
 
@@ -58,60 +56,65 @@ router.post(
           return res.json({ token }); //it will gives a token
         }
       );
-    }
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      let user = await User.findOne({ email });
-      let vendor = await Vendor.findOne({ vendorEmail: email });
-      if (!user && !vendor) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "invalid user not found" }] });
+    } else {
+      //validations
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
       }
-
-      const isMatch = await bcrypt.compare(password, vendor.password);
-      if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "invalid creadential" }] });
-      }
-
-      if (!user) {
-        payload = {
-          user: {
-            id: vendor.id,
-          },
-        };
-      } else {
-        payload = {
-          user: {
-            id: user.id,
-          },
-        };
-      }
-
-      console.log(user);
-      //jwt method
-
-      jwt.sign(
-        payload,
-        config.get("jwtSecret"),
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          return res.json({ token }); //it will gives a token
+      try {
+        let user = await User.findOne({ email });
+        let vendor = await Vendor.findOne({ vendorEmail: email });
+        if (!user && !vendor) {
+          return res
+            .status(400)
+            .json({ errors: [{ msg: "invalid user not found" }] });
         }
-      );
+        //VENDOR TOKEN
+        if (vendor) {
+          const isMatch = await bcrypt.compare(password, vendor.password);
+          if (!isMatch) {
+            return res
+              .status(400)
+              .json({ errors: [{ msg: "invalid creadential" }] });
+          }
+          payload = {
+            user: {
+              id: vendor.id,
+            },
+          };
+        }
 
-      //console.log(req.body);
-      //res.send("user registered");
-    } catch (err) {
-      console.log(err.message);
-      return res.status(500).send("server error");
+        //USER TOKEN
+        if (user) {
+          const isMatch = await bcrypt.compare(password, user.password);
+          if (!isMatch) {
+            return res
+              .status(400)
+              .json({ errors: [{ msg: "invalid creadential" }] });
+          }
+          payload = {
+            user: {
+              id: user.id,
+            },
+          };
+
+          jwt.sign(
+            payload,
+            config.get("jwtSecret"),
+            { expiresIn: 360000 },
+            (err, token) => {
+              if (err) throw err;
+              return res.json({ token }); //it will gives a token
+            }
+          );
+        }
+      } catch (err) {
+        //console.log(req.body);
+        //res.send("user registered");
+        console.log(err.message);
+        return res.status(500).send("server error");
+      }
     }
   }
 );
