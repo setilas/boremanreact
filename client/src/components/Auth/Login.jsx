@@ -5,7 +5,7 @@ import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 const loginbg = require("../../assets/images/login/1.jpg");
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, user }) => {
   const [formData, SetFormData] = useState({
     email: "",
     password: "",
@@ -20,9 +20,9 @@ const Login = ({ login, isAuthenticated }) => {
     login({ email, password });
   };
 
-  if (email == "prasannanaik141@gmail.com" && password == "111111")
+  if (user == "admin" && isAuthenticated) {
     return <Redirect to="/admindashboard" />;
-  else if (isAuthenticated) {
+  } else if (isAuthenticated && !user == "admin") {
     return <Redirect to="/userdashboard" />;
   }
 
@@ -98,6 +98,7 @@ const Login = ({ login, isAuthenticated }) => {
 };
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { login })(Login);

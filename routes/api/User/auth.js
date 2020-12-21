@@ -7,10 +7,15 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const Vendor = require("../../../models/Admin/Vendor");
 const { check, validationResult } = require("express-validator");
+const { getMaxListeners } = require("../../../models/User/User");
 
 router.get("/", auth, async (req, res) => {
   try {
     //res.send("hi");
+    if ((req.user.id = "admin")) {
+      return res.json("admin");
+    }
+
     const user = await User.findById(req.user.id).select(-"password");
     if (user) {
       return res.json(user);
@@ -35,12 +40,31 @@ router.post(
 
   async (req, res) => {
     const { email, password } = req.body;
+
+    //admin access
+    if (email == "admin@gmail.com" && password == "admin1111") {
+      const payload = {
+        user: {
+          id: "admin",
+        },
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          return res.json({ token }); //it will gives a token
+        }
+      );
+    }
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      //check user already exits or not
       let user = await User.findOne({ email });
       let vendor = await Vendor.findOne({ vendorEmail: email });
       if (!user && !vendor) {
@@ -49,7 +73,7 @@ router.post(
           .json({ errors: [{ msg: "invalid user not found" }] });
       }
 
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, vendor.password);
       if (!isMatch) {
         return res
           .status(400)
@@ -69,6 +93,8 @@ router.post(
           },
         };
       }
+
+      console.log(user);
       //jwt method
 
       jwt.sign(

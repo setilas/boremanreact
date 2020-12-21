@@ -2,14 +2,19 @@ const express = require("express");
 const Vendor = require("../../../models/Admin/Vendor");
 const router = express.Router();
 const Enquiry = require("../../../models/Admin/Vendor");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+
+const bcrypt = require("bcryptjs");
+
 const { check, validationResult } = require("express-validator/check");
 router.post(
   "/",
   [
     check("vendorName", "Name is required").not().isEmpty(),
     check("vendorLastName", "Lastname is required").not().isEmpty(),
-    check("vendorAddress", "enter the valid Address"),
-    check("vendorPhone", "enter the valid Phone"),
+    check("vendorAddress", "enter the valid Address").not().isEmpty(),
+    check("vendorPhone", "enter the valid Phone").not().isEmpty(),
     check("vendorEmail", "enter the valid Email").isEmail(),
     check("password", "enter proper password").isLength({ min: 6 }),
   ],
@@ -33,20 +38,33 @@ router.post(
     if (vendorAddress) vendorField.vendorAddress = vendorAddress;
     if (vendorPhone) vendorField.vendorPhone = vendorPhone;
     if (vendorEmail) vendorField.vendorEmail = vendorEmail;
-    if (password) vendorField.password = password;
-    const vendor = new Vendor(vendorField);
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      vendorField.password = await bcrypt.hash(password, salt);
+    }
 
     try {
-      let user = await Vendor.findOne({ vendorEmail });
-      if (user) {
+      let vendor = await Vendor.findOne({ vendorEmail });
+      if (vendor) {
         return res.status(400).send("Vendor already present");
       }
-
-      //hashing password
-      const salt = await bcrypt.genSalt(10);
-      vendor.password = await bcrypt.hash(password, salt);
+      vendor = new Vendor(vendorField);
       await vendor.save();
-      return res.json(vendor);
+      const payload = {
+        user: {
+          id: vendor.id,
+        },
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          return res.json({ token }); //it will gives a token
+        }
+      );
     } catch (err) {
       res.status(500).send(err);
     }

@@ -28,11 +28,11 @@ const MainApp = () => {
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/login" component={Login}></Route>
 
-            <PrivateRoute
+            <Route
               exact
               path="/userdashboard"
               component={UserDashboard}
-            ></PrivateRoute>
+            ></Route>
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
             <PrivateRoute
               exact
