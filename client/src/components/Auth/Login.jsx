@@ -19,7 +19,7 @@ const Login = ({ login, isAuthenticated, user }) => {
     e.preventDefault();
     login({ email, password });
   };
-
+  console.log("err");
   if (user == "admin" && isAuthenticated) {
     return <Redirect to="/admindashboard" />;
   } else if (isAuthenticated && !user == "admin") {
