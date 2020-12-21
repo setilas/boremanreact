@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useCallback, useMemo } from "react";
-import Breadcrumb from "../../layout/breadcrumb";
+import "../scss/admin.scss";
 import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
@@ -13,26 +13,32 @@ const DataTables = () => {
 
   const tableColumns = [
     {
-      name: "ID",
-      selector: "id",
+      name: "Vendor Code",
+      selector: "code",
       sortable: true,
       center: true,
     },
     {
-      name: "Name",
+      name: "Vendor Name",
       selector: "name",
       sortable: true,
       center: true,
     },
     {
-      name: "Status",
-      selector: "status",
+      name: "Active Enquiry",
+      selector: "active",
       sortable: true,
       center: true,
     },
     {
-      name: "Creat_on",
-      selector: "creat_on",
+      name: "Total Enquiry",
+      selector: "total",
+      sortable: true,
+      center: true,
+    },
+    {
+      name: "Total Work Complete",
+      selector: "total_work",
       sortable: true,
       center: true,
     },
@@ -66,15 +72,15 @@ const DataTables = () => {
 
   return (
     <Fragment>
-      <Breadcrumb parent="Table" title="Data Tables" />
-      <Container fluid={true}>
+      <div className="container-contact100">
+       <Container fluid={true}  >
         <Row>
-          <Col sm="12">
+          <Col sm="12"> 
             <Card>
-              <CardHeader>
-                <h5>{"Select Multiple and Delete Single Data"}</h5>
+              <CardHeader style={{background:"#C4F6F7" ,textAlign:"center"}}>
+                <h5>{"View User"}</h5>
               </CardHeader>
-              <CardBody>
+              <CardBody >
                 <DataTable
                   data={data}
                   columns={tableColumns}
@@ -86,11 +92,17 @@ const DataTables = () => {
                   onSelectedRowsChange={handleRowSelected}
                   clearSelectedRows={toggleCleared}
                 />
+                  <div className="form-group d-flex justify-content-center " style={{marginTop:"5px"}}>
+                 <button className="btn btn-primary" type="submit">
+                      More info
+                    </button>
+                    </div>
               </CardBody>
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container> 
+      </div>
     </Fragment>
   );
 };

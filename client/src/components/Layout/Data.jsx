@@ -2,39 +2,35 @@ import React from "react";
 
 export const tableData = [
   {
-    id: "1",
+    code: "1",
+    name: "Product ",
+    active: <i className="fa fa-circle font-success f-12" />,
+    total: "2018-04-18T00:00:00",
+    total_work:"123",
+  },
+  {
+    code: "1",
     name: "Product Menu",
-    status: <i className="fa fa-circle font-success f-12" />,
-    creat_on: "2018-04-18T00:00:00",
+    active: <i className="fa fa-circle font-success f-12" />,
+    total: "2018-04-18T00:00:00",
+    total_work:"123",
   },
   {
-    id: "2",
-    name: "Category Menu",
-    status: <i className="fa fa-circle font-warning f-12" />,
-    creat_on: "2018-04-18T00:00:00",
+    code: "2",
+    name: " Menu",
+    active: <i className="fa fa-circle font-success f-12" />,
+    total: "2018-04-18T00:00:00",
+    total_work:"123",
   },
   {
-    id: "3",
-    name: "Subcategory Menu",
-    status: <i className="fa fa-circle font-success f-12" />,
-    creat_on: "2018-04-18T00:00:00",
+    code: "4",
+    name: "Product Menu",
+    active: <i className="fa fa-circle font-success f-12" />,
+    total: "2018-04-18T00:00:00",
+    total_work:"123",
   },
-  {
-    id: "4",
-    name: "Sales  Menu",
-    status: <i className="fa fa-circle font-danger f-12" />,
-    creat_on: "2018-04-18T00:00:00",
-  },
-  {
-    id: "5",
-    name: "Vendor Menu",
-    status: <i className="fa fa-circle font-success f-12" />,
-    creat_on: "2018-04-18T00:00:00",
-  },
-  {
-    id: "6",
-    name: "Category Menu",
-    status: <i className="fa fa-circle font-warning f-12" />,
-    creat_on: "2018-04-18T00:00:00",
-  },
+ 
+ 
+ 
+ 
 ];
