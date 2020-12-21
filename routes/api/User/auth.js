@@ -57,6 +57,7 @@ router.post(
         }
       );
     } else {
+      //validations
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -69,7 +70,7 @@ router.post(
             .status(400)
             .json({ errors: [{ msg: "invalid user not found" }] });
         }
-
+        //VENDOR TOKEN
         if (vendor) {
           const isMatch = await bcrypt.compare(password, vendor.password);
           if (!isMatch) {
@@ -84,6 +85,7 @@ router.post(
           };
         }
 
+        //USER TOKEN
         if (user) {
           const isMatch = await bcrypt.compare(password, user.password);
           if (!isMatch) {
