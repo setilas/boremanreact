@@ -42,6 +42,9 @@ router.post(
         return res.status(400).send("Vendor already present");
       }
 
+      //hashing password
+      const salt = await bcrypt.genSalt(10);
+      vendor.password = await bcrypt.hash(password, salt);
       await vendor.save();
       return res.json(vendor);
     } catch (err) {

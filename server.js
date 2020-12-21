@@ -12,4 +12,5 @@ app.use("/api/user", require("./routes/api/User/user"));
 app.use("/api/auth", require("./routes/api/User/auth"));
 app.use("/api/user/enquiry", require("./routes/api/User/Enquiry"));
 app.use("/api/admin/vendor", require("./routes/api/Admin/Vendor"));
+// app.use("/api/admin/enquiry", require("./routes/api/Admin/Enquiry"));
 // app.use("/api/admin/adminuser",require("./routes/api/Admin/adminuser"))
