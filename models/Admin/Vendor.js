@@ -1,15 +1,27 @@
 const mongoose = require("mongoose");
 
 const Vendorschema = new mongoose.Schema({
-  name: {
+  vendorName: {
     type: String,
     required: true,
   },
-  address: {
+  vendorLastName: {
     type: String,
     required: true,
   },
-  phone: {
+  vendorAddress: {
+    type: String,
+    required: true,
+  },
+  vendorPhone: {
+    type: String,
+    required: true,
+  },
+  vendorEmail: {
+    type: String,
+    required: true,
+  },
+  password: {
     type: String,
     required: true,
   },

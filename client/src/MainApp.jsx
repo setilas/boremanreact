@@ -32,7 +32,9 @@ const MainApp = () => {
               exact
               path="/userdashboard"
               component={UserDashboard}
+
             ></PrivateRoute>
+
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
             <PrivateRoute
               exact
