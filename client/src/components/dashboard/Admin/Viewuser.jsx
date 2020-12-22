@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import DataTables from "../../Layout/DataTable";
 
 const Viewuser = (props) => {
-  return <DataTables></DataTables>;
+  return <DataTables />;
 };
 
 export default Viewuser;

@@ -5,7 +5,7 @@ import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 const loginbg = require("../../assets/images/login/1.jpg");
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, user, role }) => {
   const [formData, SetFormData] = useState({
     email: "",
     password: "",
@@ -19,10 +19,13 @@ const Login = ({ login, isAuthenticated }) => {
     e.preventDefault();
     login({ email, password });
   };
+  console.log(role);
 
   if (isAuthenticated) {
-    return <Redirect to="/userdashboard" />;
+    if (role) return <Redirect to="/admindashboard" />;
+    else return <Redirect to="/userdashboard" />;
   }
+
   return (
     <div class="container-fluid">
       <div class="row ">
@@ -95,6 +98,8 @@ const Login = ({ login, isAuthenticated }) => {
 };
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
+  role: state.auth.role,
 });
 
 export default connect(mapStateToProps, { login })(Login);

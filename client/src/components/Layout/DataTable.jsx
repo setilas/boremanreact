@@ -3,11 +3,12 @@ import "../scss/admin.scss";
 import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
-import { tableData } from "./Data";
+
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
-const DataTables = () => {
-  const [data, setData] = useState(tableData);
+const DataTables = ({ tabledata }) => {
+  console.log(tabledata);
+  const [data, setData] = useState(tabledata);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
@@ -25,7 +26,7 @@ const DataTables = () => {
       center: true,
     },
     {
-      name: <i className="fa fa-circle font-success f-12" >Active Enquiry</i>,
+      name: <i className="fa fa-circle font-success f-12">Active Enquiry</i>,
       selector: "active",
       sortable: true,
       center: true,
@@ -37,7 +38,9 @@ const DataTables = () => {
       center: true,
     },
     {
-      name:  <i className="fa fa-circle font-danger f-12" >Total Work Complete</i>,
+      name: (
+        <i className="fa fa-circle font-danger f-12">Total Work Complete</i>
+      ),
       selector: "total_work",
       sortable: true,
       center: true,
@@ -79,31 +82,32 @@ const DataTables = () => {
   return (
     <Fragment>
       <div className="container-contact100">
-       <Container fluid={true}  >
-        <Row>
-          <Col sm="12"> 
-            <Card>
-              <CardHeader style={{background:"#C4F6F7" ,textAlign:"center"}}>
-                <h5>{"View User"}</h5>
-              </CardHeader>
-              <CardBody >
-                <DataTable
-                  data={data}
-                  columns={tableColumns}
-                  striped={true}
-                  center={true}
-                  selectableRows
-                  persistTableHead
-                  contextActions={contextActions}
-                  onSelectedRowsChange={handleRowSelected}
-                  clearSelectedRows={toggleCleared}
-                />
-                 
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </Container> 
+        <Container fluid={true}>
+          <Row>
+            <Col sm="12">
+              <Card>
+                <CardHeader
+                  style={{ background: "#C4F6F7", textAlign: "center" }}
+                >
+                  <h5>{"View User"}</h5>
+                </CardHeader>
+                <CardBody>
+                  <DataTable
+                    data={data}
+                    columns={tableColumns}
+                    striped={true}
+                    center={true}
+                    selectableRows
+                    persistTableHead
+                    contextActions={contextActions}
+                    onSelectedRowsChange={handleRowSelected}
+                    clearSelectedRows={toggleCleared}
+                  />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </Fragment>
   );

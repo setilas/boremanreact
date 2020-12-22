@@ -6,7 +6,7 @@ import { logout } from "../../action/auth";
 
 const logo = require("../../assets/images/logo/logo.png");
 
-const Sidebar2 = ({ logout }) => {
+const Sidebar = ({ logout }) => {
   const logouthandler = () => {
     logout();
   };
@@ -72,19 +72,16 @@ const Sidebar2 = ({ logout }) => {
               </a>
               <ul class="sidebar-submenu">
                 <li className="sidebar-list">
-                  <Link to="/Adduser">AddUser</Link>
+                  <Link to="/adduser">AddUser</Link>
                 </li>
                 <li>
                   <Link to="/viewuser">ViewUser</Link>
                 </li>
                 <li>
-                  <Link to="/viewenquiry">ViewEnquiry</Link>
+                  <Link to="/adminview">ViewEnquiry</Link>
                 </li>
                 <li>
                   <Link to="/status">status</Link>
-                </li>
-                <li>
-                  <Link to="/controles">Controles</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>
@@ -100,4 +97,6 @@ const Sidebar2 = ({ logout }) => {
   );
 };
 
-export default connect(null, { logout })(Sidebar2);
+
+export default connect(null, { logout })(Sidebar);
+
