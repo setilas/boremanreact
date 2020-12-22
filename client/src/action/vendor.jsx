@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAlert } from "./alert";
 import { ADD_VENDOR, GET_ALLVENDORS } from "./type";
 export const addVendor = ({
   vendorName,
@@ -27,8 +28,12 @@ export const addVendor = ({
       type: ADD_VENDOR,
       payload: res.data,
     });
+    dispatch(setAlert("User Added", "success"));
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 
@@ -40,6 +45,9 @@ export const getallvendors = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };

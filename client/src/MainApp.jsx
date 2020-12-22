@@ -28,38 +28,22 @@ const MainApp = () => {
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/login" component={Login}></Route>
 
-            <PrivateRoute
+            <Route
               exact
               path="/userdashboard"
               component={UserDashboard}
-            ></PrivateRoute>
+            ></Route>
 
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
-            <PrivateRoute
-              exact
-              path="/viewenquiry"
-              component={ViewEnquiry}
-            ></PrivateRoute>
-            <PrivateRoute
+            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+            <Route
               exact
               path="/admindashboard"
               component={AdminDashboard}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/viewuser"
-              component={Viewuser}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adminview"
-              component={Adminview}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adminuser"
-              component={Adminuser}
-            ></PrivateRoute>
+            ></Route>
+            <Route exact path="/viewuser" component={Viewuser}></Route>
+            <Route exact path="/adminview" component={Adminview}></Route>
+            <Route exact path="/adminuser" component={Adminuser}></Route>
             <Route exact path="/adduser" component={Addview}></Route>
 
             <Main2 />

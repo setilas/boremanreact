@@ -3,8 +3,9 @@ import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
+import { setAlert } from "../../../action/alert";
 
-const Addview = ({ addVendor }) => {
+const Addview = ({ addVendor, setAlert }) => {
   const [vendor, setVendor] = useState({
     vendorName: "",
     vendorLastName: " ",
@@ -167,4 +168,8 @@ const Addview = ({ addVendor }) => {
   );
 };
 
-export default connect(null, { addVendor })(Addview);
+const mapStateToProps = (state) => ({
+  loading: state.vendor.loading,
+});
+
+export default connect(null, { addVendor, setAlert })(Addview);
