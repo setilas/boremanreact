@@ -25,7 +25,7 @@ const DataTables = () => {
       center: true,
     },
     {
-      name: "Active Enquiry",
+      name: <i className="fa fa-circle font-success f-12" >Active Enquiry</i>,
       selector: "active",
       sortable: true,
       center: true,
@@ -37,8 +37,14 @@ const DataTables = () => {
       center: true,
     },
     {
-      name: "Total Work Complete",
+      name:  <i className="fa fa-circle font-danger f-12" >Total Work Complete</i>,
       selector: "total_work",
+      sortable: true,
+      center: true,
+    },
+    {
+      name: "User info",
+      selector: "info",
       sortable: true,
       center: true,
     },
@@ -92,11 +98,7 @@ const DataTables = () => {
                   onSelectedRowsChange={handleRowSelected}
                   clearSelectedRows={toggleCleared}
                 />
-                  <div className="form-group d-flex justify-content-center " style={{marginTop:"5px"}}>
-                 <button className="btn btn-primary" type="submit">
-                      More info
-                    </button>
-                    </div>
+                 
               </CardBody>
             </Card>
           </Col>
