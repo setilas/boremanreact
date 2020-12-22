@@ -63,7 +63,7 @@ router.post(
       }
       try {
         let user = await User.findOne({ email });
-        let vendor = await Vendor.findOne({ vendorEmail: email });
+        const vendor = await Vendor.findOne({ vendorEmail: email });
         if (!user && !vendor) {
           return res
             .status(400)
@@ -72,6 +72,8 @@ router.post(
         //VENDOR TOKEN
         if (vendor) {
           const isMatch = await bcrypt.compare(password, vendor.password);
+          console.log(isMatch);
+          console.log(typeof password);
           if (!isMatch) {
             return res
               .status(400)
@@ -82,6 +84,16 @@ router.post(
               id: vendor.id,
             },
           };
+
+          jwt.sign(
+            payload,
+            config.get("jwtSecret"),
+            { expiresIn: 360000 },
+            (err, token) => {
+              if (err) throw err;
+              return res.json({ token }); //it will gives a token
+            }
+          );
         }
 
         //USER TOKEN

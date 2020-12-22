@@ -32,7 +32,6 @@ const MainApp = () => {
               exact
               path="/userdashboard"
               component={UserDashboard}
-
             ></PrivateRoute>
 
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
@@ -61,11 +60,7 @@ const MainApp = () => {
               path="/adminuser"
               component={Adminuser}
             ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adduser"
-              component={Addview}
-            ></PrivateRoute>
+            <Route exact path="/adduser" component={Addview}></Route>
 
             <Main2 />
           </Switch>

@@ -1,8 +1,7 @@
 import { ADD_VENDOR, GET_VENDOR, GET_ALLVENDORS } from "../action/type";
 
 const initialState = {
-  profile: null,
-  profiles: [],
+  vendor: null,
   loading: true,
   error: {},
 };
@@ -10,18 +9,14 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_VENDOR:
+    case ADD_VENDOR: {
       return {
         ...state,
-        profile: payload,
+        vendor: payload,
         loading: false,
       };
-    case GET_ALLVENDORS:
-      return {
-        ...state,
-        profiles: payload,
-        loading: false,
-      };
+    }
+
     default:
       return state;
   }
