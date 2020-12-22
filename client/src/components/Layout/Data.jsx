@@ -2,7 +2,7 @@ import { connect } from "mongoose";
 import React from "react";
 import DataTables from "./DataTable";
 
-export const tableData = [
+const tableData = [
   {
     code: "1",
     name: "Product ",
