@@ -39,7 +39,7 @@ export const addVendor = ({
 
 export const getallvendors = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/admin/adminuser");
+    const res = await axios.get("/api/admin/vendor");
     dispatch({
       type: GET_ALLVENDORS,
       payload: res.data,
