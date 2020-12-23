@@ -5,8 +5,9 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import Sidebar2 from "../../Layout/Sidebar2";
-const logo = require("../../../assets/images/logo/logo.png");
 import "../../scss/info.scss";
+const logo = require("../../../assets/images/logo/logo.png");
+
 const AdminDashboard = () => {
     return (
       <div>
