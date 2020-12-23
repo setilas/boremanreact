@@ -2,6 +2,8 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { getallenquiry } from "../../../action/Enquiry";
 import "../../scss/table.scss";
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import Moment from "react-moment";
 const Adminview =()=>{
   return (
@@ -21,14 +23,14 @@ const Adminview =()=>{
               <div class="card rounded-0 border-0 shadow tablebox1">
                 <div class="card-body p-5">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover table-striped">
                       <thead>
                         <tr>
-                          <th scope="col">Vendor Code</th>
-                          <th scope="col">Vendor Name</th>
-                          <th scope="col">Active Enquiry</th>
-                          <th scope="col">Total Enquiry</th>
-                          <th scope="col">Work Complete</th>
+                          <th >Vendor Code</th>
+                          <th >Vendor Name</th>
+                          <th >Active Enquiry</th>
+                          <th >Total Enquiry</th>
+                          <th >Work Complete</th>
                           
                         </tr>
                       </thead>
