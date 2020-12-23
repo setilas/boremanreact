@@ -20,45 +20,23 @@ const DataTables = ({ getallvendors, vendors }) => {
     getallvendors();
   }, [getallvendors]);
 
-  //Data
-
-  var tableData = [
-    {
-      code: " ",
-      name: "Product ",
-      active: "5",
-      total: "2018-04-18T00:00:00",
-      total_work: "123",
-      info: <button className="btn btn-primary">More info</button>,
-    },
-  ];
-
-  vendors.forEach((user) => {
-    console.log(user.vendorName);
-  });
-
-  vendors.map((user) => {
-    tableData[0] = {
-      code: user._id,
-      name: user.vendorName,
-    };
-  });
-
+  console.log(vendors);
   //HOOKS
-  const [data, setData] = useState(tableData);
+  const [data, setData] = useState(vendors);
+  console.log(data);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
   const tableColumns = [
     {
       name: "Vendor Code",
-      selector: "code",
+      selector: "_id",
       sortable: true,
       center: true,
     },
     {
       name: "Vendor Name",
-      selector: "name",
+      selector: "vendorName",
       sortable: true,
       center: true,
     },

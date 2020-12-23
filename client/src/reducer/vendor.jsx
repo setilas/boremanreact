@@ -13,8 +13,7 @@ export default function (state = initialState, action) {
     case ADD_VENDOR: {
       return {
         ...state,
-        vendor: payload,
-        loading: false,
+        payload,
       };
     }
     case GET_ALLVENDORS: {
