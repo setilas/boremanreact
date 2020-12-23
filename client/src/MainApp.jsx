@@ -16,7 +16,7 @@ import Adminuser from "./components/dashboard/Admin/Adminuser";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
-
+import info from "./components/dashboard/Admin/info";
 const MainApp = () => {
   return (
     <Fragment>
@@ -50,6 +50,11 @@ const MainApp = () => {
               exact
               path="/viewuser"
               component={Viewuser}
+            ></PrivateRoute>
+            <PrivateRoute
+              exact
+              path="/info"
+              component={info}
             ></PrivateRoute>
             <PrivateRoute
               exact

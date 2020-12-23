@@ -5,8 +5,8 @@ import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 const loginbg = require("../../assets/images/login/1.jpg");
-const Login = ({ login, isAuthenticated, user }) => {
-  const [formData, SetFormData] = useState({
+const Login = ({ login, isAuthenticated, user }) => 
+  {const [formData, SetFormData] = useState({
     email: "",
     password: "",
   });
