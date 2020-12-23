@@ -16,7 +16,7 @@ import Adminuser from "./components/dashboard/Admin/Adminuser";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
-
+import NewTable from "./components/Layout/NewTable";
 const MainApp = () => {
   return (
     <Fragment>
@@ -45,6 +45,7 @@ const MainApp = () => {
             <Route exact path="/adminview" component={Adminview}></Route>
             <Route exact path="/adminuser" component={Adminuser}></Route>
             <Route exact path="/adduser" component={Addview}></Route>
+            <Route exact path="/table" component={NewTable}></Route>
 
             <Main2 />
           </Switch>

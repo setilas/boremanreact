@@ -1,8 +1,9 @@
 import { ADD_VENDOR, GET_VENDOR, GET_ALLVENDORS } from "../action/type";
 
 const initialState = {
-  vendor: null,
+  vendors: [],
   loading: true,
+  vendor: null,
   error: {},
 };
 
@@ -12,14 +13,13 @@ export default function (state = initialState, action) {
     case ADD_VENDOR: {
       return {
         ...state,
-        vendor: payload,
-        loading: false,
+        payload,
       };
     }
     case GET_ALLVENDORS: {
       return {
         ...state,
-        vendor: payload,
+        vendors: payload,
         loading: false,
       };
     }

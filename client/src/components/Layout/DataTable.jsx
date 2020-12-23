@@ -1,27 +1,42 @@
-import React, { Fragment, useState, useCallback, useMemo } from "react";
+import React, {
+  Fragment,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from "react";
 import "../scss/admin.scss";
 import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
+import { getallvendors } from "../../action/vendor";
 
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+import { connect } from "react-redux";
 
-const DataTables = ({ tabledata }) => {
-  console.log(tabledata);
-  const [data, setData] = useState(tabledata);
+const DataTables = ({ getallvendors, vendors }) => {
+  //USEEFFECT
+  useEffect(() => {
+    getallvendors();
+  }, [getallvendors]);
+
+  console.log(vendors);
+  //HOOKS
+  const [data, setData] = useState(vendors);
+  console.log(data);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
   const tableColumns = [
     {
       name: "Vendor Code",
-      selector: "code",
+      selector: "_id",
       sortable: true,
       center: true,
     },
     {
       name: "Vendor Name",
-      selector: "name",
+      selector: "vendorName",
       sortable: true,
       center: true,
     },
@@ -112,5 +127,8 @@ const DataTables = ({ tabledata }) => {
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  vendors: state.vendor.vendors,
+});
 
-export default DataTables;
+export default connect(mapStateToProps, { getallvendors })(DataTables);
