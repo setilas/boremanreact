@@ -1,14 +1,51 @@
-import React, { Fragment, useState, useCallback, useMemo } from "react";
+import React, {
+  Fragment,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from "react";
 import "../scss/admin.scss";
 import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
+import { getallvendors } from "../../action/vendor";
 
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+import { connect } from "react-redux";
 
-const DataTables = ({ tabledata }) => {
-  console.log(tabledata);
-  const [data, setData] = useState(tabledata);
+const DataTables = ({ getallvendors, vendors }) => {
+  //USEEFFECT
+  useEffect(() => {
+    getallvendors();
+  }, [getallvendors]);
+
+  //Data
+
+  var tableData = [
+    {
+      code: " ",
+      name: "Product ",
+      active: "5",
+      total: "2018-04-18T00:00:00",
+      total_work: "123",
+      info: <button className="btn btn-primary">More info</button>,
+    },
+  ];
+
+  vendors.forEach((user) => {
+    console.log(user.vendorName);
+  });
+
+  vendors.map((user) => {
+    tableData[0] = {
+      code: user._id,
+      name: user.vendorName,
+    };
+  });
+
+  //HOOKS
+  const [data, setData] = useState(tableData);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
@@ -112,5 +149,8 @@ const DataTables = ({ tabledata }) => {
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  vendors: state.vendor.vendors,
+});
 
-export default DataTables;
+export default connect(mapStateToProps, { getallvendors })(DataTables);

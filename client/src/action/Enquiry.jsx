@@ -32,6 +32,18 @@ export const addEnquiry = ({
   }
 };
 
+// export const getallvendors = () => async (dispatch) => {
+//   try {
+//     const res = await axios.get(`/api/user/enquiry/`);
+//     dispatch({
+//       type: GET_ALLENQUIRY,
+//       payload: res.data,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
 export const getallenquiry = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/user/enquiry/${id}`);
