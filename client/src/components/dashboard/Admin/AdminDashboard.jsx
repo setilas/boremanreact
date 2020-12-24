@@ -21,7 +21,7 @@ const AdminDashboard = () => {
         {/* page body contains sidebar and content  */}
         <div class="page-body-wrapper sidebar-icon document-content">
           <Sidebar2></Sidebar2>
-         
+
           <div class="page-body">
             <div class="container-fluid">
               {/* <div class="page-title">
@@ -43,7 +43,6 @@ const AdminDashboard = () => {
                   </div>
                 </div>
               </div> */}
-              
             </div>
             <div class="container-fluid">
               <div class="row">
@@ -60,15 +59,8 @@ const AdminDashboard = () => {
   );
 };
 
-
-
-
-
-
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-
 export default connect(mapStateToProps, { login })(AdminDashboard);
-

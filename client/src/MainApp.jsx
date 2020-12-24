@@ -16,61 +16,35 @@ import Adminuser from "./components/dashboard/Admin/Adminuser";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
-import info from "./components/dashboard/Admin/info";
+import NewTable from "./components/Layout/NewTable";
 const MainApp = () => {
   return (
     <Fragment>
       <Provider store={store}>
-        <Alert />
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/login" component={Login}></Route>
 
-            <PrivateRoute
+            <Route
               exact
               path="/userdashboard"
               component={UserDashboard}
-
-            ></PrivateRoute>
+            ></Route>
 
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
-            <PrivateRoute
-              exact
-              path="/viewenquiry"
-              component={ViewEnquiry}
-            ></PrivateRoute>
-            <PrivateRoute
+            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+            <Route
               exact
               path="/admindashboard"
               component={AdminDashboard}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/viewuser"
-              component={Viewuser}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/info"
-              component={info}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adminview"
-              component={Adminview}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adminuser"
-              component={Adminuser}
-            ></PrivateRoute>
-            <PrivateRoute
-              exact
-              path="/adduser"
-              component={Addview}
-            ></PrivateRoute>
+            ></Route>
+            <Route exact path="/viewuser" component={Viewuser}></Route>
+            <Route exact path="/adminview" component={Adminview}></Route>
+            <Route exact path="/adminuser" component={Adminuser}></Route>
+            <Route exact path="/adduser" component={Addview}></Route>
+            <Route exact path="/table" component={NewTable}></Route>
 
             <Main2 />
           </Switch>
