@@ -48,14 +48,8 @@ export const Landing = () => {
                 className="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding"
                 id="sidebar-menu"
               >
-                <a className="navbar-brand p-0" href="#">
-                  <div className="container">
-                    <img className="img-fluid" src={logopng} alt="" />
-                    <h3 className="d-inline">Boreman</h3>
-                  </div>
-
-                  <button
-                    className="navbar-toggler navabr_btn-set custom_nav"
+                 <button
+                    className="navbar-toggler navabr_btn-set custom_nav collapsed"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarDefault"
@@ -67,15 +61,23 @@ export const Landing = () => {
                     <span></span>
                     <span></span>
                   </button>
+
+                <a className="navbar-brand p-0" href="#">
+                  <div className="container">
+                    <img className="img-fluid" src={logopng} alt="" />
+                    <h3 className="d-inline">Boreman</h3>
+                  </div>
+                </a>
+                 
                   <div
-                    className="navbar-collapse justify-content-end collapse hidenav"
-                    id="navbarDefault"
+                    className="navbar-collapse justify-content-end hidenav collapse"
+                    id="navbarDefault" 
                   >
                     <ul
                       className="navbar-nav navbar_nav_modify"
                       id="scroll-spy"
                     >
-                      {/* <li className="nav-item">
+                       <li className="nav-item">
                       <a className="nav-link" href="#layout">
                         Layout
                       </a>
@@ -95,12 +97,12 @@ export const Landing = () => {
                         Register
                       </a>
                     </li>
-                    {/* <li className="nav-item">
+                     <li className="nav-item">
                       <a className="nav-link" href="#frameworks">
                         Frameworks
                       </a>
-                    </li> */}
-                      {/* <li className="nav-item buy-btn">
+                    </li> 
+                       <li className="nav-item buy-btn">
                       <a
                         className="nav-link js-scroll"
                         href="https://1.envato.market/3GVzd"
@@ -108,10 +110,10 @@ export const Landing = () => {
                       >
                         Purchase
                       </a>
-                    </li> */}
+                    </li>
                     </ul>
                   </div>
-                </a>
+                
               </nav>
             </header>
           </div>
