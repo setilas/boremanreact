@@ -17,9 +17,10 @@ const Sidebar = ({ logout }) => {
         <a href="index.html">
           <img
             class="img-fluid for-light"
-            src="../assets/images/logo/logo.png"
+            src={logo}
             alt=""
           />
+         
           <img
             class="img-fluid for-dark"
             src="../assets/images/logo/logo_dark.png"
