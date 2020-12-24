@@ -2,12 +2,21 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { enquirybyid } from "../../../action/Enquiry";
 import "../../scss/table.scss";
-
 import Moment from "react-moment";
 
-const ViewEnquiry = ({ enquirybyid, enquiry, profiles, user }) => {
+const ViewEnquiry = ({
+  enquirybyid,
+  enquiry,
+  profiles,
+  user,
+  id,
+  userData,
+}) => {
+  const data = JSON.parse(userData);
+  console.log(data);
+
   useEffect(() => {
-    enquirybyid(user._id);
+    enquirybyid(data._id);
   }, [enquirybyid]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
@@ -82,6 +91,8 @@ const ViewEnquiry = ({ enquirybyid, enquiry, profiles, user }) => {
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
   user: state.auth.user,
+  id: state.auth.id,
+  userData: state.auth.userData,
 });
 
 export default connect(mapStateToProps, { enquirybyid })(ViewEnquiry);
