@@ -12,11 +12,8 @@ const ViewEnquiry = ({
   id,
   userData,
 }) => {
-  const data = JSON.parse(userData);
-  console.log(data);
-
   useEffect(() => {
-    enquirybyid(data._id);
+    enquirybyid(user._id);
   }, [enquirybyid]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
