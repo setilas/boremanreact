@@ -34,7 +34,7 @@ const KnobChart = (props) => {
         <Row>
           <Card>
             <CardHeader>
-              <h5>{DisplayPreviousValue}</h5>
+              <h5>{}</h5>
             </CardHeader>
             <CardBody>
               <div className="knob-block text-center">

@@ -6,6 +6,7 @@ import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Alert from "../../Auth/Alert";
+import status from "../../component/dashboard/User/status";
 const logo = require("../../../assets/images/logo/logo.png");
 
 const UserDashboard = () => {
