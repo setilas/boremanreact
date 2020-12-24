@@ -1,13 +1,13 @@
 import axios from "axios";
-import { ADD_VENDOR,  GET_ALLVENDORS } from "./type";
+import { setAlert } from "./alert";
+import { ADD_VENDOR, GET_ALLVENDORS } from "./type";
 export const addVendor = ({
-    code,
-    name,
-    address,
-    email,
-    te,
-    ae,
-    twc,
+  vendorName,
+  vendorLastName,
+  vendorAddress,
+  vendorPhone,
+  vendorEmail,
+  password,
 }) => async (dispatch) => {
   const config = {
     headers: {
@@ -15,33 +15,39 @@ export const addVendor = ({
     },
   };
   const body = JSON.stringify({
-    code: " ",
-    name: " ",
-    address: "",
-    email: " ",
-    te: " ",
-    ae: " ",
-    twc:"",
+    vendorName,
+    vendorLastName,
+    vendorAddress,
+    vendorPhone,
+    vendorEmail,
+    password,
   });
   try {
-    const res = await axios.post("/api/admin/adminuser/", body, config);
+    const res = await axios.post("/api/admin/vendor", body, config);
     dispatch({
       type: ADD_VENDOR,
       payload: res.data,
     });
+    dispatch(setAlert("User Added", "success"));
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 
 export const getallvendors = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/admin/adminuser");
+    const res = await axios.get("/api/admin/vendor");
     dispatch({
       type: GET_ALLVENDORS,
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };

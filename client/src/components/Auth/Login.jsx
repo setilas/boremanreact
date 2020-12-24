@@ -4,7 +4,9 @@ import { Link, Redirect } from "react-router-dom";
 import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
+import Alert from "./Alert";
 const loginbg = require("../../assets/images/login/1.jpg");
+
 const Login = ({ login, isAuthenticated, user, role }) => {
   const [formData, SetFormData] = useState({
     email: "",
@@ -37,6 +39,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
             <div>
               <div class="login-main">
                 <form class="theme-form" onSubmit={(e) => onSubmit(e)}>
+                  <Alert />
                   <h4>Sign in to account</h4>
                   <p>Enter your email & password to login</p>
                   <div class="form-group">

@@ -24,7 +24,6 @@ function Register(props) {
       props.setAlert("password not matching", "danger");
     } else {
       props.register({ firstname, lastname, email, password });
-      props.setAlert("success", "success");
     }
   };
   if (props.isAuthenticated) {
