@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
 import { setAlert } from "../../../action/alert";
+import Alert from "../../../components/Auth/Alert";
 
-const Addview = ({ addVendor, setAlert }) => {
+const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
     vendorName: "",
     vendorLastName: " ",
@@ -27,11 +28,9 @@ const Addview = ({ addVendor, setAlert }) => {
   const onChange = (e) => {
     setVendor({ ...vendor, [e.target.name]: e.target.value });
   };
-  console.log(vendor);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(vendor);
     addVendor({
       vendorName,
       vendorLastName,
@@ -42,6 +41,10 @@ const Addview = ({ addVendor, setAlert }) => {
     });
   };
 
+  if (redirect) {
+    return <Redirect to="/admindashboard"></Redirect>;
+  }
+
   return (
     <div className="container-fluid p-0 ">
       <div className="row">
@@ -50,6 +53,7 @@ const Addview = ({ addVendor, setAlert }) => {
             <div>
               <div></div>
               <div className="login-main ">
+                <Alert />
                 <form
                   className="theme-form"
                   onSubmit={(e) => {
@@ -169,7 +173,7 @@ const Addview = ({ addVendor, setAlert }) => {
 };
 
 const mapStateToProps = (state) => ({
-  loading: state.vendor.loading,
+  redirect: state.vendor.redirect,
 });
 
-export default connect(null, { addVendor, setAlert })(Addview);
+export default connect(mapStateToProps, { addVendor, setAlert })(Addview);

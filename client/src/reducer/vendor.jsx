@@ -5,6 +5,7 @@ const initialState = {
   loading: true,
   vendor: null,
   error: {},
+  redirect: false,
 };
 
 export default function (state = initialState, action) {
@@ -13,7 +14,8 @@ export default function (state = initialState, action) {
     case ADD_VENDOR: {
       return {
         ...state,
-        payload,
+        vendor: payload,
+        redirect: true,
       };
     }
     case GET_ALLVENDORS: {

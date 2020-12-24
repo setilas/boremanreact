@@ -23,7 +23,6 @@ const DataTables = ({ getallvendors, vendors }) => {
   console.log(vendors);
   //HOOKS
   const [data, setData] = useState(vendors);
-  console.log(data);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 

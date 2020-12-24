@@ -21,7 +21,6 @@ const MainApp = () => {
   return (
     <Fragment>
       <Provider store={store}>
-        <Alert />
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing}></Route>

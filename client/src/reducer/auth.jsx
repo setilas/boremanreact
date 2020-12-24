@@ -14,6 +14,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  id: localStorage.getItem("id"),
   role: false,
 };
 export default function (state = initialState, action) {
@@ -42,6 +43,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case USER_LOADED:
+      localStorage.setItem("id", payload._id);
       return {
         ...state,
         isAuthenticated: true,

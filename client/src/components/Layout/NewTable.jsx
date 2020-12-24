@@ -13,7 +13,9 @@ const NewTable = ({ getallvendors, vendors }) => {
   useEffect(() => {
     getallvendors();
     $(document).ready(function () {
-      $("#example").DataTable();
+      $("#example").DataTable({
+        pagingType: "full_numbers",
+      });
     });
   }, [getallvendors]);
 

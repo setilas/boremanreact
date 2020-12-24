@@ -97,6 +97,4 @@ const Sidebar = ({ logout }) => {
   );
 };
 
-
 export default connect(null, { logout })(Sidebar);
-
