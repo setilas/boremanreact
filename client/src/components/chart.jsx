@@ -29,7 +29,7 @@ const KnobChart = (props) => {
 
   return (
     <Fragment>
-      <Breadcrumb parent="Charts" title="Status" />
+      <Breadcrumb parent="" title="Status" />
       <Container fluid={true}>
         <Row>
           <Card>

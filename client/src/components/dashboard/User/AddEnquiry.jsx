@@ -61,6 +61,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
               <input
                 className="input100"
                 type="text"
+                
                 name="location"
                 value={location}
                 onChange={(e) => {
@@ -87,7 +88,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
             </div>
 
             <div className="wrap-input100 validate-input">
-              <span className="label-input100"> GPS Long</span>
+              <span className="label-input100">GPS Long</span>
               <input
                 className="input100"
                 type="text"
