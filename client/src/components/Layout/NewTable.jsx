@@ -4,41 +4,48 @@ import "jquery/dist/jquery.min.js";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
-import { getallvendors } from "../../action/vendor";
+import { getallenquiry} from "../../action/Enquiry";
 import $ from "jquery";
-const NewTable = ({ getallvendors, vendors }) => {
+const NewTable = ({ getallenquiry, profiles }) => {
   // State array variable to save and show data
 
   //USEEFFECT
   useEffect(() => {
-    getallvendors();
+    getallenquiry();
     $(document).ready(function () {
       $("#example").DataTable();
     });
-  }, [getallvendors]);
+  }, [getallenquiry]);
 
   return (
-    <div className="MainDiv">
-      <div class="jumbotron text-center">
-        <h3>View User</h3>
+   
+    <div className="MainDiv" >
+      <div class="jumbotron text-center" style={{background:"cornflowerblue"}}>
+        <h3>View Enquiry</h3>
       </div>
 
       <div className="container">
         <table id="example" class="table table-hover table-bordered">
           <thead>
             <tr>
-              <th>Vendor code</th>
-              <th>Name</th>
-              <th>LastName</th>
+                          <th>Id</th>
+                          <th >Name</th>
+                          <th >Location</th>
+                          <th >GPS(lat)</th>
+                          <th >GPS(long)</th>
+                          <th >Status</th>
             </tr>
           </thead>
           <tbody>
-            {vendors.map((vendor) => {
+            {profiles.map((vendor) => {
               return (
                 <tr>
                   <td>{vendor._id}</td>
-                  <td>{vendor.vendorName}</td>
-                  <td>{vendor.vendorLastName}</td>
+                  <td>{vendor.name}</td>
+                  <td>{vendor.location}</td>
+                  <td>{vendor.lat}</td>
+                  <td>{vendor.long}</td>
+                  <td>{vendor.addstatus}</td>
                 </tr>
               );
             })}
@@ -46,10 +53,11 @@ const NewTable = ({ getallvendors, vendors }) => {
         </table>
       </div>
     </div>
+    
   );
 };
 const mapStateToProps = (state) => ({
-  vendors: state.vendor.vendors,
+  profiles: state.enquiry.profiles,
 });
 
-export default connect(mapStateToProps, { getallvendors })(NewTable);
+export default connect(mapStateToProps, { getallenquiry })(NewTable);
