@@ -6,6 +6,7 @@ const initialState = {
   loading: true,
   error: {},
   redirect: false,
+  user: localStorage.getItem("user"),
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,7 @@ export default function (state = initialState, action) {
     }
 
     case GET_ENQUIRY:
+      localStorage.setItem("user", JSON.stringify(payload.user));
       return {
         ...state,
         profiles: payload,

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Provider } from "react-redux";
-import store from "./store";
+import { store, persistor } from "./store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
@@ -17,11 +17,13 @@ import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
 import NewTable from "./components/Layout/NewTable";
+import { PersistGate } from "redux-persist/integration/react";
 const MainApp = () => {
   return (
     <Fragment>
       <Provider store={store}>
         <BrowserRouter>
+          <PersistGate persistor={persistor}></PersistGate>
           <Switch>
             <Route exact path="/" component={Landing}></Route>
             <Route exact path="/register" component={Register}></Route>
