@@ -27,7 +27,16 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
+state = {
+  isPasswordShown : false
+}
 
+togglePasswordVisibility =()=>{
+  const { isPasswordShown} = this.state;
+  this.setState({ isPasswordShown : !isPasswordShown });
+}
+render = () => {
+  const { isPasswordShown } = this.state;
   return (
     <div class="container-fluid">
       <div class="row ">
@@ -60,7 +69,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                     <label class="col-form-label">Password</label>
                     <input
                       class="form-control"
-                      type="password"
+                      type={(isPasswordShown) ? "text" : "password"}
                       name="password"
                       value={password}
                       required=""
@@ -70,7 +79,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                       }}
                     />
                     <div class="show-hide">
-                      <span class="show"> </span>
+                    <span class="show" onClick={this.togglePasswordVisibility}> </span>
                     </div>
                   </div>
                   <div class="form-group mb-0">
@@ -104,5 +113,5 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
   role: state.auth.role,
 });
-
+}
 export default connect(mapStateToProps, { login })(Login);
