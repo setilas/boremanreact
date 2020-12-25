@@ -27,15 +27,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
-state = {
-  isPasswordShown : false
-}
 
-togglePasswordVisibility =()=>{
-  const { isPasswordShown} = this.state;
-  this.setState({ isPasswordShown : !isPasswordShown });
-}
-render = () => {
   const { isPasswordShown } = this.state;
   return (
     <div class="container-fluid">
@@ -113,5 +105,5 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
   role: state.auth.role,
 });
-}
+
 export default connect(mapStateToProps, { login })(Login);
