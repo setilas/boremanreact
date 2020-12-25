@@ -10,15 +10,17 @@ import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
 import { getallvendors } from "../../action/vendor";
+import { getUsers } from "../../action/auth";
 
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { connect } from "react-redux";
 
-const DataTables = ({ getallvendors, vendors }) => {
+const DataTables = ({ getallvendors, vendors, getUsers }) => {
   //USEEFFECT
   useEffect(() => {
+    getUsers();
     getallvendors();
-  }, [getallvendors]);
+  }, []);
 
   //HOOKS
   const [data, setData] = useState(vendors);
@@ -127,6 +129,9 @@ const DataTables = ({ getallvendors, vendors }) => {
 };
 const mapStateToProps = (state) => ({
   vendors: state.vendor.vendors,
+  users: state.vendor.users,
 });
 
-export default connect(mapStateToProps, { getallvendors })(DataTables);
+export default connect(mapStateToProps, { getallvendors, getUsers })(
+  DataTables
+);

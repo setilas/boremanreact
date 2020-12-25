@@ -1,4 +1,9 @@
-import { ADD_VENDOR, GET_VENDOR, GET_ALLVENDORS } from "../action/type";
+import {
+  ADD_VENDOR,
+  GET_VENDOR,
+  GET_ALLVENDORS,
+  GET_USERS,
+} from "../action/type";
 
 const initialState = {
   vendors: [],
@@ -6,6 +11,7 @@ const initialState = {
   vendor: null,
   error: {},
   redirect: false,
+  users: [],
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +29,12 @@ export default function (state = initialState, action) {
         ...state,
         vendors: payload,
         loading: false,
+      };
+    }
+    case GET_USERS: {
+      return {
+        ...state,
+        users: payload,
       };
     }
 
