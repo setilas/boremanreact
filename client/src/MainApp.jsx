@@ -16,7 +16,7 @@ import Adminuser from "./components/dashboard/Admin/Adminuser";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
-import NewTable from "./components/Layout/NewTable";
+
 import { PersistGate } from "redux-persist/integration/react";
 const MainApp = () => {
   return (

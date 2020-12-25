@@ -16,7 +16,7 @@ const Viewuser = ({  getallvendors, vendors }) => {
   useEffect(() => {
     getallvendors();
     $(document).ready(function () {
-      $("#example").viewuser();
+      $("#example").DataTable();
     });
   }, [getallvendors]);
   const activeEnquiry = vendors.length;
