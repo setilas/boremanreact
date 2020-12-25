@@ -21,14 +21,14 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     e.preventDefault();
     login({ email, password });
   };
+    
   console.log(role);
 
   if (isAuthenticated) {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
-
-  const { isPasswordShown } = this.state;
+  
   return (
     <div class="container-fluid">
       <div class="row ">
@@ -61,19 +61,23 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                     <label class="col-form-label">Password</label>
                     <input
                       class="form-control"
-                      type={(isPasswordShown) ? "text" : "password"}
+                      type=  "password"
                       name="password"
-                      value={password}
+                      value="fakePSW"
+                      id="myInput"
                       required=""
                       placeholder="*********"
-                      onChange={(e) => {
+                      onChange={(e) =>
+                         {
                         onChange(e);
                       }}
-                    />
-                    <div class="show-hide">
-                    <span class="show" onClick={this.togglePasswordVisibility}> </span>
+                      
+                />
+                <div class="show-hide">
+                    <span class="show"> </span>
+                  
                     </div>
-                  </div>
+                
                   <div class="form-group mb-0">
                     <div class="checkbox p-0">
                       <input id="checkbox1" type="checkbox" />
@@ -91,19 +95,22 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                       <a class="ml-2">Create Account</a>
                     </Link>
                   </p>
+                </div>
                 </form>
+              </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
-const mapStateToProps = (state) => ({
+ 
+ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
   role: state.auth.role,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect( mapStateToProps , { login })(Login);
