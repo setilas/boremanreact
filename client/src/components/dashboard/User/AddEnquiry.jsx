@@ -125,7 +125,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                   value={addstatus}
                   onChange={(e) => {
                     onChange(e);
-                  }}
+                  }} 
                 >
                   <option>closed</option>
                   <option>Open</option>
