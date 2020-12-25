@@ -20,7 +20,6 @@ const DataTables = ({ getallvendors, vendors }) => {
     getallvendors();
   }, [getallvendors]);
 
-  console.log(vendors);
   //HOOKS
   const [data, setData] = useState(vendors);
   const [selectedRows, setSelectedRows] = useState([]);

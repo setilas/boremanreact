@@ -15,10 +15,11 @@ import $ from "jquery";
 const ViewEnquiry = ({ enquirybyid, profiles, user }) => {
   useEffect(() => {
     enquirybyid(user._id);
+
     $(document).ready(function () {
       $("#example").DataTable();
     });
-  }, [enquirybyid]);
+  }, [user._id]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
   return (
