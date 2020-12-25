@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
+import Alert from "../../Auth/Alert";
 const logo = require("../../../assets/images/logo/logo.png");
 
 const UserDashboard = () => {
@@ -18,6 +19,7 @@ const UserDashboard = () => {
       <div class="page-wrapper compact-wrapper" id="pageWrapper">
         {/*  page header */}
         <Header></Header>
+        <Alert />
         {/* page body contains sidebar and content  */}
         <div class="page-body-wrapper sidebar-icon document-content">
           <Sidebar></Sidebar>
@@ -42,10 +44,14 @@ const UserDashboard = () => {
                   </div>
                 </div>
               </div> */}
+
+              
             </div>
             <div class="container-fluid">
               <div class="row">
-                <div class="col-sm-12 col-xl-6"></div>
+                <div class="col-sm-12 col-xl-6">
+                  <KnobChart />
+                </div>
               </div>
             </div>
           </div>

@@ -4,23 +4,29 @@ import "jquery/dist/jquery.min.js";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
-import { getallenquiry} from "../../../action/Enquiry";
+import { enquirybyid } from "../../../action/Enquiry";
+import "../../scss/table.scss";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
-const NewTable = ({ getallenquiry, profiles }) => {
-  // State array variable to save and show data
 
-  //USEEFFECT
+const ViewEnquiry = ({ enquirybyid, profiles, user }) => {
   useEffect(() => {
-    getallenquiry();
+    enquirybyid(user._id);
     $(document).ready(function () {
       $("#example").DataTable();
     });
-  }, [getallenquiry]);
-
+  }, [enquirybyid]);
+  const activeEnquiry = profiles.length;
+  console.log(activeEnquiry);
   return (
-   
-    <div className="MainDiv" >
-      <div class="jumbotron text-center" style={{background:"cornflowerblue"}}>
+    <div className="MainDiv">
+      <div
+        class="jumbotron text-center"
+        style={{ background: "cornflowerblue" }}
+      >
         <h3>View Enquiry</h3>
       </div>
 
@@ -28,24 +34,24 @@ const NewTable = ({ getallenquiry, profiles }) => {
         <table id="example" class="table table-hover table-bordered">
           <thead>
             <tr>
-                          <th>Id</th>
-                          <th >Name</th>
-                          <th >Location</th>
-                          <th >GPS(lat)</th>
-                          <th >GPS(long)</th>
-                          <th >Status</th>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>GPS(lat)</th>
+              <th>GPS(long)</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {profiles.map((vendor) => {
+            {profiles.map((profile) => {
               return (
                 <tr>
-                  <td>{vendor._id}</td>
-                  <td>{vendor.name}</td>
-                  <td>{vendor.location}</td>
-                  <td>{vendor.lat}</td>
-                  <td>{vendor.long}</td>
-                  <td>{vendor.addstatus}</td>
+                  <td>{profile._id}</td>
+                  <td>{profile.name}</td>
+                  <td>{profile.location}</td>
+                  <td>{profile.lat}</td>
+                  <td>{profile.long}</td>
+                  <td>{profile.addstatus}</td>
                 </tr>
               );
             })}
@@ -53,11 +59,13 @@ const NewTable = ({ getallenquiry, profiles }) => {
         </table>
       </div>
     </div>
-    
   );
 };
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
+  user: state.auth.user,
+  id: state.auth.id,
+  userData: state.auth.userData,
 });
 
-export default connect(mapStateToProps, { getallenquiry })(NewTable);
+export default connect(mapStateToProps, { enquirybyid })(ViewEnquiry);

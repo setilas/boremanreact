@@ -13,7 +13,9 @@ const NewTable = ({ getallenquiry, profiles }) => {
   useEffect(() => {
     getallenquiry();
     $(document).ready(function () {
-      $("#example").DataTable();
+      $("#example").DataTable({
+        pagingType: "full_numbers",
+      });
     });
   }, [getallenquiry]);
 

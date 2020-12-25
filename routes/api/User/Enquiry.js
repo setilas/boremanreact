@@ -2,7 +2,7 @@ const express = require("express");
 const auth = require("../../../middleware/auth");
 const router = express.Router();
 const Enquiry = require("../../../models/User/Enquiry");
-
+const { check, validationResult } = require("express-validator");
 //post enquires
 
 router.post("/", auth, async (req, res) => {
@@ -19,10 +19,10 @@ router.post("/", auth, async (req, res) => {
 
   const enquiry = new Enquiry(enquiryField);
   try {
-    await enquiry.save();
-    return res.json({ enquiry });
+    const result = await enquiry.save();
+    return res.json(result);
   } catch (err) {
-    return res.status(500).send(err);
+    res.status(500).send("server error");
   }
 });
 
@@ -39,7 +39,7 @@ router.get("/:id", auth, async (req, res) => {
 
 //route to get all enquires
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const result = await Enquiry.find();
     return res.json(result);

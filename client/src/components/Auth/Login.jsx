@@ -4,7 +4,9 @@ import { Link, Redirect } from "react-router-dom";
 import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
+import Alert from "./Alert";
 const loginbg = require("../../assets/images/login/1.jpg");
+
 const Login = ({ login, isAuthenticated, user, role }) => {
   const [formData, SetFormData] = useState({
     email: "",
@@ -29,7 +31,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
   return (
     <div class="container-fluid">
       <div class="row ">
-        <div class="col-xl-5">
+        <div class="col-xl-5 d-none d-md-block ">
           <img class="bg-img-cover bg-center" src={loginbg} alt="looginpage" />
         </div>
         <div class="col-xl-7 p-0">
@@ -37,6 +39,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
             <div>
               <div class="login-main">
                 <form class="theme-form" onSubmit={(e) => onSubmit(e)}>
+                  <Alert />
                   <h4>Sign in to account</h4>
                   <p>Enter your email & password to login</p>
                   <div class="form-group">

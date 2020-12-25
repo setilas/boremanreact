@@ -1,16 +1,19 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { getallenquiry } from "../../../action/Enquiry";
+import { getAllEnquiry } from "../../../action/Enquiry";
 import "../../scss/table.scss";
-import "datatables.net-dt/js/dataTables.dataTables";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
 import Moment from "react-moment";
-const Adminview =()=>{
+
+const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
+  useEffect(() => {
+    getAllEnquiry();
+  }, [getAllEnquiry]);
+  const activeEnquiry = profiles.length;
+  console.log(activeEnquiry);
   return (
     <Fragment>
       <div style={{ height: "600px" }} className="tablebody">
-     
-         <div class="container text-center text-white">
+        <div class="container text-center text-white">
           <div class="row pt-5">
             <div class="col-lg-8 mx-auto">
               <h4 className="strong">View Enquiry</h4>
@@ -26,67 +29,58 @@ const Adminview =()=>{
                     <table class="table table-hover table-striped">
                       <thead>
                         <tr>
-                          <th >Vendor Code</th>
-                          <th >Vendor Name</th>
-                          <th >Active Enquiry</th>
-                          <th >Total Enquiry</th>
-                          <th >Work Complete</th>
-                          
-                        </tr>
+                          <th scope="col">Date</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">GPS(lat)</th>
+                          <th scope="col">GPS(long)</th>
+                          <th scope="col">Status</th>
+                        </tr>{" "}
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>A1</td>
-                          <td>Mark spencer</td>
-                          <td>15</td>
-                          <td>30</td>
-                          <td>4</td>
-                        </tr>
-                        <tr>
-                          <td>A1</td>
-                          <td>Mark spencer</td>
-                          <td>15</td>
-                          <td>30</td>
-                          <td>4</td>
-                        </tr>
-                      </tbody>
-                      {/* {profiles.length >= 0 ? (
+                      {profiles.length > 0 ? (
                         profiles.map((profile) => (
                           <tbody>
                             <tr>
-                              
-                              <td>{profile.code}</td>
+                              <td>
+                                {
+                                  <Moment format="YYYY/MM/DD">
+                                    {profile.date}
+                                  </Moment>
+                                }
+                              </td>
                               <td>{profile.name}</td>
-                              <td>{profile.active}</td>
-                              <td>{profile.total}</td>
-                              <td>{profile.workcomplete}</td>
+                              <td>{profile.location}</td>
+                              <td>{profile.lat}</td>
+                              <td>{profile.long}</td>
+                              <td>{profile.addstatus}</td>
                             </tr>
                           </tbody>
                         ))
-                      ) : ( */}
-                        {/* <h1>Nothing</h1>
-                      )} */}
+                      ) : (
+                        <h1>Nothing</h1>
+                      )}
                     </table>
                   </div>
-                   {/* <a
+                  {/* <a
               class="btn btn-primary rounded-0 btn-block"
               id="insertRow"
               href="#"
             >
               Add new row
-            </a>  */}
-                 </div>
+            </a> */}
+                </div>
               </div>
             </div>
           </div>
-        </div> 
-       </div> 
-    </Fragment> 
+        </div>
+      </div>
+    </Fragment>
   );
 };
-// const mapStateToProps = (state) => ({
-//   profiles: state.enquiry.profiles,
-// });
 
+const mapStateToProps = (state) => ({
+  profiles: state.enquiry.profiles,
+  user: state.auth.user,
+});
 
-export default Adminview;
+export default connect(mapStateToProps, { getAllEnquiry })(AdminView);

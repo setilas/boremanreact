@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import React, { Fragment, useState } from "react";
 import { addEnquiry } from "../../../action/Enquiry";
 import "../../scss/form.scss";
-const Addenquiry = ({ addEnquiry }) => {
+import { Redirect } from "react-router-dom";
+import Alert from "../../Auth/Alert";
+const Addenquiry = ({ addEnquiry, redirect }) => {
   const [enquiry, setEnquiry] = useState({
     name: " ",
     location: " ",
@@ -22,6 +24,9 @@ const Addenquiry = ({ addEnquiry }) => {
     addEnquiry({ name, location, lat, long, estimate, addstatus });
     console.log("success");
   };
+  if (redirect) {
+    return <Redirect to="/userdashboard"></Redirect>;
+  }
 
   return (
     <Fragment>
@@ -34,6 +39,7 @@ const Addenquiry = ({ addEnquiry }) => {
             }}
           >
             <span className="contact100-form-title">Add enquiry</span>
+            <Alert />
 
             <div className="wrap-input100 " data-validate="Name is required">
               <span className="label-input100">Your Name</span>
@@ -149,4 +155,7 @@ const Addenquiry = ({ addEnquiry }) => {
   );
 };
 
-export default connect(null, { addEnquiry })(Addenquiry);
+const mapStateToProps = (state) => ({
+  redirect: state.enquiry.redirect,
+});
+export default connect(mapStateToProps, { addEnquiry })(Addenquiry);

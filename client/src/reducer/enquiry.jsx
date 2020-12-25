@@ -5,15 +5,24 @@ const initialState = {
   profiles: [],
   loading: true,
   error: {},
+  redirect: false,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case ADD_ENQUIRY: {
+      return {
+        ...state,
+        payload,
+        redirect: true,
+      };
+    }
+
     case GET_ENQUIRY:
       return {
         ...state,
-        profile: payload,
+        profiles: payload,
         loading: false,
       };
     case GET_ALLENQUIRY:
