@@ -60,7 +60,9 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   <td>{profile.totalEnquiry}</td>
                   <td>{0}</td>
                   <td>
-                    <button className="btn btn-primary">More info</button>
+                    <Link to={`/userinfo/${profile._id}`}>
+                      <button className="btn btn-primary">More info</button>
+                    </Link>
                   </td>
                 </tr>
               );
@@ -74,7 +76,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   <td>{profile.totalEnquiry}</td>
                   <td>{0}</td>
                   <td>
-                    <Link to="/moreinfo">
+                    <Link to={`/moreinfo/${profile._id}`}>
                       <button className="btn btn-primary">More info</button>
                     </Link>
                   </td>

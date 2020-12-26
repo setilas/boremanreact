@@ -3,6 +3,7 @@ import {
   GET_VENDOR,
   GET_ALLVENDORS,
   GET_USERS,
+  GET_USER,
 } from "../action/type";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   error: {},
   redirect: false,
   users: [],
+  user: null,
 };
 
 export default function (state = initialState, action) {
@@ -37,7 +39,18 @@ export default function (state = initialState, action) {
         users: payload,
       };
     }
-
+    case GET_USER: {
+      return {
+        ...state,
+        user: payload,
+      };
+    }
+    case GET_VENDOR: {
+      return {
+        ...state,
+        vendor: payload,
+      };
+    }
     default:
       return state;
   }

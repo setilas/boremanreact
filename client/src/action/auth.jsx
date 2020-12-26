@@ -6,6 +6,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   GET_USERS,
+  GET_USER,
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
@@ -87,6 +88,18 @@ export const getUsers = () => async (dispatch) => {
     const res = await axios.get("api/auth/users");
     dispatch({
       type: GET_USERS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getuserbyid = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`api/auth/${id}`);
+    dispatch({
+      type: GET_USER,
       payload: res.data,
     });
   } catch (err) {

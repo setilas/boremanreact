@@ -18,6 +18,7 @@ import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
 import NewTable from "./components/Layout/NewTable";
 import { PersistGate } from "redux-persist/integration/react";
+import InfoUser from "./components/dashboard/Admin/InfoUser";
 const MainApp = () => {
   return (
     <Fragment>
@@ -36,7 +37,11 @@ const MainApp = () => {
             ></Route>
 
             <Route exact path="/addenquiry" component={Addenquiry}></Route>
-            <Route exact path="/viewenquiry" component={ViewEnquiry}></Route>
+            <Route
+              exact
+              path="/viewenquiry/:id"
+              component={ViewEnquiry}
+            ></Route>
             <Route
               exact
               path="/admindashboard"
@@ -45,7 +50,8 @@ const MainApp = () => {
             <Route exact path="/adduser" component={Addview}></Route>
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
-            <Route exact path="/moreinfo" component={MoreInfo}></Route>
+            <Route exact path="/moreinfo/:id" component={MoreInfo}></Route>
+            <Route exact path="/userinfo/:id" component={InfoUser}></Route>
             <Route exact path="/table" component={NewTable}></Route>
 
             <Main2 />

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import { CardBody, Card, CardHeader, Row } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
+import { loadUser } from "../../action/auth";
+import Loader from "../../layout/loader";
 
 const logo = require("../../assets/images/logo/logo.png");
 
-const Sidebar = ({ logout }) => {
+const Sidebar = ({ logout, user }) => {
   const logouthandler = () => {
     logout();
   };
@@ -15,13 +17,8 @@ const Sidebar = ({ logout }) => {
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
-          
-          <img
-            class="img-fluid for-light"
-            src={logo}
-            alt=""
-          />
-         
+          <img class="img-fluid for-light" src={logo} alt="" />
+
           <img
             class="img-fluid for-dark"
             src="../assets/images/logo/logo_dark.png"
@@ -47,13 +44,11 @@ const Sidebar = ({ logout }) => {
         </a>
       </div>
 
-      
       <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow">
           <i data-feather="arrow-left"></i>
         </div>
         <div id="sidebar-menu">
-          
           <ul class="sidebar-links custom-scrollbar">
             <li class="back-btn">
               <a href="index.html">
@@ -80,7 +75,7 @@ const Sidebar = ({ logout }) => {
                   <Link to="/addenquiry">AddEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/viewenquiry">ViewEnquiry</Link>
+                  <Link to={`/viewenquiry/${user._id}`}>ViewEnquiry</Link>
                 </li>
                 <li>
                   <Link to="/status">status</Link>
@@ -94,15 +89,13 @@ const Sidebar = ({ logout }) => {
             </li>
           </ul>
         </div>
-
-
       </nav>
-
-      
     </div>
-    
-    
   );
 };
 
-export default connect(null, { logout })(Sidebar);
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps, { logout, loadUser })(Sidebar);

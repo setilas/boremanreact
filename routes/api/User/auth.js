@@ -39,6 +39,19 @@ router.get("/users", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(400).send("bad request");
+    }
+
+    return res.json(user);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
 router.post(
   "/",

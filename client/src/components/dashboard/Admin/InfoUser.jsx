@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { getvendorbyid } from "../../../action/vendor";
+import { getuserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
@@ -7,14 +7,14 @@ import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
-export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
+const InfoUser = ({ match, getuserbyid, user }) => {
   useEffect(() => {
-    getvendorbyid(match.params.id);
-  }, [getvendorbyid]);
+    getuserbyid(match.params.id);
+  }, []);
 
   return (
     <Fragment>
-      {vendor === null ? (
+      {user === null ? (
         <Loader />
       ) : (
         <Fragment>
@@ -48,7 +48,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor._id}
+                                  placeholder="HHHHH"
                                   id="t1"
                                   class="tb"
                                 />
@@ -59,7 +59,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorName}
+                                  placeholder="JJ"
                                   id="t2"
                                   class="tb"
                                 />
@@ -70,7 +70,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorAddress}
+                                  placeholder="JJJJJJJ"
                                   id="t3"
                                   class="tb"
                                 />
@@ -81,7 +81,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorPhone}
+                                  placeholder="JJJJJJJJ"
                                   id="t4"
                                   class="tb"
                                 />
@@ -92,7 +92,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorEmail}
+                                  placeholder="JJJJJJJJJ"
                                   id="t5"
                                   class="tb"
                                 />
@@ -103,7 +103,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.totalEnquiry}
+                                  placeholder="JJJJJJJJJJJ"
                                   id="t6"
                                   class="tb"
                                 />
@@ -178,7 +178,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  vendor: state.vendor.vendor,
+  user: state.vendor.user,
 });
 
-export default connect(mapStateToProps, { getvendorbyid })(MoreInfo);
+export default connect(mapStateToProps, { getuserbyid })(InfoUser);

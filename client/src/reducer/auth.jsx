@@ -50,6 +50,7 @@ export default function (state = initialState, action) {
         user: payload,
         role: payload == "admin" ? true : false,
       };
+
     default:
       return state;
   }
