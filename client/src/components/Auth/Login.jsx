@@ -5,6 +5,7 @@ import { login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 import Alert from "./Alert";
+import "../scss/login.scss";
 const loginbg = require("../../assets/images/login/1.jpg");
 
 const Login = ({ login, isAuthenticated, user, role }) => {
@@ -28,6 +29,16 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
+  useState = {
+    isPasswordShown : false
+  }
+
+  togglePasswordVisibility =()=>{
+    const {isPasswordShown} = this.State;
+    this.setState({ isPasswordShown : !isPasswordShown });
+  }
+
+    const { isPasswordShown } = this.State;
   
   return (
     <div class="container-fluid">
@@ -61,7 +72,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                     <label class="col-form-label">Password</label>
                     <input
                       class="form-control"
-                      type=  "password"
+                      type={(isPasswordShown) ? "text" : "password"}
                       name="password"
                       value="fakePSW"
                       id="myInput"
@@ -73,10 +84,8 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                       }}
                       
                 />
-                <div class="show-hide">
-                    <span class="show"> </span>
-                  
-                    </div>
+                <i className="fa fa-eye password-icon" onClick={this.togglePasswordVisibility}
+                />
                 
                   <div class="form-group mb-0">
                     <div class="checkbox p-0">
