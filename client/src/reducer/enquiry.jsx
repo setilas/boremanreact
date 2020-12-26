@@ -12,14 +12,6 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case ADD_ENQUIRY: {
-      return {
-        ...state,
-        payload,
-        redirect: true,
-      };
-    }
-
     case GET_ENQUIRY:
       localStorage.setItem("user", JSON.stringify(payload.user));
       return {
