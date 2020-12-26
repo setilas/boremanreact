@@ -12,6 +12,7 @@ import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { getUsers } from "../../../action/auth";
 import $ from "jquery";
+import { Link } from "react-router-dom";
 
 const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
   useEffect(() => {
@@ -73,7 +74,9 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   <td>{profile.totalEnquiry}</td>
                   <td>{0}</td>
                   <td>
-                    <button className="btn btn-primary">More info</button>
+                    <Link to="/moreinfo">
+                      <button className="btn btn-primary">More info</button>
+                    </Link>
                   </td>
                 </tr>
               );

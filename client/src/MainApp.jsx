@@ -12,7 +12,7 @@ import Addenquiry from "./components/dashboard/User/AddEnquiry";
 import ViewEnquiry from "./components/dashboard/User/Viewenquiry";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Adminview from "./components/dashboard/Admin/Adminview";
-import Adminuser from "./components/dashboard/Admin/Adminuser";
+import MoreInfo from "./components/dashboard/Admin/MoreInfo";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
@@ -42,10 +42,10 @@ const MainApp = () => {
               path="/admindashboard"
               component={AdminDashboard}
             ></Route>
+            <Route exact path="/adduser" component={Addview}></Route>
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
-            <Route exact path="/adminuser" component={Adminuser}></Route>
-            <Route exact path="/adduser" component={Addview}></Route>
+            <Route exact path="/moreinfo" component={MoreInfo}></Route>
             <Route exact path="/table" component={NewTable}></Route>
 
             <Main2 />
