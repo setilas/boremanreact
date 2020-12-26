@@ -5,15 +5,18 @@ const initialState = {
   profiles: [],
   loading: true,
   error: {},
+  redirect: false,
+  user: localStorage.getItem("user"),
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_ENQUIRY:
+      localStorage.setItem("user", JSON.stringify(payload.user));
       return {
         ...state,
-        profile: payload,
+        profiles: payload,
         loading: false,
       };
     case GET_ALLENQUIRY:

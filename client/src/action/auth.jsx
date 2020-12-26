@@ -5,6 +5,7 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
+  GET_USERS,
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
@@ -75,10 +76,24 @@ export const login = ({ email, password }) => async (dispatch) => {
     const errors = err.response.data.errors;
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-      dispatch({ type: LOGIN_FAIL });
     }
   }
 };
+
+//get all users
+
+export const getUsers = () => async (dispatch) => {
+  try {
+    const res = await axios.get("api/auth/users");
+    dispatch({
+      type: GET_USERS,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,

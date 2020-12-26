@@ -4,11 +4,10 @@ import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
-import Sidebar from "../../Layout/Sidebar";
-import Alert from "../../Auth/Alert";
+import Sidebar2 from "../../Layout/Sidebar2";
 const logo = require("../../../assets/images/logo/logo.png");
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
   return (
     <div>
       <Loader />
@@ -19,10 +18,10 @@ const UserDashboard = () => {
       <div class="page-wrapper compact-wrapper" id="pageWrapper">
         {/*  page header */}
         <Header></Header>
-        <Alert />
         {/* page body contains sidebar and content  */}
         <div class="page-body-wrapper sidebar-icon document-content">
-          <Sidebar></Sidebar>
+          <Sidebar2></Sidebar2>
+
           <div class="page-body">
             <div class="container-fluid">
               {/* <div class="page-title">
@@ -44,8 +43,6 @@ const UserDashboard = () => {
                   </div>
                 </div>
               </div> */}
-
-              
             </div>
             <div class="container-fluid">
               <div class="row">
@@ -61,8 +58,9 @@ const UserDashboard = () => {
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(UserDashboard);
+export default connect(mapStateToProps, { login })(AdminDashboard);

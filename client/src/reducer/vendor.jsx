@@ -1,27 +1,43 @@
-import { ADD_VENDOR, GET_VENDOR, GET_ALLVENDORS } from "../action/type";
+import {
+  ADD_VENDOR,
+  GET_VENDOR,
+  GET_ALLVENDORS,
+  GET_USERS,
+} from "../action/type";
 
 const initialState = {
-  profile: null,
-  profiles: [],
+  vendors: [],
   loading: true,
+  vendor: null,
   error: {},
+  redirect: false,
+  users: [],
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_VENDOR:
+    case ADD_VENDOR: {
       return {
         ...state,
-        profile: payload,
-        loading: false,
+        vendor: payload,
+        redirect: true,
       };
-    case GET_ALLVENDORS:
+    }
+    case GET_ALLVENDORS: {
       return {
         ...state,
-        profiles: payload,
+        vendors: payload,
         loading: false,
       };
+    }
+    case GET_USERS: {
+      return {
+        ...state,
+        users: payload,
+      };
+    }
+
     default:
       return state;
   }

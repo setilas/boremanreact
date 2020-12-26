@@ -15,7 +15,6 @@ const Sidebar = ({ logout }) => {
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
-          
           <img
             class="img-fluid for-light"
             src={logo}
@@ -46,14 +45,11 @@ const Sidebar = ({ logout }) => {
           />
         </a>
       </div>
-
-      
       <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow">
           <i data-feather="arrow-left"></i>
         </div>
         <div id="sidebar-menu">
-          
           <ul class="sidebar-links custom-scrollbar">
             <li class="back-btn">
               <a href="index.html">
@@ -77,10 +73,13 @@ const Sidebar = ({ logout }) => {
               </a>
               <ul class="sidebar-submenu">
                 <li className="sidebar-list">
-                  <Link to="/addenquiry">AddEnquiry</Link>
+                  <Link to="/adduser">AddUser</Link>
                 </li>
                 <li>
-                  <Link to="/viewenquiry">ViewEnquiry</Link>
+                  <Link to="/viewuser">ViewUser</Link>
+                </li>
+                <li>
+                  <Link to="/adminview">ViewEnquiry</Link>
                 </li>
                 <li>
                   <Link to="/status">status</Link>
@@ -94,14 +93,8 @@ const Sidebar = ({ logout }) => {
             </li>
           </ul>
         </div>
-
-
       </nav>
-
-      
     </div>
-    
-    
   );
 };
 

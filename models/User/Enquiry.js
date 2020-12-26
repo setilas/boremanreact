@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const Enquiryschema = new mongoose.Schema({
   user: {
@@ -35,11 +36,8 @@ const Enquiryschema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  counter: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
-    },
+  totalEnquiry: {
+    type: Number,
   },
 });
 

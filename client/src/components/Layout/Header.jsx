@@ -33,13 +33,8 @@ export const Header = () => {
               </a>
             </div>
             <div class="toggle-sidebar">
-              <i
-                class="status_toggle middle"
-                data-feather="grid"
-                id="sidebar-toggle"
-              >
-                {" "}
-              </i>
+              
+              <i class="fa fa-bars"></i>
             </div>
           </div>
           {/* <div class="left-header col horizontal-wrapper pl-0">

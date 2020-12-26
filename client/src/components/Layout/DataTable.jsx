@@ -1,38 +1,68 @@
-import React, { Fragment, useState, useCallback, useMemo } from "react";
-import Breadcrumb from "../../layout/breadcrumb";
+import React, {
+  Fragment,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from "react";
+import "../scss/admin.scss";
 import differenceBy from "lodash/differenceBy";
 import { toast } from "react-toastify";
 import DataTable from "react-data-table-component";
-import { tableData } from "./Data";
-import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+import { getallvendors } from "../../action/vendor";
+import { getUsers } from "../../action/auth";
 
-const DataTables = () => {
-  const [data, setData] = useState(tableData);
+import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+import { connect } from "react-redux";
+
+const DataTables = ({ getallvendors, vendors, getUsers }) => {
+  //USEEFFECT
+  useEffect(() => {
+    getUsers();
+    getallvendors();
+  }, []);
+
+  //HOOKS
+  const [data, setData] = useState(vendors);
   const [selectedRows, setSelectedRows] = useState([]);
   const [toggleCleared, setToggleCleared] = useState(false);
 
   const tableColumns = [
     {
-      name: "ID",
-      selector: "id",
+      name: "Vendor Code",
+      selector: "_id",
       sortable: true,
       center: true,
     },
     {
-      name: "Name",
-      selector: "name",
+      name: "Vendor Name",
+      selector: "vendorName",
       sortable: true,
       center: true,
     },
     {
-      name: "Status",
-      selector: "status",
+      name: <i className="fa fa-circle font-success f-12">Active Enquiry</i>,
+      selector: "active",
       sortable: true,
       center: true,
     },
     {
-      name: "Creat_on",
-      selector: "creat_on",
+      name: "Total Enquiry",
+      selector: "total",
+      sortable: true,
+      center: true,
+    },
+    {
+      name: (
+        <i className="fa fa-circle font-danger f-12">Total Work Complete</i>
+      ),
+      selector: "total_work",
+      sortable: true,
+      center: true,
+    },
+    {
+      name: "User info",
+      selector: "info",
       sortable: true,
       center: true,
     },
@@ -66,33 +96,42 @@ const DataTables = () => {
 
   return (
     <Fragment>
-      <Breadcrumb parent="Table" title="Data Tables" />
-      <Container fluid={true}>
-        <Row>
-          <Col sm="12">
-            <Card>
-              <CardHeader>
-                <h5>{"Select Multiple and Delete Single Data"}</h5>
-              </CardHeader>
-              <CardBody>
-                <DataTable
-                  data={data}
-                  columns={tableColumns}
-                  striped={true}
-                  center={true}
-                  selectableRows
-                  persistTableHead
-                  contextActions={contextActions}
-                  onSelectedRowsChange={handleRowSelected}
-                  clearSelectedRows={toggleCleared}
-                />
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      <div className="container-contact100">
+        <Container fluid={true}>
+          <Row>
+            <Col sm="12">
+              <Card>
+                <CardHeader
+                  style={{ background: "#C4F6F7", textAlign: "center" }}
+                >
+                  <h5>{"View User"}</h5>
+                </CardHeader>
+                <CardBody>
+                  <DataTable
+                    data={data}
+                    columns={tableColumns}
+                    striped={true}
+                    center={true}
+                    selectableRows
+                    persistTableHead
+                    contextActions={contextActions}
+                    onSelectedRowsChange={handleRowSelected}
+                    clearSelectedRows={toggleCleared}
+                  />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  vendors: state.vendor.vendors,
+  users: state.vendor.users,
+});
 
-export default DataTables;
+export default connect(mapStateToProps, { getallvendors, getUsers })(
+  DataTables
+);
