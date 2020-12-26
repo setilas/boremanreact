@@ -5,7 +5,6 @@ const initialState = {
   profiles: [],
   loading: true,
   error: {},
-  redirect: false,
   user: localStorage.getItem("user"),
 };
 

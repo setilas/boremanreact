@@ -39,7 +39,7 @@ router.get("/users", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/user/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {

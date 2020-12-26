@@ -8,10 +8,8 @@ import {
 
 const initialState = {
   vendors: [],
-  loading: true,
   vendor: null,
   error: {},
-  redirect: false,
   users: [],
   user: null,
 };
@@ -23,14 +21,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         vendor: payload,
-        redirect: true,
       };
     }
     case GET_ALLVENDORS: {
       return {
         ...state,
         vendors: payload,
-        loading: false,
       };
     }
     case GET_USERS: {

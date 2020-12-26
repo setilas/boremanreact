@@ -41,10 +41,6 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
     });
   };
 
-  if (redirect) {
-    return <Redirect to="/admindashboard"></Redirect>;
-  }
-
   return (
     <div className="container-fluid p-0 ">
       <div className="row">

@@ -97,7 +97,7 @@ export const getUsers = () => async (dispatch) => {
 
 export const getuserbyid = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`api/auth/${id}`);
+    const res = await axios.get(`api/auth/user/${id}`);
     dispatch({
       type: GET_USER,
       payload: res.data,

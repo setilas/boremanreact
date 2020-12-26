@@ -22,11 +22,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addEnquiry({ name, location, lat, long, estimate, addstatus });
-    console.log("success");
   };
-  if (redirect) {
-    return <Redirect to="/userdashboard"></Redirect>;
-  }
 
   return (
     <Fragment>
