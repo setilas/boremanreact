@@ -21,8 +21,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
     getUsers();
     getallvendors();
   }, []);
-  const activeEnquiry = vendors.length;
-  console.log(activeEnquiry);
+  const Completed = 0;
   return (
     <div className="MainDiv">
       <div
@@ -56,10 +55,12 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                 <tr>
                   <td>{profile._id}</td>
                   <td>{profile.firstname}</td>
-                  <td>{profile.location}</td>
                   <td>{profile.totalEnquiry}</td>
-                  <td>{profile.long}</td>
-                  <td>{profile.addstatus}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{0}</td>
+                  <td>
+                    <button className="btn btn-primary">More info</button>
+                  </td>
                 </tr>
               );
             })}
@@ -68,10 +69,12 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                 <tr>
                   <td>{profile._id}</td>
                   <td>{profile.vendorName}</td>
-                  <td>{profile.location}</td>
                   <td>{profile.totalEnquiry}</td>
-                  <td>{profile.long}</td>
-                  <td>{profile.addstatus}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{0}</td>
+                  <td>
+                    <button className="btn btn-primary">More info</button>
+                  </td>
                 </tr>
               );
             })}
