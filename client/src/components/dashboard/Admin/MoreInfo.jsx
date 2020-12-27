@@ -28,14 +28,19 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
-
-              <div class="page-body" s>
+             <div class="page-body" >
                 <div class="container-fluid">
                   <div class="card" style={{ marginTop: "200px" }}>
                     <div class="container">
                       <div id="main">
                         <div class="h-tag"></div>
-
+                        <div class="page-body">
+          
+            
+             
+                  <h3>View User</h3>
+                </div>
+          
                         <div class="login">
                           <table
                             cellspacing="2"
