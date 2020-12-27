@@ -19,7 +19,9 @@
     "gravatar": "^1.8.1",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.5.1",
+    "module": "^1.2.5",
     "mongoose": "^5.11.6",
+    "name": "0.0.2",
     "react-data-table-component": "^6.11.6",
     "react-moment": "^1.0.0",
     "redux-persist": "^6.0.0"

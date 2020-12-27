@@ -30,12 +30,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
-  const [passwordShown, setPasswordShown] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setPasswordShown(passwordShown ? false : true);
-    
-  }
+  
   
   return (
     <div class="container-fluid">
@@ -69,9 +64,9 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                     <label class="col-form-label">Password</label>
                     <input
                       class="form-control"
-                      type={PasswordShown ? "text" : "password"}
+                      type="password"
                       name="password"
-                      value="fakePSW"
+                      value={password}
                       id="myInput"
                       required=""
                       placeholder="*********"
@@ -81,7 +76,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                       }}
                       
                 />
-                <i className="fa fa-eye password-icon" onClick={this.togglePasswordVisibility}
+                <i className="fa fa-eye password-icon"
                 />
                 
                   <div class="form-group mb-0">

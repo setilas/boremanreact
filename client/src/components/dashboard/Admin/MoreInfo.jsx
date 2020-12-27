@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import "../../scss/info.scss";
+import "../../scss/Info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
