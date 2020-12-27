@@ -10,15 +10,16 @@ const config = require("config");
 router.post(
   "/",
   [
-    //validators
-    check("firstname", "name is required").not().isEmpty(),
-    check("lastname", "name is required").not().isEmpty(),
-    check("email", "enter the valid email").isEmail(),
+    check("firstname", "Name is required").not().isEmpty(),
+    check("lastname", "Lastname is required").not().isEmpty(),
+    check("address", "enter the valid Address").not().isEmpty(),
+    check("phone", "enter the valid Phone").not().isEmpty(),
+    check("email", "enter the valid Email").isEmail(),
     check("password", "enter proper password").isLength({ min: 6 }),
   ],
 
   async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, address, phone, email, password } = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -43,6 +44,8 @@ router.post(
         lastname,
         email,
         avatar,
+        address,
+        phone,
       });
 
       //BCRYPT HASHING

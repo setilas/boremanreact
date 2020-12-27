@@ -13,21 +13,14 @@ router.post(
   "/",
   [
     check("firstname", "Name is required").not().isEmpty(),
-    check("vendorLastName", "Lastname is required").not().isEmpty(),
-    check("vendorAddress", "enter the valid Address").not().isEmpty(),
-    check("vendorPhone", "enter the valid Phone").not().isEmpty(),
-    check("vendorEmail", "enter the valid Email").isEmail(),
+    check("lastname", "Lastname is required").not().isEmpty(),
+    check("address", "enter the valid Address").not().isEmpty(),
+    check("phone", "enter the valid Phone").not().isEmpty(),
+    check("email", "enter the valid Email").isEmail(),
     check("password", "enter proper password").isLength({ min: 6 }),
   ],
   async (req, res) => {
-    const {
-      firstname,
-      vendorLastName,
-      vendorAddress,
-      vendorPhone,
-      vendorEmail,
-      password,
-    } = req.body;
+    const { firstname, lastname, address, phone, email, password } = req.body;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -35,18 +28,18 @@ router.post(
     }
     const vendorField = {};
     if (firstname) vendorField.firstname = firstname;
-    if (vendorLastName) vendorField.vendorLastName = vendorLastName;
-    if (vendorAddress) vendorField.vendorAddress = vendorAddress;
-    if (vendorPhone) vendorField.vendorPhone = vendorPhone;
-    if (vendorEmail) vendorField.vendorEmail = vendorEmail;
+    if (lastname) vendorField.lastname = lastname;
+    if (address) vendorField.address = address;
+    if (phone) vendorField.phone = phone;
+    if (email) vendorField.email = email;
     if (password) {
       const salt = await bcrypt.genSalt(10);
       vendorField.password = await bcrypt.hash(password, salt);
     }
 
     try {
-      let vendor = await Vendor.findOne({ vendorEmail });
-      let user = await User.findOne({ email: vendorEmail });
+      let vendor = await Vendor.findOne({ email });
+      let user = await User.findOne({ email: email });
       if (vendor || user) {
         return res
           .status(400)

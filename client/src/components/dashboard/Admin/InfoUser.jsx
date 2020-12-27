@@ -71,7 +71,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="address"
+                                  placeholder={user.address}
                                   id="t3"
                                   class="tb"
                                 />
@@ -82,7 +82,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="JJJJJJJJ"
+                                  placeholder={user.phone}
                                   id="t4"
                                   class="tb"
                                 />
@@ -93,7 +93,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="JJJJJJJJJ"
+                                  placeholder={user.email}
                                   id="t5"
                                   class="tb"
                                 />
@@ -104,7 +104,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="JJJJJJJJJJJ"
+                                  placeholder={user.totalEnquiry}
                                   id="t6"
                                   class="tb"
                                 />
