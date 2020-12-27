@@ -31,7 +31,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
   return (
     <div class="container-fluid">
       <div class="row ">
-        <div class="col-xl-5">
+        <div class="col-xl-5 d-none d-md-block ">
           <img class="bg-img-cover bg-center" src={loginbg} alt="looginpage" />
         </div>
         <div class="col-xl-7 p-0">
