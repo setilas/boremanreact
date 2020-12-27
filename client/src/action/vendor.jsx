@@ -3,10 +3,10 @@ import { setAlert } from "./alert";
 import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR } from "./type";
 export const addVendor = ({
   firstname,
-  vendorLastName,
-  vendorAddress,
-  vendorPhone,
-  vendorEmail,
+  lastname,
+  address,
+  phone,
+  email,
   password,
 }) => async (dispatch) => {
   const config = {
@@ -16,10 +16,10 @@ export const addVendor = ({
   };
   const body = JSON.stringify({
     firstname,
-    vendorLastName,
-    vendorAddress,
-    vendorPhone,
-    vendorEmail,
+    lastname,
+    address,
+    phone,
+    email,
     password,
   });
   try {

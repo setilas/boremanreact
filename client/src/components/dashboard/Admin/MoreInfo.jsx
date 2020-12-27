@@ -75,7 +75,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorAddress}
+                                  placeholder={vendor.address}
                                   id="t3"
                                   class="tb"
                                 />
@@ -86,7 +86,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorPhone}
+                                  placeholder={vendor.phone}
                                   id="t4"
                                   class="tb"
                                 />
@@ -97,7 +97,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorEmail}
+                                  placeholder={vendor.email}
                                   id="t5"
                                   class="tb"
                                 />
