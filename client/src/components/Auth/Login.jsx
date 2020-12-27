@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import loader from "../../layout/loader";
 import Alert from "./Alert";
 import "../scss/login.scss";
+
 const loginbg = require("../../assets/images/login/1.jpg");
 
 const Login = ({ login, isAuthenticated, user, role }) => {
@@ -29,16 +30,12 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     if (role) return <Redirect to="/admindashboard" />;
     else return <Redirect to="/userdashboard" />;
   }
-  useState = {
-    isPasswordShown : false
-  }
+  const [passwordShown, setPasswordShown] = useState(false);
 
-  togglePasswordVisibility =()=>{
-    const {isPasswordShown} = this.State;
-    this.setState({ isPasswordShown : !isPasswordShown });
+  const togglePasswordVisibility = () => {
+    setPasswordShown(passwordShown ? false : true);
+    
   }
-
-    const { isPasswordShown } = this.State;
   
   return (
     <div class="container-fluid">
@@ -72,7 +69,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
                     <label class="col-form-label">Password</label>
                     <input
                       class="form-control"
-                      type={(isPasswordShown) ? "text" : "password"}
+                      type={PasswordShown ? "text" : "password"}
                       name="password"
                       value="fakePSW"
                       id="myInput"
