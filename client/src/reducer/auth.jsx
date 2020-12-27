@@ -14,7 +14,6 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
-  userData: localStorage.getItem("userData"),
   role: false,
 };
 export default function (state = initialState, action) {
@@ -26,8 +25,7 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
-        user: payload,
-        isAuthenticated: true,
+        isAuthenticated: false,
         loading: false,
         role: payload == "admin" ? true : false,
       };
@@ -45,14 +43,14 @@ export default function (state = initialState, action) {
       };
 
     case USER_LOADED:
-      localStorage.setItem("userData", JSON.stringify(payload));
       return {
         ...state,
         isAuthenticated: true,
         loading: false,
-
+        user: payload,
         role: payload == "admin" ? true : false,
       };
+
     default:
       return state;
   }

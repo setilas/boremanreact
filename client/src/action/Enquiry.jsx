@@ -1,12 +1,35 @@
 import axios from "axios";
 import { setAlert } from "./alert";
+import { setAuthToken } from "../utils/setAuthToken";
+
 import {
   ADD_ENQUIRY,
   allEnquiry,
   GET_ALLENQUIRY,
   GET_ENQUIRY,
   SET_ALERT,
+  AUTH_ERROR,
+  USER_LOADED,
 } from "./type";
+
+//load user
+export const loadUser = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  try {
+    const res = await axios.get("/api/auth");
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
+
 export const addEnquiry = ({
   name,
   location,

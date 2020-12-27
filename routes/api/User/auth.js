@@ -26,6 +26,33 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+router.get("/users", async (req, res) => {
+  try {
+    const user = await User.find();
+    if (!user) {
+      return res.status(400).send("bad request");
+    }
+
+    return res.json(user);
+  } catch (err) {
+    res.status(500).send("server error");
+  }
+});
+
+router.get("/user/:id", async (req, res) => {
+  console.log("in api");
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(400).send("bad request");
+    }
+
+    return res.json(user);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
 router.post(
   "/",

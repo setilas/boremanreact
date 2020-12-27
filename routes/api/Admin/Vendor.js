@@ -1,5 +1,6 @@
 const express = require("express");
 const Vendor = require("../../../models/Admin/Vendor");
+const User = require("../../../models/User/User");
 const router = express.Router();
 const Enquiry = require("../../../models/Admin/Vendor");
 const jwt = require("jsonwebtoken");
@@ -11,7 +12,7 @@ const { check, validationResult } = require("express-validator/check");
 router.post(
   "/",
   [
-    check("vendorName", "Name is required").not().isEmpty(),
+    check("firstname", "Name is required").not().isEmpty(),
     check("vendorLastName", "Lastname is required").not().isEmpty(),
     check("vendorAddress", "enter the valid Address").not().isEmpty(),
     check("vendorPhone", "enter the valid Phone").not().isEmpty(),
@@ -20,7 +21,7 @@ router.post(
   ],
   async (req, res) => {
     const {
-      vendorName,
+      firstname,
       vendorLastName,
       vendorAddress,
       vendorPhone,
@@ -33,7 +34,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const vendorField = {};
-    if (vendorName) vendorField.vendorName = vendorName;
+    if (firstname) vendorField.firstname = firstname;
     if (vendorLastName) vendorField.vendorLastName = vendorLastName;
     if (vendorAddress) vendorField.vendorAddress = vendorAddress;
     if (vendorPhone) vendorField.vendorPhone = vendorPhone;
@@ -45,8 +46,11 @@ router.post(
 
     try {
       let vendor = await Vendor.findOne({ vendorEmail });
-      if (vendor) {
-        return res.status(400).send("Vendor already present");
+      let user = await User.findOne({ email: vendorEmail });
+      if (vendor || user) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Vendor already present" }] });
       }
       vendor = new Vendor(vendorField);
       await vendor.save();

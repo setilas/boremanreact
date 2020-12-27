@@ -8,7 +8,7 @@ import Alert from "../../../components/Auth/Alert";
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
-    vendorName: "",
+    firstname: "",
     vendorLastName: " ",
     vendorAddress: " ",
     vendorPhone: " ",
@@ -17,7 +17,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   });
 
   const {
-    vendorName,
+    firstname,
     vendorLastName,
     vendorAddress,
     vendorPhone,
@@ -32,7 +32,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     addVendor({
-      vendorName,
+      firstname,
       vendorLastName,
       vendorAddress,
       vendorPhone,
@@ -40,10 +40,6 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
       password,
     });
   };
-
-  if (redirect) {
-    return <Redirect to="/admindashboard"></Redirect>;
-  }
 
   return (
     <div className="container-fluid p-0 ">
@@ -71,11 +67,11 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           type="text"
                           required=""
                           placeholder="First name"
-                          name="vendorName"
+                          name="firstname"
                           onChange={(e) => {
                             onChange(e);
                           }}
-                          value={vendorName}
+                          value={firstname}
                         />
                       </div>
                       <div className="col-6">

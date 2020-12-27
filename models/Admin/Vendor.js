@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Vendorschema = new mongoose.Schema({
-  vendorName: {
+  firstname: {
     type: String,
     required: true,
   },
@@ -24,6 +24,10 @@ const Vendorschema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  totalEnquiry: {
+    type: Number,
+    default: 0,
   },
 });
 
