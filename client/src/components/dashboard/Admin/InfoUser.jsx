@@ -2,15 +2,16 @@ import React, { Fragment, useEffect } from "react";
 import { getuserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import { Header } from "../../Layout/Header";
+import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
-const InfoUser = ({ match, getuserbyid, user }) => {
+export const InfoUser = ({ match, getuserbyid, user }) => {
+  console.log("in component");
   useEffect(() => {
     getuserbyid(match.params.id);
-  }, []);
+  }, [getuserbyid]);
 
   return (
     <Fragment>
@@ -24,7 +25,7 @@ const InfoUser = ({ match, getuserbyid, user }) => {
           {/* page wrapper which will wrap entirepage */}
           <div class="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
-            <Header></Header>
+            <Header2 />
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
@@ -48,7 +49,7 @@ const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="HHHHH"
+                                  placeholder={user._id}
                                   id="t1"
                                   class="tb"
                                 />
@@ -59,7 +60,7 @@ const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="JJ"
+                                  placeholder={user.firstname}
                                   id="t2"
                                   class="tb"
                                 />
@@ -70,7 +71,7 @@ const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="JJJJJJJ"
+                                  placeholder="address"
                                   id="t3"
                                   class="tb"
                                 />

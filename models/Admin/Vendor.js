@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Vendorschema = new mongoose.Schema({
-  vendorName: {
+  firstname: {
     type: String,
     required: true,
   },

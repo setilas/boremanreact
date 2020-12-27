@@ -8,8 +8,6 @@ import Sidebar from "../../Layout/Sidebar";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
 
-const logo = require("../../../assets/images/logo/logo.png");
-
 const UserDashboard = ({ user, loadUser }) => {
   useEffect(() => {
     loadUser();
@@ -27,7 +25,7 @@ const UserDashboard = ({ user, loadUser }) => {
           {/* page wrapper which will wrap entirepage */}
           <div class="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
-            <Header></Header>
+            <Header user={user} />
             <Alert />
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content">

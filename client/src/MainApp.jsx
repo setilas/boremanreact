@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Main2 from "./Main2";
-import Alert from "./components/Auth/Alert";
 import { Landing } from "./components/Landing";
 import UserDashboard from "./components/dashboard/User/UserDashboard";
 import Addenquiry from "./components/dashboard/User/AddEnquiry";
@@ -16,7 +15,6 @@ import MoreInfo from "./components/dashboard/Admin/MoreInfo";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
-import NewTable from "./components/Layout/NewTable";
 import { PersistGate } from "redux-persist/integration/react";
 import InfoUser from "./components/dashboard/Admin/InfoUser";
 const MainApp = () => {
@@ -47,13 +45,11 @@ const MainApp = () => {
               path="/admindashboard"
               component={AdminDashboard}
             ></Route>
+            <Route exact path="/userinfo/:id" component={InfoUser}></Route>
             <Route exact path="/adduser" component={Addview}></Route>
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
             <Route exact path="/moreinfo/:id" component={MoreInfo}></Route>
-            <Route exact path="/userinfo/:id" component={InfoUser}></Route>
-            <Route exact path="/table" component={NewTable}></Route>
-
             <Main2 />
           </Switch>
         </BrowserRouter>

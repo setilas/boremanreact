@@ -1,49 +1,42 @@
 import React, { Fragment, useEffect } from "react";
-import { connect } from "react-redux";
 
-import Loader from "../../layout/loader";
-
-export const Header = ({ user }) => {
-  const { firstname } = user;
+export const Header2 = () => {
   return (
     <Fragment>
-      {user === null ? (
-        <Loader />
-      ) : (
-        <div class="page-header">
-          <div class="header-wrapper row m-0">
-            <form class="form-inline search-full" action="#" method="get">
-              <div class="form-group w-100">
-                <div class="Typeahead Typeahead--twitterUsers">
-                  <div class="u-posRelative">
-                    <input
-                      class="demo-input Typeahead-input form-control-plaintext w-100"
-                      type="text"
-                      placeholder="Search Cuba .."
-                      name="q"
-                      title=""
-                      autofocus
-                    />
-                    <div class="spinner-border Typeahead-spinner" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                    <i class="close-search" data-feather="x"></i>
+      <div class="page-header">
+        <div class="header-wrapper row m-0">
+          <form class="form-inline search-full" action="#" method="get">
+            <div class="form-group w-100">
+              <div class="Typeahead Typeahead--twitterUsers">
+                <div class="u-posRelative">
+                  <input
+                    class="demo-input Typeahead-input form-control-plaintext w-100"
+                    type="text"
+                    placeholder="Search Cuba .."
+                    name="q"
+                    title=""
+                    autofocus
+                  />
+                  <div class="spinner-border Typeahead-spinner" role="status">
+                    <span class="sr-only">Loading...</span>
                   </div>
-                  <div class="Typeahead-menu"></div>
+                  <i class="close-search" data-feather="x"></i>
                 </div>
-              </div>
-            </form>
-            <div class="header-logo-wrapper">
-              <div class="logo-wrapper">
-                <a href="index.html">
-                  <img class="img-fluid" alt="" />
-                </a>
-              </div>
-              <div class="toggle-sidebar">
-                <i class="fa fa-bars"></i>
+                <div class="Typeahead-menu"></div>
               </div>
             </div>
-            {/* <div class="left-header col horizontal-wrapper pl-0">
+          </form>
+          <div class="header-logo-wrapper">
+            <div class="logo-wrapper">
+              <a href="index.html">
+                <img class="img-fluid" alt="" />
+              </a>
+            </div>
+            <div class="toggle-sidebar">
+              <i class="fa fa-bars"></i>
+            </div>
+          </div>
+          {/* <div class="left-header col horizontal-wrapper pl-0">
                 <ul class="horizontal-menu">
                   <li class="mega-menu">
                     <a class="nav-link" href="#">
@@ -53,9 +46,9 @@ export const Header = ({ user }) => {
                   </li>
                 </ul>
               </div> */}
-            <div class="nav-right col-12 pull-right right-header p-0 ">
-              <ul class="nav-menus">
-                {/* <li class="language-nav">
+          <div class="nav-right col-12 pull-right right-header p-0 ">
+            <ul class="nav-menus">
+              {/* <li class="language-nav">
                   <div class="translate_wrapper">
                     <div class="current_lang">
                       <div class="lang">
@@ -101,13 +94,13 @@ export const Header = ({ user }) => {
                     </div>
                   </div>
                 </li> */}
-                {/* <li>
+              {/* <li>
                   {" "}
                   <span class="header-search">
                     <i data-feather="search"></i>
                   </span>
                 </li> */}
-                {/* <li class="onhover-dropdown">
+              {/* <li class="onhover-dropdown">
                   <div class="notification-box">
                     <i data-feather="bell"></i>
                     <span class="badge badge-pill badge-secondary">4</span>
@@ -314,54 +307,49 @@ export const Header = ({ user }) => {
                     <i data-feather="maximize"></i>
                   </a>
                 </li> */}
-                <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
-                  <div class="media profile-media">
-                    <img
-                      class="b-r-10"
-                      src="../assets/images/dashboard/profile.jpg"
-                      alt=""
-                    />
-                    <div class="media-body">
-                      <span>{firstname}</span>
-                      <p class="mb-0 font-roboto">
-                        User <i class="middle fa fa-angle-down"></i>
-                      </p>
-                    </div>
+              <li class="profile-nav onhover-dropdown p-0 mr-0  ml-auto">
+                <div class="media profile-media">
+                  <img
+                    class="b-r-10"
+                    src="../assets/images/dashboard/profile.jpg"
+                    alt=""
+                  />
+                  <div class="media-body">
+                    <span>Admin</span>
+                    <p class="mb-0 font-roboto">
+                      User <i class="middle fa fa-angle-down"></i>
+                    </p>
                   </div>
-                  <ul class="profile-dropdown onhover-show-div">
-                    <li>
-                      <i data-feather="user"></i>
-                      <span>Account </span>
-                    </li>
-                    <li>
-                      <i data-feather="mail"></i>
-                      <span>Inbox</span>
-                    </li>
-                    <li>
-                      <i data-feather="file-text"></i>
-                      <span>Taskboard</span>
-                    </li>
-                    <li>
-                      <i data-feather="settings"></i>
-                      <span>Settings</span>
-                    </li>
-                    <li>
-                      <i data-feather="log-in"> </i>
-                      <span>Log in</span>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+                </div>
+                <ul class="profile-dropdown onhover-show-div">
+                  <li>
+                    <i data-feather="user"></i>
+                    <span>Account </span>
+                  </li>
+                  <li>
+                    <i data-feather="mail"></i>
+                    <span>Inbox</span>
+                  </li>
+                  <li>
+                    <i data-feather="file-text"></i>
+                    <span>Taskboard</span>
+                  </li>
+                  <li>
+                    <i data-feather="settings"></i>
+                    <span>Settings</span>
+                  </li>
+                  <li>
+                    <i data-feather="log-in"> </i>
+                    <span>Log in</span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
-      )}
+      </div>
     </Fragment>
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header2;

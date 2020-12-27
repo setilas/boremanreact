@@ -3,7 +3,7 @@ import KnobChart from "../../chart";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import { Header } from "../../Layout/Header";
+import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 const logo = require("../../../assets/images/logo/logo.png");
 
@@ -17,7 +17,7 @@ const AdminDashboard = () => {
       {/* page wrapper which will wrap entirepage */}
       <div class="page-wrapper compact-wrapper" id="pageWrapper">
         {/*  page header */}
-        <Header></Header>
+        <Header2 />
         {/* page body contains sidebar and content  */}
         <div class="page-body-wrapper sidebar-icon document-content">
           <Sidebar2></Sidebar2>

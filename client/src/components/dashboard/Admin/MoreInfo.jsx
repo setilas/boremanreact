@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { getvendorbyid } from "../../../action/vendor";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import { Header } from "../../Layout/Header";
+import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
@@ -24,7 +24,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
           {/* page wrapper which will wrap entirepage */}
           <div class="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
-            <Header></Header>
+            <Header2 />
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
@@ -59,7 +59,7 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={vendor.vendorName}
+                                  placeholder={vendor.firstname}
                                   id="t2"
                                   class="tb"
                                 />

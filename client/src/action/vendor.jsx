@@ -2,7 +2,7 @@ import axios from "axios";
 import { setAlert } from "./alert";
 import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR } from "./type";
 export const addVendor = ({
-  vendorName,
+  firstname,
   vendorLastName,
   vendorAddress,
   vendorPhone,
@@ -15,7 +15,7 @@ export const addVendor = ({
     },
   };
   const body = JSON.stringify({
-    vendorName,
+    firstname,
     vendorLastName,
     vendorAddress,
     vendorPhone,

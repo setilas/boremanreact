@@ -6,9 +6,6 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
 import { getallvendors } from "../../../action/vendor";
 import "../../scss/table.scss";
-import "jquery/dist/jquery.min.js";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { getUsers } from "../../../action/auth";
 import $ from "jquery";
@@ -71,7 +68,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
               return (
                 <tr>
                   <td>{profile._id}</td>
-                  <td>{profile.vendorName}</td>
+                  <td>{profile.firstname}</td>
                   <td>{profile.totalEnquiry}</td>
                   <td>{profile.totalEnquiry}</td>
                   <td>{0}</td>

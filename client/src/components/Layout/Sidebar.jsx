@@ -1,18 +1,11 @@
 import React, { Fragment, useEffect } from "react";
-import { CardBody, Card, CardHeader, Row } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
-import { loadUser } from "../../action/auth";
-import Loader from "../../layout/loader";
 
 const logo = require("../../assets/images/logo/logo.png");
 
 const Sidebar = ({ logout, user }) => {
-  const logouthandler = () => {
-    logout();
-  };
-
   return (
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
@@ -98,4 +91,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { logout, loadUser })(Sidebar);
+export default connect(mapStateToProps, { logout })(Sidebar);
