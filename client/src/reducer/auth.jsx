@@ -14,7 +14,6 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
-  id: localStorage.getItem("id"),
   role: false,
 };
 export default function (state = initialState, action) {
@@ -23,9 +22,9 @@ export default function (state = initialState, action) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
+
       return {
         ...state,
-        user: payload,
         isAuthenticated: false,
         loading: false,
         role: payload == "admin" ? true : false,
@@ -42,8 +41,8 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
       };
+
     case USER_LOADED:
-      localStorage.setItem("id", payload._id);
       return {
         ...state,
         isAuthenticated: true,
@@ -51,6 +50,7 @@ export default function (state = initialState, action) {
         user: payload,
         role: payload == "admin" ? true : false,
       };
+
     default:
       return state;
   }

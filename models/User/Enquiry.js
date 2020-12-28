@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const Enquiryschema = new mongoose.Schema({
   user: {
@@ -35,7 +36,9 @@ const Enquiryschema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  counter: { type: Number },
+  totalEnquiry: {
+    type: Number,
+  },
 });
 
 module.exports = Enquiry = mongoose.model("enquiry", Enquiryschema);
