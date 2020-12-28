@@ -17,6 +17,7 @@ import Addview from "./components/dashboard/Admin/Adduser";
 import Viewuser from "./components/dashboard/Admin/Viewuser";
 import { PersistGate } from "redux-persist/integration/react";
 import InfoUser from "./components/dashboard/Admin/InfoUser";
+
 const MainApp = () => {
   return (
     <Fragment>
@@ -50,6 +51,7 @@ const MainApp = () => {
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
             <Route exact path="/moreinfo/:id" component={MoreInfo}></Route>
+
             <Main2 />
           </Switch>
         </BrowserRouter>

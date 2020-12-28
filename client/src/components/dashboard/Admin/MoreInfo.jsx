@@ -26,12 +26,12 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
             {/*  page header */}
             <Header2 />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content ">
+            <div class="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div class="page-body" s>
+              <div class="page-body">
                 <div class="container-fluid">
-                  <div class="card" style={{ marginTop: "200px" }}>
+                  <div class="card">
                     <div class="container">
                       <div id="main">
                         <div class="h-tag"></div>
