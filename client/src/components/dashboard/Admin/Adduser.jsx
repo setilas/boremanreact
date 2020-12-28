@@ -7,22 +7,16 @@ import Alert from "../../../components/Auth/Alert";
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
-    vendorName: "",
-    vendorLastName: " ",
-    vendorAddress: " ",
-    vendorPhone: " ",
-    vendorEmail: " ",
+    firstname: " ",
+    lastname: "",
+    address: "",
+    phone: "",
+    email: "",
     password: "",
+    password2: "",
   });
 
-  const {
-    vendorName,
-    vendorLastName,
-    vendorAddress,
-    vendorPhone,
-    vendorEmail,
-    password,
-  } = vendor;
+  const { firstname, lastname, address, phone, email, password } = vendor;
 
   const onChange = (e) => {
     setVendor({ ...vendor, [e.target.name]: e.target.value });
@@ -31,18 +25,14 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     addVendor({
-      vendorName,
-      vendorLastName,
-      vendorAddress,
-      vendorPhone,
-      vendorEmail,
+      firstname,
+      lastname,
+      address,
+      phone,
+      email,
       password,
     });
   };
-
-  if (redirect) {
-    return <Redirect to="/admindashboard"></Redirect>;
-  }
 
   return (
     <div className="container-fluid p-0 ">
@@ -70,11 +60,11 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           type="text"
                           required=""
                           placeholder="First name"
-                          name="vendorName"
+                          name="firstname"
                           onChange={(e) => {
                             onChange(e);
                           }}
-                          value={vendorName}
+                          value={firstname}
                         />
                       </div>
                       <div className="col-6">
@@ -83,11 +73,11 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           type="text"
                           required=""
                           placeholder="Last name"
-                          name="vendorLastName"
+                          name="lastname"
                           onChange={(e) => {
                             onChange(e);
                           }}
-                          value={vendorLastName}
+                          value={lastname}
                         />
                       </div>
                     </div>
@@ -98,12 +88,12 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                       className="form-control"
                       type="text"
                       required=""
-                      placeholder="vendor vendorAddress"
-                      name="vendorAddress"
+                      placeholder="vendor address"
+                      name="address"
                       onChange={(e) => {
                         onChange(e);
                       }}
-                      value={vendorAddress}
+                      value={address}
                     />
                   </div>
                   <div className="form-group">
@@ -113,25 +103,25 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                       type="tel"
                       required=""
                       placeholder="mobile number"
-                      name="vendorPhone"
+                      name="phone"
                       onChange={(e) => {
                         onChange(e);
                       }}
-                      value={vendorPhone}
+                      value={phone}
                     />
                   </div>
                   <div className="form-group">
                     <label className="col-form-label">Vendor Email</label>
                     <input
                       className="form-control"
-                      type="vendorEmail"
+                      type="email"
                       required=""
                       placeholder="Test@gmail.com"
-                      name="vendorEmail"
+                      name="email"
                       onChange={(e) => {
                         onChange(e);
                       }}
-                      value={vendorEmail}
+                      value={email}
                     />
                   </div>
                   <div className="form-group">

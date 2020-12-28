@@ -4,23 +4,22 @@ import "jquery/dist/jquery.min.js";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
-import {  getallvendors } from "../../../action/vendor";
+import { getallvendors } from "../../../action/vendor";
 import "../../scss/table.scss";
-import "jquery/dist/jquery.min.js";
-//Datatable Modules
-import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+import { getUsers } from "../../../action/auth";
 import $ from "jquery";
+import { Link } from "react-router-dom";
 
-const Viewuser = ({  getallvendors, vendors }) => {
+const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
   useEffect(() => {
-    getallvendors();
     $(document).ready(function () {
       $("#example").DataTable();
     });
-  }, [getallvendors]);
-  const activeEnquiry = vendors.length;
-  console.log(activeEnquiry);
+    getUsers();
+    getallvendors();
+  }, []);
+  const Completed = 0;
   return (
     <div className="MainDiv">
       <div
@@ -29,40 +28,67 @@ const Viewuser = ({  getallvendors, vendors }) => {
       >
         <h3>View User</h3>
       </div>
-
       <div className="container">
         <table id="example" class="table table-hover table-bordered">
           <thead>
             <tr>
               <th>Vendor Code</th>
               <th>Vendor Name</th>
-              <th> <i className="fa fa-circle font-success f-12">Active Enquiry</i></th>
+              <th>
+                {" "}
+                <i className="fa fa-circle font-success f-12">Active Enquiry</i>
+              </th>
               <th>Total Enquiry</th>
-              <th><i className="fa fa-circle font-danger f-12">Total Work Complete</i></th>
+              <th>
+                <i className="fa fa-circle font-danger f-12">
+                  Total Work Complete
+                </i>
+              </th>
               <th>More info</th>
             </tr>
           </thead>
-          
-           <tbody>
+          <tbody>
+            {users.map((profile) => {
+              return (
+                <tr>
+                  <td>{profile._id}</td>
+                  <td>{profile.firstname}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{0}</td>
+                  <td>
+                    <Link to={`/userinfo/${profile._id}`}>
+                      <button className="btn btn-primary">More info</button>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
             {vendors.map((profile) => {
               return (
                 <tr>
-                  <td>{profile.code}</td>
-                  <td>{profile.vendorName}</td>
-                  <td>{profile.location}</td>
-                  <td>{profile.lat}</td>
-                  <td>{profile.long}</td>
-                  <td>{profile.addstatus}</td>
+                  <td>{profile._id}</td>
+                  <td>{profile.firstname}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{profile.totalEnquiry}</td>
+                  <td>{0}</td>
+                  <td>
+                    <Link to={`/moreinfo/${profile._id}`}>
+                      <button className="btn btn-primary">More info</button>
+                    </Link>
+                  </td>
                 </tr>
               );
             })}
           </tbody>
-       </table>
-     </div>    </div>
+        </table>
+      </div>{" "}
+    </div>
   );
- };
- const mapStateToProps = (state) => ({
+};
+const mapStateToProps = (state) => ({
   vendors: state.vendor.vendors,
+  users: state.vendor.users,
 });
 
-export default connect(mapStateToProps, { getallvendors })(Viewuser);
+export default connect(mapStateToProps, { getallvendors, getUsers })(Viewuser);

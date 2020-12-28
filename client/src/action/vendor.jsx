@@ -1,12 +1,12 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { ADD_VENDOR, GET_ALLVENDORS } from "./type";
+import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR } from "./type";
 export const addVendor = ({
-  vendorName,
-  vendorLastName,
-  vendorAddress,
-  vendorPhone,
-  vendorEmail,
+  firstname,
+  lastname,
+  address,
+  phone,
+  email,
   password,
 }) => async (dispatch) => {
   const config = {
@@ -15,11 +15,11 @@ export const addVendor = ({
     },
   };
   const body = JSON.stringify({
-    vendorName,
-    vendorLastName,
-    vendorAddress,
-    vendorPhone,
-    vendorEmail,
+    firstname,
+    lastname,
+    address,
+    phone,
+    email,
     password,
   });
   try {
@@ -42,6 +42,21 @@ export const getallvendors = () => async (dispatch) => {
     const res = await axios.get("/api/admin/vendor");
     dispatch({
       type: GET_ALLVENDORS,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+  }
+};
+
+export const getvendorbyid = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/admin/vendor/${id}`);
+    dispatch({
+      type: GET_VENDOR,
       payload: res.data,
     });
   } catch (err) {

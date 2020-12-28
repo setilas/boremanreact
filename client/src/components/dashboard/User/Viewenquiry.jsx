@@ -11,62 +11,68 @@ import "jquery/dist/jquery.min.js";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
+import Loader from "../../../layout/loader";
+import { loadUser } from "../../../action/auth";
 
-const ViewEnquiry = ({ enquirybyid, profiles, user }) => {
+const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   useEffect(() => {
-    enquirybyid(user._id);
-
+    loadUser();
+    enquirybyid(match.params.id);
     $(document).ready(function () {
       $("#example").DataTable();
     });
-  }, [user._id]);
+  }, [loadUser]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
   return (
-    <div className="MainDiv">
-      <div
-        class="jumbotron text-center"
-        style={{ background: "cornflowerblue" }}
-      >
-        <h3>View Enquiry</h3>
-      </div>
+    <Fragment>
+      {user === null ? (
+        <Loader />
+      ) : (
+        <div className="MainDiv">
+          <div
+            class="jumbotron text-center"
+            style={{ background: "cornflowerblue" }}
+          >
+            <h3>View Enquiry</h3>
+          </div>
 
-      <div className="container">
-        <table id="example" class="table table-hover table-bordered">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Location</th>
-              <th>GPS(lat)</th>
-              <th>GPS(long)</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {profiles.map((profile) => {
-              return (
+          <div className="container">
+            <table id="example" class="table table-hover table-bordered">
+              <thead>
                 <tr>
-                  <td>{profile._id}</td>
-                  <td>{profile.name}</td>
-                  <td>{profile.location}</td>
-                  <td>{profile.lat}</td>
-                  <td>{profile.long}</td>
-                  <td>{profile.addstatus}</td>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>GPS(lat)</th>
+                  <th>GPS(long)</th>
+                  <th>Status</th>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+              </thead>
+              <tbody>
+                {profiles.map((profile) => {
+                  return (
+                    <tr>
+                      <td>{profile._id}</td>
+                      <td>{profile.name}</td>
+                      <td>{profile.location}</td>
+                      <td>{profile.lat}</td>
+                      <td>{profile.long}</td>
+                      <td>{profile.addstatus}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
   user: state.auth.user,
-  id: state.auth.id,
-  userData: state.auth.userData,
 });
 
-export default connect(mapStateToProps, { enquirybyid })(ViewEnquiry);
+export default connect(mapStateToProps, { enquirybyid, loadUser })(ViewEnquiry);

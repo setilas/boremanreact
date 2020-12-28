@@ -11,7 +11,7 @@ import { persistReducer } from "redux-persist";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["enquiry", "vendor", "auth"],
+  whitelist: [],
 };
 
 const rootReducer = combineReducers({
