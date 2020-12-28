@@ -30,6 +30,12 @@ const Userschema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  ActiveEnquiry: {
+    type: Number,
+  },
+  CompletedEnquiry: {
+    type: Number,
+  },
   role: {},
 });
 
