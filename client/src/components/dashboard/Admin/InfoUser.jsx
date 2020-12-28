@@ -37,9 +37,9 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                 <div class="col-6">
                   <h3>View User</h3>
                 </div>
-          <div id="main">
+          <div id="mainpage">
           <div class="card" style={{ marginTop: "30px" }}>
-          <div class="container">
+          <div class="containerhash">
         
             
                 
@@ -57,7 +57,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user._id}
+                                  value={user._id}
                                   id="t1"
                                   class="tb"
                                 />
@@ -68,7 +68,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user.firstname}
+                                  value={user.firstname}
                                   id="t2"
                                   class="tb"
                                 />
@@ -79,7 +79,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user.address}
+                                  value={user.address}
                                   id="t3"
                                   class="tb"
                                 />
@@ -90,7 +90,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user.phone}
+                                  value={user.phone}
                                   id="t4"
                                   class="tb"
                                 />
@@ -101,7 +101,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user.email}
+                                  value={user.email}
                                   id="t5"
                                   class="tb"
                                 />
@@ -112,7 +112,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder={user.totalEnquiry}
+                                  value={user.totalEnquiry}
                                   id="t6"
                                   class="tb"
                                 />
@@ -123,7 +123,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="5 "
+                                  value="5 "
                                   id="t7"
                                   class="tb"
                                 />
@@ -134,7 +134,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="4"
+                                  value="4"
                                   id="t8"
                                   class="tb"
                                 />
@@ -147,7 +147,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                               <td>
                                 <input
                                   type="text"
-                                  placeholder="3900 "
+                                  value="3900 "
                                   id="t9"
                                   class="tb"
                                 />

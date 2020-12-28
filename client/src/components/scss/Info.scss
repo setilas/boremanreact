@@ -1,19 +1,12 @@
-// .card {
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-//   transition: 0.3s;
-//   width: 100%;
-//   border-radius: 1px;
-//   text-align: center;
-//   margin-top: auto;
-// }
-#main{width:1000px; text-align:center; overflow:hidden; padding-bottom: 5px; margin-left:auto; margin-right:auto; 
+
+#mainpage{width:1000px; text-align:center; overflow:hidden; padding-bottom: 5px; margin-left:auto; margin-right:auto; 
   border-radius:5px; padding-left:5px; padding-right: 5px; margin-top:5px; margin-bottom: 5px;
   }
   
   
-#main .tb{height:30px;width:240px;text-align: center;border:1px solid black; border-left:1px solid black; opacity:0.9;margin-bottom: 20px;}
+#mainpage .tb{height:30px;width:240px;text-align: center;border:1px solid black; border-left:1px solid black; opacity:0.9;margin-bottom: 20px;}
   
-#main .tb:focus{height:28px; border:1px solid black; outline:none; border-left:5px solid black;}
+#mainpage .tb:focus{height:28px; border:1px solid black; outline:none; border-left:5px solid black;}
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -27,7 +20,7 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.container {
+.containerhash {
 padding: 50px 200px;
  }
 .button {

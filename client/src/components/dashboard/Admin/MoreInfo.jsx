@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import "../../scss/info.scss";
+import "../../scss/Info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
@@ -60,12 +60,17 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
             <div class="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
+              
               <div class="page-body">
-                <div class="container-fluid">
-                  <div class="card">
-                    <div class="container">
-                      <div id="main">
-                        <div class="h-tag"></div>
+          <div class="container-fluid">
+          <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h3>View User</h3>
+                </div>
+          <div id="mainpage">
+          <div class="card" style={{ marginTop: "30px" }}>
+          <div class="containerhash">
 
                         <div
                           className="form"
@@ -101,7 +106,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="firstname"
-                                    velue={vendor.firstname}
+                                    value={vendor.firstname}
                                     id="t2"
                                     class="tb"
                                     onChange={(e) => {
@@ -116,7 +121,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="address"
-                                    velue={vendor.address}
+                                    value={vendor.address}
                                     id="t3"
                                     class="tb"
                                     onChange={(e) => {
@@ -131,7 +136,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="phone"
-                                    velue={vendor.phone}
+                                    value={vendor.phone}
                                     id="t4"
                                     class="tb"
                                     onChange={(e) => {
@@ -146,7 +151,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="email"
-                                    velue={vendor.email}
+                                    value={vendor.email}
                                     id="t5"
                                     class="tb"
                                     onChange={(e) => {
@@ -161,7 +166,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="totalEnquiry"
-                                    velue={vendor.totalEnquiry}
+                                    value={vendor.totalEnquiry}
                                     id="t6"
                                     class="tb"
                                     onChange={(e) => {
@@ -194,7 +199,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                 <td>
                                   <input
                                     type="text"
-                                    placeholder="3900 "
+                                    value="3900 "
                                     id="t9"
                                     class="tb"
                                   />
@@ -228,6 +233,8 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                 </div>
               </div>
             </div>
+          </div>
+          </div>
           </div>
         </Fragment>
       )}
