@@ -27,7 +27,7 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
             {/*  page header */}
             <Header2 />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content ">
+            <div class="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
               <div class="page-body">
