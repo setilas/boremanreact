@@ -28,21 +28,23 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
+
               <div class="page-body">
-                <div class="container-fluid">
-                  <div class="card" style={{ marginTop: "200px" }}>
-                    <div class="container">
-                      <div id="main">
-                        <div class="h-tag">
-                          <h2>View udyugyufeguif</h2>
-                        </div>
-                        <div class="page-body"></div>
+          <div class="container-fluid">
+          <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h3>View User</h3>
+                </div>
+          <div id="main">
+          <div class="card" style={{ marginTop: "30px" }}>
+          <div class="container">
 
                         <div class="login">
                           <table
-                            cellspacing="8"
+                            cellspacing="2"
                             align="center"
-                            cellpadding="10"
+                            cellpadding="8"
                             border="0"
                           >
                             <tr>
@@ -175,6 +177,8 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                   </div>
                 </div>
               </div>
+            </div>
+            </div>
             </div>
           </div>
         </Fragment>
