@@ -148,8 +148,9 @@ function Register(props) {
                       </label>
                     </div>
 
-                    <button className="btn btn-primary btn-block" type="submit">
+                    <button className="btn btn-primary btn-block" type="submit"><a class="goto" href="#">
                       Create Account
+                      </a>
                     </button>
                   </div>
 

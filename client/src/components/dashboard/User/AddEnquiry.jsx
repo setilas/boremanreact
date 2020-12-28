@@ -135,12 +135,12 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
               <div className="wrap-contact100-form-btn">
                 <div className="contact100-form-bgbtn"></div>
                 <button className="contact100-form-btn">
-                  <span>
+                  <span><a class="goto" href="#">
                     Submit
                     <i
                       className="fa fa-long-arrow-right m-l-7"
                       aria-hidden="true"
-                    ></i>
+                    ></i></a>
                   </span>
                 </button>
               </div>
