@@ -1,4 +1,4 @@
-import { Home, Anchor, Headphones } from "react-feather";
+import { Home } from "react-feather";
 export const MENUITEMS = [
   {
     menutitle: "Table Contents",

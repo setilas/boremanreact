@@ -1,4 +1,4 @@
-import { ADD_VENDOR, GET_VENDOR, GET_ALLVENDORS } from "../action/type";
+import { ADD_VENDOR,  GET_ALLVENDORS } from "../action/type";
 
 const initialState = {
   vendors: [],

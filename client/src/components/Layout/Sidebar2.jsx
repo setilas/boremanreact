@@ -1,6 +1,5 @@
 import React from "react";
-import { CardBody, Card, CardHeader, Row } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
 

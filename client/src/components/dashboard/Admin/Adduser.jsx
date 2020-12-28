@@ -1,6 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import React, {  useState } from "react";
+import {  Redirect } from "react-router-dom";
 import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
 import { setAlert } from "../../../action/alert";
