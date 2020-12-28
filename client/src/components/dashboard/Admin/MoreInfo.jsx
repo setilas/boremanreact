@@ -28,21 +28,16 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
             {/* page body contains sidebar and content  */}
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
-             <div class="page-body" >
+              <div class="page-body">
                 <div class="container-fluid">
-                <div class="card" style={{ marginTop: "200px" }}>
+                  <div class="card" style={{ marginTop: "200px" }}>
                     <div class="container">
                       <div id="main">
                         <div class="h-tag">
-                        <h2>Create Your Account</h2>
-	                      </div>
-                        <div class="page-body">
-          
-            
-             
-                  
-                </div>
-          
+                          <h2>View udyugyufeguif</h2>
+                        </div>
+                        <div class="page-body"></div>
+
                         <div class="login">
                           <table
                             cellspacing="8"
@@ -62,17 +57,17 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                               </td>
                             </tr>
                             <br>
-                            <tr>
-                              <td align="left">Name :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.firstname}
-                                  id="t2"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
+                              <tr>
+                                <td align="left">Name :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    placeholder={vendor.firstname}
+                                    id="t2"
+                                    class="tb"
+                                  />
+                                </td>
+                              </tr>
                             </br>
                             <tr>
                               <td align="left">Vendor Address :</td>
@@ -126,11 +121,10 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                                   placeholder="5 "
                                   id="t7"
                                   class="tb"
-                                  
                                 />
                               </td>
                             </tr>
-                            
+
                             <tr>
                               <td align="left">Total work completed :</td>
                               <td>
@@ -159,11 +153,8 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                             <tr>
                               <td></td>
                               <td align="center">
-                                
                                 <div>
                                   <div>
-                                  
-                                
                                     <button class="button button1">
                                       Reset Password
                                     </button>
@@ -175,7 +166,6 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
                                     </button>
                                   </div>
                                 </div>
-                                
                               </td>
                             </tr>
                           </table>

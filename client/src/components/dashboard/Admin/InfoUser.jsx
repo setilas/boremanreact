@@ -30,12 +30,20 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
             <div class="page-body-wrapper sidebar-icon document-content ">
               <Sidebar2></Sidebar2>
 
-              <div class="page-body" s>
-                <div class="container-fluid">
-                  <div class="card" style={{ marginTop: "200px" }}>
-                    <div class="container">
-                      <div id="main">
-                        <div class="h-tag"></div>
+              <div class="page-body">
+          <div class="container-fluid">
+          <div class="page-title">
+              <div class="row">
+                <div class="col-6">
+                  <h3>View User</h3>
+                </div>
+          <div id="main">
+          <div class="card" style={{ marginTop: "30px" }}>
+          <div class="container">
+        
+            
+                
+                
 
                         <div class="login">
                           <table
@@ -171,8 +179,11 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
                   </div>
                 </div>
               </div>
-            </div>
           </div>
+          </div>
+          </div>
+          </div>
+          
         </Fragment>
       )}
     </Fragment>
