@@ -21,6 +21,7 @@ const Sidebar = ({ logout }) => {
             src={logo}
             alt=""
           />
+          <h3 className="d-inline">Boreman</h3>
          
           <img
             class="img-fluid for-dark"
@@ -29,7 +30,7 @@ const Sidebar = ({ logout }) => {
           />
         </a>
         <div class="back-btn">
-          <i class="fa fa-angle-left"></i>
+          <i class="fa fa-angle-left" ></i>
         </div>
         <div class="toggle-sidebar">
           <i class="status_toggle middle sidebar-toggle" data-feather="grid">
