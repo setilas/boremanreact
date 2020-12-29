@@ -27,14 +27,14 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
       ) : (
         <div className="MainDiv">
           <div
-            class="jumbotron text-center"
+            className="jumbotron text-center"
             style={{ background: "cornflowerblue" }}
           >
             <h3>View Enquiry</h3>
           </div>
 
           <div className="container">
-            <table id="example" class="table table-hover table-bordered">
+            <table id="example" className="table table-hover table-bordered">
               <thead>
                 <tr>
                   <th>Id</th>

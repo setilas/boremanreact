@@ -81,4 +81,35 @@ router.post(
   }
 );
 
+router.post("/edit/:id", async (req, res) => {
+  const {
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  } = req.body;
+  const filter = { _id: req.params.id };
+  const update = {
+    firstname: firstname,
+    address: address,
+    phone: phone,
+    email: email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  };
+  try {
+    const result = await User.findOneAndUpdate(filter, update, {
+      new: true,
+      upsert: true,
+    });
+    return res.status(201).json(result);
+  } catch (err) {
+    res.status(500).send("server error");
+  }
+});
+
 module.exports = router;

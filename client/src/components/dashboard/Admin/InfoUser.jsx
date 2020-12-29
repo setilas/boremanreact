@@ -1,5 +1,6 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { getuserbyid } from "../../../action/auth";
+import { edituserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
@@ -7,11 +8,68 @@ import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
-export const InfoUser = ({ match, getuserbyid, user }) => {
-  console.log("in component");
+export const InfoUser = ({
+  match,
+  getuserbyid,
+  user,
+  loadingUser,
+  edituserbyid,
+}) => {
+  const [formData, setFormData] = useState({
+    vendorcode: "",
+    firstname: "",
+    address: "",
+    phone: "",
+    email: "",
+    totalEnquiry: "",
+    activeEnquiry: "",
+    completedEnquiry: 0,
+  });
+
+  const {
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  } = formData;
+
+  console.log(formData);
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    edituserbyid({
+      vendorcode,
+      firstname,
+      address,
+      phone,
+      email,
+      totalEnquiry,
+      activeEnquiry,
+      completedEnquiry,
+    });
+  };
+
   useEffect(() => {
     getuserbyid(match.params.id);
-  }, [getuserbyid]);
+    setFormData({
+      vendorcode: loadingUser || !user._id ? " " : user._id,
+      firstname: loadingUser || !user.firstname ? "" : user.firstname,
+      address: loadingUser || !user.address ? " " : user.address,
+      phone: loadingUser || !user.phone ? " " : user.phone,
+      email: loadingUser || !user.email ? " " : user.email,
+      totalEnquiry: loadingUser || !user.totalEnquiry ? " " : user.totalEnquiry,
+      activeEnquiry:
+        loadingUser || !user.activeEnquiry ? " " : user.activeEnquiry,
+      completedEnquiry:
+        loadingUser || !user.completedEnquiry ? " " : user.completedEnquiry,
+    });
+  }, [loadingUser]);
 
   return (
     <Fragment>
@@ -19,152 +77,189 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
         <Loader />
       ) : (
         <Fragment>
-          <div class="tap-top">
+          <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
           {/* page wrapper which will wrap entirepage */}
-          <div class="page-wrapper compact-wrapper" id="pageWrapper">
+          <div className="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
             <Header2 />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content">
+            <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div class="page-body" s>
-                <div class="container-fluid">
-                  <div class="card" style={{ marginTop: "200px" }}>
-                    <div class="container">
+              <div className="page-body" s>
+                <div className="container-fluid">
+                  <div className="card" style={{ marginTop: "200px" }}>
+                    <div className="container">
                       <div id="main">
-                        <div class="h-tag"></div>
+                        <div className="h-tag"></div>
 
-                        <div class="login">
-                          <table
-                            cellspacing="2"
-                            align="center"
-                            cellpadding="8"
-                            border="0"
-                          >
-                            <tr>
-                              <td align="left">Vendor Code :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user._id}
-                                  id="t1"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Name :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user.firstname}
-                                  id="t2"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Address :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user.address}
-                                  id="t3"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Phone :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user.phone}
-                                  id="t4"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Email :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user.email}
-                                  id="t5"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={user.totalEnquiry}
-                                  id="t6"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Active Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="5 "
-                                  id="t7"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total work completed :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="4"
-                                  id="t8"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">
-                                Total work Enquiry Estimated :
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="3900 "
-                                  id="t9"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
+                        <div className="login">
+                          <form onSubmit={(e) => onSubmit(e)}>
+                            <table
+                              cellspacing="2"
+                              align="center"
+                              cellpadding="8"
+                              border="0"
+                            >
+                              <tr>
+                                <td align="left">user Code :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="vendorcode"
+                                    value={vendorcode}
+                                    id="t1"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Name :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="firstname"
+                                    value={firstname}
+                                    id="t2"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Address :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="address"
+                                    value={address}
+                                    id="t3"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Phone :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="phone"
+                                    value={phone}
+                                    id="t4"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Email :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="email"
+                                    value={email}
+                                    id="t5"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="totalEnquiry"
+                                    value={totalEnquiry}
+                                    id="t6"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Active Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    value={totalEnquiry - completedEnquiry}
+                                    id="t7"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total work completed :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t8"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">
+                                  Total work Enquiry Estimated :
+                                </td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t9"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <td></td>
-                              <td align="center">
-                                <div>
+                              <tr>
+                                <td></td>
+                                <td align="center">
                                   <div>
-                                    <button class="button button1">
-                                      Reset Password
-                                    </button>
-                                    <button class="button button2">
-                                      Submit
-                                    </button>
-                                    <button class="button button2">
-                                      Delete
-                                    </button>
+                                    <div>
+                                      <button className="button button1">
+                                        Reset Password
+                                      </button>
+                                      <button className="button button2">
+                                        Submit
+                                      </button>
+                                      <button className="button button2">
+                                        Delete
+                                      </button>
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -180,6 +275,9 @@ export const InfoUser = ({ match, getuserbyid, user }) => {
 };
 const mapStateToProps = (state) => ({
   user: state.vendor.user,
+  loadingUser: state.vendor.loadingUser,
 });
 
-export default connect(mapStateToProps, { getuserbyid })(InfoUser);
+export default connect(mapStateToProps, { getuserbyid, edituserbyid })(
+  InfoUser
+);

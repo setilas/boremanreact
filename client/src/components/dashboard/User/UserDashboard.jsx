@@ -19,42 +19,42 @@ const UserDashboard = ({ user, loadUser }) => {
         <Loader />
       ) : (
         <Fragment>
-          <div class="tap-top">
+          <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
           {/* page wrapper which will wrap entirepage */}
-          <div class="page-wrapper compact-wrapper" id="pageWrapper">
+          <div className="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
             <Header user={user} />
             <Alert />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content">
+            <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar></Sidebar>
-              <div class="page-body">
-                <div class="container-fluid">
-                  {/* <div class="page-title">
-                <div class="row">
-                  <div class="col-6">
+              <div className="page-body">
+                <div className="container-fluid">
+                  {/* <div className="page-title">
+                <div className="row">
+                  <div className="col-6">
                     <h3>Alert</h3>
                   </div>
-                  <div class="col-6">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
+                  <div className="col-6">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
                         <a href="index.html">
                           {" "}
                           <i data-feather="home"></i>
                         </a>
                       </li>
-                      <li class="breadcrumb-item">Ui Kits</li>
-                      <li class="breadcrumb-item active">Alert</li>
+                      <li className="breadcrumb-item">Ui Kits</li>
+                      <li className="breadcrumb-item active">Alert</li>
                     </ol>
                   </div>
                 </div>
               </div> */}
                 </div>
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-sm-12 col-xl-6">
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-sm-12 col-xl-6">
                       <KnobChart />
                     </div>
                   </div>

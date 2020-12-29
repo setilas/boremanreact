@@ -121,6 +121,45 @@ export const getuserbyid = (id) => async (dispatch) => {
   }
 };
 
+export const edituserbyid = ({
+  vendorcode,
+  firstname,
+  address,
+  phone,
+  email,
+  totalEnquiry,
+  activeEnquiry,
+  completedEnquiry,
+}) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  });
+  try {
+    const res = await axios.post(`/api/user/edit/${vendorcode}`, body, config);
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+  }
+};
+
 export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,

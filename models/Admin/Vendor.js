@@ -29,10 +29,10 @@ const Vendorschema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  ActiveEnquiry: {
+  activeEnquiry: {
     type: Number,
   },
-  CompletedEnquiry: {
+  completedEnquiry: {
     type: Number,
   },
 });
