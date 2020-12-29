@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 import Loader from "../../layout/loader";
 
@@ -331,7 +332,7 @@ export const Header = ({ user }) => {
                   <ul class="profile-dropdown onhover-show-div">
                     <li>
                       <i data-feather="user"></i>
-                      <span>Account </span>
+                      <Link to="/profilechange">Account</Link>
                     </li>
                     <li>
                       <i data-feather="mail"></i>
