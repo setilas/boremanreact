@@ -7,7 +7,7 @@ export const Profilechange = () => {
       <div className="admin-card">
     <div class="container emp-profile ">
         <h3 class="d-flex justify-content-center mb-4">Profile</h3>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data" action="/upload">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
