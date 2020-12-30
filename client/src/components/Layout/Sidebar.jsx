@@ -10,7 +10,15 @@ const Sidebar = ({ logout, user }) => {
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
-          <img class="img-fluid for-light" src={logo} alt="" />
+
+          
+          <img
+            class="img-fluid for-light"
+            src={logo}
+            alt=""
+          />
+          <h3 className="d-inline">Boreman</h3>
+         
 
           <img
             class="img-fluid for-dark"
@@ -19,7 +27,7 @@ const Sidebar = ({ logout, user }) => {
           />
         </a>
         <div class="back-btn">
-          <i class="fa fa-angle-left"></i>
+          <i class="fa fa-angle-left" ></i>
         </div>
         <div class="toggle-sidebar">
           <i class="status_toggle middle sidebar-toggle" data-feather="grid">

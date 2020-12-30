@@ -22,6 +22,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
   const Completed = 0;
   return (
     <div className="MainDiv">
+      
       <div
         class="jumbotron text-center"
         style={{ background: "cornflowerblue" }}

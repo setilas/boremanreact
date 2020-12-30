@@ -5,6 +5,8 @@ import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
 import { setAlert } from "../../../action/alert";
 import Alert from "../../../components/Auth/Alert";
+import Header2 from "../../Layout/Header2";
+import Sidebar2 from "../../Layout/Sidebar2";
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
@@ -36,7 +38,9 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   };
 
   return (
+    
     <div className="container-fluid p-0 ">
+        
       <div className="row">
         <div className="col-12">
           <div className="admin-card">
