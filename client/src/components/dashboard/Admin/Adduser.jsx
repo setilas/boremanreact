@@ -4,8 +4,8 @@ import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
 import { setAlert } from "../../../action/alert";
 import Alert from "../../../components/Auth/Alert";
+import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import Header2 from "../../Layout/Header2";                     
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
@@ -37,44 +37,10 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   };
 
   return (
-    <div>
-      {/* <Loader />                      */}
-      {/* <div class="tap-top">
-        <i data-feather="chevrons-up"></i>
-      </div> */}
-      {/* page wrapper which will wrap entirepage */}
-      <div class="page-wrapper compact-wrapper" id="pageWrapper">
-        {/*  page header */}
-        <Header2 />
-        {/* page body contains sidebar and content  */}
-        <div class="page-body-wrapper sidebar-icon document-content">
-          <Sidebar2></Sidebar2>
-
-          <div class="page-body">
-            {/* <div class="container-fluid"> */}
-              {/* <div class="page-title">
-                <div class="row">
-                  <div class="col-6">
-                    <h3>Alert</h3>
-                  </div>
-                  <div class="col-6">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="index.html">
-                          {" "}
-                          <i data-feather="home"></i>
-                        </a>
-                      </li>
-                      <li class="breadcrumb-item">Ui Kits</li>
-                      <li class="breadcrumb-item active">Alert</li>
-                    </ol>
-                  </div>
-                </div>
-              </div> */}
-            {/* </div> */}
-            <div class="container-fluid">
-              <div class="row">
-                
+    
+    <div className="container-fluid p-0 ">
+        
+      <div className="row">
         <div className="col-12">
           <div className="admin-card">
             <div>

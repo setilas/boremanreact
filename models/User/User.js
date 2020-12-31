@@ -30,7 +30,14 @@ const Userschema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  activeEnquiry: {
+    type: Number,
+  },
+  completedEnquiry: {
+    type: Number,
+  },
   role: {},
+  activate: false,
 });
 
 module.exports = User = mongoose.model("user", Userschema);

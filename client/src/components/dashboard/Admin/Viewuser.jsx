@@ -23,45 +23,8 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
   const Completed = 0;
  
   return (
-    
-      <div>
-        {/* <Loader />                      */}
-        {/* <div class="tap-top">
-          <i data-feather="chevrons-up"></i>
-        </div> */}
-        {/* page wrapper which will wrap entirepage */}
-        <div class="page-wrapper compact-wrapper" id="pageWrapper">
-          {/*  page header */}
-          <Header2 />
-          {/* page body contains sidebar and content  */}
-          <div class="page-body-wrapper sidebar-icon document-content">
-            <Sidebar2></Sidebar2>
-  
-            <div class="page-body">
-              <div class="container-fluid">
-                {/* <div class="page-title">
-                  <div class="row">
-                    <div class="col-6">
-                      <h3>Alert</h3>
-                    </div>
-                    <div class="col-6">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                          <a href="index.html">
-                            {" "}
-                            <i data-feather="home"></i>
-                          </a>
-                        </li>
-                        <li class="breadcrumb-item">Ui Kits</li>
-                        <li class="breadcrumb-item active">Alert</li>
-                      </ol>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
-              <div class="container-fluid">
-                <div class="row">
-                <div className="MainDiv">
+    <div className="MainDiv">
+      
       <div
         class="jumbotron text-center"
         style={{ background: "cornflowerblue" }}
@@ -93,10 +56,10 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                 <tr>
                   <td>{profile._id}</td>
                   <td>{profile.firstname}</td>
+                  <td>{profile.activeEnquiry}</td>
                   <td>{profile.totalEnquiry}</td>
-                  <td>{profile.totalEnquiry}</td>
-                  <td>{0}</td>
-                  <td >
+                  <td>{profile.completedEnquiry}</td>
+                  <td>
                     <Link to={`/userinfo/${profile._id}`}>
                       <button className="btn btn-primary">More info</button> 
                     </Link>

@@ -19,6 +19,7 @@ const Sidebar = ({ logout }) => {
             src={logo}
             alt=""
           />
+          <h3 className="d-inline ">Boreman</h3>
          
           <img
             class="img-fluid for-dark"

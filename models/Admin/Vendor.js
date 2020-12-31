@@ -29,6 +29,12 @@ const Vendorschema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  activeEnquiry: {
+    type: Number,
+  },
+  completedEnquiry: {
+    type: Number,
+  },
 });
 
 module.exports = Vendor = mongoose.model("vendor", Vendorschema);
