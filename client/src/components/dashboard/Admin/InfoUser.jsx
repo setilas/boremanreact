@@ -57,10 +57,9 @@ export const InfoUser = ({
       completedEnquiry,
     });
   };
- const activateFun=()=>{
-  this.setState({activate:true})
-  
-}
+  const activateFun = () => {
+    setFormData({ ...formData, activate: "true" });
+  };
   useEffect(() => {
     getuserbyid(match.params.id);
     setFormData({
@@ -95,9 +94,12 @@ export const InfoUser = ({
             <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div className="page-body" >
-                <div className="container-fluid" style={{paddingTop:"150px"}} >
-                  <div className="card" >
+              <div className="page-body">
+                <div
+                  className="container-fluid"
+                  style={{ paddingTop: "150px" }}
+                >
+                  <div className="card">
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
@@ -110,7 +112,6 @@ export const InfoUser = ({
                               cellpadding="8"
                               border="0"
                             >
-                              
                               <tr>
                                 <td align="left">user Code :</td>
                                 <td>
@@ -126,21 +127,7 @@ export const InfoUser = ({
                                   />
                                 </td>
                               </tr>
-                              <tr>
-                                <td align="left">Activate :</td>
-                                <td>
-                                  <input
-                                    type="text"
-                                    name="activate"
-                                    value={activate}
-                                    id="t1"
-                                    className="tb"
-                                    onChange={(e) => {
-                                      onChange(e);
-                                    }}
-                                  />
-                                </td>
-                              </tr>
+
                               <tr>
                                 <td align="left">Name :</td>
                                 <td>
@@ -268,7 +255,28 @@ export const InfoUser = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                    <button className="btn btn-danger" onClick={activateFun}>Activate</button>
+                                      {activate ? (
+                                        <button
+                                          className="btn btn-success"
+                                          onClick={() => {
+                                            activateFun();
+                                          }}
+                                        >
+                                          Activated
+                                        </button>
+                                      ) : (
+                                        <div>
+                                          <h5>Account Activation</h5>
+                                          <button
+                                            className="btn btn-danger"
+                                            onClick={() => {
+                                              activateFun();
+                                            }}
+                                          >
+                                            Activate
+                                          </button>
+                                        </div>
+                                      )}
                                       <button className="button button1">
                                         Reset Password
                                       </button>
