@@ -7,6 +7,7 @@ import Alert from "../../Auth/Alert";
 import Header from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Loader from "../../../layout/loader";
+import "../../scss/page.scss";
 
 const Addenquiry = ({ addEnquiry, redirect }) => {
   const [enquiry, setEnquiry] = useState({

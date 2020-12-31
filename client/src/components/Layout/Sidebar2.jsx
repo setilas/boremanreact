@@ -19,8 +19,8 @@ const Sidebar = ({ logout }) => {
             src={logo}
             alt=""
           />
-          <h3 className="d-inline ">Boreman</h3>
-         
+          <h3 className="d-inline ">Boreman</h3>                     
+          
           <img
             class="img-fluid for-dark"
             src="../assets/images/logo/logo_dark.png"
@@ -63,7 +63,7 @@ const Sidebar = ({ logout }) => {
                 <span>Back</span>
                 <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
               </div>
-            </li>
+            </li>        
 
             <li class="sidebar-list ">
               <label class="badge badge-success">4</label>

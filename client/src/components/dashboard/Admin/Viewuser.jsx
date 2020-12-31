@@ -48,7 +48,8 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
         </div>
         
       
-      <div className="container">
+      <div className="container ">
+        
         <table id="example" class="table table-hover table-bordered">
           <thead>
             <tr>
@@ -107,6 +108,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
     </div>
     </div>
     </div>
+    
     
                
     );
