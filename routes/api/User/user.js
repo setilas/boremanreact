@@ -90,6 +90,7 @@ router.post("/edit/:id", async (req, res) => {
     totalEnquiry,
     activeEnquiry,
     completedEnquiry,
+    activate,
   } = req.body;
   const filter = { _id: req.params.id };
   const update = {
@@ -100,6 +101,7 @@ router.post("/edit/:id", async (req, res) => {
     totalEnquiry,
     activeEnquiry,
     completedEnquiry,
+    activate,
   };
   try {
     const result = await User.findOneAndUpdate(filter, update, {

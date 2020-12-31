@@ -7,8 +7,10 @@ import { Header } from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
+import { Link } from "react-router-dom";
+import { logout } from "../../../action/auth";
 
-const UserDashboard = ({ user, loadUser }) => {
+const UserDashboard = ({ user, loadUser, logout }) => {
   useEffect(() => {
     loadUser();
   }, [loadUser]);
@@ -19,20 +21,22 @@ const UserDashboard = ({ user, loadUser }) => {
         <Loader />
       ) : (
         <Fragment>
-          <div className="tap-top">
-            <i data-feather="chevrons-up"></i>
-          </div>
-          {/* page wrapper which will wrap entirepage */}
-          <div className="page-wrapper compact-wrapper" id="pageWrapper">
-            {/*  page header */}
-            <Header user={user} />
-            <Alert />
-            {/* page body contains sidebar and content  */}
-            <div className="page-body-wrapper sidebar-icon document-content">
-              <Sidebar></Sidebar>
-              <div className="page-body">
-                <div className="container-fluid">
-                  {/* <div className="page-title">
+          {user.activate ? (
+            <Fragment>
+              <div className="tap-top">
+                <i data-feather="chevrons-up"></i>
+              </div>
+              {/* page wrapper which will wrap entirepage */}
+              <div className="page-wrapper compact-wrapper" id="pageWrapper">
+                {/*  page header */}
+                <Header user={user} />
+                <Alert />
+                {/* page body contains sidebar and content  */}
+                <div className="page-body-wrapper sidebar-icon document-content">
+                  <Sidebar></Sidebar>
+                  <div className="page-body">
+                    <div className="container-fluid">
+                      {/* <div className="page-title">
                 <div className="row">
                   <div className="col-6">
                     <h3>Alert</h3>
@@ -51,18 +55,29 @@ const UserDashboard = ({ user, loadUser }) => {
                   </div>
                 </div>
               </div> */}
-                </div>
-                <div className="container-fluid">
-                  <div className="row">
-                    <div className="col-sm-12 col-xl-6">
-                      <KnobChart />
+                    </div>
+                    <div className="container-fluid">
+                      <div className="row">
+                        <div className="col-sm-12 col-xl-6">
+                          <KnobChart />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                {/* page body ends */}
               </div>
-            </div>
-            {/* page body ends */}
-          </div>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <h1>account is not activated yet</h1>
+              <li>
+                <Link to="/" onClick={logout}>
+                  logout
+                </Link>
+              </li>
+            </Fragment>
+          )}
         </Fragment>
       )}
     </Fragment>
@@ -70,6 +85,9 @@ const UserDashboard = ({ user, loadUser }) => {
 };
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  activate: state.auth.activate,
 });
 
-export default connect(mapStateToProps, { login, loadUser })(UserDashboard);
+export default connect(mapStateToProps, { login, loadUser, logout })(
+  UserDashboard
+);

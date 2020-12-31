@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import "../../scss/Info.scss";
+import "../../scss/info.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const InfoUser = ({
@@ -23,6 +23,7 @@ export const InfoUser = ({
     email: "",
     totalEnquiry: "",
     activeEnquiry: "",
+    activate: "",
     completedEnquiry: 0,
   });
 
@@ -35,6 +36,7 @@ export const InfoUser = ({
     totalEnquiry,
     activeEnquiry,
     completedEnquiry,
+    activate,
   } = formData;
 
   console.log(formData);
@@ -51,6 +53,7 @@ export const InfoUser = ({
       email,
       totalEnquiry,
       activeEnquiry,
+      activate,
       completedEnquiry,
     });
   };
@@ -68,6 +71,7 @@ export const InfoUser = ({
         loadingUser || !user.activeEnquiry ? " " : user.activeEnquiry,
       completedEnquiry:
         loadingUser || !user.completedEnquiry ? " " : user.completedEnquiry,
+      activate: loadingUser || !user.activate ? " " : user.activate,
     });
   }, [loadingUser]);
 
@@ -110,6 +114,21 @@ export const InfoUser = ({
                                     type="text"
                                     name="vendorcode"
                                     value={vendorcode}
+                                    id="t1"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Activate :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="activate"
+                                    value={activate}
                                     id="t1"
                                     className="tb"
                                     onChange={(e) => {

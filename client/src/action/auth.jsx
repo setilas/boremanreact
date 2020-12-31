@@ -130,6 +130,7 @@ export const edituserbyid = ({
   totalEnquiry,
   activeEnquiry,
   completedEnquiry,
+  activate,
 }) => async (dispatch) => {
   const config = {
     headers: {
@@ -145,6 +146,7 @@ export const edituserbyid = ({
     totalEnquiry,
     activeEnquiry,
     completedEnquiry,
+    activate,
   });
   try {
     const res = await axios.post(`/api/user/edit/${vendorcode}`, body, config);
