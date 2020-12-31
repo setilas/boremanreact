@@ -7,9 +7,12 @@ import { Status } from "../constant";
 const primary =
   localStorage.getItem("default_color") || configDB.data.color.primary_color;
 const KnobChart = (props) => {
+  function percentage(partialValue, totalValue) {
+    return ((100 * partialValue) / totalValue).toFixed(2);
+  }
   useEffect(() => {
     var Status = Knob({
-      value: 44,
+      value: percentage(20, 110),
       min: -100,
       className: "review",
       thickness: 0.1,
@@ -67,7 +70,7 @@ const KnobChart = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="row">
+              <div className="row mt-5">
                 <div className="col col-md-10 ">
                   <div className="knob-block text-center">
                     <div className="knob" id="Status"></div>

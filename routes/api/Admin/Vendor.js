@@ -95,17 +95,29 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/edit/:id", async (req, res) => {
-  const { completedEnquiry, activeEnquiry } = req.body;
+  const {
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  } = req.body;
   const filter = { _id: req.params.id };
   const update = {
-    CompletedEnquiry: completedEnquiry,
-    ActiveEnquiry: activeEnquiry,
+    firstname: firstname,
+    address: address,
+    phone: phone,
+    email: email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
   };
   try {
     const result = await Vendor.findOneAndUpdate(filter, update, {
       new: true,
       upsert: true,
-      rawResult: true,
     });
     return res.status(201).json(result);
   } catch (err) {

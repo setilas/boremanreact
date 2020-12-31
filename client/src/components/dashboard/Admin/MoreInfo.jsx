@@ -4,14 +4,15 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import "../../scss/Info.scss";
-const logo = require("../../../assets/images/logo/logo.png");
+import "../../scss/info.scss";
 
-export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
-  useEffect(() => {
-    getvendorbyid(match.params.id);
-  }, [getvendorbyid]);
-
+export const MoreInfo = ({
+  match,
+  getvendorbyid,
+  editvendorbyid,
+  vendor,
+  loadingVendor,
+}) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
     firstname: "",
@@ -19,6 +20,8 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
     phone: "",
     email: "",
     totalEnquiry: "",
+    activeEnquiry: "",
+    completedEnquiry: "  ",
   });
 
   const {
@@ -28,12 +31,17 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
     phone,
     email,
     totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
   } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  console.log(formData);
+
   const onSubmit = (e) => {
+    e.preventDefault();
     editvendorbyid({
       vendorcode,
       firstname,
@@ -41,39 +49,60 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
       phone,
       email,
       totalEnquiry,
+      activeEnquiry,
+      completedEnquiry,
     });
   };
+
+  useEffect(() => {
+    getvendorbyid(match.params.id);
+    setFormData({
+      vendorcode: loadingVendor || !vendor._id ? " " : vendor._id,
+      firstname: loadingVendor || !vendor.firstname ? "" : vendor.firstname,
+      address: loadingVendor || !vendor.address ? " " : vendor.address,
+      phone: loadingVendor || !vendor.phone ? " " : vendor.phone,
+      email: loadingVendor || !vendor.email ? " " : vendor.email,
+      totalEnquiry:
+        loadingVendor || !vendor.totalEnquiry ? " " : vendor.totalEnquiry,
+      activeEnquiry:
+        loadingVendor || !vendor.activeEnquiry ? " " : vendor.activeEnquiry,
+      completedEnquiry:
+        loadingVendor || !vendor.completedEnquiry
+          ? " "
+          : vendor.completedEnquiry,
+    });
+  }, [loadingVendor]);
+
   return (
     <Fragment>
       {vendor === null ? (
         <Loader />
       ) : (
         <Fragment>
-          <div class="tap-top">
+          <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
           {/* page wrapper which will wrap entirepage */}
-          <div class="page-wrapper compact-wrapper" id="pageWrapper">
+          <div className="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
             <Header2 />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content">
+            <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div class="page-body">
-                <div class="container-fluid">
-                  <div class="card">
-                    <div class="container">
+              <div className="page-body">
+                <div className="container-fluid">
+                  <div className="card">
+                    <div className="container">
                       <div id="main">
-                        <div class="h-tag"></div>
+                        <div className="h-tag"></div>
 
-                        <div
-                          className="form"
-                          onSubmit={(e) => {
-                            onSubmit(e);
-                          }}
-                        >
-                          <div class="login">
+                        <div className="login">
+                          <form
+                            onSubmit={(e) => {
+                              onSubmit(e);
+                            }}
+                          >
                             <table
                               cellspacing="2"
                               align="center"
@@ -86,9 +115,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="vendorcode"
-                                    value={vendor._id}
+                                    value={vendorcode}
                                     id="t1"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -101,9 +130,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="firstname"
-                                    velue={vendor.firstname}
+                                    velue={firstname}
                                     id="t2"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -116,9 +145,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="address"
-                                    velue={vendor.address}
+                                    velue={address}
                                     id="t3"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -131,9 +160,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="phone"
-                                    velue={vendor.phone}
+                                    velue={phone}
                                     id="t4"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -146,9 +175,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="email"
-                                    velue={vendor.email}
+                                    velue={email}
                                     id="t5"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -161,9 +190,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                   <input
                                     type="text"
                                     name="totalEnquiry"
-                                    velue={vendor.totalEnquiry}
+                                    velue={totalEnquiry}
                                     id="t6"
-                                    class="tb"
+                                    className="tb"
                                     onChange={(e) => {
                                       onChange(e);
                                     }}
@@ -173,7 +202,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                               <tr>
                                 <td align="left">Active Enquiry :</td>
                                 <td>
-                                  <input type="text" id="t7" class="tb" />
+                                  <input type="text" id="t7" className="tb" />
                                 </td>
                               </tr>
                               <tr>
@@ -181,9 +210,13 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                 <td>
                                   <input
                                     type="text"
-                                    placeholder="4"
+                                    name="activeEnquiry"
+                                    value={activeEnquiry}
                                     id="t8"
-                                    class="tb"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
                                   />
                                 </td>
                               </tr>
@@ -194,9 +227,13 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                 <td>
                                   <input
                                     type="text"
-                                    placeholder="3900 "
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
                                     id="t9"
-                                    class="tb"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
                                   />
                                 </td>
                               </tr>
@@ -206,13 +243,13 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                 <td align="center">
                                   <div>
                                     <div>
-                                      <button class="button button1">
+                                      <button className="button button1">
                                         Reset Password
                                       </button>
-                                      <button class="button button2">
+                                      <button className="button button2">
                                         Submit
                                       </button>
-                                      <button class="button button2">
+                                      <button className="button button2">
                                         Delete
                                       </button>
                                     </div>
@@ -220,7 +257,7 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
                                 </td>
                               </tr>
                             </table>
-                          </div>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -236,6 +273,9 @@ export const MoreInfo = ({ match, getvendorbyid, editvendorbyid, vendor }) => {
 };
 const mapStateToProps = (state) => ({
   vendor: state.vendor.vendor,
+  loadingVendor: state.vendor.loadingVendor,
 });
 
-export default connect(mapStateToProps, { getvendorbyid })(MoreInfo);
+export default connect(mapStateToProps, { getvendorbyid, editvendorbyid })(
+  MoreInfo
+);

@@ -15,6 +15,7 @@ const initialState = {
   loading: true,
   user: null,
   role: false,
+  activate: false,
 };
 export default function (state = initialState, action) {
   const { type, payload } = action;
@@ -22,7 +23,6 @@ export default function (state = initialState, action) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
-
       return {
         ...state,
         isAuthenticated: false,
@@ -48,6 +48,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
         user: payload,
+
         role: payload == "admin" ? true : false,
       };
 

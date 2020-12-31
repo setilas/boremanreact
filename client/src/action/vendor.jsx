@@ -68,9 +68,14 @@ export const getvendorbyid = (id) => async (dispatch) => {
 };
 
 export const editvendorbyid = ({
+  vendorcode,
+  firstname,
+  address,
+  phone,
+  email,
+  totalEnquiry,
   activeEnquiry,
   completedEnquiry,
-  id,
 }) => async (dispatch) => {
   const config = {
     headers: {
@@ -78,11 +83,21 @@ export const editvendorbyid = ({
     },
   };
   const body = JSON.stringify({
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
     activeEnquiry,
     completedEnquiry,
   });
   try {
-    const res = await axios.post(`/api/admin/vendor/edit/${id}`, body, config);
+    const res = await axios.post(
+      `/api/admin/vendor/edit/${vendorcode}`,
+      body,
+      config
+    );
     dispatch({
       type: GET_VENDOR,
       payload: res.data,

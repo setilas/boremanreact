@@ -14,20 +14,20 @@ const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
   return (
     <Fragment>
       <div style={{ height: "600px" }} className="tablebody">
-        <div class="container text-center text-white">
-          <div class="row pt-5">
-            <div class="col-lg-8 mx-auto">
+        <div className="container text-center text-white">
+          <div className="row pt-5">
+            <div className="col-lg-8 mx-auto">
               <h4 className="strong">View Enquiry</h4>
             </div>
           </div>
         </div>
-        <div class="container py-5">
-          <div class="row">
-            <div class="col-lg-7 mx-auto">
-              <div class="card rounded-0 border-0 shadow tablebox1">
-                <div class="card-body p-5">
-                  <div class="table-responsive">
-                    <table class="table">
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-lg-7 mx-auto">
+              <div className="card rounded-0 border-0 shadow tablebox1">
+                <div className="card-body p-5">
+                  <div className="table-responsive">
+                    <table className="table">
                       <thead>
                         <tr>
                           <th scope="col">Date</th>
@@ -63,7 +63,7 @@ const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
                     </table>
                   </div>
                   {/* <a
-              class="btn btn-primary rounded-0 btn-block"
+              className="btn btn-primary rounded-0 btn-block"
               id="insertRow"
               href="#"
             >

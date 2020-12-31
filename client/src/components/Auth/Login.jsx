@@ -1,13 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
-import { login } from "../../action/auth";
+import { loadUser, login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 import Alert from "./Alert";
+import { setAlert } from "../../action/alert";
+import Loader from "../../layout/loader";
 const loginbg = require("../../assets/images/login/1.jpg");
 
-const Login = ({ login, isAuthenticated, user, role }) => {
+const Login = ({ login, isAuthenticated, role, activate }) => {
   const [formData, SetFormData] = useState({
     email: "",
     password: "",
@@ -21,11 +23,11 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     e.preventDefault();
     login({ email, password });
   };
-  console.log(role);
-
   if (isAuthenticated) {
     if (role) return <Redirect to="/admindashboard" />;
-    else return <Redirect to="/userdashboard" />;
+    else {
+      return <Redirect to="/userdashboard" />;
+    }
   }
 
   return (
@@ -102,7 +104,8 @@ const Login = ({ login, isAuthenticated, user, role }) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
+  activate: state.auth.user,
   role: state.auth.role,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, setAlert })(Login);

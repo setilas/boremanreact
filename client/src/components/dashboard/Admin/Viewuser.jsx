@@ -54,9 +54,9 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                 <tr>
                   <td>{profile._id}</td>
                   <td>{profile.firstname}</td>
+                  <td>{profile.activeEnquiry}</td>
                   <td>{profile.totalEnquiry}</td>
-                  <td>{profile.totalEnquiry}</td>
-                  <td>{0}</td>
+                  <td>{profile.completedEnquiry}</td>
                   <td>
                     <Link to={`/userinfo/${profile._id}`}>
                       <button className="btn btn-primary">More info</button>
