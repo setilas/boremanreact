@@ -255,7 +255,7 @@ export const InfoUser = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                      {activate ? (
+                                      {user.activate ? (
                                         <button
                                           className="btn btn-success"
                                           onClick={() => {
