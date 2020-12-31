@@ -4,9 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 import { addVendor } from "../../../action/vendor";
 import { connect } from "react-redux";
 import { setAlert } from "../../../action/alert";
+import Loader from "../../../layout/loader";
 import Alert from "../../../components/Auth/Alert";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
+import "../../scss/page.scss";
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
   const [vendor, setVendor] = useState({
@@ -39,10 +41,24 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
 
   return (
     
-    <div className="container-fluid p-0 ">
+    <div>
+
+     <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header2 />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar2></Sidebar2>
+
+          <div class="page-body1">
         
-      <div className="row">
-        <div className="col-12">
+    
+       
           <div className="admin-card">
             <div>
               <div></div>
@@ -162,7 +178,10 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+    
+    
   );
 };
 
