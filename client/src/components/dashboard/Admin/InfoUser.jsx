@@ -57,7 +57,10 @@ export const InfoUser = ({
       completedEnquiry,
     });
   };
-
+ const activateFun=()=>{
+  this.setState({activate:true})
+  
+}
   useEffect(() => {
     getuserbyid(match.params.id);
     setFormData({
@@ -92,9 +95,9 @@ export const InfoUser = ({
             <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div className="page-body" s>
-                <div className="container-fluid">
-                  <div className="card" style={{ marginTop: "200px" }}>
+              <div className="page-body" >
+                <div className="container-fluid" style={{paddingTop:"150px"}} >
+                  <div className="card" >
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
@@ -107,6 +110,7 @@ export const InfoUser = ({
                               cellpadding="8"
                               border="0"
                             >
+                              
                               <tr>
                                 <td align="left">user Code :</td>
                                 <td>
@@ -264,6 +268,7 @@ export const InfoUser = ({
                                 <td align="center">
                                   <div>
                                     <div>
+                                    <button className="btn btn-danger" onClick={activateFun}>Activate</button>
                                       <button className="button button1">
                                         Reset Password
                                       </button>

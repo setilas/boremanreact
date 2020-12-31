@@ -87,13 +87,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
         </table>
       </div>{" "}
     </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* page body ends */}
-        </div>
-      </div>
+               
     );
   };
     

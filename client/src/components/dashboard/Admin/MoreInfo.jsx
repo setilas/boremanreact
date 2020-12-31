@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
-import "../../scss/info.scss";
+import "../../scss/Info.scss";
 
 export const MoreInfo = ({
   match,
@@ -130,7 +130,7 @@ export const MoreInfo = ({
                                   <input
                                     type="text"
                                     name="firstname"
-                                    velue={firstname}
+                                    value={firstname}
                                     id="t2"
                                     className="tb"
                                     onChange={(e) => {
@@ -145,7 +145,7 @@ export const MoreInfo = ({
                                   <input
                                     type="text"
                                     name="address"
-                                    velue={address}
+                                    value={address}
                                     id="t3"
                                     className="tb"
                                     onChange={(e) => {
@@ -160,7 +160,7 @@ export const MoreInfo = ({
                                   <input
                                     type="text"
                                     name="phone"
-                                    velue={phone}
+                                    value={phone}
                                     id="t4"
                                     className="tb"
                                     onChange={(e) => {
@@ -175,7 +175,7 @@ export const MoreInfo = ({
                                   <input
                                     type="text"
                                     name="email"
-                                    velue={email}
+                                    value={email}
                                     id="t5"
                                     className="tb"
                                     onChange={(e) => {
@@ -190,7 +190,7 @@ export const MoreInfo = ({
                                   <input
                                     type="text"
                                     name="totalEnquiry"
-                                    velue={totalEnquiry}
+                                    value={totalEnquiry}
                                     id="t6"
                                     className="tb"
                                     onChange={(e) => {
@@ -243,6 +243,7 @@ export const MoreInfo = ({
                                 <td align="center">
                                   <div>
                                     <div>
+                                      <button className="btn btn-danger"></button>
                                       <button className="button button1">
                                         Reset Password
                                       </button>
@@ -266,6 +267,7 @@ export const MoreInfo = ({
               </div>
             </div>
           </div>
+
         </Fragment>
       )}
     </Fragment>
