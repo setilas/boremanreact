@@ -267,7 +267,6 @@ export const MoreInfo = ({
               </div>
             </div>
           </div>
-
         </Fragment>
       )}
     </Fragment>
