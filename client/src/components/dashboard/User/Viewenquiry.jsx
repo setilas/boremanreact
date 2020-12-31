@@ -13,6 +13,9 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import Loader from "../../../layout/loader";
 import { loadUser } from "../../../action/auth";
+import Sidebar from "../../Layout/Sidebar";
+import Header from "../../Layout/Header";
+
 
 const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   useEffect(() => {
@@ -24,7 +27,11 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   }, [loadUser]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
+
   return (
+    
+
+
     <Fragment>
       {user === null ? (
         <Loader />
@@ -68,6 +75,7 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
         </div>
       )}
     </Fragment>
+  
   );
 };
 const mapStateToProps = (state) => ({
