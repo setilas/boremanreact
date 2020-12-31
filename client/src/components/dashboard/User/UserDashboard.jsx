@@ -9,6 +9,7 @@ import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
+import Useractivation from "../../Useractivation";
 
 const UserDashboard = ({ user, loadUser, logout }) => {
   useEffect(() => {
@@ -70,12 +71,9 @@ const UserDashboard = ({ user, loadUser, logout }) => {
             </Fragment>
           ) : (
             <Fragment>
-              <h1>account is not activated yet</h1>
-              <li>
-                <Link to="/" onClick={logout}>
-                  logout
-                </Link>
-              </li>
+              
+
+                  <Useractivation/>
             </Fragment>
           )}
         </Fragment>
