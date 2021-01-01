@@ -17,6 +17,7 @@ import Sidebar from "../../Layout/Sidebar";
 import Header from "../../Layout/Header";
 
 
+
 const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   useEffect(() => {
     loadUser();
@@ -30,19 +31,30 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
 
   return (
     
+<div>
+            <div className="tap-top">
+              <i data-feather="chevrons-up"></i>
+            </div>
+            {/* page wrapper which will wrap entirepage */}
+            <div className="page-wrapper compact-wrapper" id="pageWrapper">
+              {/*  page header */}
+              <Header />
+              {/* page body contains sidebar and content  */}
+              <div className="page-body-wrapper sidebar-icon document-content">
+                <Sidebar/>
+  <div className="page-body " >
 
-
-    <Fragment>
+      
+    
+        <div className="col-12 text-center">
+        <h3 style={{paddingTop:"30px", color:"crimson"}} >View Enquiry</h3>
+        </div>
+        <Fragment>
       {user === null ? (
         <Loader />
       ) : (
         <div className="MainDiv">
-          <div
-            className="jumbotron text-center"
-            style={{ background: "cornflowerblue" }}
-          >
-            <h3>View Enquiry</h3>
-          </div>
+         
 
           <div className="container">
             <table id="example" className="table table-hover table-bordered">
@@ -76,8 +88,19 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
       )}
     </Fragment>
   
-  );
-};
+      
+     
+          </div>
+          </div>
+          </div>
+          </div>
+               
+    );
+  };
+    
+
+    
+  
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
   user: state.auth.user,

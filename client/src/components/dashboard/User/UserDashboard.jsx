@@ -4,12 +4,18 @@ import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
+import { Header3 } from "../../Layout/Header3";
 import Sidebar from "../../Layout/Sidebar";
+import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
+
 import Useractivation from "../../Useractivation";
+
+import "../../scss/page.scss";
+import { Container } from "reactstrap";
 
 const UserDashboard = ({ user, loadUser, logout }) => {
   useEffect(() => {
@@ -71,9 +77,44 @@ const UserDashboard = ({ user, loadUser, logout }) => {
             </Fragment>
           ) : (
             <Fragment>
+
               
 
                   <Useractivation/>
+
+              <div className="tap-top">
+                <i data-feather="chevrons-up"></i>
+              </div>
+              {/* page wrapper which will wrap entirepage */}
+              <div className="page-wrapper compact-wrapper" id="pageWrapper">
+                {/*  page header */}
+                <Header3 user={user} />
+                <div className="page-body-wrapper sidebar-icon document-content">
+                  <Sidebar3/>
+                  <div className="page-body">
+                    <Container Fluid={true}>
+                      
+                    <div className="row"style={{marginBottom:"50px"}}></div>
+                    <div className="col-12" >
+                  <h3 >account is not activated yet</h3>
+              <li   >
+                <Link to="/"  onClick={logout} >
+                  logout
+                </Link>
+              </li>
+                  </div>
+                    </Container> 
+                  
+                  </div>
+                 
+                 {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
+                 
+             
+              </div>  */}
+                </div>
+             </div>
+             
+
             </Fragment>
           )}
         </Fragment>

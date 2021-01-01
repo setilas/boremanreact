@@ -178,6 +178,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
         </div>
       </div>
 
+
     
      </div>
     </div>
@@ -186,6 +187,8 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
               
         
 
+
+    
   );
 };
     

@@ -4,7 +4,7 @@ import React, { Fragment, useEffect } from "react";
 export const Header2 = () => {
   return (
     <Fragment>
-      <div class="page-header">
+      <div class="page-header"style={{ paddingBottom: "25px" }} >
         <div class="header-wrapper row m-0">
           <form class="form-inline search-full" action="#" method="get">
             <div class="form-group w-100">
