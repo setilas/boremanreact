@@ -6,6 +6,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   GET_USERS,
+  GET_USER,
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_PROFILE,
@@ -30,15 +31,27 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register = ({ firstname, lastname, email, password }) => async (
-  dispatch
-) => {
+export const register = ({
+  firstname,
+  lastname,
+  address,
+  phone,
+  email,
+  password,
+}) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ firstname, lastname, email, password });
+  const body = JSON.stringify({
+    firstname,
+    lastname,
+    address,
+    phone,
+    email,
+    password,
+  });
   console.log(body);
   try {
     const res = await axios.post("/api/user", body, config);
@@ -91,6 +104,61 @@ export const getUsers = () => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getuserbyid = (id) => async (dispatch) => {
+  try {
+    console.log("in action");
+    const res = await axios.get(`/api/auth/user/${id}`);
+    console.log("res");
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const edituserbyid = ({
+  vendorcode,
+  firstname,
+  address,
+  phone,
+  email,
+  totalEnquiry,
+  activeEnquiry,
+  completedEnquiry,
+  activate,
+}) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+    activate,
+  });
+  try {
+    const res = await axios.post(`/api/user/edit/${vendorcode}`, body, config);
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 

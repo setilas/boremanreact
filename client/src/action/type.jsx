@@ -29,3 +29,4 @@ export const GET_ALLVENDORS = "GET_ALLVENDORS";
 export const ADD_VENDOR = "ADD_VENDOR";
 export const GET_VENDOR = "GET_VENDOR";
 export const GET_USERS = "GET_USERS";
+export const GET_USER = "GET_USER";

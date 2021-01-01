@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const decore1 = require("../assets/images/landing/decore/1.png");
@@ -77,16 +77,7 @@ export const Landing = () => {
                       className="navbar-nav navbar_nav_modify"
                       id="scroll-spy"
                     >
-                       <li className="nav-item">
-                      <a className="nav-link" href="#layout">
-                        Layout
-                      </a>
-                    </li> 
-                    <li className="nav-item">
-                      <a className="nav-link" href="#dashboards">
-                        Dashboards
-                      </a>
-                    </li>
+                    
                     <li className="nav-item">
                       <a className="nav-link" href="#components">
                         Login
@@ -97,20 +88,7 @@ export const Landing = () => {
                         Register
                       </a>
                     </li>
-                     <li className="nav-item">
-                      <a className="nav-link" href="#frameworks">
-                        Frameworks
-                      </a>
-                    </li> 
-                       <li className="nav-item buy-btn">
-                      <a
-                        className="nav-link js-scroll"
-                        href="https://1.envato.market/3GVzd"
-                        target="_blank"
-                      >
-                        Purchase
-                      </a>
-                    </li>
+                    
                     </ul>
                   </div>
                 
@@ -1841,7 +1819,7 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       <footer className="footer-bg">
         <div className="container">
           <div className="landing-center ptb50">
@@ -1871,7 +1849,7 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };
