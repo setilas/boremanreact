@@ -1,17 +1,19 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getvendorbyid, editvendorbyid } from "../../../action/vendor";
+import { getvendorbyid } from "../../../action/vendor";
+import { editvendorbyid } from "../../../action/vendor";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import Header2 from "../../Layout/Header2";
+import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({
   match,
   getvendorbyid,
-  editvendorbyid,
-  vendor,
+  Vendor,
   loadingVendor,
+  editvendorbyid,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -21,7 +23,8 @@ export const MoreInfo = ({
     email: "",
     totalEnquiry: "",
     activeEnquiry: "",
-    completedEnquiry: "  ",
+    activate: "",
+    completedEnquiry: 0,
   });
 
   const {
@@ -33,13 +36,13 @@ export const MoreInfo = ({
     totalEnquiry,
     activeEnquiry,
     completedEnquiry,
+    activate,
   } = formData;
 
+  console.log(formData);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  console.log(formData);
-
   const onSubmit = (e) => {
     e.preventDefault();
     editvendorbyid({
@@ -50,32 +53,36 @@ export const MoreInfo = ({
       email,
       totalEnquiry,
       activeEnquiry,
+      activate,
       completedEnquiry,
     });
   };
-
+  const activateFun = () => {
+    setFormData({ ...formData, activate: "true" });
+  };
   useEffect(() => {
     getvendorbyid(match.params.id);
     setFormData({
-      vendorcode: loadingVendor || !vendor._id ? " " : vendor._id,
-      firstname: loadingVendor || !vendor.firstname ? "" : vendor.firstname,
-      address: loadingVendor || !vendor.address ? " " : vendor.address,
-      phone: loadingVendor || !vendor.phone ? " " : vendor.phone,
-      email: loadingVendor || !vendor.email ? " " : vendor.email,
+      vendorcode: loadingVendor || !Vendor._id ? " " : Vendor._id,
+      firstname: loadingVendor || !Vendor.firstname ? "" : Vendor.firstname,
+      address: loadingVendor || !Vendor.address ? " " : Vendor.address,
+      phone: loadingVendor || !Vendor.phone ? " " : Vendor.phone,
+      email: loadingVendor || !Vendor.email ? " " : Vendor.email,
       totalEnquiry:
-        loadingVendor || !vendor.totalEnquiry ? " " : vendor.totalEnquiry,
+        loadingVendor || !Vendor.totalEnquiry ? " " : Vendor.totalEnquiry,
       activeEnquiry:
-        loadingVendor || !vendor.activeEnquiry ? " " : vendor.activeEnquiry,
+        loadingVendor || !Vendor.activeEnquiry ? " " : Vendor.activeEnquiry,
       completedEnquiry:
-        loadingVendor || !vendor.completedEnquiry
+        loadingVendor || !Vendor.completedEnquiry
           ? " "
-          : vendor.completedEnquiry,
+          : Vendor.completedEnquiry,
+      activate: loadingVendor || !Vendor.activate ? " " : Vendor.activate,
     });
   }, [loadingVendor]);
 
   return (
     <Fragment>
-      {vendor === null ? (
+      {Vendor === null ? (
         <Loader />
       ) : (
         <Fragment>
@@ -91,18 +98,17 @@ export const MoreInfo = ({
               <Sidebar2></Sidebar2>
 
               <div className="page-body">
-                <div className="container-fluid">
+                <div
+                  className="container-fluid"
+                  style={{ paddingTop: "150px" }}
+                >
                   <div className="card">
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
 
                         <div className="login">
-                          <form
-                            onSubmit={(e) => {
-                              onSubmit(e);
-                            }}
-                          >
+                          <form onSubmit={(e) => onSubmit(e)}>
                             <table
                               cellspacing="2"
                               align="center"
@@ -110,7 +116,7 @@ export const MoreInfo = ({
                               border="0"
                             >
                               <tr>
-                                <td align="left">Vendor Code :</td>
+                                <td align="left">vendor Code :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -124,6 +130,7 @@ export const MoreInfo = ({
                                   />
                                 </td>
                               </tr>
+
                               <tr>
                                 <td align="left">Name :</td>
                                 <td>
@@ -140,7 +147,7 @@ export const MoreInfo = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Vendor Address :</td>
+                                <td align="left">vendor Address :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -155,7 +162,7 @@ export const MoreInfo = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Vendor Phone :</td>
+                                <td align="left">vendor Phone :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -170,7 +177,7 @@ export const MoreInfo = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Vendor Email :</td>
+                                <td align="left">vendor Email :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -202,7 +209,15 @@ export const MoreInfo = ({
                               <tr>
                                 <td align="left">Active Enquiry :</td>
                                 <td>
-                                  <input type="text" id="t7" className="tb" />
+                                  <input
+                                    type="text"
+                                    value={totalEnquiry - completedEnquiry}
+                                    id="t7"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
                                 </td>
                               </tr>
                               <tr>
@@ -210,8 +225,8 @@ export const MoreInfo = ({
                                 <td>
                                   <input
                                     type="text"
-                                    name="activeEnquiry"
-                                    value={activeEnquiry}
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
                                     id="t8"
                                     className="tb"
                                     onChange={(e) => {
@@ -243,7 +258,28 @@ export const MoreInfo = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                      <button className="btn btn-danger"></button>
+                                      {Vendor.activate ? (
+                                        <button
+                                          className="btn btn-success"
+                                          onClick={() => {
+                                            activateFun();
+                                          }}
+                                        >
+                                          Activated
+                                        </button>
+                                      ) : (
+                                        <div>
+                                          <h5>Account Activation</h5>
+                                          <button
+                                            className="btn btn-danger"
+                                            onClick={() => {
+                                              activateFun();
+                                            }}
+                                          >
+                                            Activate
+                                          </button>
+                                        </div>
+                                      )}
                                       <button className="button button1">
                                         Reset Password
                                       </button>
@@ -273,7 +309,7 @@ export const MoreInfo = ({
   );
 };
 const mapStateToProps = (state) => ({
-  vendor: state.vendor.vendor,
+  Vendor: state.vendor.Vendor,
   loadingVendor: state.vendor.loadingVendor,
 });
 
