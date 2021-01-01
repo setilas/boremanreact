@@ -1,4 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment,useEffect } from "react";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
 import { enquirybyid } from "../../../action/Enquiry";
 import "../../scss/table.scss";
@@ -74,7 +78,6 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   
   );
 };
-
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
   user: state.auth.user,

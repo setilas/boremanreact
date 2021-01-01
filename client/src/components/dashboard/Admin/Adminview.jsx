@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllEnquiry } from "../../../action/Enquiry";
 import "../../scss/table.scss";
-
 import Moment from "react-moment";
 
 const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {

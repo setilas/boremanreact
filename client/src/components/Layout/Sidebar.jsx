@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
 import { setAlert } from "../../action/alert";

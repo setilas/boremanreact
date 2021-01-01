@@ -10,7 +10,8 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { getUsers } from "../../../action/auth";
 import $ from "jquery";
 import { Link } from "react-router-dom";
-
+import Sidebar2 from "../../Layout/Sidebar2";
+import Header2 from "../../Layout/Header2";   
 const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
   useEffect(() => {
     $(document).ready(function () {
@@ -20,6 +21,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
     getallvendors();
   }, []);
   const Completed = 0;
+ 
   return (
     <div className="MainDiv">
       
@@ -45,7 +47,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   Total Work Complete
                 </i>
               </th>
-              <th>More info</th>
+              <th>More information</th>
             </tr>
           </thead>
           <tbody>
@@ -59,7 +61,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   <td>{profile.completedEnquiry}</td>
                   <td>
                     <Link to={`/userinfo/${profile._id}`}>
-                      <button className="btn btn-primary">More info</button>
+                      <button className="btn btn-primary">More info</button> 
                     </Link>
                   </td>
                 </tr>
@@ -75,7 +77,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
                   <td>{0}</td>
                   <td>
                     <Link to={`/moreinfo/${profile._id}`}>
-                      <button className="btn btn-primary">More info</button>
+                      <button className="btn btn-primary ">More info</button>
                     </Link>
                   </td>
                 </tr>
@@ -85,8 +87,12 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
         </table>
       </div>{" "}
     </div>
-  );
-};
+               
+    );
+  };
+    
+  
+
 const mapStateToProps = (state) => ({
   vendors: state.vendor.vendors,
   users: state.vendor.users,
