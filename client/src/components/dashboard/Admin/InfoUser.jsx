@@ -116,11 +116,13 @@ export const InfoUser = ({
                   className="container-fluid"
                   style={{ paddingTop: "150px" }}
                 >
-                  <div className="card">
+                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
-
+                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
+                        <h4>User Details</h4>
+                        </div>
                         <div className="login">
                           <Alert />
                           <form onSubmit={(e) => onSubmit(e)}>
