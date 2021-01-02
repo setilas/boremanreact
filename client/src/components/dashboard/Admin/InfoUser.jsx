@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { getuserbyid } from "../../../action/auth";
 import { edituserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
@@ -6,6 +7,7 @@ import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+import "../../scss/page.scss";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const InfoUser = ({
@@ -79,10 +81,11 @@ export const InfoUser = ({
 
   return (
     <Fragment>
+   
       {user === null ? (
         <Loader />
       ) : (
-        <Fragment>
+        <div>
           <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
@@ -93,25 +96,19 @@ export const InfoUser = ({
             {/* page body contains sidebar and content  */}
             <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
-
-              <div className="page-body">
-                <div
-                  className="container-fluid"
-                  style={{ paddingTop: "150px" }}
-                >
-                  <div className="card">
-                    <div className="container">
-                      <div id="main">
-                        <div className="h-tag"></div>
-
+              <div class="page-body1">
+              <div className="admin-card mt-0">
+                <Row>
+                  <Card>
+                  <CardHeader>
+                    <h2>User Details</h2>
+                  </CardHeader>
+                  <CardBody className="mt-0 pt-0">
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
-                            <table
-                              cellspacing="2"
-                              align="center"
-                              cellpadding="8"
-                              border="0"
-                            >
+                          <table class="table table-condensed">
+                          
+                            
                               <tr>
                                 <td align="left">user Code :</td>
                                 <td>
@@ -293,14 +290,15 @@ export const InfoUser = ({
                             </table>
                           </form>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Fragment>
+        
+            </CardBody>
+            </Card>
+          </Row>
+           </div>
+         </div>
+        </div>
+        </div>
+        </div>
       )}
     </Fragment>
   );
