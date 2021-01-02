@@ -39,6 +39,20 @@ router.get("/users", async (req, res) => {
   }
 });
 
+router.get("/user/:id", async (req, res) => {
+  console.log("in api");
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(400).send("bad request");
+    }
+
+    return res.json(user);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
 router.post(
   "/",
@@ -76,7 +90,7 @@ router.post(
       }
       try {
         let user = await User.findOne({ email });
-        const vendor = await Vendor.findOne({ vendorEmail: email });
+        const vendor = await Vendor.findOne({ email: email });
         if (!user && !vendor) {
           return res
             .status(400)
