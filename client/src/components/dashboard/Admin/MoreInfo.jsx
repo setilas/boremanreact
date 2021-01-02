@@ -91,11 +91,14 @@ export const MoreInfo = ({
               <Sidebar2></Sidebar2>
 
               <div className="page-body">
-                <div className="container-fluid">
-                  <div className="card">
+                <div className="container-fluid" style={{ paddingTop: "150px" }}>
+                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
+                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
+                        <h4>User Details</h4>
+                        </div>
 
                         <div className="login">
                           <form
@@ -243,7 +246,7 @@ export const MoreInfo = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                      <button className="btn btn-danger"></button>
+                                      
                                       <button className="button button1">
                                         Reset Password
                                       </button>

@@ -58,7 +58,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
         
     
        
-          <div className="admin-card">
+          <div className="admin-card" >
             <div>
               <div></div>
               <div className="login-main ">
