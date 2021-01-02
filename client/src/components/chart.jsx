@@ -1,3 +1,4 @@
+import CountUp from 'react-countup';
 import React, { useEffect, Fragment } from "react";
 import Breadcrumb from "../layout/breadcrumb/";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
@@ -41,7 +42,10 @@ const KnobChart = (props) => {
                     </span>
                     <span class="text-muted block-bottom">TotalEnquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">111</span>
+                      {/* <span class="counter color-bottom">
+                        111
+                        </span> */}
+                        <CountUp end={111} />
                     </h4>
                   </div>
                 </div>
@@ -52,7 +56,8 @@ const KnobChart = (props) => {
                     </span>
                     <span class="text-muted block-bottom">Active Enquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">90</span>
+                      {/* <span class="counter color-bottom">90</span> */}
+                      <CountUp end={100} />
                     </h4>
                   </div>
                 </div>
@@ -65,7 +70,8 @@ const KnobChart = (props) => {
                       TotalWork Complete
                     </span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">20</span>
+                      {/* <span class="counter color-bottom">20</span> */}
+                      <CountUp end={20} />
                     </h4>
                   </div>
                 </div>
@@ -75,6 +81,7 @@ const KnobChart = (props) => {
                   <div className="knob-block text-center">
                     <div className="knob" id="Status"></div>
                   </div>
+                 
                 </div>
               </div>
             </CardBody>

@@ -1,4 +1,6 @@
-(function($) {
+(function($) 
+// jQuery(document).ready(function($)
+{
     "use strict";
     $('.counter').counterUp({
         delay: 10,
