@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR } from "./type";
+import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR, PERCENTAGE } from "./type";
 export const addVendor = ({
   firstname,
   lastname,
@@ -44,6 +44,11 @@ export const getallvendors = () => async (dispatch) => {
       type: GET_ALLVENDORS,
       payload: res.data,
     });
+    if (res.data.length > 0) {
+      dispatch({
+        type: PERCENTAGE,
+      });
+    }
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

@@ -88,7 +88,6 @@ router.post("/edit/:id", async (req, res) => {
     phone,
     email,
     totalEnquiry,
-    activeEnquiry,
     completedEnquiry,
     activate,
   } = req.body;
@@ -99,7 +98,7 @@ router.post("/edit/:id", async (req, res) => {
     phone: phone,
     email: email,
     totalEnquiry,
-    activeEnquiry,
+    activeEnquiry: totalEnquiry - completedEnquiry,
     completedEnquiry,
     activate,
   };

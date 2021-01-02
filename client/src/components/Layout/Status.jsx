@@ -1,18 +1,21 @@
 import React, { useEffect, Fragment } from "react";
-import Breadcrumb from "../layout/breadcrumb/";
+import Breadcrumb from "../../layout/breadcrumb";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+import { loadUser } from "../../action/auth";
 import Knob from "knob";
-import configDB from "../data/customizer/config";
-import { Status } from "../constant";
+import configDB from "../../data/customizer/config";
+import { connect } from "react-redux";
 const primary =
   localStorage.getItem("default_color") || configDB.data.color.primary_color;
-const KnobChart = (props) => {
+const Status = ({ user, loadUser }) => {
   function percentage(partialValue, totalValue) {
     return ((100 * partialValue) / totalValue).toFixed(2);
   }
   useEffect(() => {
+    loadUser();
+
     var Status = Knob({
-      value: percentage(20, 110),
+      value: percentage(user.completedEnquiry, user.totalEnquiry),
       min: -100,
       className: "review",
       thickness: 0.1,
@@ -41,7 +44,9 @@ const KnobChart = (props) => {
                     </span>
                     <span class="text-muted block-bottom">TotalEnquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">111</span>
+                      <span class="counter color-bottom">
+                        {user.totalEnquiry}
+                      </span>
                     </h4>
                   </div>
                 </div>
@@ -52,7 +57,9 @@ const KnobChart = (props) => {
                     </span>
                     <span class="text-muted block-bottom">Active Enquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">90</span>
+                      <span class="counter color-bottom">
+                        {user.activeEnquiry}
+                      </span>
                     </h4>
                   </div>
                 </div>
@@ -65,7 +72,9 @@ const KnobChart = (props) => {
                       TotalWork Complete
                     </span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">20</span>
+                      <span class="counter color-bottom">
+                        {user.completedEnquiry}
+                      </span>
                     </h4>
                   </div>
                 </div>
@@ -84,5 +93,8 @@ const KnobChart = (props) => {
     </Fragment>
   );
 };
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
 
-export default KnobChart;
+export default connect(mapStateToProps, { loadUser })(Status);

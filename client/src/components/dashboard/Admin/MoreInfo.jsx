@@ -258,28 +258,6 @@ export const MoreInfo = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                      {Vendor.activate ? (
-                                        <button
-                                          className="btn btn-success"
-                                          onClick={() => {
-                                            activateFun();
-                                          }}
-                                        >
-                                          Activated
-                                        </button>
-                                      ) : (
-                                        <div>
-                                          <h5>Account Activation</h5>
-                                          <button
-                                            className="btn btn-danger"
-                                            onClick={() => {
-                                              activateFun();
-                                            }}
-                                          >
-                                            Activate
-                                          </button>
-                                        </div>
-                                      )}
                                       <button className="button button1">
                                         Reset Password
                                       </button>

@@ -1,5 +1,5 @@
 import React from "react";
-import KnobChart from "../../chart";
+import Status2 from "../../Layout/Status2";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-sm-12 col-xl-6">
-                  <KnobChart />
+                  <Status2 />
                 </div>
               </div>
             </div>
