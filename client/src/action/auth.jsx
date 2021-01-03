@@ -163,18 +163,18 @@ export const edituserbyid = ({
   }
 };
 
-export const deleteUser = (id) => async (dispatch) => {
+export const deleteUser = (id, history) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/user/${id}`);
     dispatch({
       type: DELETE_USER,
       payload: id,
     });
+    history.push("/admindashboard");
     dispatch({
       type: CLEAR_USER,
     });
-
-    dispatch(setAlert("USER DELETED", "success"));
+    dispatch(setAlert("user deleted", "success"));
   } catch (err) {}
 };
 
