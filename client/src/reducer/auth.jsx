@@ -6,7 +6,8 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  DELETE_ACCOUNT,
+  DELETE_USER,
+  CLEAR_USER,
 } from "../action/type";
 
 const initialState = {
@@ -29,7 +30,7 @@ export default function (state = initialState, action) {
         loading: false,
         role: payload == "admin" ? true : false,
       };
-    case DELETE_ACCOUNT:
+
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
