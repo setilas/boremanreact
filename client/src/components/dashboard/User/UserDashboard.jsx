@@ -3,7 +3,7 @@ import KnobChart from "../../chart";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import { Header } from "../../Layout/Header";
+import { Header } from "../../Layout/Header"; 
 import Sidebar from "../../Layout/Sidebar";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
