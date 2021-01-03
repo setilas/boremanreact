@@ -114,16 +114,4 @@ router.post("/edit/:id", async (req, res) => {
   }
 });
 
-//delete a user by id
-router.delete("/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    await user.remove();
-    return res.json({ msg: "User removed" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("server error");
-  }
-});
-
 module.exports = router;

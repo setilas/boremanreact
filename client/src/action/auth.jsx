@@ -9,8 +9,7 @@ import {
   GET_USER,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_USER,
-  DELETE_USER,
+  CLEAR_PROFILE,
 } from "./type";
 import { setAuthToken } from "../utils/setAuthToken";
 import { setAlert } from "./alert";
@@ -161,21 +160,6 @@ export const edituserbyid = ({
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
   }
-};
-
-export const deleteUser = (id) => async (dispatch) => {
-  try {
-    const res = await axios.delete(`/api/user/${id}`);
-    dispatch({
-      type: DELETE_USER,
-      payload: id,
-    });
-    dispatch({
-      type: CLEAR_USER,
-    });
-
-    dispatch(setAlert("USER DELETED", "success"));
-  } catch (err) {}
 };
 
 export const logout = () => (dispatch) => {

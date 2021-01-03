@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
 import { setAlert } from "../../action/alert";
@@ -73,7 +73,7 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
                   <Link to={`/viewenquiry/${user._id}`}>ViewEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/admindashboard">status</Link>
+                  <Link to="/status">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>
