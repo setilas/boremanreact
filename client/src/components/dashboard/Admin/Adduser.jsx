@@ -177,17 +177,9 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
           </div>
         </div>
       </div>
-
-
+      </div>
+      </div>
     
-     </div>
-    </div>
-    
-               
-              
-        
-
-
     
   );
 };

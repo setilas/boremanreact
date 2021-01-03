@@ -120,9 +120,12 @@ export const InfoUser = ({
                         </div>
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
-                          <table class="table table-condensed">
-                          
-                            
+                            <table
+                              cellspacing="2"
+                              align="center"
+                              cellpadding="8"
+                              border="0"
+                            >
                               <tr>
                                 <td align="left">user Code :</td>
                                 <td>
