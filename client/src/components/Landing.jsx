@@ -79,14 +79,19 @@ export const Landing = () => {
                     >
                     
                     <li className="nav-item">
-                      <a className="nav-link" href="#components">
+                    <Link
+                      to="/login"
+                       className="nav-link" href="#components">
                         Login
-                      </a>
+                   
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#applications">
+                    <Link
+                      to="/register"
+                       className="nav-link" href="#applications">
                         Register
-                      </a>
+                      </Link>
                     </li>
                     
                     </ul>
