@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getvendorbyid } from "../../../action/vendor";
 import { editvendorbyid } from "../../../action/vendor";
+import { deleteUser } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+import { withRouter } from "react-router-dom";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({
@@ -14,6 +16,8 @@ export const MoreInfo = ({
   Vendor,
   loadingVendor,
   editvendorbyid,
+  deleteUser,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -57,9 +61,10 @@ export const MoreInfo = ({
       completedEnquiry,
     });
   };
-  const activateFun = () => {
-    setFormData({ ...formData, activate: "true" });
+  const DeleteUser = () => {
+    deleteUser(Vendor._id, history);
   };
+
   useEffect(() => {
     getvendorbyid(match.params.id);
     setFormData({
@@ -264,7 +269,12 @@ export const MoreInfo = ({
                                       <button className="button button2">
                                         Submit
                                       </button>
-                                      <button className="button button2">
+                                      <button
+                                        onClick={(e) => {
+                                          DeleteUser();
+                                        }}
+                                        className="button button2"
+                                      >
                                         Delete
                                       </button>
                                     </div>
@@ -291,6 +301,8 @@ const mapStateToProps = (state) => ({
   loadingVendor: state.vendor.loadingVendor,
 });
 
-export default connect(mapStateToProps, { getvendorbyid, editvendorbyid })(
-  MoreInfo
-);
+export default connect(mapStateToProps, {
+  getvendorbyid,
+  deleteUser,
+  editvendorbyid,
+})(withRouter(MoreInfo));

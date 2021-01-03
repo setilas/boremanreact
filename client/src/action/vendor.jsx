@@ -44,11 +44,6 @@ export const getallvendors = () => async (dispatch) => {
       type: GET_ALLVENDORS,
       payload: res.data,
     });
-    if (res.data.length > 0) {
-      dispatch({
-        type: PERCENTAGE,
-      });
-    }
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

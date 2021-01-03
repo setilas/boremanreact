@@ -6,9 +6,7 @@ import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
-import { Redirect } from "react-router-dom";
-import { setAlert } from "../../../action/alert";
-import Alert from "../../Auth/Alert";
+import { Redirect, withRouter } from "react-router-dom";
 
 const logo = require("../../../assets/images/logo/logo.png");
 
@@ -19,7 +17,7 @@ export const InfoUser = ({
   loadingUser,
   edituserbyid,
   deleteUser,
-  setAlert,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -45,7 +43,6 @@ export const InfoUser = ({
     activate,
   } = formData;
 
-  console.log(formData);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -70,7 +67,7 @@ export const InfoUser = ({
   };
 
   const DeleteUser = () => {
-    deleteUser(user._id);
+    deleteUser(user._id, history);
     getuserbyid(match.params.id);
   };
 
@@ -96,7 +93,7 @@ export const InfoUser = ({
 
   return (
     <Fragment>
-      {user === null ? (
+      {loadingUser ? (
         <Loader />
       ) : (
         <Fragment>
@@ -122,7 +119,6 @@ export const InfoUser = ({
                         <div className="h-tag"></div>
 
                         <div className="login">
-                          <Alert />
                           <form onSubmit={(e) => onSubmit(e)}>
                             <table
                               cellspacing="2"
@@ -338,5 +334,4 @@ export default connect(mapStateToProps, {
   getuserbyid,
   edituserbyid,
   deleteUser,
-  setAlert,
-})(InfoUser);
+})(withRouter(InfoUser));

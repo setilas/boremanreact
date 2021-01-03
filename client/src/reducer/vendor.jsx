@@ -6,7 +6,6 @@ import {
   GET_USER,
   DELETE_USER,
   CLEAR_USER,
-  PERCENTAGE,
 } from "../action/type";
 
 const initialState = {

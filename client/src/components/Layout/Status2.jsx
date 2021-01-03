@@ -5,11 +5,10 @@ import { loadUser } from "../../action/auth";
 import Knob from "knob";
 import configDB from "../../data/customizer/config";
 import { connect } from "react-redux";
-import { getallvendors } from "../../action/vendor";
-import { getUsers } from "../../action/auth";
+
 const primary =
   localStorage.getItem("default_color") || configDB.data.color.primary_color;
-const Status2 = ({ vendors, users, getallvendors, getUsers }) => {
+const Status2 = ({ vendors, users }) => {
   function percentage(partialValue, totalValue) {
     return ((100 * partialValue) / totalValue).toFixed(2);
   }
@@ -39,9 +38,6 @@ const Status2 = ({ vendors, users, getallvendors, getUsers }) => {
   const total = total1 + total2;
   const completed = total - active;
   useEffect(() => {
-    getallvendors();
-    getUsers();
-
     var Status2 = Knob({
       value: percentage(completed, total),
       min: -100,
@@ -122,6 +118,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   loadUser,
-  getUsers,
-  getallvendors,
 })(Status2);
