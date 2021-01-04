@@ -14,9 +14,13 @@ const Sidebar = ({ logout }) => {
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
-          <img class="img-fluid for-light" src={logo} alt="" />
-          <h3 className="d-inline ">Boreman</h3>
-
+          <img
+            class="img-fluid for-light"
+            src={logo}
+            alt=""
+          />
+          <h3 className="d-inline ">Boreman</h3>                     
+          
           <img
             class="img-fluid for-dark"
             src="../assets/images/logo/logo_dark.png"
@@ -59,7 +63,7 @@ const Sidebar = ({ logout }) => {
                 <span>Back</span>
                 <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
               </div>
-            </li>
+            </li>        
 
             <li class="sidebar-list ">
               <label class="badge badge-success">4</label>
@@ -78,7 +82,7 @@ const Sidebar = ({ logout }) => {
                   <Link to="/adminview">ViewEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/admindashboard">status</Link>
+                  <Link to="/status">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>
