@@ -1,21 +1,19 @@
+import CountUp from 'react-countup';
 import React, { useEffect, Fragment } from "react";
-import Breadcrumb from "../../layout/breadcrumb";
+import Breadcrumb from "../layout/breadcrumb/";
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { loadUser } from "../../action/auth";
 import Knob from "knob";
-import configDB from "../../data/customizer/config";
-import { connect } from "react-redux";
+import configDB from "../data/customizer/config";
+import { Status } from "../constant";
 const primary =
   localStorage.getItem("default_color") || configDB.data.color.primary_color;
-const Status = ({ user, loadUser }) => {
+const KnobChart = (props) => {
   function percentage(partialValue, totalValue) {
     return ((100 * partialValue) / totalValue).toFixed(2);
   }
   useEffect(() => {
-    loadUser();
-
     var Status = Knob({
-      value: percentage(user.completedEnquiry, user.totalEnquiry),
+      value: percentage(20, 110),
       min: -100,
       className: "review",
       thickness: 0.1,
@@ -44,9 +42,10 @@ const Status = ({ user, loadUser }) => {
                     </span>
                     <span class="text-muted block-bottom">TotalEnquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">
-                        {user.totalEnquiry}
-                      </span>
+                      {/* <span class="counter color-bottom">
+                        111
+                        </span> */}
+                        <CountUp end={111} />
                     </h4>
                   </div>
                 </div>
@@ -57,9 +56,8 @@ const Status = ({ user, loadUser }) => {
                     </span>
                     <span class="text-muted block-bottom">Active Enquiry</span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">
-                        {user.activeEnquiry}
-                      </span>
+                      {/* <span class="counter color-bottom">90</span> */}
+                      <CountUp end={100} />
                     </h4>
                   </div>
                 </div>
@@ -72,9 +70,8 @@ const Status = ({ user, loadUser }) => {
                       TotalWork Complete
                     </span>
                     <h4 class="num m-0">
-                      <span class="counter color-bottom">
-                        {user.completedEnquiry}
-                      </span>
+                      {/* <span class="counter color-bottom">20</span> */}
+                      <CountUp end={20} />
                     </h4>
                   </div>
                 </div>
@@ -84,6 +81,7 @@ const Status = ({ user, loadUser }) => {
                   <div className="knob-block text-center">
                     <div className="knob" id="Status"></div>
                   </div>
+                 
                 </div>
               </div>
             </CardBody>
@@ -93,8 +91,5 @@ const Status = ({ user, loadUser }) => {
     </Fragment>
   );
 };
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-});
 
-export default connect(mapStateToProps, { loadUser })(Status);
+export default KnobChart;
