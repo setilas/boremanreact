@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import KnobChart from "../../chart";
+import Status from "../../Layout/Status";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
@@ -66,7 +66,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-sm-12 col-xl-6">
-                          <KnobChart />
+                          <Status />
                         </div>
                       </div>
                     </div>
@@ -90,30 +90,33 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                 {/*  page header */}
                 <Header3 user={user} />
                 <div className="page-body-wrapper sidebar-icon document-content">
-                  <Sidebar3/>
+                  <Sidebar3 />
                   <div className="page-body">
                     <Container Fluid={true}>
-                      
-                    <div className="row"style={{marginBottom:"50px"}}></div>
-                    <div className="col-12" >
-                  <h3 >account is not activated yet</h3>
-              <li   >
-                <Link to="/"  onClick={logout} >
-                  logout
-                </Link>
-              </li>
+                      <div
+                        className="row"
+                        style={{ marginBottom: "50px" }}
+                      ></div>
+                      <div className="col-12">
+                        <h3>account is not activated yet</h3>
+                        <li>
+                          <Link to="/" onClick={logout}>
+                            logout
+                          </Link>
+                        </li>
+                      </div>
+                    </Container>
                   </div>
-                    </Container> 
-                  
-                  </div>
-                 
-                 {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
+
+                  {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
                  
              
               </div>  */}
                 </div>
+
              </div>
              
+
 
             </Fragment>
           )}

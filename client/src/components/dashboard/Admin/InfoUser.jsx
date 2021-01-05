@@ -1,13 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
+
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import { getuserbyid } from "../../../action/auth";
+
+import { deleteUser, getuserbyid } from "../../../action/auth";
+
 import { edituserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+
 import "../../scss/page.scss";
+
+import { Redirect, withRouter } from "react-router-dom";
+
+
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const InfoUser = ({
@@ -16,6 +25,8 @@ export const InfoUser = ({
   user,
   loadingUser,
   edituserbyid,
+  deleteUser,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -41,7 +52,6 @@ export const InfoUser = ({
     activate,
   } = formData;
 
-  console.log(formData);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -59,8 +69,19 @@ export const InfoUser = ({
       completedEnquiry,
     });
   };
+
+  console.log(activate);
   const activateFun = () => {
     setFormData({ ...formData, activate: "true" });
+  };
+
+  const DeleteUser = () => {
+    deleteUser(user._id, history);
+    getuserbyid(match.params.id);
+  };
+
+  const change = (e) => {
+    setFormData({ ...formData, activeEnquiry: e.target.value });
   };
   useEffect(() => {
     getuserbyid(match.params.id);
@@ -81,8 +102,10 @@ export const InfoUser = ({
 
   return (
     <Fragment>
-   
-      {user === null ? (
+
+
+      {loadingUser ? (
+
         <Loader />
       ) : (
         <div>
@@ -206,11 +229,12 @@ export const InfoUser = ({
                                 <td>
                                   <input
                                     type="text"
+                                    name="activeEnquiry"
                                     value={totalEnquiry - completedEnquiry}
                                     id="t7"
                                     className="tb"
                                     onChange={(e) => {
-                                      onChange(e);
+                                      change(e);
                                     }}
                                   />
                                 </td>
@@ -281,7 +305,14 @@ export const InfoUser = ({
                                       <button className="button button2 rounded">
                                         Submit
                                       </button>
-                                      <button className="button button2 rounded btn btn-danger">
+
+
+                                      <button
+                                        onClick={(e) => {
+                                          DeleteUser();
+                                        }}
+                                        className="button button2">
+
                                         Delete
                                       </button>
                                     </div>
@@ -309,6 +340,8 @@ const mapStateToProps = (state) => ({
   loadingUser: state.vendor.loadingUser,
 });
 
-export default connect(mapStateToProps, { getuserbyid, edituserbyid })(
-  InfoUser
-);
+export default connect(mapStateToProps, {
+  getuserbyid,
+  edituserbyid,
+  deleteUser,
+})(withRouter(InfoUser));
