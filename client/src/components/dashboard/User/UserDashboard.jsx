@@ -80,8 +80,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
 
               
 
-                  <Useractivation/>
-
+                
               <div className="tap-top">
                 <i data-feather="chevrons-up"></i>
               </div>
@@ -98,6 +97,9 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                         style={{ marginBottom: "50px" }}
                       ></div>
                       <div className="col-12">
+
+                      <Useractivation/>
+
                         <h3>account is not activated yet</h3>
                         <li>
                           <Link to="/" onClick={logout}>

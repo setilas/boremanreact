@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
-import { getuserbyid } from "../../../action/auth";
 
-import { deleteUser, getuserbyid } from "../../../action/auth";
 
-import { edituserbyid } from "../../../action/auth";
+import { deleteUser, getuserbyid ,edituserbyid} from "../../../action/auth";
+
+
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
@@ -311,7 +311,7 @@ export const InfoUser = ({
                                         onClick={(e) => {
                                           DeleteUser();
                                         }}
-                                        className="button button2">
+                                        className="button button2 rounded">
 
                                         Delete
                                       </button>
