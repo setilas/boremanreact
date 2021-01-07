@@ -268,30 +268,19 @@ export const InfoUser = ({
                                 </td>
                               </tr>
 
-                            <tr>
-                              <td></td>
-                              <td align="center">
-                                <div>
+                              <tr>
+                                <td></td>
+                                <td align="center">
                                   <div>
-                                    {activate ? (
-                                      <button
-                                        className="btn btn-success"
-                                        onClick={() => {
-                                          activateFun();
-                                        }}
-                                      >
-                                        Activated
-                                      </button>
-                                    ) : (
-                                      <div>
-                                        <h5>Account Activation</h5>
+                                    <div>
+                                      {user.activate ? (
                                         <button
-                                          className="btn btn-danger"
+                                          className="btn btn-success"
                                           onClick={() => {
                                             activateFun();
                                           }}
                                         >
-                                          Activate
+                                          Activated
                                         </button>
                                       ) : (
                                         <div>
@@ -305,9 +294,7 @@ export const InfoUser = ({
                                             Activate
                                           </button>
                                         </div>
-                                      )
-                                    
-
+                                      )}
                                       <button className="button button1">
                                         Reset Password
                                       </button>
@@ -323,11 +310,9 @@ export const InfoUser = ({
                                         Delete
                                       </button>
                                     </div>
-                                    )}
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
+                                </td>
+                              </tr>
                           </table>
                         </form>
                       </div>
