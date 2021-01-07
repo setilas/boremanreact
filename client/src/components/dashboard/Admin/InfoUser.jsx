@@ -129,9 +129,9 @@ export const InfoUser = ({
 
               <Sidebar2/>
               <div class="page-body1">
-              <div className="admin-card mt-0">
+              <div className="admin-card ">
                 <Row>
-                  <Card>
+                  <Card className="mt-4">
                   <CardHeader>
                     <h2>User Details</h2>
                   </CardHeader>

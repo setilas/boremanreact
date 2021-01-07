@@ -50,7 +50,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
 
     <Fragment>
       <div className="admin-card">
-        <div className="wrap-contact100">
+        <div className="wrap-contact100 mt-4">
           <form
             className="contact100-form "
             onSubmit={(e) => {

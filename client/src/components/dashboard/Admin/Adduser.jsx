@@ -54,8 +54,8 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
 
           <div class="page-body1">
             <div className="admin-card">
-              <div>
-                <div></div>
+              <div class="mt-4">
+                
                 <div className="login-main ">
                   <form
                     className="theme-form"

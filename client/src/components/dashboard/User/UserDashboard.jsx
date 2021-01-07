@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+
 import Status from "../../Layout/Status";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
@@ -13,7 +14,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
 
 
-import {Useractivation} from "../../Useractivation";
+import Useractivation from "../../Useractivation";
 
 
 import "../../scss/page.scss";
@@ -97,14 +98,9 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                       ></div>
                       <div className="col-12">
 
-                      <Useractivation/>
-
-                        <h3>account is not activated yet</h3>
-                        <li>
-                          <Link to="/" onClick={logout}>
-                            logout
-                          </Link>
-                        </li>
+                     <Useractivation/>
+                      
+                  
                       </div>
                     </Container>
                   </div>
