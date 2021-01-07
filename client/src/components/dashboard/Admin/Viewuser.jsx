@@ -13,18 +13,16 @@ import { Link } from "react-router-dom";
 import Sidebar2 from "../../Layout/Sidebar2";
 import Header2 from "../../Layout/Header2";
 import "../../scss/page.scss";
-import { MarginRight } from "../../../constant";
 import Alert from "../../Auth/Alert";
 
-const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
+const Viewuser = ({ getallvendors, getUsers, vendors, users, loadingUser }) => {
   useEffect(() => {
     $(document).ready(function () {
       $("#example").DataTable();
     });
     getUsers();
     getallvendors();
-  }, []);
-  const Completed = 0;
+  }, [getUsers]);
 
   return (
     <div>
@@ -116,6 +114,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users }) => {
 const mapStateToProps = (state) => ({
   vendors: state.vendor.vendors,
   users: state.vendor.users,
+  loadingUser: state.vendor,
 });
 
 export default connect(mapStateToProps, { getallvendors, getUsers })(Viewuser);

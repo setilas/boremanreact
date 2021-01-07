@@ -98,6 +98,8 @@ export const editvendorbyid = ({
       body,
       config
     );
+
+    dispatch(setAlert("updated", "success"));
     dispatch({
       type: GET_VENDOR,
       payload: res.data,

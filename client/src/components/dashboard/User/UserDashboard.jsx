@@ -12,7 +12,9 @@ import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
 
+
 import {Useractivation} from "../../Useractivation";
+
 
 import "../../scss/page.scss";
 import { Container } from "reactstrap";
@@ -78,9 +80,6 @@ const UserDashboard = ({ user, loadUser, logout }) => {
           ) : (
             <Fragment>
 
-              
-
-                
               <div className="tap-top">
                 <i data-feather="chevrons-up"></i>
               </div>
@@ -116,9 +115,9 @@ const UserDashboard = ({ user, loadUser, logout }) => {
               </div>  */}
                 </div>
 
+
              </div>
              
-
 
             </Fragment>
           )}

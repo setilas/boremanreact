@@ -1,10 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+
 import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 
 
-import { deleteUser, getuserbyid ,edituserbyid} from "../../../action/auth";
 
+
+
+
+import { deleteUser, getuserbyid } from "../../../action/auth";
+import { edituserbyid } from "../../../action/auth";
 
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
@@ -12,9 +17,13 @@ import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
 
+
 import "../../scss/page.scss";
 
 import { Redirect, withRouter } from "react-router-dom";
+
+
+
 
 
 const logo = require("../../../assets/images/logo/logo.png");
@@ -103,12 +112,11 @@ export const InfoUser = ({
   return (
     <Fragment>
 
-
       {loadingUser ? (
 
         <Loader />
       ) : (
-        <div>
+        <Fragment>
           <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
@@ -118,6 +126,7 @@ export const InfoUser = ({
             <Header2 />
             {/* page body contains sidebar and content  */}
             <div className="page-body-wrapper sidebar-icon document-content">
+
               <Sidebar2/>
               <div class="page-body1">
               <div className="admin-card mt-0">
@@ -132,6 +141,8 @@ export const InfoUser = ({
                           <table >
                           
                             
+
+
                               <tr>
                                 <td align="left" class="font-weight-bold " >User Code: </td>
                               
@@ -322,15 +333,14 @@ export const InfoUser = ({
                             </table>
                           </form>
                         </div>
-        
-            </CardBody>
-            </Card>
-          </Row>
-           </div>
-         </div>
-        </div>
-        </div>
-        </div>
+                      </CardBody>
+                    </Card>
+                  </Row>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
       )}
     </Fragment>
   );

@@ -5,9 +5,6 @@ import { Link, Redirect } from "react-router-dom";
 import Loader from "../../layout/loader";
 const logo = require("../../assets/images/logo/logo.png");
 
-
-
-
 export const Header3 = ({ user }) => {
   const { firstname } = user;
   return (
@@ -105,6 +102,5 @@ export const Header3 = ({ user }) => {
 const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
-
 
 export default Header3;
