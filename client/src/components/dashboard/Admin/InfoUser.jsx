@@ -111,13 +111,16 @@ export const InfoUser = ({
               <div className="page-body">
                 <div
                   className="container-fluid"
-                  style={{ paddingTop: "150px" }}
+                  style={{ paddingTop: "100px" }}
                 >
-                  <div className="card">
+                  
+                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
-
+                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
+                        <h4>User Details</h4>
+                        </div>
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
                             <table
@@ -335,6 +338,7 @@ export const InfoUser = ({
             </div>
           </div>
         </div>
+        
       </Fragment>
        )} 
     </Fragment>

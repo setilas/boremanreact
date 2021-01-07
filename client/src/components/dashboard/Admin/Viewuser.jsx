@@ -39,7 +39,7 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users, loadingUser }) => {
           <div className="page-body ">
             <Alert />
             <div className="col-12 text-center">
-              <h3 style={{ paddingTop: "30px", color: "crimson" }}>
+              <h3 style={{ paddingTop: "30px", color: "black" }}>
                 View User
               </h3>
             </div>
