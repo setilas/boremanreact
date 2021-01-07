@@ -6,9 +6,7 @@ import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
-import { Redirect } from "react-router-dom";
-import { setAlert } from "../../../action/alert";
-import Alert from "../../Auth/Alert";
+import { Redirect, withRouter } from "react-router-dom";
 
 const logo = require("../../../assets/images/logo/logo.png");
 
@@ -19,7 +17,7 @@ export const InfoUser = ({
   loadingUser,
   edituserbyid,
   deleteUser,
-  setAlert,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -45,7 +43,6 @@ export const InfoUser = ({
     activate,
   } = formData;
 
-  console.log(formData);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -63,15 +60,20 @@ export const InfoUser = ({
       completedEnquiry,
     });
   };
+
+  console.log(activate);
   const activateFun = () => {
     setFormData({ ...formData, activate: "true" });
   };
 
   const DeleteUser = () => {
-    deleteUser(user._id);
+    deleteUser(user._id, history);
     getuserbyid(match.params.id);
   };
 
+  const change = (e) => {
+    setFormData({ ...formData, activeEnquiry: e.target.value });
+  };
   useEffect(() => {
     getuserbyid(match.params.id);
     setFormData({
@@ -91,9 +93,9 @@ export const InfoUser = ({
 
   return (
     <Fragment>
-      {/* {user === null ? (
+      {loadingUser ? (
         <Loader />
-      ) : ( */}
+      ) : ( 
       <Fragment>
         <div className="tap-top">
           <i data-feather="chevrons-up"></i>
@@ -111,13 +113,11 @@ export const InfoUser = ({
                   className="container-fluid"
                   style={{ paddingTop: "150px" }}
                 >
-                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
+                  <div className="card">
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
-                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
-                        <h4>User Details</h4>
-                        </div>
+
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
                             <table
@@ -142,127 +142,128 @@ export const InfoUser = ({
                                 </td>
                               </tr>
 
-                            <tr>
-                              <td align="left">Name :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="firstname"
-                                  value={firstname}
-                                  id="t2"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">user Address :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="address"
-                                  value={address}
-                                  id="t3"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">user Phone :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="phone"
-                                  value={phone}
-                                  id="t4"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">user Email :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="email"
-                                  value={email}
-                                  id="t5"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="totalEnquiry"
-                                  value={totalEnquiry}
-                                  id="t6"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Active Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  value={totalEnquiry - completedEnquiry}
-                                  id="t7"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total work completed :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="completedEnquiry"
-                                  value={completedEnquiry}
-                                  id="t8"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">
-                                Total work Enquiry Estimated :
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  name="completedEnquiry"
-                                  value={completedEnquiry}
-                                  id="t9"
-                                  className="tb"
-                                  onChange={(e) => {
-                                    onChange(e);
-                                  }}
-                                />
-                              </td>
-                            </tr>
+                              <tr>
+                                <td align="left">Name :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="firstname"
+                                    value={firstname}
+                                    id="t2"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Address :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="address"
+                                    value={address}
+                                    id="t3"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Phone :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="phone"
+                                    value={phone}
+                                    id="t4"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">user Email :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="email"
+                                    value={email}
+                                    id="t5"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="totalEnquiry"
+                                    value={totalEnquiry}
+                                    id="t6"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Active Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="activeEnquiry"
+                                    value={totalEnquiry - completedEnquiry}
+                                    id="t7"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      change(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total work completed :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t8"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">
+                                  Total work Enquiry Estimated :
+                                </td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t9"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
 
                             <tr>
                               <td></td>
@@ -289,22 +290,34 @@ export const InfoUser = ({
                                         >
                                           Activate
                                         </button>
-                                      </div>
-                                    )}
-                                    <button className="button button1">
-                                      Reset Password
-                                    </button>
-                                    <button className="button button2">
-                                      Submit
-                                    </button>
-                                    <button
-                                      onClick={(e) => {
-                                        DeleteUser();
-                                      }}
-                                      className="button button2"
-                                    >
-                                      Delete
-                                    </button>
+                                      ) : (
+                                        <div>
+                                          <h5>Account Activation</h5>
+                                          <button
+                                            className="btn btn-danger"
+                                            onClick={() => {
+                                              activateFun();
+                                            }}
+                                          >
+                                            Activate
+                                          </button>
+                                        </div>
+                                      )
+                                      <button className="button button1">
+                                        Reset Password
+                                      </button>
+                                      <button className="button button2">
+                                        Submit
+                                      </button>
+                                      <button
+                                        onClick={(e) => {
+                                          DeleteUser();
+                                        }}
+                                        className="button button2"
+                                      >
+                                        Delete
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
                               </td>
@@ -320,7 +333,7 @@ export const InfoUser = ({
           </div>
         </div>
       </Fragment>
-      {/* )} */}
+       )} 
     </Fragment>
   );
 };
@@ -333,5 +346,4 @@ export default connect(mapStateToProps, {
   getuserbyid,
   edituserbyid,
   deleteUser,
-  setAlert,
-})(InfoUser);
+})(withRouter(InfoUser));

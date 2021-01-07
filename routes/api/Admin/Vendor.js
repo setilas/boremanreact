@@ -101,7 +101,6 @@ router.post("/edit/:id", async (req, res) => {
     phone,
     email,
     totalEnquiry,
-    activeEnquiry,
     completedEnquiry,
   } = req.body;
   const filter = { _id: req.params.id };
@@ -111,7 +110,7 @@ router.post("/edit/:id", async (req, res) => {
     phone: phone,
     email: email,
     totalEnquiry,
-    activeEnquiry,
+    activeEnquiry: totalEnquiry - completedEnquiry,
     completedEnquiry,
   };
   try {

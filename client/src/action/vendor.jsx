@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR } from "./type";
+import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR, PERCENTAGE } from "./type";
 export const addVendor = ({
   firstname,
   lastname,
@@ -98,6 +98,8 @@ export const editvendorbyid = ({
       body,
       config
     );
+
+    dispatch(setAlert("updated", "success"));
     dispatch({
       type: GET_VENDOR,
       payload: res.data,

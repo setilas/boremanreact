@@ -6,8 +6,6 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  DELETE_USER,
-  CLEAR_USER,
 } from "../action/type";
 
 const initialState = {

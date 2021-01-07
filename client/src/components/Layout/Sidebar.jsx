@@ -73,7 +73,7 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
                   <Link to={`/viewenquiry/${user._id}`}>ViewEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/admindashboard">status</Link>
+                  <Link to="/userdashboard">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>

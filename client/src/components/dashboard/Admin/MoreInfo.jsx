@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getvendorbyid } from "../../../action/vendor";
 import { editvendorbyid } from "../../../action/vendor";
+import { deleteUser } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+import { withRouter } from "react-router-dom";
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({
@@ -14,6 +16,8 @@ export const MoreInfo = ({
   Vendor,
   loadingVendor,
   editvendorbyid,
+  deleteUser,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     vendorcode: "",
@@ -57,9 +61,10 @@ export const MoreInfo = ({
       completedEnquiry,
     });
   };
-  const activateFun = () => {
-    setFormData({ ...formData, activate: "true" });
+  const DeleteUser = () => {
+    deleteUser(Vendor._id, history);
   };
+
   useEffect(() => {
     getvendorbyid(match.params.id);
     setFormData({
@@ -82,7 +87,7 @@ export const MoreInfo = ({
 
   return (
     <Fragment>
-      {Vendor === null ? (
+      {loadingVendor ? (
         <Loader />
       ) : (
         <Fragment>
@@ -98,14 +103,14 @@ export const MoreInfo = ({
               <Sidebar2></Sidebar2>
 
               <div className="page-body">
-                <div className="container-fluid" style={{ paddingTop: "150px" }}>
-                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
+                <div
+                  className="container-fluid"
+                  style={{ paddingTop: "150px" }}
+                >
+                  <div className="card">
                     <div className="container">
                       <div id="main">
                         <div className="h-tag"></div>
-                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
-                        <h4>User Details</h4>
-                        </div>
 
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
@@ -258,35 +263,18 @@ export const MoreInfo = ({
                                 <td align="center">
                                   <div>
                                     <div>
-                                      {Vendor.activate ? (
-                                        <button
-                                          className="btn btn-success"
-                                          onClick={() => {
-                                            activateFun();
-                                          }}
-                                        >
-                                          Activated
-                                        </button>
-                                      ) : (
-                                        <div>
-                                          <h5>Account Activation</h5>
-                                          <button
-                                            className="btn btn-danger"
-                                            onClick={() => {
-                                              activateFun();
-                                            }}
-                                          >
-                                            Activate
-                                          </button>
-                                        </div>
-                                      )}
                                       <button className="button button1">
                                         Reset Password
                                       </button>
                                       <button className="button button2">
                                         Submit
                                       </button>
-                                      <button className="button button2">
+                                      <button
+                                        onClick={(e) => {
+                                          DeleteUser();
+                                        }}
+                                        className="button button2"
+                                      >
                                         Delete
                                       </button>
                                     </div>
@@ -313,6 +301,8 @@ const mapStateToProps = (state) => ({
   loadingVendor: state.vendor.loadingVendor,
 });
 
-export default connect(mapStateToProps, { getvendorbyid, editvendorbyid })(
-  MoreInfo
-);
+export default connect(mapStateToProps, {
+  getvendorbyid,
+  deleteUser,
+  editvendorbyid,
+})(withRouter(MoreInfo));

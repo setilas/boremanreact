@@ -1,13 +1,15 @@
-import React from "react";
-import KnobChart from "../../chart";
+import React, { useEffect } from "react";
+import Status2 from "../../Layout/Status2";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
+import { setAlert } from "../../../action/alert";
+import Alert from "../../Auth/Alert";
 const logo = require("../../../assets/images/logo/logo.png");
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ setAlert }) => {
   return (
     <div>
       <Loader />
@@ -47,7 +49,7 @@ const AdminDashboard = () => {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-sm-12 col-xl-6">
-                  <KnobChart />
+                  <Status2 />
                 </div>
               </div>
             </div>
@@ -59,8 +61,4 @@ const AdminDashboard = () => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { login })(AdminDashboard);
+export default connect(null, { setAlert })(AdminDashboard);

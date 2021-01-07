@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect } from "react";
-import KnobChart from "../../chart";
+import Status from "../../Layout/Status";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
+import { Header3 } from "../../Layout/Header3";
 import Sidebar from "../../Layout/Sidebar";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
@@ -62,7 +63,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-sm-12 col-xl-6">
-                          <KnobChart />
+                          <Status />
                         </div>
                       </div>
                     </div>
@@ -79,32 +80,32 @@ const UserDashboard = ({ user, loadUser, logout }) => {
               {/* page wrapper which will wrap entirepage */}
               <div className="page-wrapper compact-wrapper" id="pageWrapper">
                 {/*  page header */}
-                <Header user={user} />
+                <Header3 user={user} />
                 <div className="page-body-wrapper sidebar-icon document-content">
-                  <Sidebar3/>
+                  <Sidebar3 />
                   <div className="page-body">
                     <Container Fluid={true}>
-                      
-                    <div className="row"style={{marginBottom:"50px"}}></div>
-                    <div >
-                      
-                  <h3 style={{textAlign:"center"}}>account is not activated yet</h3>
-              <div style={{textAlign:"center"}}>
-               <button className="btn btn-secondary" >logout</button>
-              </div>
-              </div>
-                  
-                    </Container> 
-                  
+                      <div
+                        className="row"
+                        style={{ marginBottom: "50px" }}
+                      ></div>
+                      <div className="col-12">
+                        <h3>account is not activated yet</h3>
+                        <li>
+                          <Link to="/" onClick={logout}>
+                            logout
+                          </Link>
+                        </li>
+                      </div>
+                    </Container>
                   </div>
-                 
-                 {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
+
+                  {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
                  
              
               </div>  */}
                 </div>
-             </div>
-             
+              </div>
             </Fragment>
           )}
         </Fragment>
