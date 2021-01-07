@@ -18,7 +18,7 @@ import Viewuser from "./components/dashboard/Admin/Viewuser";
 import { PersistGate } from "redux-persist/integration/react";
 import InfoUser from "./components/dashboard/Admin/InfoUser";
 
-import Useractivation from "./components/Useractivation";
+import {Useractivation} from "./components/Useractivation";
 
 import Profilechange from "./components/Profilechange";
 import Status2 from "./components/Layout/Status2";
@@ -33,7 +33,7 @@ const MainApp = () => {
             <Route exact path="/" component={Landing}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/login" component={Login}></Route>
-
+            <Route exact path="/activation" component={Useractivation}></Route>
             <Route
               exact
               path="/userdashboard"
@@ -56,13 +56,13 @@ const MainApp = () => {
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
             <Route exact path="/moreinfo/:id" component={MoreInfo}></Route>
-            <Route exact path="/useractivation" component={Useractivation}></Route>
+           
             <Route
               exact
               path="/profilechange"
               component={Profilechange}
             ></Route>
-
+            
             <Main2 />
           </Switch>
         </BrowserRouter>

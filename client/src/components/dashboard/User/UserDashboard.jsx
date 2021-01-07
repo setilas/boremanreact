@@ -12,7 +12,7 @@ import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
 
-import Useractivation from "../../Useractivation";
+import {Useractivation} from "../../Useractivation";
 
 import "../../scss/page.scss";
 import { Container } from "reactstrap";
