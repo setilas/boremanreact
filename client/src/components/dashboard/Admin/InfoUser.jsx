@@ -303,6 +303,8 @@ export const InfoUser = ({
                                           </button>
                                         </div>
                                       )
+                                    
+
                                       <button className="button button1">
                                         Reset Password
                                       </button>
@@ -318,6 +320,7 @@ export const InfoUser = ({
                                         Delete
                                       </button>
                                     </div>
+                                    )}
                                   </div>
                                 </div>
                               </td>
