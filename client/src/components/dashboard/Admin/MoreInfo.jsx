@@ -1,21 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { getvendorbyid } from "../../../action/vendor";
-import { editvendorbyid } from "../../../action/vendor";
 import { deleteUser } from "../../../action/auth";
+import { edituserbyid } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
+import { getvendorbyid } from "../../../action/vendor";
+
 const logo = require("../../../assets/images/logo/logo.png");
 
 export const MoreInfo = ({
   match,
   getvendorbyid,
-  Vendor,
+  vendor,
   loadingVendor,
-  editvendorbyid,
+  edituserbyid,
   deleteUser,
   history,
 }) => {
@@ -43,13 +44,12 @@ export const MoreInfo = ({
     activate,
   } = formData;
 
-  console.log(formData);
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    editvendorbyid({
+    edituserbyid({
       vendorcode,
       firstname,
       address,
@@ -61,27 +61,37 @@ export const MoreInfo = ({
       completedEnquiry,
     });
   };
-  const DeleteUser = () => {
-    deleteUser(Vendor._id, history);
+
+  console.log(activate);
+  const activateFun = () => {
+    setFormData({ ...formData, activate: "true" });
   };
 
+  const DeleteUser = () => {
+    deleteUser(vendor._id, history);
+    getvendorbyid(match.params.id);
+  };
+
+  const change = (e) => {
+    setFormData({ ...formData, activeEnquiry: e.target.value });
+  };
   useEffect(() => {
     getvendorbyid(match.params.id);
     setFormData({
-      vendorcode: loadingVendor || !Vendor._id ? " " : Vendor._id,
-      firstname: loadingVendor || !Vendor.firstname ? "" : Vendor.firstname,
-      address: loadingVendor || !Vendor.address ? " " : Vendor.address,
-      phone: loadingVendor || !Vendor.phone ? " " : Vendor.phone,
-      email: loadingVendor || !Vendor.email ? " " : Vendor.email,
+      vendorcode: loadingVendor || !vendor._id ? " " : vendor._id,
+      firstname: loadingVendor || !vendor.firstname ? "" : vendor.firstname,
+      address: loadingVendor || !vendor.address ? " " : vendor.address,
+      phone: loadingVendor || !vendor.phone ? " " : vendor.phone,
+      email: loadingVendor || !vendor.email ? " " : vendor.email,
       totalEnquiry:
-        loadingVendor || !Vendor.totalEnquiry ? " " : Vendor.totalEnquiry,
+        loadingVendor || !vendor.totalEnquiry ? " " : vendor.totalEnquiry,
       activeEnquiry:
-        loadingVendor || !Vendor.activeEnquiry ? " " : Vendor.activeEnquiry,
+        loadingVendor || !vendor.activeEnquiry ? " " : vendor.activeEnquiry,
       completedEnquiry:
-        loadingVendor || !Vendor.completedEnquiry
+        loadingVendor || !vendor.completedEnquiry
           ? " "
-          : Vendor.completedEnquiry,
-      activate: loadingVendor || !Vendor.activate ? " " : Vendor.activate,
+          : vendor.completedEnquiry,
+      activate: loadingVendor || !vendor.activate ? " " : vendor.activate,
     });
   }, [loadingVendor]);
 
@@ -216,11 +226,12 @@ export const MoreInfo = ({
                                 <td>
                                   <input
                                     type="text"
+                                    name="activeEnquiry"
                                     value={totalEnquiry - completedEnquiry}
                                     id="t7"
                                     className="tb"
                                     onChange={(e) => {
-                                      onChange(e);
+                                      change(e);
                                     }}
                                   />
                                 </td>
@@ -297,12 +308,12 @@ export const MoreInfo = ({
   );
 };
 const mapStateToProps = (state) => ({
-  Vendor: state.vendor.Vendor,
+  vendor: state.vendor.vendor,
   loadingVendor: state.vendor.loadingVendor,
 });
 
 export default connect(mapStateToProps, {
   getvendorbyid,
+  edituserbyid,
   deleteUser,
-  editvendorbyid,
 })(withRouter(MoreInfo));
