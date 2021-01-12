@@ -7,6 +7,7 @@ import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import { Header3 } from "../../Layout/Header3";
 import Sidebar from "../../Layout/Sidebar";
+import Footer from "../../Layout/Footer";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
@@ -64,7 +65,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                     </ol>
                   </div>
                 </div>
-              </div> */}
+                </div> */}
                     </div>
                     <div className="container-fluid">
                       <div className="row">
@@ -76,6 +77,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                   </div>
                 </div>
                 {/* page body ends */}
+                <Footer/>
               </div>
             </Fragment>
           ) : (
@@ -109,6 +111,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                  
              
               </div>  */}
+              <Footer/>
                 </div>
 
 

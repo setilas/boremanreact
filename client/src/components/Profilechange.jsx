@@ -5,6 +5,7 @@ import Header from "./Layout/Header";
 import Sidebar from "./Layout/Sidebar";
 import Loader from "../layout/loader";
 import "./scss/page.scss";
+import Footer from "./Layout/Footer";
 
 export const Profilechange = () => {
   return (
@@ -162,6 +163,7 @@ export const Profilechange = () => {
 </div>
 </div>
 </div>
+<Footer/>
 </div>
 </div>
     );

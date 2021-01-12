@@ -109,6 +109,8 @@ export const InfoUser = ({
     });
   }, [loadingUser]);
 
+  
+
   return (
     <Fragment>
 

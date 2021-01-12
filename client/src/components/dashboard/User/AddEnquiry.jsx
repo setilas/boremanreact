@@ -7,6 +7,7 @@ import Alert from "../../Auth/Alert";
 import Header from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Loader from "../../../layout/loader";
+import Footer from "../../Layout/Footer";
 import "../../scss/page.scss";
 
 const Addenquiry = ({ addEnquiry, redirect }) => {
@@ -50,50 +51,60 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
 
     <Fragment>
       <div className="admin-card">
-        <div className="wrap-contact100 mt-4">
+        <div class="mt-4">
+        <div className="login-main ">
           <form
-            className="contact100-form "
+            className="theme-form "
             onSubmit={(e) => {
               onSubmit(e);
             }}
           >
-            <span className="contact100-form-title">Add enquiry</span>
+            <h4>Add Enquiry</h4>
+            <p>Enter enquiry details </p>
             <Alert />
 
-            <div className="wrap-input100 " data-validate="Name is required">
-              <span className="label-input100">Your Name</span>
+            <div className="form-group" data-validate="Name is required">
+            <label className="col-form-label pt-0">Your Name</label>
+            <div className="form-row">
+             
               <input
-                className="input100"
+                className="form-control"
                 type="text"
+                required=""
                 name="name"
+               
                 value={name}
                 onChange={(e) => {
                   onChange(e);
                 }}
                 placeholder="Enter your name"
               />
-              <span className="focus-input100"></span>
+          
+              </div>          
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">Location</span>
+            <div className="form-group ">
+            <label className="col-form-label pt-0">Location</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="location"
+                
                 value={location}
                 onChange={(e) => {
                   onChange(e);
                 }}
                 placeholder="Enter your location"
               />
-              <span className="focus-input100"></span>
+            </div>  
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">GPS lat</span>
+            <div className="form-group  ">
+            <label className="col-form-label pt-0">GPS lat</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="lat"
                 value={lat}
@@ -102,13 +113,14 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter your latitude"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
 
-            <div className="wrap-input100 validate-input">
-              <span className="label-input100"> GPS Long</span>
+            <div className="form-group">
+            <label className="col-form-label pt-0">GPS long</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="long"
                 value={long}
@@ -117,13 +129,14 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter your longitude"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">Estimate</span>
+            <div className="form-group">
+            <label className="col-form-label pt-0">Estimate</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="estimate"
                 value={estimate}
@@ -132,12 +145,12 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter estimation"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
 
-            <div className="wrap-input100 input100-select">
-              <span className="label-input100">status</span>
-              <div>
+            <div className="form-group">
+            <label className="col-form-label pt-0">Status</label>
+            <div className="form-row">
                 <select
                   className="selection-2"
                   name="addstatus"
@@ -146,33 +159,28 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                     onChange(e);
                   }}
                 >
-                  <option>closed</option>
+                  <option>Closed</option>
                   <option>Open</option>
                 </select>
               </div>
-              <span className="focus-input100"></span>
             </div>
 
-            <div className="container-contact100-form-btn">
-              <div className="wrap-contact100-form-btn">
-                <div className="contact100-form-bgbtn"></div>
-                <button className="contact100-form-btn">
-                  <span>
-                    Submit
-                    <i
-                      className="fa fa-long-arrow-right m-l-7"
-                      aria-hidden="true"
-                    ></i>
-                  </span>
-                </button>
-              </div>
-            </div>
+           <div className="form-group mb-0 mt-3">
+                      <button
+                        className="btn btn-primary btn-block"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
           </form>
         </div>
+      </div>
       </div>
     </Fragment>
     </div>
     </div>
+    <Footer/>
     </div>
     </div>
   );
