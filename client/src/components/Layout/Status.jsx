@@ -58,7 +58,7 @@ const Status = ({ user, loadUser }) => {
                     <span class="text-muted block-bottom">Active Enquiry</span>
                     <h4 class="num m-0">
                       <span class="counter color-bottom">
-                        {user.activeEnquiry}
+                        {user.totalEnquiry - user.completedEnquiry}
                       </span>
                     </h4>
                   </div>

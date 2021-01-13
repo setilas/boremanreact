@@ -9,6 +9,7 @@ import { setAlert } from "../../action/alert";
 import Loader from "../../layout/loader";
 const loginbg = require("../../assets/images/login/1.jpg");
 
+
 const Login = ({ login, isAuthenticated, role, activate }) => {
   const [formData, SetFormData] = useState({
     email: "",

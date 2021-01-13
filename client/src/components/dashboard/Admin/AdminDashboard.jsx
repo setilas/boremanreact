@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
+import Footer from "../../Layout/Footer";
 import { setAlert } from "../../../action/alert";
 import Alert from "../../Auth/Alert";
 const logo = require("../../../assets/images/logo/logo.png");
@@ -56,6 +57,7 @@ const AdminDashboard = ({ setAlert }) => {
           </div>
         </div>
         {/* page body ends */}
+        <Footer/>
       </div>
     </div>
   );

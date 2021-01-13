@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+
 import Status from "../../Layout/Status";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
@@ -6,11 +7,17 @@ import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import { Header3 } from "../../Layout/Header3";
 import Sidebar from "../../Layout/Sidebar";
+import Footer from "../../Layout/Footer";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
+
+
+import Useractivation from "../../Useractivation";
+
+
 import "../../scss/page.scss";
 import { Container } from "reactstrap";
 
@@ -58,7 +65,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                     </ol>
                   </div>
                 </div>
-              </div> */}
+                </div> */}
                     </div>
                     <div className="container-fluid">
                       <div className="row">
@@ -70,10 +77,12 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                   </div>
                 </div>
                 {/* page body ends */}
+                <Footer/>
               </div>
             </Fragment>
           ) : (
             <Fragment>
+
               <div className="tap-top">
                 <i data-feather="chevrons-up"></i>
               </div>
@@ -90,12 +99,10 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                         style={{ marginBottom: "50px" }}
                       ></div>
                       <div className="col-12">
-                        <h3>account is not activated yet</h3>
-                        <li>
-                          <Link to="/" onClick={logout}>
-                            logout
-                          </Link>
-                        </li>
+
+                     <Useractivation/>
+                      
+                  
                       </div>
                     </Container>
                   </div>
@@ -104,8 +111,13 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                  
              
               </div>  */}
+              <Footer/>
                 </div>
-              </div>
+
+
+             </div>
+             
+
             </Fragment>
           )}
         </Fragment>

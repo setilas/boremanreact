@@ -87,7 +87,7 @@ export const MoreInfo = ({
 
   return (
     <Fragment>
-      {Vendor === null ? (
+      {loadingVendor ? (
         <Loader />
       ) : (
         <Fragment>
