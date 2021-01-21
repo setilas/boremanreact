@@ -1,7 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+
+const decore1 = require("../assets/images/landing/decore/1.png");
+const decore2 = require("../assets/images/landing/decore/2.png");
+const decore3 = require("../assets/images/landing/decore/3.png");
+const decore4 = require("../assets/images/landing/decore/4.png");
+const landing4 = require("../assets/images/landing/decore/cloud.png");
+const landing_logo = require("../assets/images/landing/landing_logo.png");
+const screen1 = require("../assets/images/landing/screen1.jpg");
+const screen2 = require("../assets/images/landing/screen2.jpg");
 const loginpng = require("../assets/images/myicons/login.png");
-const landing1 = require("../assets/images/landing/2.png");
+const registerpng = require("../assets/images/myicons/register_icon.png");
+const landing = require("../assets/images/landing/2.png");
 const logopng = require("../assets/images/logo/logo.png");
 
 export const Landing = () => {
@@ -10,49 +20,25 @@ export const Landing = () => {
       <div className="landing-home">
         <ul className="decoration">
           <li className="one">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/decore/1.png"
-              alt=""
-            />
+            <img className="img-fluid" src={decore1} alt="" />
           </li>
           <li className="two">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/decore/2.png"
-              alt=""
-            />
+            <img className="img-fluid" src={decore2} alt="" />
           </li>
           <li className="three">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/decore/4.png"
-              alt=""
-            />
+            <img className="img-fluid" src={decore3} alt="" />
           </li>
           <li className="four">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/decore/3.png"
-              alt=""
-            />
+            <img className="img-fluid" src={decore4} alt="" />
           </li>
           <li className="five">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/2.png"
-              alt=""
-            />
+            <img className="img-fluid" src={decore2} alt="" />
           </li>
           <li className="six">
-            <img
-              className="img-fluid"
-              src="../assets/images/landing/decore/cloud.png"
-              alt=""
-            />
+            <img className="img-fluid" src={landing4} alt="" />
           </li>
           <li className="seven">
-            <img className="img-fluid" src={landing1} alt="" />
+            <img className="img-fluid" src={landing} alt="" />
           </li>
         </ul>
         <div className="container-fluid">
@@ -62,38 +48,36 @@ export const Landing = () => {
                 className="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding"
                 id="sidebar-menu"
               >
-                <a className="navbar-brand p-0 " href="#">
-                  <img className="img-fluid " src={logopng} alt="" />
-                  <h3 class="d-inline align-middle">Boreman</h3>
+                 <button
+                    className="navbar-toggler navabr_btn-set custom_nav collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarDefault"
+                    aria-controls="navbarDefault"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
+
+                <a className="navbar-brand p-0" href="#">
+                  <div className="container">
+                    <img className="img-fluid" src={logopng} alt="" />
+                    <h3 className="d-inline">Boreman</h3>
+                  </div>
                 </a>
-                <button
-                  className="navbar-toggler navabr_btn-set custom_nav"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarDefault"
-                  aria-controls="navbarDefault"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </button>
-                <div
-                  className="navbar-collapse justify-content-end collapse hidenav"
-                  id="navbarDefault"
-                >
-                  <ul className="navbar-nav navbar_nav_modify" id="scroll-spy">
-                    {/* <li className="nav-item">
-                      <a className="nav-link" href="#layout">
-                        Layout
-                      </a>
-                    </li> */}
-                    <li className="nav-item">
-                      <a className="nav-link" href="#dashboards">
-                        Dashboards
-                      </a>
-                    </li>
+                 
+                  <div
+                    className="navbar-collapse justify-content-end hidenav collapse"
+                    id="navbarDefault" 
+                  >
+                    <ul
+                      className="navbar-nav navbar_nav_modify"
+                      id="scroll-spy"
+                    >
+                    
                     <li className="nav-item">
                       <a className="nav-link" href="#components">
                         Login
@@ -104,25 +88,14 @@ export const Landing = () => {
                         Register
                       </a>
                     </li>
-                    {/* <li className="nav-item">
-                      <a className="nav-link" href="#frameworks">
-                        Frameworks
-                      </a>
-                    </li> */}
-                    {/* <li className="nav-item buy-btn">
-                      <a
-                        className="nav-link js-scroll"
-                        href="https://1.envato.market/3GVzd"
-                        target="_blank"
-                      >
-                        Purchase
-                      </a>
-                    </li> */}
-                  </ul>
-                </div>
+                    
+                    </ul>
+                  </div>
+                
               </nav>
             </header>
           </div>
+
           <div className="row">
             <div className="col-xl-5 col-lg-6">
               <div className="content">
@@ -142,7 +115,6 @@ export const Landing = () => {
                       to="/login"
                       className="btn btn-pill btn-primary btn-air-primary btn-lg mr-3 wow pulse"
                     >
-                      {" "}
                       <img src={loginpng} alt="" />
                       Login
                     </Link>
@@ -150,17 +122,18 @@ export const Landing = () => {
                       to="/register"
                       className="btn btn-pill btn-secondary btn-air-secondary btn-lg mr-3 wow pulse"
                     >
-                      <i src="../assets/images/landing/" alt="" />
+                      <img src={registerpng} alt="" />
                       Register
                     </Link>
                     {/* <a
+
                       className="btn btn-pill btn-success btn-air-success btn-lg wow pulse mr-3"
                       href="http://laravel.pixelstrap.com/cuba/pages/landing"
                       target="_blank"
                     >
                       {" "}
                       <img
-                        src="../assets/images/landing/icon/laravel/laravel2.png"
+                        src={react2}
                         alt=""
                       />
                       Laravel
@@ -172,7 +145,7 @@ export const Landing = () => {
                     >
                       {" "}
                       <img
-                        src="../assets/images/landing/icon/angular/angular.svg"
+                        src={angular}
                         alt=""
                       />
                       Angular
@@ -183,18 +156,10 @@ export const Landing = () => {
             </div>
             <div className="col-xl-7 col-lg-6">
               <div className="wow fadeIn">
-                <img
-                  className="screen1"
-                  src="../assets/images/landing/screen1.jpg"
-                  alt=""
-                />
+                <img className="screen1" src={screen1} alt="" />
               </div>
               <div className="wow fadeIn">
-                <img
-                  className="screen2"
-                  src="../assets/images/landing/screen2.jpg"
-                  alt=""
-                />
+                <img className="screen2" src={screen2} alt="" />
               </div>
             </div>
           </div>
@@ -258,7 +223,7 @@ export const Landing = () => {
                 <a href="../theme/index.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/light.jpg"
+                    src={light}
                     alt=""
                   />
                 </a>
@@ -307,7 +272,7 @@ export const Landing = () => {
                 <a href="layout-dark.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/dark.jpg"
+                    src={dark}
                     alt=""
                   />
                 </a>
@@ -356,7 +321,7 @@ export const Landing = () => {
                 <a href="lndex.html" target="_blank">
                   <img
                     className="img-fluid cuba-img"
-                    src="../assets/images/landing/layout/semidark.jpg"
+                    src={semidark}
                     alt=""
                   />
                 </a>
@@ -1854,7 +1819,7 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
       <footer className="footer-bg">
         <div className="container">
           <div className="landing-center ptb50">
@@ -1884,7 +1849,7 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

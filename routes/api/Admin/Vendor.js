@@ -1,44 +1,67 @@
 const express = require("express");
 const Vendor = require("../../../models/Admin/Vendor");
+const User = require("../../../models/User/User");
 const router = express.Router();
 const Enquiry = require("../../../models/Admin/Vendor");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+
+const bcrypt = require("bcryptjs");
+
 const { check, validationResult } = require("express-validator/check");
 router.post(
   "/",
   [
-    check("vendorName", "Name is required").not().isEmpty(),
-    check("vendorLastName", "Lastname is required").not().isEmpty(),
-    check("vendorAddress", "enter the valid Address"),
-    check("vendorPhone", "enter the valid Phone"),
-    check("vendorEmail", "enter the valid Email").isEmail(),
+    check("firstname", "Name is required").not().isEmpty(),
+    check("lastname", "Lastname is required").not().isEmpty(),
+    check("address", "enter the valid Address").not().isEmpty(),
+    check("phone", "enter the valid Phone").not().isEmpty(),
+    check("email", "enter the valid Email").isEmail(),
     check("password", "enter proper password").isLength({ min: 6 }),
   ],
   async (req, res) => {
-    const {
-      vendorName,
-      vendorLastName,
-      vendorAddress,
-      vendorPhone,
-      vendorEmail,
-      password,
-    } = req.body;
+    const { firstname, lastname, address, phone, email, password } = req.body;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     const vendorField = {};
-    if (vendorName) vendorField.vendorName = vendorName;
-    if (vendorLastName) vendorField.vendorLastName = vendorLastName;
-    if (vendorAddress) vendorField.vendorAddress = vendorAddress;
-    if (vendorPhone) vendorField.vendorPhone = vendorPhone;
-    if (vendorEmail) vendorField.vendorEmail = vendorEmail;
-    if (password) vendorField.password = password;
-    const vendor = new Vendor(vendorField);
+    if (firstname) vendorField.firstname = firstname;
+    if (lastname) vendorField.lastname = lastname;
+    if (address) vendorField.address = address;
+    if (phone) vendorField.phone = phone;
+    if (email) vendorField.email = email;
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      vendorField.password = await bcrypt.hash(password, salt);
+    }
 
     try {
+      let vendor = await Vendor.findOne({ email });
+      let user = await User.findOne({ email: email });
+      if (vendor || user) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "Vendor already present" }] });
+      }
+      vendor = new Vendor(vendorField);
       await vendor.save();
-      return res.json(vendor);
+      const payload = {
+        user: {
+          id: vendor.id,
+        },
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        { expiresIn: 360000 },
+        (err, token) => {
+          if (err) throw err;
+          return res.json({ token }); //it will gives a token
+        }
+      );
     } catch (err) {
       res.status(500).send(err);
     }
@@ -56,6 +79,48 @@ router.get("/:id", async (req, res) => {
     res.status(201).json(vendor);
   } catch (err) {
     console.log(err);
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const vendor = await Vendor.find();
+    if (!vendor) {
+      res.status(400).send("not found");
+    }
+    res.status(201).json(vendor);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/edit/:id", async (req, res) => {
+  const {
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    completedEnquiry,
+  } = req.body;
+  const filter = { _id: req.params.id };
+  const update = {
+    firstname: firstname,
+    address: address,
+    phone: phone,
+    email: email,
+    totalEnquiry,
+    activeEnquiry: totalEnquiry - completedEnquiry,
+    completedEnquiry,
+  };
+  try {
+    const result = await Vendor.findOneAndUpdate(filter, update, {
+      new: true,
+      upsert: true,
+    });
+    return res.status(201).json(result);
+  } catch (err) {
+    res.status(500).send("server error");
   }
 });
 

@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../action/auth";
 import { setAlert } from "../../action/alert";
@@ -10,21 +9,30 @@ function Register(props) {
   const [formData, SetFormData] = useState({
     firstname: " ",
     lastname: "",
+    address: "",
+    phone: "",
     email: "",
     password: "",
     password2: "",
   });
   const onChange = (e) =>
     SetFormData({ ...formData, [e.target.name]: e.target.value });
-  const { firstname, lastname, email, password, password2 } = formData;
+  const {
+    firstname,
+    lastname,
+    address,
+    phone,
+    email,
+    password,
+    password2,
+  } = formData;
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       props.setAlert("password not matching", "danger");
     } else {
-      props.register({ firstname, lastname, email, password });
-      props.setAlert("success", "success");
+      props.register({ firstname, lastname, address, phone, email, password });
     }
   };
   if (props.isAuthenticated) {
@@ -90,6 +98,34 @@ function Register(props) {
                         />
                       </div>
                     </div>
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label">Address</label>
+                    <input
+                      className="form-control"
+                      type="address"
+                      required=""
+                      placeholder="Enter your address"
+                      name="address"
+                      value={address}
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="col-form-label">Phone</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      required=""
+                      placeholder="Enter your Phone"
+                      name="phone"
+                      value={phone}
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
+                    />
                   </div>
                   <div className="form-group">
                     <label className="col-form-label">Email Address</label>

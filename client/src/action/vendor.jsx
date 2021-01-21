@@ -1,13 +1,13 @@
 import axios from "axios";
-import { ADD_VENDOR,  GET_ALLVENDORS } from "./type";
+import { setAlert } from "./alert";
+import { ADD_VENDOR, GET_ALLVENDORS, GET_VENDOR, PERCENTAGE } from "./type";
 export const addVendor = ({
-    code,
-    name,
-    address,
-    email,
-    te,
-    ae,
-    twc,
+  firstname,
+  lastname,
+  address,
+  phone,
+  email,
+  password,
 }) => async (dispatch) => {
   const config = {
     headers: {
@@ -15,33 +15,99 @@ export const addVendor = ({
     },
   };
   const body = JSON.stringify({
-    code: " ",
-    name: " ",
-    address: "",
-    email: " ",
-    te: " ",
-    ae: " ",
-    twc:"",
+    firstname,
+    lastname,
+    address,
+    phone,
+    email,
+    password,
   });
   try {
-    const res = await axios.post("/api/admin/adminuser/", body, config);
+    const res = await axios.post("/api/admin/vendor", body, config);
     dispatch({
       type: ADD_VENDOR,
       payload: res.data,
     });
+    dispatch(setAlert("User Added", "success"));
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };
 
 export const getallvendors = () => async (dispatch) => {
   try {
-    const res = await axios.get("/api/admin/adminuser");
+    const res = await axios.get("/api/admin/vendor");
     dispatch({
       type: GET_ALLVENDORS,
       payload: res.data,
     });
   } catch (err) {
-    console.log(err);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+  }
+};
+
+export const getvendorbyid = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/admin/vendor/${id}`);
+    dispatch({
+      type: GET_VENDOR,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+  }
+};
+
+export const editvendorbyid = ({
+  vendorcode,
+  firstname,
+  address,
+  phone,
+  email,
+  totalEnquiry,
+  activeEnquiry,
+  completedEnquiry,
+}) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+  });
+  try {
+    const res = await axios.post(
+      `/api/admin/vendor/edit/${vendorcode}`,
+      body,
+      config
+    );
+
+    dispatch(setAlert("updated", "success"));
+    dispatch({
+      type: GET_VENDOR,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
   }
 };

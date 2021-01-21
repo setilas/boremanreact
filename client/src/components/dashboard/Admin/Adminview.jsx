@@ -1,90 +1,105 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
-import { getallenquiry } from "../../../action/Enquiry";
-import "../../scss/table.scss";
+import { getAllEnquiry } from "../../../action/Enquiry";
+import Loader from "../../../layout/loader";
 import Moment from "react-moment";
-const Adminview =()=>{
+import Header2 from "../../Layout/Header2";
+import Sidebar2 from "../../Layout/Sidebar2";
+
+const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
+  useEffect(() => {
+    getAllEnquiry();
+  }, [getAllEnquiry]);
+  const activeEnquiry = profiles.length;
+  console.log(activeEnquiry);
   return (
     <Fragment>
-      <div style={{ height: "600px" }} className="tablebody">
-     
-         <div class="container text-center text-white">
-          <div class="row pt-5">
-            <div class="col-lg-8 mx-auto">
+      <div>
+      <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header2 />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar2></Sidebar2>
+          <div class="page-body">
+      <div style={{ height: "600px"  }} >
+        <div className="container text-center ">
+          <div className="row pt-5">
+            <div className="col-lg-8 mx-auto">
               <h4 className="strong">View Enquiry</h4>
             </div>
           </div>
         </div>
-        <div class="container py-5">
-          <div class="row">
-            <div class="col-lg-7 mx-auto">
-              <div class="card rounded-0 border-0 shadow tablebox1">
-                <div class="card-body p-5">
-                  <div class="table-responsive">
-                    <table class="table">
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-lg-7 mx-auto">
+              <div className="card rounded-0 border-0 shadow tablebox1">
+                <div className="card-body p-5">
+                  <div className="table-responsive">
+                    <table className="table">
                       <thead>
                         <tr>
-                          <th scope="col">Vendor Code</th>
-                          <th scope="col">Vendor Name</th>
-                          <th scope="col">Active Enquiry</th>
-                          <th scope="col">Total Enquiry</th>
-                          <th scope="col">Work Complete</th>
-                          
-                        </tr>
+                          <th scope="col">Date</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">GPS(lat)</th>
+                          <th scope="col">GPS(long)</th>
+                          <th scope="col">Status</th>
+                        </tr>{" "}
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>A1</td>
-                          <td>Mark spencer</td>
-                          <td>15</td>
-                          <td>30</td>
-                          <td>4</td>
-                        </tr>
-                        <tr>
-                          <td>A1</td>
-                          <td>Mark spencer</td>
-                          <td>15</td>
-                          <td>30</td>
-                          <td>4</td>
-                        </tr>
-                      </tbody>
-                      {/* {profiles.length >= 0 ? (
+                      {profiles.length > 0 ? (
                         profiles.map((profile) => (
                           <tbody>
                             <tr>
-                              
-                              <td>{profile.code}</td>
+                              <td>
+                                {
+                                  <Moment format="YYYY/MM/DD">
+                                    {profile.date}
+                                  </Moment>
+                                }
+                              </td>
                               <td>{profile.name}</td>
-                              <td>{profile.active}</td>
-                              <td>{profile.total}</td>
-                              <td>{profile.workcomplete}</td>
+                              <td>{profile.location}</td>
+                              <td>{profile.lat}</td>
+                              <td>{profile.long}</td>
+                              <td>{profile.addstatus}</td>
                             </tr>
                           </tbody>
                         ))
-                      ) : ( */}
-                        {/* <h1>Nothing</h1>
-                      )} */}
+                      ) : (
+                        <h1>Nothing</h1>
+                      )}
                     </table>
                   </div>
-                   {/* <a
-              class="btn btn-primary rounded-0 btn-block"
+                  {/* <a
+              className="btn btn-primary rounded-0 btn-block"
               id="insertRow"
               href="#"
             >
               Add new row
-            </a>  */}
-                 </div>
+            </a> */}
+                </div>
               </div>
             </div>
           </div>
-        </div> 
-       </div> 
-    </Fragment> 
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </Fragment>
   );
 };
-// const mapStateToProps = (state) => ({
-//   profiles: state.enquiry.profiles,
-// });
 
+const mapStateToProps = (state) => ({
+  profiles: state.enquiry.profiles,
+  user: state.auth.user,
+});
 
-export default Adminview;
+export default connect(mapStateToProps, { getAllEnquiry })(AdminView);

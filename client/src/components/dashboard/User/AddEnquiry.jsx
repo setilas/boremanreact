@@ -2,7 +2,14 @@ import { connect } from "react-redux";
 import React, { Fragment, useState } from "react";
 import { addEnquiry } from "../../../action/Enquiry";
 import "../../scss/form.scss";
-const Addenquiry = ({ addEnquiry }) => {
+import { Redirect } from "react-router-dom";
+import Alert from "../../Auth/Alert";
+import Header from "../../Layout/Header";
+import Sidebar from "../../Layout/Sidebar";
+import Loader from "../../../layout/loader";
+import "../../scss/page.scss";
+
+const Addenquiry = ({ addEnquiry, redirect }) => {
   const [enquiry, setEnquiry] = useState({
     name: " ",
     location: " ",
@@ -20,12 +27,29 @@ const Addenquiry = ({ addEnquiry }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     addEnquiry({ name, location, lat, long, estimate, addstatus });
-    console.log("success");
   };
 
   return (
+
+    <div>
+
+     <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar/>
+
+          <div class="page-body1">
+        
+
     <Fragment>
-      <div className="container-contact100">
+      <div className="admin-card">
         <div className="wrap-contact100">
           <form
             className="contact100-form "
@@ -34,6 +58,7 @@ const Addenquiry = ({ addEnquiry }) => {
             }}
           >
             <span className="contact100-form-title">Add enquiry</span>
+            <Alert />
 
             <div className="wrap-input100 " data-validate="Name is required">
               <span className="label-input100">Your Name</span>
@@ -146,7 +171,14 @@ const Addenquiry = ({ addEnquiry }) => {
         </div>
       </div>
     </Fragment>
+    </div>
+    </div>
+    </div>
+    </div>
   );
 };
 
-export default connect(null, { addEnquiry })(Addenquiry);
+const mapStateToProps = (state) => ({
+  redirect: state.enquiry.redirect,
+});
+export default connect(mapStateToProps, { addEnquiry })(Addenquiry);

@@ -2,17 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
-import { setAlert } from "../../action/alert";
 
 const logo = require("../../assets/images/logo/logo.png");
 
-const Sidebar = ({ logout, user, activate, setAlert }) => {
+const Sidebar = ({ logout }) => {
+  const logouthandler = () => {
+    logout();
+  };
+
   return (
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
           <img class="img-fluid for-light" src={logo} alt="" />
-          <h3 className="d-inline">Boreman</h3>
+          <h3 className="d-inline ">Boreman</h3>
 
           <img
             class="img-fluid for-dark"
@@ -38,7 +41,6 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
           />
         </a>
       </div>
-
       <nav class="sidebar-main">
         <div class="left-arrow" id="left-arrow">
           <i data-feather="arrow-left"></i>
@@ -58,7 +60,7 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
                 <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
               </div>
             </li>
-            x
+
             <li class="sidebar-list ">
               <label class="badge badge-success">4</label>
               <a class="sidebar-link sidebar-title" href="#">
@@ -67,13 +69,16 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
               </a>
               <ul class="sidebar-submenu">
                 <li className="sidebar-list">
-                  <Link to="/addenquiry">AddEnquiry</Link>
+                  <Link to="/adduser">AddUser</Link>
                 </li>
                 <li>
-                  <Link to={`/viewenquiry/${user._id}`}>ViewEnquiry</Link>
+                  <Link to="/viewuser">ViewUser</Link>
                 </li>
                 <li>
-                  <Link to="/userdashboard">status</Link>
+                  <Link to="/adminview">ViewEnquiry</Link>
+                </li>
+                <li>
+                  <Link to="/admindashboard">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>
@@ -89,9 +94,4 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-  activate: state.auth.activate,
-});
-
-export default connect(mapStateToProps, { logout, setAlert })(Sidebar);
+export default connect(null, { logout })(Sidebar);
