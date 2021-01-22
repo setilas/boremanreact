@@ -13,8 +13,11 @@ const Breadcrumbs = (props) => {
               <h3>{props.title}</h3>
             </Col>
             <Col xs="6">
+ HEAD
               <Breadcrumb>
               </Breadcrumb>
+             
+ master
             </Col>
           </Row>
         </div>

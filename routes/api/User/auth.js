@@ -90,7 +90,7 @@ router.post(
       }
       try {
         let user = await User.findOne({ email });
-        const vendor = await Vendor.findOne({ vendorEmail: email });
+        const vendor = await Vendor.findOne({ email: email });
         if (!user && !vendor) {
           return res
             .status(400)

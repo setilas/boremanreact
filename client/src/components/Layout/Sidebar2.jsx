@@ -1,6 +1,5 @@
 import React from "react";
-import { CardBody, Card, CardHeader, Row } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
 
@@ -15,12 +14,9 @@ const Sidebar = ({ logout }) => {
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
-          <img
-            class="img-fluid for-light"
-            src={logo}
-            alt=""
-          />
-         
+          <img class="img-fluid for-light" src={logo} alt="" />
+          <h3 className="d-inline ">Boreman</h3>
+
           <img
             class="img-fluid for-dark"
             src="../assets/images/logo/logo_dark.png"
@@ -82,7 +78,7 @@ const Sidebar = ({ logout }) => {
                   <Link to="/adminview">ViewEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/status">status</Link>
+                  <Link to="/admindashboard">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>

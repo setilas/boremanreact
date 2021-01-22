@@ -12,6 +12,8 @@ const initialState = {
   error: {},
   users: [],
   user: null,
+  loadingVendor: true,
+  loadingUser: true,
 };
 
 export default function (state = initialState, action) {
@@ -39,12 +41,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         user: payload,
+        loadingUser: false,
       };
     }
     case GET_VENDOR: {
       return {
         ...state,
         vendor: payload,
+        loadingVendor: false,
       };
     }
     default:

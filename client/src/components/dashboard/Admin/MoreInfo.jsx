@@ -1,169 +1,291 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { getvendorbyid } from "../../../action/vendor";
+import { editvendorbyid } from "../../../action/vendor";
+import { deleteUser } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
-import Header2 from "../../Layout/Header2";
+import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+HEAD
+
+import { withRouter } from "react-router-dom";
+ master
 const logo = require("../../../assets/images/logo/logo.png");
 
-export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
+export const MoreInfo = ({
+  match,
+  getvendorbyid,
+  Vendor,
+  loadingVendor,
+  editvendorbyid,
+  deleteUser,
+  history,
+}) => {
+  const [formData, setFormData] = useState({
+    vendorcode: "",
+    firstname: "",
+    address: "",
+    phone: "",
+    email: "",
+    totalEnquiry: "",
+    activeEnquiry: "",
+    activate: "",
+    completedEnquiry: 0,
+  });
+
+  const {
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+    activate,
+  } = formData;
+
+  console.log(formData);
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    editvendorbyid({
+      vendorcode,
+      firstname,
+      address,
+      phone,
+      email,
+      totalEnquiry,
+      activeEnquiry,
+      activate,
+      completedEnquiry,
+    });
+  };
+  const DeleteUser = () => {
+    deleteUser(Vendor._id, history);
+  };
+
   useEffect(() => {
     getvendorbyid(match.params.id);
-  }, [getvendorbyid]);
+    setFormData({
+      vendorcode: loadingVendor || !Vendor._id ? " " : Vendor._id,
+      firstname: loadingVendor || !Vendor.firstname ? "" : Vendor.firstname,
+      address: loadingVendor || !Vendor.address ? " " : Vendor.address,
+      phone: loadingVendor || !Vendor.phone ? " " : Vendor.phone,
+      email: loadingVendor || !Vendor.email ? " " : Vendor.email,
+      totalEnquiry:
+        loadingVendor || !Vendor.totalEnquiry ? " " : Vendor.totalEnquiry,
+      activeEnquiry:
+        loadingVendor || !Vendor.activeEnquiry ? " " : Vendor.activeEnquiry,
+      completedEnquiry:
+        loadingVendor || !Vendor.completedEnquiry
+          ? " "
+          : Vendor.completedEnquiry,
+      activate: loadingVendor || !Vendor.activate ? " " : Vendor.activate,
+    });
+  }, [loadingVendor]);
 
   return (
     <Fragment>
-      {vendor === null ? (
+      {loadingVendor ? (
         <Loader />
       ) : (
         <Fragment>
-          <div class="tap-top">
+          <div className="tap-top">
             <i data-feather="chevrons-up"></i>
           </div>
           {/* page wrapper which will wrap entirepage */}
-          <div class="page-wrapper compact-wrapper" id="pageWrapper">
+          <div className="page-wrapper compact-wrapper" id="pageWrapper">
             {/*  page header */}
             <Header2 />
             {/* page body contains sidebar and content  */}
-            <div class="page-body-wrapper sidebar-icon document-content ">
+            <div className="page-body-wrapper sidebar-icon document-content">
               <Sidebar2></Sidebar2>
 
-              <div class="page-body" s>
-                <div class="container-fluid">
-                  <div class="card" style={{ marginTop: "200px" }}>
-                    <div class="container">
+              <div className="page-body">
+                <div
+                  className="container-fluid"
+                  style={{ paddingTop: "150px" }}
+                >
+                  <div className="card">
+                    <div className="container">
                       <div id="main">
-                        <div class="h-tag"></div>
+                        <div className="h-tag"></div>
 
-                        <div class="login">
-                          <table
-                            cellspacing="2"
-                            align="center"
-                            cellpadding="8"
-                            border="0"
-                          >
-                            <tr>
-                              <td align="left">Vendor Code :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor._id}
-                                  id="t1"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Name :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.firstname}
-                                  id="t2"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Address :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.vendorAddress}
-                                  id="t3"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Phone :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.vendorPhone}
-                                  id="t4"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Vendor Email :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.vendorEmail}
-                                  id="t5"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder={vendor.totalEnquiry}
-                                  id="t6"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Active Enquiry :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="5 "
-                                  id="t7"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">Total work completed :</td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="4"
-                                  id="t8"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="left">
-                                Total work Enquiry Estimated :
-                              </td>
-                              <td>
-                                <input
-                                  type="text"
-                                  placeholder="3900 "
-                                  id="t9"
-                                  class="tb"
-                                />
-                              </td>
-                            </tr>
+                        <div className="login">
+                          <form onSubmit={(e) => onSubmit(e)}>
+                            <table
+                              cellspacing="2"
+                              align="center"
+                              cellpadding="8"
+                              border="0"
+                            >
+                              <tr>
+                                <td align="left">vendor Code :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="vendorcode"
+                                    value={vendorcode}
+                                    id="t1"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
 
-                            <tr>
-                              <td></td>
-                              <td align="center">
-                                <div>
+                              <tr>
+                                <td align="left">Name :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="firstname"
+                                    value={firstname}
+                                    id="t2"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">vendor Address :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="address"
+                                    value={address}
+                                    id="t3"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">vendor Phone :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="phone"
+                                    value={phone}
+                                    id="t4"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">vendor Email :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="email"
+                                    value={email}
+                                    id="t5"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="totalEnquiry"
+                                    value={totalEnquiry}
+                                    id="t6"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Active Enquiry :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    value={totalEnquiry - completedEnquiry}
+                                    id="t7"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">Total work completed :</td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t8"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="left">
+                                  Total work Enquiry Estimated :
+                                </td>
+                                <td>
+                                  <input
+                                    type="text"
+                                    name="completedEnquiry"
+                                    value={completedEnquiry}
+                                    id="t9"
+                                    className="tb"
+                                    onChange={(e) => {
+                                      onChange(e);
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td></td>
+                                <td align="center">
                                   <div>
-                                    <button class="button button1">
-                                      Reset Password
-                                    </button>
-                                    <button class="button button2">
-                                      Submit
-                                    </button>
-                                    <button class="button button2">
-                                      Delete
-                                    </button>
+                                    <div>
+                                      <button className="button button1">
+                                        Reset Password
+                                      </button>
+                                      <button className="button button2">
+                                        Submit
+                                      </button>
+                                      <button
+                                        onClick={(e) => {
+                                          DeleteUser();
+                                        }}
+                                        className="button button2"
+                                      >
+                                        Delete
+                                      </button>
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </form>
                         </div>
                       </div>
                     </div>
@@ -178,7 +300,12 @@ export const MoreInfo = ({ match, getvendorbyid, vendor }) => {
   );
 };
 const mapStateToProps = (state) => ({
-  vendor: state.vendor.vendor,
+  Vendor: state.vendor.Vendor,
+  loadingVendor: state.vendor.loadingVendor,
 });
 
-export default connect(mapStateToProps, { getvendorbyid })(MoreInfo);
+export default connect(mapStateToProps, {
+  getvendorbyid,
+  deleteUser,
+  editvendorbyid,
+})(withRouter(MoreInfo));

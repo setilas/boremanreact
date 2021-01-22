@@ -4,6 +4,12 @@ import { addEnquiry } from "../../../action/Enquiry";
 import "../../scss/form.scss";
 import { Redirect } from "react-router-dom";
 import Alert from "../../Auth/Alert";
+import Header from "../../Layout/Header";
+import Sidebar from "../../Layout/Sidebar";
+import Loader from "../../../layout/loader";
+import Footer from "../../Layout/Footer";
+import "../../scss/page.scss";
+
 const Addenquiry = ({ addEnquiry, redirect }) => {
   const [enquiry, setEnquiry] = useState({
     name: " ",
@@ -25,53 +31,81 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
   };
 
   return (
+
+    <div>
+
+     <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar/>
+
+          <div class="page-body1">
+        
+
     <Fragment>
-      <div className="container-contact100">
-        <div className="wrap-contact100">
+      <div className="admin-card">
+        <div class="mt-4">
+        <div className="login-main ">
           <form
-            className="contact100-form "
+            className="theme-form "
             onSubmit={(e) => {
               onSubmit(e);
             }}
           >
-            <span className="contact100-form-title">Add enquiry</span>
+            <h4>Add Enquiry</h4>
+            <p>Enter enquiry details </p>
             <Alert />
 
-            <div className="wrap-input100 " data-validate="Name is required">
-              <span className="label-input100">Your Name</span>
+            <div className="form-group" data-validate="Name is required">
+            <label className="col-form-label pt-0">Your Name</label>
+            <div className="form-row">
+             
               <input
-                className="input100"
+                className="form-control"
                 type="text"
+                required=""
                 name="name"
+               
                 value={name}
                 onChange={(e) => {
                   onChange(e);
                 }}
                 placeholder="Enter your name"
               />
-              <span className="focus-input100"></span>
+          
+              </div>          
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">Location</span>
+            <div className="form-group ">
+            <label className="col-form-label pt-0">Location</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 
                 name="location"
+                
                 value={location}
                 onChange={(e) => {
                   onChange(e);
                 }}
                 placeholder="Enter your location"
               />
-              <span className="focus-input100"></span>
+            </div>  
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">GPS lat</span>
+            <div className="form-group  ">
+            <label className="col-form-label pt-0">GPS lat</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="lat"
                 value={lat}
@@ -80,13 +114,15 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter your latitude"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
-
             <div className="wrap-input100 validate-input">
               <span className="label-input100">GPS Long</span>
+            <div className="form-group">
+            <label className="col-form-label pt-0">GPS long</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="long"
                 value={long}
@@ -95,13 +131,14 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter your longitude"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
 
-            <div className="wrap-input100 ">
-              <span className="label-input100">Estimate</span>
+            <div className="form-group">
+            <label className="col-form-label pt-0">Estimate</label>
+            <div className="form-row">
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="estimate"
                 value={estimate}
@@ -110,12 +147,12 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 }}
                 placeholder="Enter estimation"
               />
-              <span className="focus-input100"></span>
+              </div>
             </div>
 
-            <div className="wrap-input100 input100-select">
-              <span className="label-input100">status</span>
-              <div>
+            <div className="form-group">
+            <label className="col-form-label pt-0">Status</label>
+            <div className="form-row">
                 <select
                   className="selection-2"
                   name="addstatus"
@@ -124,13 +161,11 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                     onChange(e);
                   }}
                 >
-                  <option>closed</option>
+                  <option>Closed</option>
                   <option>Open</option>
                 </select>
               </div>
-              <span className="focus-input100"></span>
             </div>
-
             <div className="container-contact100-form-btn">
               <div className="wrap-contact100-form-btn">
                 <div className="contact100-form-bgbtn"></div>
@@ -145,13 +180,23 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                 </button>
               </div>
             </div>
-          </form>
+           <div className="form-group mb-0 mt-3">
+                      <button
+                        className="btn btn-primary btn-block"
+                        type="submit">
+                        Submit
+                      </button>
+                    </div>
         </div>
       </div>
+      </div>
     </Fragment>
+    </div>
+    <Footer/>
+    </div>
+    </div>
   );
 };
-
 const mapStateToProps = (state) => ({
   redirect: state.enquiry.redirect,
 });

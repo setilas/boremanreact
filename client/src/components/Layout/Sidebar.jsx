@@ -1,16 +1,18 @@
-import React, { Fragment, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../action/auth";
+import { setAlert } from "../../action/alert";
 
 const logo = require("../../assets/images/logo/logo.png");
 
-const Sidebar = ({ logout, user }) => {
+const Sidebar = ({ logout, user, activate, setAlert }) => {
   return (
     <div class="sidebar-wrapper">
       <div class="logo-wrapper">
         <a href="index.html">
           <img class="img-fluid for-light" src={logo} alt="" />
+          <h3 className="d-inline">Boreman</h3>
 
           <img
             class="img-fluid for-dark"
@@ -56,7 +58,7 @@ const Sidebar = ({ logout, user }) => {
                 <i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
               </div>
             </li>
-
+            x
             <li class="sidebar-list ">
               <label class="badge badge-success">4</label>
               <a class="sidebar-link sidebar-title" href="#">
@@ -71,7 +73,7 @@ const Sidebar = ({ logout, user }) => {
                   <Link to={`/viewenquiry/${user._id}`}>ViewEnquiry</Link>
                 </li>
                 <li>
-                  <Link to="/status">status</Link>
+                  <Link to="/userdashboard">status</Link>
                 </li>
                 <li>
                   <Link to="/" onClick={logout}>
@@ -89,6 +91,7 @@ const Sidebar = ({ logout, user }) => {
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  activate: state.auth.activate,
 });
 
-export default connect(mapStateToProps, { logout })(Sidebar);
+export default connect(mapStateToProps, { logout, setAlert })(Sidebar);
