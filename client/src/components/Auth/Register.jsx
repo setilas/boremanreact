@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../action/auth";
 import { setAlert } from "../../action/alert";

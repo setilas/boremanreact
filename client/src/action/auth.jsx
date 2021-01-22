@@ -9,7 +9,8 @@ import {
   GET_USER,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE,
+  CLEAR_USER,
+  DELETE_USER,
 } from "./type";
 import { setAuthToken } from "../utils/setAuthToken";
 import { setAlert } from "./alert";
@@ -119,6 +120,62 @@ export const getuserbyid = (id) => async (dispatch) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const edituserbyid = ({
+  vendorcode,
+  firstname,
+  address,
+  phone,
+  email,
+  totalEnquiry,
+  activeEnquiry,
+  completedEnquiry,
+  activate,
+}) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({
+    vendorcode,
+    firstname,
+    address,
+    phone,
+    email,
+    totalEnquiry,
+    activeEnquiry,
+    completedEnquiry,
+    activate,
+  });
+  try {
+    const res = await axios.post(`/api/user/edit/${vendorcode}`, body, config);
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+  }
+};
+
+export const deleteUser = (id, history) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`/api/user/${id}`);
+    dispatch({
+      type: DELETE_USER,
+      payload: id,
+    });
+    history.push("/admindashboard");
+    dispatch({
+      type: CLEAR_USER,
+    });
+    dispatch(setAlert("user deleted", "success"));
+  } catch (err) {}
 };
 
 export const logout = () => (dispatch) => {

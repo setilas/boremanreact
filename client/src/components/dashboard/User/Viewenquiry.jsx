@@ -1,4 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment,useEffect } from "react";
+import "jquery/dist/jquery.min.js";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { connect } from "react-redux";
 import { enquirybyid } from "../../../action/Enquiry";
 import "../../scss/table.scss";
@@ -9,6 +13,11 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import Loader from "../../../layout/loader";
 import { loadUser } from "../../../action/auth";
+import Sidebar from "../../Layout/Sidebar";
+import Header from "../../Layout/Header";
+import Footer from "../../Layout/Footer";
+
+
 
 const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   useEffect(() => {
@@ -20,21 +29,36 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
   }, [loadUser]);
   const activeEnquiry = profiles.length;
   console.log(activeEnquiry);
+
   return (
-    <Fragment>
+    
+    <div>
+            <div className="tap-top">
+              <i data-feather="chevrons-up"></i>
+            </div>
+            {/* page wrapper which will wrap entirepage */}
+            <div className="page-wrapper compact-wrapper" id="pageWrapper">
+              {/*  page header */}
+              <Header />
+              {/* page body contains sidebar and content  */}
+              <div className="page-body-wrapper sidebar-icon document-content">
+                <Sidebar/>
+           <div className="page-body " >
+
+      
+    
+        <div className="col-12 text-center">
+        <h3 style={{paddingTop:"30px", color:"crimson"}} >View Enquiry</h3>
+        </div>
+        <Fragment>
       {user === null ? (
         <Loader />
       ) : (
         <div className="MainDiv">
-          <div
-            class="jumbotron text-center"
-            style={{ background: "cornflowerblue" }}
-          >
-            <h3>View Enquiry</h3>
-          </div>
+         
 
           <div className="container">
-            <table id="example" class="table table-hover table-bordered">
+            <table id="example" className="table table-hover table-bordered">
               <thead>
                 <tr>
                   <th>Id</th>
@@ -64,9 +88,21 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
         </div>
       )}
     </Fragment>
-  );
-};
+  
+      
+     
+          </div>
+          </div>
+          <Footer/>
+          </div>
+          </div>
+               
+    );
+  };
+    
 
+    
+  
 const mapStateToProps = (state) => ({
   profiles: state.enquiry.profiles,
   user: state.auth.user,

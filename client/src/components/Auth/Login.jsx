@@ -1,15 +1,20 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { CardBody, Card, CardHeader, Container, Row, Col } from "reactstrap";
 import { Link, Redirect } from "react-router-dom";
-import { login } from "../../action/auth";
+import { loadUser, login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 import Alert from "./Alert";
+HEAD
 import "../scss/login.scss";
+
+import { setAlert } from "../../action/alert";
+import Loader from "../../layout/loader";
 
 const loginbg = require("../../assets/images/login/1.jpg");
 
-const Login = ({ login, isAuthenticated, user, role }) => {
+
+const Login = ({ login, isAuthenticated, role, activate }) => {
   const [formData, SetFormData] = useState({
     email: "",
     password: "",
@@ -23,12 +28,15 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     e.preventDefault();
     login({ email, password });
   };
+ HEAD
     
   console.log(role);
-
+master
   if (isAuthenticated) {
     if (role) return <Redirect to="/admindashboard" />;
-    else return <Redirect to="/userdashboard" />;
+    else {
+      return <Redirect to="/userdashboard" />;
+    }
   }
   
   
@@ -36,7 +44,7 @@ const Login = ({ login, isAuthenticated, user, role }) => {
     <div class="container-fluid">
       <div class="row ">
         <div class="col-xl-5 d-none d-md-block ">
-          <img class="bg-img-cover bg-center" src={loginbg} alt="looginpage" />
+          <img class="bg-img-cover bg-center" src={loginbg} alt="loginpage" />
         </div>
         <div class="col-xl-7 p-0">
           <div class="login-card">
@@ -111,7 +119,12 @@ const Login = ({ login, isAuthenticated, user, role }) => {
  const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
+  activate: state.auth.user,
   role: state.auth.role,
 });
 
+ HEAD
 export default connect( mapStateToProps , { login })(Login);
+
+export default connect(mapStateToProps, { login, setAlert })(Login);
+ master
