@@ -5,12 +5,8 @@ import { loadUser, login } from "../../action/auth";
 import { connect } from "react-redux";
 import loader from "../../layout/loader";
 import Alert from "./Alert";
-HEAD
-import "../scss/login.scss";
-
 import { setAlert } from "../../action/alert";
 import Loader from "../../layout/loader";
-
 const loginbg = require("../../assets/images/login/1.jpg");
 
 
@@ -28,18 +24,13 @@ const Login = ({ login, isAuthenticated, role, activate }) => {
     e.preventDefault();
     login({ email, password });
   };
- HEAD
-    
-  console.log(role);
-master
   if (isAuthenticated) {
     if (role) return <Redirect to="/admindashboard" />;
     else {
       return <Redirect to="/userdashboard" />;
     }
   }
-  
-  
+
   return (
     <div class="container-fluid">
       <div class="row ">
@@ -75,18 +66,16 @@ master
                       type="password"
                       name="password"
                       value={password}
-                      id="myInput"
                       required=""
-                      placeholder="*********"
-                      onChange={(e) =>
-                         {
+                      placeholder="***"
+                      onChange={(e) => {
                         onChange(e);
                       }}
-                      
-                />
-                <i className="fa fa-eye password-icon"
-                />
-                
+                    />
+                    <div class="show-hide">
+                      <span class="show"> </span>
+                    </div>
+                  </div>
                   <div class="form-group mb-0">
                     <div class="checkbox p-0">
                       <input id="checkbox1" type="checkbox" />
@@ -104,27 +93,20 @@ master
                       <a class="ml-2">Create Account</a>
                     </Link>
                   </p>
-                </div>
                 </form>
-              </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
   );
 };
- 
- const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
   activate: state.auth.user,
   role: state.auth.role,
 });
 
- HEAD
-export default connect( mapStateToProps , { login })(Login);
-
 export default connect(mapStateToProps, { login, setAlert })(Login);
- master
