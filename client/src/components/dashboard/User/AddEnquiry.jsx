@@ -89,7 +89,6 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
               <input
                 className="form-control"
                 type="text"
-                
                 name="location"
                 
                 value={location}
@@ -116,8 +115,7 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
               />
               </div>
             </div>
-            <div className="wrap-input100 validate-input">
-              <span className="label-input100">GPS Long</span>
+
             <div className="form-group">
             <label className="col-form-label pt-0">GPS long</label>
             <div className="form-row">
@@ -159,44 +157,35 @@ const Addenquiry = ({ addEnquiry, redirect }) => {
                   value={addstatus}
                   onChange={(e) => {
                     onChange(e);
-                  }}
+                  }} 
                 >
                   <option>Closed</option>
                   <option>Open</option>
                 </select>
               </div>
             </div>
-            <div className="container-contact100-form-btn">
-              <div className="wrap-contact100-form-btn">
-                <div className="contact100-form-bgbtn"></div>
-                <button className="contact100-form-btn">
-                  <span><a class="goto" href="#">
-                    Submit
-                    <i
-                      className="fa fa-long-arrow-right m-l-7"
-                      aria-hidden="true"
-                    ></i></a>
-                  </span>
-                </button>
-              </div>
-            </div>
+
            <div className="form-group mb-0 mt-3">
                       <button
                         className="btn btn-primary btn-block"
-                        type="submit">
+                        type="submit"
+                      >
                         Submit
                       </button>
                     </div>
+          </form>
         </div>
       </div>
       </div>
     </Fragment>
+    </div>
     </div>
     <Footer/>
     </div>
     </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   redirect: state.enquiry.redirect,
 });
