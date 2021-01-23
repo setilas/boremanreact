@@ -330,10 +330,12 @@ export const MoreInfo = ({
           </div>
           </div>
           </div>
+          </div>
+          </div>
           
-        </Fragment>
+        </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 const mapStateToProps = (state) => ({
