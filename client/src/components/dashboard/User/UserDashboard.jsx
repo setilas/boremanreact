@@ -5,7 +5,6 @@ import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
-import { Header3 } from "../../Layout/Header3";
 import Sidebar from "../../Layout/Sidebar";
 import Footer from "../../Layout/Footer";
 import Sidebar3 from "../../Layout/sidebar3";

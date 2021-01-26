@@ -4,11 +4,13 @@ import {
   GET_ALLVENDORS,
   GET_USERS,
   GET_USER,
+  DELETE_USER,
+  CLEAR_USER,
 } from "../action/type";
 
 const initialState = {
   vendors: [],
-  vendor: null,
+  Vendor: null,
   error: {},
   users: [],
   user: null,
@@ -47,10 +49,21 @@ export default function (state = initialState, action) {
     case GET_VENDOR: {
       return {
         ...state,
-        vendor: payload,
+        Vendor: payload,
         loadingVendor: false,
       };
     }
+    case DELETE_USER:
+      return {
+        ...state,
+        users: state.users.filter((user) => user._id != payload),
+      };
+    case CLEAR_USER:
+      return {
+        ...state,
+        user: null,
+      };
+
     default:
       return state;
   }

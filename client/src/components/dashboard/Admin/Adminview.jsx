@@ -1,8 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllEnquiry } from "../../../action/Enquiry";
-import "../../scss/table.scss";
+import Loader from "../../../layout/loader";
 import Moment from "react-moment";
+import Header2 from "../../Layout/Header2";
+import Sidebar2 from "../../Layout/Sidebar2";
 
 const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
   useEffect(() => {
@@ -12,8 +14,21 @@ const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
   console.log(activeEnquiry);
   return (
     <Fragment>
-      <div style={{ height: "600px" }} className="tablebody">
-        <div className="container text-center text-white">
+      <div>
+      <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header2 />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar2></Sidebar2>
+          <div class="page-body">
+      <div style={{ height: "600px"  }} >
+        <div className="container text-center ">
           <div className="row pt-5">
             <div className="col-lg-8 mx-auto">
               <h4 className="strong">View Enquiry</h4>
@@ -73,6 +88,10 @@ const AdminView = ({ getAllEnquiry, enquiry, profiles, user }) => {
             </div>
           </div>
         </div>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
     </Fragment>
   );
