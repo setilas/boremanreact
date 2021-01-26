@@ -1,4 +1,5 @@
 import React, { Fragment,useState} from "react";
+import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import Header from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Loader from "../../../layout/loader";
@@ -34,20 +35,27 @@ return(
 
           <div class="page-body1">
           <Fragment>
-      <div className="admin-card">
-        <div className="wrap-contact100">
+          <div className="admin-card">
+
+          <Card >
+                  <CardHeader>
+                    <h2>Query customer</h2>
+                  </CardHeader>
+                  <CardBody className="mt-0 pt-2 ">
+                        <div className="login ">
+      
           <form
-            className="contact100-form "
+            className="theme-form "
             
             
           >
-            <span className="contact100-form-title">Query Customer</span>
-    
+            
 
             <div className="wrap-input100 " data-validate="Name is required">
-              <span className="label-input100">latitude</span>
+              <label className="col-form-label pt-0">GPS location</label>
+             
               <input
-                className="input100"
+                className="form-control"
                 type="text"
                 name="lat"
                 value={lat}
@@ -56,10 +64,16 @@ return(
                 }}
                 placeholder="Enter the latitude"
               />
-              <span className="focus-input100"></span>
+              
+              
             </div>
+            <button type="button" class="btn btn-primary float-right">Submit</button>
             </form>
+           
             </div>
+            </CardBody>
+            </Card>
+        
             </div>
             </Fragment>
 

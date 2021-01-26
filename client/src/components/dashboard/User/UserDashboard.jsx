@@ -7,6 +7,7 @@ import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Footer from "../../Layout/Footer";
+import Header3 from "../../Layout/Header3";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
