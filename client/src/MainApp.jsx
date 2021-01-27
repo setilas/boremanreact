@@ -18,8 +18,10 @@ import Viewuser from "./components/dashboard/Admin/Viewuser";
 import { PersistGate } from "redux-persist/integration/react";
 import InfoUser from "./components/dashboard/Admin/InfoUser";
 
+
 import Profilechange from "./components/Profilechange";
 import Status2 from "./components/Layout/Status2";
+import Query from "./components/dashboard/User/Query";
 
 const MainApp = () => {
   return (
@@ -59,6 +61,7 @@ const MainApp = () => {
               path="/profilechange"
               component={Profilechange}
             ></Route>
+             <Route exact path="/query" component={Query}></Route>
 
             <Main2 />
           </Switch>
