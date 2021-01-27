@@ -1,12 +1,30 @@
 import React, { Fragment, useEffect, useState } from "react";
+
+
+import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
+
+
+
+
+
+
 import { deleteUser, getuserbyid } from "../../../action/auth";
 import { edituserbyid } from "../../../action/auth";
+
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header2 } from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
 import "../../scss/Info.scss";
+
+
+import "../../scss/page.scss";
+
 import { Redirect, withRouter } from "react-router-dom";
+
+
+
+
 
 const logo = require("../../../assets/images/logo/logo.png");
 
@@ -91,9 +109,13 @@ export const InfoUser = ({
     });
   }, [loadingUser]);
 
+  
+
   return (
     <Fragment>
+
       {loadingUser ? (
+
         <Loader />
       ) : ( 
       <Fragment>
@@ -123,16 +145,16 @@ export const InfoUser = ({
                         </div>
                         <div className="login">
                           <form onSubmit={(e) => onSubmit(e)}>
-                            <table
-                              cellspacing="2"
-                              align="center"
-                              cellpadding="8"
-                              border="0"
-                            >
+                          <table >
+                          
+                            
+
+
                               <tr>
-                                <td align="left">user Code :</td>
+                                <td align="left" class="font-weight-bold " >User Code: </td>
+                              
                                 <td>
-                                  <input
+                                <input
                                     type="text"
                                     name="vendorcode"
                                     value={vendorcode}
@@ -146,7 +168,7 @@ export const InfoUser = ({
                               </tr>
 
                               <tr>
-                                <td align="left">Name :</td>
+                                <td align="left"class="font-weight-bold pt-2" >Name :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -161,7 +183,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">user Address :</td>
+                                <td align="left" class="font-weight-bold pt-2" >User Address :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -176,7 +198,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">user Phone :</td>
+                                <td align="left" class="font-weight-bold pt-2" >User Phone :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -191,7 +213,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">user Email :</td>
+                                <td align="left" class="font-weight-bold pt-2" >User Email :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -206,7 +228,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Total Enquiry :</td>
+                                <td align="left" class="font-weight-bold pt-2" >Total Enquiry :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -221,7 +243,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Active Enquiry :</td>
+                                <td align="left" class="font-weight-bold pt-2" >Active Enquiry :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -236,7 +258,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">Total work completed :</td>
+                                <td align="left" class="font-weight-bold pt-2" >Total work completed :</td>
                                 <td>
                                   <input
                                     type="text"
@@ -251,7 +273,7 @@ export const InfoUser = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td align="left">
+                                <td align="left" class="font-weight-bold pt-2" >
                                   Total work Enquiry Estimated :
                                 </td>
                                 <td>
@@ -275,7 +297,7 @@ export const InfoUser = ({
                                     <div>
                                       {user.activate ? (
                                         <button
-                                          className="btn btn-success"
+                                          className="button button1 rounded btn btn-success  "
                                           onClick={() => {
                                             activateFun();
                                           }}
@@ -295,18 +317,20 @@ export const InfoUser = ({
                                           </button>
                                         </div>
                                       )}
-                                      <button className="button button1">
+                                      <button className="button button1 rounded">
                                         Reset Password
                                       </button>
-                                      <button className="button button2">
+                                      <button className="button button2 rounded">
                                         Submit
                                       </button>
+
+
                                       <button
                                         onClick={(e) => {
                                           DeleteUser();
                                         }}
-                                        className="button button2"
-                                      >
+                                        className="button button2 rounded">
+
                                         Delete
                                       </button>
                                     </div>
