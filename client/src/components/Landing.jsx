@@ -78,15 +78,17 @@ export const Landing = () => {
                       id="scroll-spy"
                     >
                     
-                    <li className="nav-item">
-                      <a className="nav-link" href="#components">
+                    <li className="nav-item mr-2">
+                    <Link
+                      to="/login">
                         Login
-                      </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#applications">
+                    <Link
+                      to="/register">
                         Register
-                      </a>
+                        </Link>
                     </li>
                     
                     </ul>
