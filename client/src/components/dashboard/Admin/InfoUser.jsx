@@ -117,33 +117,30 @@ export const InfoUser = ({
       {loadingUser ? (
 
         <Loader />
-      ) : ( 
-      <Fragment>
-        <div className="tap-top">
-          <i data-feather="chevrons-up"></i>
-        </div>
-        {/* page wrapper which will wrap entirepage */}
-        <div className="page-wrapper compact-wrapper" id="pageWrapper">
-          {/*  page header */}
-          <Header2 />
-          {/* page body contains sidebar and content  */}
-          <div className="page-body-wrapper sidebar-icon document-content">
-            <Sidebar2></Sidebar2>
 
-              <div className="page-body">
-                <div
-                  className="container-fluid"
-                  style={{ paddingTop: "100px" }}
-                >
-                  
-                  <div className="card" style={{width:"700px",paddingTop:"50px"}}>
-                    <div className="container">
-                      <div id="main">
-                        <div className="h-tag"></div>
-                        <div style={{paddingBottom:"30px",textAlign:"center"}}>
-                        <h4>User Details</h4>
-                        </div>
-                        <div className="login">
+      ) : (
+        <Fragment>
+          <div className="tap-top">
+            <i data-feather="chevrons-up"></i>
+          </div>
+          {/* page wrapper which will wrap entirepage */}
+          <div className="page-wrapper compact-wrapper" id="pageWrapper">
+            {/*  page header */}
+            <Header2 />
+            {/* page body contains sidebar and content  */}
+            <div className="page-body-wrapper sidebar-icon document-content">
+
+              <Sidebar2/>
+              <div class="page-body1">
+              <div className="admin-card ">
+                <Row>
+                  <Card className="mt-4">
+                  <CardHeader>
+                    <h2>User Details</h2>
+                  </CardHeader>
+                  <CardBody className="mt-0 pt-2 ">
+                        <div className="login ">
+
                           <form onSubmit={(e) => onSubmit(e)}>
                           <table >
                           
@@ -337,16 +334,17 @@ export const InfoUser = ({
                                   </div>
                                 </td>
                               </tr>
-                          </table>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                            </table>
+                          </form>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </Row>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+       
         
       </Fragment>
        )} 

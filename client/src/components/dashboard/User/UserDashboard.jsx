@@ -1,15 +1,23 @@
 import React, { Fragment, useEffect } from "react";
+
 import Status from "../../Layout/Status";
 import { login } from "../../../action/auth";
 import { connect } from "react-redux";
 import Loader from "../../../layout/loader";
 import { Header } from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
+import Footer from "../../Layout/Footer";
+import Header3 from "../../Layout/Header3";
 import Sidebar3 from "../../Layout/sidebar3";
 import Alert from "../../Auth/Alert";
 import { loadUser } from "../../../action/auth";
 import { Link } from "react-router-dom";
 import { logout } from "../../../action/auth";
+
+
+import Useractivation from "../../Useractivation";
+
+
 import "../../scss/page.scss";
 import { Container } from "reactstrap";
 
@@ -57,7 +65,7 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                     </ol>
                   </div>
                 </div>
-              </div> */}
+                </div> */}
                     </div>
                     <div className="container-fluid">
                       <div className="row">
@@ -69,35 +77,47 @@ const UserDashboard = ({ user, loadUser, logout }) => {
                   </div>
                 </div>
                 {/* page body ends */}
+                <Footer/>
               </div>
             </Fragment>
           ) : (
             <Fragment>
-            <div className="tap-top">
-              <i data-feather="chevrons-up"></i>
-            </div>
-            {/* page wrapper which will wrap entirepage */}
-            <div className="page-wrapper compact-wrapper" id="pageWrapper">
-              {/*  page header */}
-              <Header user={user} />
-              <div className="page-body-wrapper sidebar-icon document-content">
-                <Sidebar3/>
-                <div className="page-body">
-                  <Container Fluid={true}>
-                  <div className="row"style={{marginBottom:"50px"}}></div>
-                  <div >
-                <h3 style={{textAlign:"center"}}>account is not activated yet</h3>
-            <div style={{textAlign:"center"}}>
-             <button className="btn btn-secondary" >logout</button>
-            </div>
-            </div>
-                  </Container> 
-                </div>
-               {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
-            </div>  */}
+
+              <div className="tap-top">
+                <i data-feather="chevrons-up"></i>
               </div>
-           </div>
-           
+              {/* page wrapper which will wrap entirepage */}
+              <div className="page-wrapper compact-wrapper" id="pageWrapper">
+                {/*  page header */}
+                <Header3 user={user} />
+                <div className="page-body-wrapper sidebar-icon document-content">
+                  <Sidebar3 />
+                  <div className="page-body">
+                    <Container Fluid={true}>
+                      <div
+                        className="row"
+                        style={{ marginBottom: "50px" }}
+                      ></div>
+                      <div className="col-12">
+
+                     <Useractivation/>
+                      
+                  
+                      </div>
+                    </Container>
+                  </div>
+
+                  {/* <div className="container-fluid" style={{marginBottom:"300px"}}>
+                 
+             
+              </div>  */}
+              <Footer/>
+                </div>
+
+
+             </div>
+             
+
             </Fragment>
           )}
         </Fragment>

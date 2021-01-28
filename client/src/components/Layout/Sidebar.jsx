@@ -76,7 +76,7 @@ const Sidebar = ({ logout, user, activate, setAlert }) => {
                   <Link to="/userdashboard">status</Link>
                 </li>
                 <li>
-                  <Link to="">Query</Link>
+                  <Link to="/query">Query</Link>
 
                 </li>
                 <li>

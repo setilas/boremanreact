@@ -7,6 +7,7 @@ import Loader from "../../../layout/loader";
 import Alert from "../../../components/Auth/Alert";
 import Header2 from "../../Layout/Header2";
 import Sidebar2 from "../../Layout/Sidebar2";
+import Footer from "../../Layout/Footer";
 import "../../scss/page.scss";
 
 const Addview = ({ addVendor, setAlert, redirect }) => {
@@ -53,8 +54,10 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
           <Sidebar2></Sidebar2>
 
           <div class="page-body1">
-            <div className="admin-card" >
-              <div>
+
+            <div className="admin-card">
+              <div class="mt-4">
+
                 
                 <div className="login-main ">
                   <form
@@ -177,8 +180,11 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
+
     </div>
+
   );
 };
 

@@ -15,6 +15,7 @@ import Loader from "../../../layout/loader";
 import { loadUser } from "../../../action/auth";
 import Sidebar from "../../Layout/Sidebar";
 import Header from "../../Layout/Header";
+import Footer from "../../Layout/Footer";
 
 
 
@@ -31,7 +32,7 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
 
   return (
     
-<div>
+    <div>
             <div className="tap-top">
               <i data-feather="chevrons-up"></i>
             </div>
@@ -42,7 +43,7 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
               {/* page body contains sidebar and content  */}
               <div className="page-body-wrapper sidebar-icon document-content">
                 <Sidebar/>
-  <div className="page-body " >
+           <div className="page-body " >
 
       
     
@@ -92,6 +93,7 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
      
           </div>
           </div>
+          <Footer/>
           </div>
           </div>
                
