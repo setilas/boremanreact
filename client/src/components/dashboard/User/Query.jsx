@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, CardHeader, CardBody } from "reactstrap";
 import Header from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import Loader from "../../../layout/loader";
+import Footer from "../../Layout/Footer";
 import "../../scss/page.scss";
 const Query=()=>{
     const [loc, setloc] = useState({
@@ -35,7 +36,7 @@ return(
 
           <div class="page-body1">
           <Fragment>
-          <div className="admin-card">
+          <div className="admin-card ">
 
           <Card >
                   <CardHeader>
@@ -79,6 +80,7 @@ return(
 
         </div>
         </div>
+        <Footer/>
         </div>
         </div>
 )
