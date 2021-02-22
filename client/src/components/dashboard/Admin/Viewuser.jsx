@@ -51,14 +51,14 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users, loadingUser }) => {
                     <th>Vendor Code</th>
                     <th>Vendor Name</th>
                     <th>
-                      {" "}
-                      <i className="fa fa-circle font-success f-12">
-                        Active Enquiry
-                      </i>
+                      
+                      <th><i className="fa fa-circle ">
+                       Active Enquiry
+                      </i></th> 
                     </th>
                     <th>Total Enquiry</th>
                     <th>
-                      <i className="fa fa-circle font-danger f-12">
+                      <i className="fa fa-circle ">
                         Total Work Complete
                       </i>
                     </th>
