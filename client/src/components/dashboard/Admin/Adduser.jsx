@@ -48,8 +48,6 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
       <div className="row">
         <div className="col-12">
           <div className="admin-card">
-            <div>
-              <div></div>
               <div className="login-main ">
                 <Alert />
                 <form
@@ -75,7 +73,14 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           }}
                           value={firstname}
                         />
-
+                      </div>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+                </div>
+                </div>
     <div>
       <Loader />
       <div class="tap-top">
@@ -226,11 +231,12 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
         </div>
       </div>
     </div>
+    </div>
+  </div>
   );
 
-
 const mapStateToProps = (state) => ({
-  redirect: state.vendor.redirect,
+  redirect= state.vendor.redirect,
 });
-
 export default connect(mapStateToProps, { addVendor, setAlert })(Addview);
+}
