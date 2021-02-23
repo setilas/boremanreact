@@ -48,7 +48,7 @@ const ViewEnquiry = ({ enquirybyid, profiles, match, user, loadUser }) => {
       
     
         <div className="col-12 text-center">
-        <h3 style={{paddingTop:"30px", color:"crimson"}} >View Enquiry</h3>
+        <h3 style={{paddingTop:"30px", color:"black"}} >View Enquiry</h3>
         </div>
         <Fragment>
       {user === null ? (

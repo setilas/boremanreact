@@ -117,6 +117,7 @@ export const InfoUser = ({
       {loadingUser ? (
 
         <Loader />
+
       ) : (
         <Fragment>
           <div className="tap-top">
@@ -139,6 +140,7 @@ export const InfoUser = ({
                   </CardHeader>
                   <CardBody className="mt-0 pt-2 ">
                         <div className="login ">
+
                           <form onSubmit={(e) => onSubmit(e)}>
                           <table >
                           
@@ -342,8 +344,10 @@ export const InfoUser = ({
               </div>
             </div>
           </div>
-        </Fragment>
-      )}
+       
+        
+      </Fragment>
+       )} 
     </Fragment>
   );
 };

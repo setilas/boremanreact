@@ -43,6 +43,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
   };
 
   return (
+
     <div className="container-fluid p-0 ">
       <div className="row">
         <div className="col-12">
@@ -74,6 +75,65 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           }}
                           value={firstname}
                         />
+
+    <div>
+      <Loader />
+      <div class="tap-top">
+        <i data-feather="chevrons-up"></i>
+      </div>
+      {/* page wrapper which will wrap entirepage */}
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        {/*  page header */}
+        <Header2 />
+        {/* page body contains sidebar and content  */}
+        <div class="page-body-wrapper sidebar-icon document-content">
+          <Sidebar2></Sidebar2>
+
+          <div class="page-body1">
+
+            <div className="admin-card">
+              <div class="mt-4">
+
+                
+                <div className="login-main ">
+                  <form
+                    className="theme-form"
+                    onSubmit={(e) => {
+                      onSubmit(e);
+                    }}
+                  >
+                    <h4>Add User</h4>
+                    <p>Enter vendor details </p>
+                    <div className="form-group">
+                      <label className="col-form-label pt-0">Vendor Name</label>
+                      <div className="form-row">
+                        <div className="col-6">
+                          <input
+                            className="form-control"
+                            type="text"
+                            required=""
+                            placeholder="First name"
+                            name="firstname"
+                            onChange={(e) => {
+                              onChange(e);
+                            }}
+                            value={firstname}
+                          />
+                        </div>
+                        <div className="col-6">
+                          <input
+                            className="form-control"
+                            type="text"
+                            required=""
+                            placeholder="Last name"
+                            name="lastname"
+                            onChange={(e) => {
+                              onChange(e);
+                            }}
+                            value={lastname}
+                          />
+                        </div>
+
                       </div>
                       <div className="col-6">
                         <input
@@ -89,7 +149,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                         />
                       </div>
                     </div>
-                  </div>
+                 
                   <div className="form-group">
                     <label className="col-form-label">Vendor Address</label>
                     <input
@@ -167,7 +227,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
       </div>
     </div>
   );
-};
+
 
 const mapStateToProps = (state) => ({
   redirect: state.vendor.redirect,
