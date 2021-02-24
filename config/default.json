@@ -1,0 +1,6 @@
+
+{
+"mongoURI":"mongodb+srv://ucpro:1234@cluster0.wzmfg.mongodb.net/test?retryWrites=true&w=majority",
+"PORT":5000,
+"jwtSecret":"mysecrettoken"
+}
