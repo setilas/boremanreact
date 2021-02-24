@@ -69,10 +69,10 @@ const Sidebar = ({ logout }) => {
               </a>
               <ul class="sidebar-submenu">
                 <li className="sidebar-list">
-                  <Link to="/adduser">AddUser</Link>
+                  <Link to="/adduser">AddVendor</Link>
                 </li>
                 <li>
-                  <Link to="/viewuser">ViewUser</Link>
+                  <Link to="/viewuser">ViewVendor</Link>
                 </li>
                 <li>
                   <Link to="/adminview">ViewEnquiry</Link>
