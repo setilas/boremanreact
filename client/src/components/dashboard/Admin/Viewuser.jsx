@@ -39,9 +39,9 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users, loadingUser }) => {
           <Sidebar2></Sidebar2>
           <div className="page-body ">
             <Alert />
-            <div className="col-12 text-center">
+            <div className="col-12 r">
               <h3 style={{ paddingTop: "30px", color: "black" }}>
-                View User
+                View vendors
               </h3>
             </div>
             <div className="container ">
@@ -52,15 +52,15 @@ const Viewuser = ({ getallvendors, getUsers, vendors, users, loadingUser }) => {
                     <th>Vendor Name</th>
                     <th>
                       {" "}
-                      <i className="fa fa-circle font-success f-12">
+                       <i className="fa fa-circle font-danger f-12" ></i>
                         Active Enquiry
-                      </i>
+                      
                     </th>
                     <th>Total Enquiry</th>
-                    <th>
-                      <i className="fa fa-circle font-danger f-12">
+                    <th >
+                      <i className="fa fa-circle font-success f-12"></i>
                         Total Work Complete
-                      </i>
+                      
                     </th>
                     <th>More information</th>
                   </tr>
