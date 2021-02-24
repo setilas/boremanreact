@@ -51,7 +51,7 @@ const MainApp = () => {
               path="/admindashboard"
               component={AdminDashboard}
             ></Route>
-            <Route exact path="/userinfo/:id" component={InfoUser}></Route>
+            <Route exact path=" /userinfo/:id" component={InfoUser}></Route>
             <Route exact path="/adduser" component={Addview}></Route>
             <Route exact path="/viewuser" component={Viewuser}></Route>
             <Route exact path="/adminview" component={Adminview}></Route>
