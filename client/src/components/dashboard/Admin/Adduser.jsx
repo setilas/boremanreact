@@ -74,13 +74,11 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                           value={firstname}
                         />
                       </div>
-                      </div>
-                    </div>
-                    </form>
-                  </div>
                 </div>
                 </div>
-                </div>
+               </form> 
+               </div>
+</div>
     <div>
       <Loader />
       <div class="tap-top">
@@ -92,7 +90,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
         <Header2 />
         {/* page body contains sidebar and content  */}
         <div class="page-body-wrapper sidebar-icon document-content">
-          <Sidebar2></Sidebar2>
+          
 
           <div class="page-body1">
 
@@ -124,7 +122,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                             }}
                             value={firstname}
                           />
-                        </div>
+                        
                         <div className="col-6">
                           <input
                             className="form-control"
@@ -138,7 +136,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                             value={lastname}
                           />
                         </div>
-
+                         </div>   
                       </div>
                       <div className="col-6">
                         <input
@@ -154,7 +152,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                         />
                       </div>
                     </div>
-                 
+                    
                   <div className="form-group">
                     <label className="col-form-label">Vendor Address</label>
                     <input
@@ -211,14 +209,14 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                       }}
                       value={password}
                     />
-
+                    
                     <div className="show-hide">
                       <button type="button" class="btn-primary-outline btn-sm">
                         Generate Password
                       </button>
                     </div>
                   </div>
-
+                      
                   <div className="form-group mb-0">
                     <button className="btn btn-primary btn-block" type="submit">
                       Submit
@@ -233,10 +231,12 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
     </div>
     </div>
   </div>
-  );
+</div>
+</div>
 
+  );
+                    };
 const mapStateToProps = (state) => ({
-  redirect= state.vendor.redirect,
+  redirect: state.vendor.redirect,
 });
 export default connect(mapStateToProps, { addVendor, setAlert })(Addview);
-}
