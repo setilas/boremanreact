@@ -66,7 +66,7 @@ const Addview = ({ addVendor, setAlert, redirect }) => {
                       onSubmit(e);
                     }}
                   >
-                    <h4>Add User</h4>
+                    <h4>Add Vendor</h4>
                     <p>Enter vendor details </p>
                     <div className="form-group">
                       <label className="col-form-label pt-0">Vendor Name</label>
