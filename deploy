@@ -7,5 +7,5 @@ echo "Building app"
 npm run build
 
 echo "Deploying files to server"
-rsync -avP build/ exampleuser@mydomain.com:/var/www/mydomain.com/
+rsync -avP build/ root@boreman.quickms.xyz:/var/www/boreman.quickms.xyz/
 echo "Deployment complete"
